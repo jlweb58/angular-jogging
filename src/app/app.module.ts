@@ -4,12 +4,12 @@ import { HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PrimengModule} from './primeng.module';
 import { RunTableComponent } from './run-table/run-table.component';
 import { RunDialogComponent } from './run-dialog/run-dialog.component';
-import {FormsModule} from '@angular/forms';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -23,10 +23,9 @@ import {FormsModule} from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    PrimengModule,
-    FormsModule
+    MaterialModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

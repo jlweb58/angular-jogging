@@ -1,6 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { RunService} from '../run.service';
+import { Observable } from 'rxjs';
+import { DataSource } from '@angular/cdk/collections';
 import { Run} from '../models/run.model';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
 
 @Component({
   selector: 'app-run-table',
@@ -9,32 +14,35 @@ import { Run} from '../models/run.model';
 })
 export class RunTableComponent implements OnInit {
   runs: Run[];
-  cols: any[];
+  dataSource = new MatTableDataSource<Run>(this.runs);
+  displayedColumns = ['date', 'course', 'distance', 'time', 'weather', 'comments', 'avgheartrate'];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   selectedRun: Run;
 
   constructor(
-    private runService: RunService) {
-    }
+    private runService: RunService
+  ) { }
 
   ngOnInit(): void {
     this.runService.loadAll();
     this.runService.runs.subscribe(results => {
-     if (!results) { return; }
-     this.runs = results;
-     console.log('Loaded runs ' + this.runs.length);
+      if (!results) { return; }
+      this.dataSource.data = results;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      console.log('Loaded runs');
 
     });
+  }
 
-    this.cols = [
-      { field: 'date', header: 'Date'},
-      { field: 'course', header: 'Course'},
-      { field: 'distance', header: 'Distance'},
-      { field: 'time', header: 'Time', pSortableColumnDisabled: true},
-      { field: 'weather', header: 'Weather', pSortableColumnDisabled: true},
-      { field: 'comments', header: 'Comments', pSortableColumnDisabled: true},
-      { field: 'avgHeartRate', header: 'Avg. Heart Rate', pSortableColumnDisabled: true},
+  public doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
 
-    ];
+  onRowClicked(row) {
+
   }
 
   onRowSelect(event) {
