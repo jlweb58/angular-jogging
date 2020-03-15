@@ -1,4 +1,5 @@
 export interface Run {
+  id: number;
   date: string;
   course: string;
   distance: number;
