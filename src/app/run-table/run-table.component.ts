@@ -5,6 +5,7 @@ import { DataSource } from '@angular/cdk/collections';
 import { Run} from '../models/run.model';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
 
 @Component({
   selector: 'app-run-table',
@@ -18,6 +19,7 @@ export class RunTableComponent implements OnInit {
   displayedColumns = ['date', 'course', 'distance', 'time', 'weather', 'comments', 'avgheartrate'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private runService: RunService
@@ -29,18 +31,18 @@ export class RunTableComponent implements OnInit {
       if (!results) { return; }
       this.dataSource.data = results;
       this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
       console.log('Loaded runs');
 
     });
+  }
 
+  public doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
   onRowClicked(row) {
 
   }
-
-
-
-
 }
 
