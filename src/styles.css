@@ -1,13 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
+@import '~primeicons/primeicons.css';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: smaller;
+}
+
+body .ui-widget {
+  font-size: 8px !important;
+}
 
 table {
   width: 100%;
 }
 th.mat-sort-header-sorted {
   color: black;
+}
+
+.mat-cell {
+  font-size: 10px;
+}
+
+.mat-row {
+  min-height: 24px;
+}
+
+.mat-row:nth-child(even){
+  background-color: #ffffff;
+}
+
+.mat-row:nth-child(odd){
+  background-color: #d7ebf9;
+}
+
+.mat-header-cell {
+  font-size: 10px;
+  font-weight: bold;
+  color: #2779aa;
+}
+
+.mat-header-row {
+  min-height: 24px;
+  padding: 3px 0px 3px 10px;
+  background-color: #d7ebf9;
+
 }

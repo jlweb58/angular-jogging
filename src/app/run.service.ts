@@ -18,7 +18,7 @@ export class RunService {
   ) { }
 
   loadAll() {
-    this.http.get(this.serviceUrl).subscribe(
+    this.http.get<Run[]>(this.serviceUrl).subscribe(
       data => {
         // @ts-ignore
         this.dataStore.runs = data;
@@ -28,7 +28,7 @@ export class RunService {
     );
   }
 
-  load(id: number | string) {
+    load(id: number | string) {
     this.http.get<Run>(`${this.serviceUrl}/${id}`).subscribe(
       data => {
         let notFound = true;

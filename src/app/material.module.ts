@@ -12,7 +12,7 @@ import {NgModule} from '@angular/core';
     MatInputModule,
     MatPaginatorModule,
     MatSortModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
 
   exports: [
@@ -20,7 +20,7 @@ import {NgModule} from '@angular/core';
     MatInputModule,
     MatPaginatorModule,
     MatSortModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
 })
 export class MaterialModule { }
