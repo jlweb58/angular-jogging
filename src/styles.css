@@ -14,38 +14,16 @@ body .ui-widget {
   font-size: 8px !important;
 }
 
+body .ui-table
+.ui-table-tbody
+tr {
+  background: #f0f3f5;
+}
+
+tr:nth-child(even) {
+  background-color: #c2e3ff !important;
+}
+
 table {
   width: 100%;
-}
-th.mat-sort-header-sorted {
-  color: black;
-}
-
-.mat-cell {
-  font-size: 10px;
-}
-
-.mat-row {
-  min-height: 24px;
-}
-
-.mat-row:nth-child(even){
-  background-color: #ffffff;
-}
-
-.mat-row:nth-child(odd){
-  background-color: #d7ebf9;
-}
-
-.mat-header-cell {
-  font-size: 10px;
-  font-weight: bold;
-  color: #2779aa;
-}
-
-.mat-header-row {
-  min-height: 24px;
-  padding: 3px 0px 3px 10px;
-  background-color: #d7ebf9;
-
 }

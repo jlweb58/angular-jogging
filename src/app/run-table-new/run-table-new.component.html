@@ -1,5 +1,6 @@
 <p-table #dt [columns]="cols" styleClass="ui-table-runs" [value]="runs" [scrollable]="true"
-         [paginator]="true" [rowsPerPageOptions]="[10,20,50,100]" [rows]="20" selectionMode="single">
+         [paginator]="true" [rowsPerPageOptions]="[10,20,50,100]" [rows]="20" selectionMode="single"
+         [(selection)]="selectedRun" dataKey="id">
 
   <ng-template pTemplate="caption">
     <div style="text-align: right">
@@ -15,8 +16,18 @@
       </th>
     </tr>
   </ng-template>
+  <!--
+  <ng-template pTemplate="body" let-runs let-columns="cols">
+    <tr [pSelectableRow]="runs">
+      <td *ngFor="let col of cols">
+        {{ runs[col.field]}}
+      </td>
+    </tr>
+  </ng-template>
+-->
+
   <ng-template pTemplate="body" let-run>
-    <tr>
+    <tr [pSelectableRow]="runs">
       <td>{{run.date}}</td>
       <td>{{run.course}}</td>
       <td>{{run.distance}}</td>
@@ -26,4 +37,5 @@
       <td>{{run.avgHeartRate}}</td>
     </tr>
   </ng-template>
+
 </p-table>

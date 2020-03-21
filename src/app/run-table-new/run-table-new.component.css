@@ -1,0 +1,11 @@
+body .ui-table
+.ui-table-tbody
+tr {
+  background: #f0f3f5;
+}
+
+ tr:nth-child(even) {
+  background-color: blue;
+}
+
+

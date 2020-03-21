@@ -28,6 +28,10 @@ export class RunService {
     );
   }
 
+  replaceNullDurations() {
+
+  }
+
     load(id: number | string) {
     this.http.get<Run>(`${this.serviceUrl}/${id}`).subscribe(
       data => {

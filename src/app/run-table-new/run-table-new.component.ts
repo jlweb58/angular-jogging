@@ -10,6 +10,7 @@ import { Run} from '../models/run.model';
 export class RunTableNewComponent implements OnInit {
   runs: Run[];
   cols: any[];
+  selectedRun: Run;
 
   constructor(
     private runService: RunService) {
@@ -28,12 +29,16 @@ export class RunTableNewComponent implements OnInit {
       { field: 'date', header: 'Date'},
       { field: 'course', header: 'Course'},
       { field: 'distance', header: 'Distance'},
-      { field: 'run.runDuration.time', header: 'Time', pSortableColumnDisabled: true},
-      { field: 'run.weather', header: 'Weather', pSortableColumnDisabled: true},
-      { field: 'run.comments', header: 'Comments', pSortableColumnDisabled: true},
-      { field: 'run.avgHeartRate', header: 'Avg. Heart Rate', pSortableColumnDisabled: true},
+      { field: 'runDuration.time', header: 'Time', pSortableColumnDisabled: true},
+      { field: 'weather', header: 'Weather', pSortableColumnDisabled: true},
+      { field: 'comments', header: 'Comments', pSortableColumnDisabled: true},
+      { field: 'avgHeartRate', header: 'Avg. Heart Rate', pSortableColumnDisabled: true},
 
-    ]
+    ];
+  }
+
+  onRowSelect(event) {
+    console.log('Selected ' + this.selectedRun);
   }
 
 }
