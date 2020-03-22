@@ -1,4 +1,4 @@
-export interface Run {
+export class Run {
   id: number;
   date: string;
   course: string;
@@ -9,4 +9,7 @@ export interface Run {
   weather: string;
   comments: string;
   avgHeartRate: number;
+
+  constructor() {
+  }
 }

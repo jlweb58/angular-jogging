@@ -8,11 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PrimengModule} from './primeng.module';
 import { RunTableComponent } from './run-table/run-table.component';
+import { RunDialogComponent } from './run-dialog/run-dialog.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     RunTableComponent,
+    RunDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,8 @@ import { RunTableComponent } from './run-table/run-table.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    PrimengModule
+    PrimengModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

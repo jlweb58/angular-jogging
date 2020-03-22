@@ -1,0 +1,15 @@
+<p-card>
+<div class="ui-g-12 ui-md-4">
+  <p-calendar [(ngModel)]="run.date"></p-calendar>
+</div>
+
+  <span class="ui-float-label">
+    <input id="float-input" type="text" pInputText [(ngModel)]="run.course">
+    <label for="float-input">Course</label>
+  </span>
+
+  <span>
+  <p-button label="Save" (click)="createRun($event)"></p-button>
+  <p-button label="Cancel"></p-button>
+</span>
+</p-card>
