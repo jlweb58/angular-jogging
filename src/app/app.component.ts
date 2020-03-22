@@ -19,7 +19,8 @@ export class AppComponent implements OnInit {
       },
       {
         label: 'New Run',
-        icon: 'pi pi-fw pi-plus-circle'
+        icon: 'pi pi-fw pi-plus-circle',
+        command: (event) => this.showNewRunDialog()
       },
       {
         label: 'Tools',
@@ -45,6 +46,10 @@ export class AppComponent implements OnInit {
         icon: 'pi pi-fw pi-sign-out'
       }
     ];
+  }
+
+  showNewRunDialog() {
+    console.log('New run works');
 
   }
 }

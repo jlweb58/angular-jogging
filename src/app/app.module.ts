@@ -6,14 +6,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MaterialModule } from './material.module';
 import { PrimengModule} from './primeng.module';
-import { RunTableNewComponent } from './run-table-new/run-table-new.component';
+import { RunTableComponent } from './run-table/run-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RunTableNewComponent
+    RunTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +20,6 @@ import { RunTableNewComponent } from './run-table-new/run-table-new.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    MaterialModule,
     PrimengModule
   ],
   providers: [],
