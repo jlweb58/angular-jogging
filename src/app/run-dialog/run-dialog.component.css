@@ -1,0 +1,17 @@
+#new-run-dialog {
+  /*height: 200px;
+  width: 150px;
+
+   */
+}
+
+.textField {
+  margin: 5px 3px 5px 3px;
+  display: inline-block;
+  float: left;
+}
+
+.input-dialog {
+  /*font-size: 0.8em !important;*/
+  text-align: left;
+}

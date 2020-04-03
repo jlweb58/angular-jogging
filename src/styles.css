@@ -27,3 +27,7 @@ tr:nth-child(even) {
 table {
   width: 100%;
 }
+
+.ui-dialog-titlebar {
+  background-color:  #c2e3ff !important;
+}

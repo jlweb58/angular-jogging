@@ -11,5 +11,8 @@ export class Run {
   avgHeartRate: number;
 
   constructor() {
+    this.runDuration = {
+      time: ''
+    };
   }
 }

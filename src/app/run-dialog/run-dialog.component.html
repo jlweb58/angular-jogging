@@ -1,15 +1,102 @@
-<p-card>
-<div class="ui-g-12 ui-md-4">
-  <p-calendar [(ngModel)]="run.date"></p-calendar>
-</div>
+<p-dialog [(visible)]="display" (onHide)="onClose()" header="New Run">
 
-  <span class="ui-float-label">
-    <input id="float-input" type="text" pInputText [(ngModel)]="run.course">
-    <label for="float-input">Course</label>
+  <input type="hidden" id="id" [(ngModel)]="run.id">
+
+  <div class="ui-g">
+    <div class="ui-g-4">
+      <span>Date: </span>
+    </div>
+    <div class="ui-g-8">
+      <p-calendar id="date" [(ngModel)]="run.date"></p-calendar>
+    </div>
+  <br/>
+
+  <div class="ui-g-4">
+    <label for="distance" class="textField">Distance: </label>
+  </div>
+  <div class="ui-g-6">
+    <input type="text" id="distance" class="textField" [(ngModel)]="run.distance">
+  </div>
+  <br/>
+  <div class="ui-g-4">
+    <label for="course" class="textField">Course: </label>
+  </div>
+  <div class="ui-g-8">
+    <input type="text" id="course" class="textField" [(ngModel)]="run.course">
+  </div>
+    <br/>
+  <div class="ui-g-4">
+    <label for="time" class="textField">Time: </label>
+  </div>
+  <div class="ui-g-8">
+    <input type="text" id="time" class="textField" [(ngModel)]="run.runDuration.time">
+  </div>
+  <br/>
+  <div class="ui-g-4">
+    <label for="weather" class="textField">Weather: </label>
+  </div>
+  <div class="ui-g-8">
+    <input type="text" id="weather" class="textField" [(ngModel)]="run.weather">
+  </div>
+  <br/>
+  <div class="ui-g-4">
+    <label for="comments" class="textField">Comments: </label>
+  </div>
+  <div class="ui-g-8">
+    <input type="text" id="comments" class="textField" [(ngModel)]="run.comments">
+  </div>
+  <br/>
+  <div class="ui-g-4">
+    <label for="shoes" class="textField">Shoes: </label>
+  </div>
+  <div class="ui-g-8">
+    <select id="shoes" class="textField">  </select>
+  </div>
+  <br/>
+  <label for="avgHeartRate" class="textField">Avg. Heart Rate</label>
+  <input type="text" id="avgHeartRate" class="textField" [(ngModel)]="run.avgHeartRate">
+  <br/>
+  </div>
+
+</p-dialog>
+
+<!--
+
+
+<div class="ui-dialog ui-dialog-content" id="new-run-dialog" >
+
+      <span>
+        <label>Date</label>
+        <p-calendar [(ngModel)]="run.date"></p-calendar>
+
+      </span>
+    <span class="ui-float-label">
+    <input id="float-input-course" type="text" pInputText [(ngModel)]="run.course">
+    <label for="float-input-course">Course</label>
   </span>
-
-  <span>
+    <span class="ui-float-label">
+    <input id="float-input-distance" type="text" pInputText [(ngModel)]="run.distance">
+    <label for="float-input-distance">Distance</label>
+  </span>
+    <span class="ui-float-label">
+    <input id="float-input-time" type="text" pInputText [(ngModel)]="run.runDuration.time">
+    <label for="float-input-time">Time</label>
+  </span>
+    <span class="ui-float-label">
+    <input id="float-input-weather" type="text" pInputText [(ngModel)]="run.weather">
+    <label for="float-input-weather">Weather</label>
+  </span>
+    <span class="ui-float-label">
+    <input id="float-input-comments" type="text" pInputText [(ngModel)]="run.comments">
+    <label for="float-input-comments">Comments</label>
+  </span>
+    <span class="ui-float-label">
+    <input id="float-input-avgHeartRate" type="text" pInputText [(ngModel)]="run.avgHeartRate">
+    <label for="float-input-avgHeartRate">Avg. Heart Rate</label>
+  </span>
+  </div>
+<span>
   <p-button label="Save" (click)="createRun($event)"></p-button>
   <p-button label="Cancel"></p-button>
 </span>
-</p-card>
+-->
