@@ -1,25 +1,23 @@
 import {Component, OnInit} from '@angular/core';
-import {DialogService, MenuItem, DialogModule} from 'primeng';
 import {RunDialogComponent} from './run-dialog/run-dialog.component';
 
 @Component({
   selector: 'app-root',
-  providers: [DialogService],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css', '../../node_modules/primeflex/primeflex.css'],
 
 })
 export class AppComponent implements OnInit {
   title = 'Jogging';
-  items: MenuItem[];
   runDialog: RunDialogComponent;
   display: boolean;
 
-  constructor(private dialogService: DialogService) {
+  constructor() {
     this.display = false;
   }
 
   ngOnInit() {
+    /*
     this.items = [
       {
         label: 'Home',
@@ -54,7 +52,7 @@ export class AppComponent implements OnInit {
         icon: 'pi pi-fw pi-sign-out'
       }
     ];
-  }
+*/  }
 
   showNewRunDialog() {
     console.log('New run dialog works');

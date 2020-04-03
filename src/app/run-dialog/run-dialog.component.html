@@ -1,13 +1,13 @@
-<p-dialog [(visible)]="display" (onHide)="onClose()" header="New Run">
+<!--
 
-  <input type="hidden" id="id" [(ngModel)]="run.id">
+  <input type="hidden" id="id" ngModel="run.id">
 
   <div class="ui-g">
     <div class="ui-g-4">
       <span>Date: </span>
     </div>
     <div class="ui-g-8">
-      <p-calendar id="date" [(ngModel)]="run.date"></p-calendar>
+      <p-calendar id="date" ngModel="run.date"></p-calendar>
     </div>
   <br/>
 
@@ -58,9 +58,8 @@
   <br/>
   </div>
 
-</p-dialog>
 
-<!--
+&lt;!&ndash;
 
 
 <div class="ui-dialog ui-dialog-content" id="new-run-dialog" >
@@ -99,4 +98,5 @@
   <p-button label="Save" (click)="createRun($event)"></p-button>
   <p-button label="Cancel"></p-button>
 </span>
+&ndash;&gt;
 -->

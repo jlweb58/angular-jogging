@@ -1,11 +1,24 @@
-body .ui-table
-.ui-table-tbody
-tr {
+body .mat-table
+
+.mat-row {
   background: #f0f3f5;
 }
 
- tr:nth-child(even) {
-  background-color: blue;
+ .mat-row:nth-child(even) {
+  background-color: #96ddff;
 }
+
+ .mat-header-cell {
+   font-size: 10px;
+ }
+
+ .mat-cell {
+   font-size: 10px;
+  /* FOr debugging */
+   border-style: dotted;
+   border-width: 1px;
+ }
+
+
 
 
