@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {RunDialogComponent} from './run-dialog/run-dialog.component';
 import {Run} from './models/run.model';
+import {LoggerService} from './logger/logger.service';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +11,21 @@ import {Run} from './models/run.model';
 
 })
 export class AppComponent implements OnInit {
-  title = 'Jogging';
 
-  constructor() {
+  constructor(private logger: LoggerService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
 
+  }
+
+   newRun() {
+    this.logger.log('new run');
+    const dialogRef = this.dialog.open(RunDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+       this.logger.log('The dialog was closed');
+     });
   }
 
 

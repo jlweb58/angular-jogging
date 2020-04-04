@@ -1,21 +1,20 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Run} from '../models/run.model';
 import {LoggerService} from '../logger/logger.service';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 
 @Component({
-  selector: 'app-run-dialog',
   templateUrl: './run-dialog.component.html',
   styleUrls: ['./run-dialog.component.css']
 })
 export class RunDialogComponent implements OnInit {
 
   @Input() run: Run;
-  @Input() display: boolean;
   @Output() displayChange = new EventEmitter();
   isEdit: boolean;
 
-  constructor(private logger: LoggerService) {
+  constructor(private logger: LoggerService, private dialogRef: MatDialogRef<RunDialogComponent> ) {
     if (!this.run) {
       this.run = new Run();
       this.isEdit = false;

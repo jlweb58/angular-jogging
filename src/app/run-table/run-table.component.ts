@@ -23,7 +23,6 @@ export class RunTableComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   selectedRun: Run;
   runDialog: RunDialogComponent;
-  display: boolean;
 
   constructor(
     private runService: RunService,
@@ -48,12 +47,8 @@ export class RunTableComponent implements OnInit {
 
   showNewRunDialog() {
     this.logger.log('New run dialog works');
-    this.display = true;
   }
 
-  onDialogClose(event) {
-    this.display = event;
-  }
   onRowClicked(row) {
     this.logger.log('Clicked ' + this.selectedRun.id + ' ' + this.selectedRun.date);
   }

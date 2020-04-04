@@ -1,16 +1,18 @@
-<!--
+
 
   <input type="hidden" id="id" ngModel="run.id">
 
   <div class="ui-g">
-    <div class="ui-g-4">
-      <span>Date: </span>
-    </div>
-    <div class="ui-g-8">
-      <p-calendar id="date" ngModel="run.date"></p-calendar>
-    </div>
-  <br/>
+    <!--
+  <div class="ui-g-4">
+       <span>Date: </span>
+     </div>
+     <div class="ui-g-8">
+       <p-calendar id="date" ngModel="run.date"></p-calendar>
+     </div>
+   <br/>
 
+ -->
   <div class="ui-g-4">
     <label for="distance" class="textField">Distance: </label>
   </div>
@@ -59,44 +61,4 @@
   </div>
 
 
-&lt;!&ndash;
 
-
-<div class="ui-dialog ui-dialog-content" id="new-run-dialog" >
-
-      <span>
-        <label>Date</label>
-        <p-calendar [(ngModel)]="run.date"></p-calendar>
-
-      </span>
-    <span class="ui-float-label">
-    <input id="float-input-course" type="text" pInputText [(ngModel)]="run.course">
-    <label for="float-input-course">Course</label>
-  </span>
-    <span class="ui-float-label">
-    <input id="float-input-distance" type="text" pInputText [(ngModel)]="run.distance">
-    <label for="float-input-distance">Distance</label>
-  </span>
-    <span class="ui-float-label">
-    <input id="float-input-time" type="text" pInputText [(ngModel)]="run.runDuration.time">
-    <label for="float-input-time">Time</label>
-  </span>
-    <span class="ui-float-label">
-    <input id="float-input-weather" type="text" pInputText [(ngModel)]="run.weather">
-    <label for="float-input-weather">Weather</label>
-  </span>
-    <span class="ui-float-label">
-    <input id="float-input-comments" type="text" pInputText [(ngModel)]="run.comments">
-    <label for="float-input-comments">Comments</label>
-  </span>
-    <span class="ui-float-label">
-    <input id="float-input-avgHeartRate" type="text" pInputText [(ngModel)]="run.avgHeartRate">
-    <label for="float-input-avgHeartRate">Avg. Heart Rate</label>
-  </span>
-  </div>
-<span>
-  <p-button label="Save" (click)="createRun($event)"></p-button>
-  <p-button label="Cancel"></p-button>
-</span>
-&ndash;&gt;
--->

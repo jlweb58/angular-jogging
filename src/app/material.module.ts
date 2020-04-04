@@ -6,13 +6,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {NgModule} from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
-import {MatMenuItem, MatMenuModule} from '@angular/material/menu';
-import {MatIcon, MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {RunDialogComponent} from './run-dialog/run-dialog.component';
 
 @NgModule({
 
   imports: [
     MatButtonModule,
+    MatDialogModule,
     MatIconModule,
     MatMenuModule,
     MatTableModule,
@@ -25,6 +28,7 @@ import {MatIcon, MatIconModule} from '@angular/material/icon';
 
   exports: [
     MatButtonModule,
+    MatDialogModule,
     MatIconModule,
     MatMenuModule,
     MatTableModule,
@@ -34,5 +38,11 @@ import {MatIcon, MatIconModule} from '@angular/material/icon';
     MatToolbarModule,
     MatProgressSpinnerModule
   ],
+
+  providers: [
+    MatDialog,
+    { provide: MatDialogRef, useValue: {} },
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+  ]
 })
 export class MaterialModule { }

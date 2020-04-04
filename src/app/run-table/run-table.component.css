@@ -5,7 +5,7 @@ tr.mat-row  {
 }
 
  .mat-row:nth-child(even) {
-  background-color: #96ddff;
+  background-color: #def1ff;
 }
 
  .mat-header-cell {
@@ -14,18 +14,10 @@ tr.mat-row  {
 
  .mat-cell {
    font-size: 10px;
-  /* For debugging */
-   border-style: dotted;
-   border-width: 1px;
-   padding: 5px;
-
  }
 
  .mat-form-field {
    font-size: 10px;
-   /* For debugging */
-   border-style: dotted;
-   border-width: 1px;
  }
 
 table {
