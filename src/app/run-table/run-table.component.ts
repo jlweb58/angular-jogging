@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import { RunService} from '../run.service';
 import { Observable } from 'rxjs';
 import { DataSource } from '@angular/cdk/collections';
@@ -6,6 +6,8 @@ import { Run} from '../models/run.model';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
+import {RunDialogComponent} from '../run-dialog/run-dialog.component';
+import {LoggerService} from '../logger/logger.service';
 
 @Component({
   selector: 'app-run-table',
@@ -20,9 +22,12 @@ export class RunTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   selectedRun: Run;
+  runDialog: RunDialogComponent;
+  display: boolean;
 
   constructor(
-    private runService: RunService
+    private runService: RunService,
+    private logger: LoggerService
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +37,7 @@ export class RunTableComponent implements OnInit {
       this.dataSource.data = results;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log('Loaded runs');
+      this.logger.log('Loaded runs');
 
     });
   }
@@ -41,12 +46,20 @@ export class RunTableComponent implements OnInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-  onRowClicked(row) {
+  showNewRunDialog() {
+    this.logger.log('New run dialog works');
+    this.display = true;
+  }
 
+  onDialogClose(event) {
+    this.display = event;
+  }
+  onRowClicked(row) {
+    this.logger.log('Clicked ' + this.selectedRun.id + ' ' + this.selectedRun.date);
   }
 
   onRowSelect(event) {
-    console.log('Selected ' + this.selectedRun.id + ' ' + this.selectedRun.date);
+    this.logger.log('Selected ' + this.selectedRun.id + ' ' + this.selectedRun.date);
   }
 
 }

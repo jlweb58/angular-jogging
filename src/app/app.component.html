@@ -1,5 +1,56 @@
-<!-- todo menubar -->
-
+<mat-toolbar color="primary" class="app-run">
+  <button mat-icon-button>
+    <mat-icon>home</mat-icon>
+    <span>Home</span>
+  </button>
+  <button mat-icon-button>
+    <mat-icon>add_circle</mat-icon>
+    <span>New Run</span>
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="toolsMenu">
+    <mat-icon>build</mat-icon>
+    <span>Tools</span>
+  </button>
+  <mat-menu #toolsMenu="matMenu" >
+    <button mat-menu-item>
+      <mat-icon inline="true">search</mat-icon>
+      <span>Find runs</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon inline="true">show_chart</mat-icon>
+      <span>Chart this</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon inline="true">insert_chart</mat-icon>
+      <span>Monthly chart</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon inline="true">insert_chart_outlined</mat-icon>
+      <span>Yearly chart</span>
+    </button>
+  </mat-menu>
+  <button mat-icon-button [matMenuTriggerFor]="settingsMenu">
+    <mat-icon>settings</mat-icon>
+    <span>Settings</span>
+  </button>
+  <mat-menu #settingsMenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon inline="true">edit</mat-icon>
+      <span>Shoes</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon inline="true">lock</mat-icon>
+      <span>Change password</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon inline="true">info</mat-icon>
+      <span>What's new?</span>
+    </button>
+  </mat-menu>
+  <button mat-icon-button>
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-toolbar>
 <app-run-table></app-run-table>
 
-<app-run-dialog [display]="display" (displayChange)="onDialogClose($event)"></app-run-dialog>

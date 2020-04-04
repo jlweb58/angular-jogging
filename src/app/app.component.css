@@ -1,0 +1,36 @@
+
+
+.mat-toolbar {
+  background-color: #96ddff !important;
+  display: flex;
+  flex-direction: row;
+}
+
+.mat-toolbar-single-row {
+  height: 24px;
+}
+
+.mat-button {
+  font-size: 10px !important;
+  color: black;
+  display: flex;
+}
+
+.mat-icon-button {
+  font-size: 10px !important;
+  color: black;
+  display: flex;
+  min-width: 80px;
+}
+
+
+.mat-menu-item {
+  font-size: 10px !important;
+ height: 24px;
+  line-height: 24px;
+  display: flex;
+}
+
+.material-icons {
+  font-size: smaller;
+}

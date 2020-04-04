@@ -1,7 +1,7 @@
-body .mat-table
 
-.mat-row {
+tr.mat-row  {
   background: #f0f3f5;
+  height: 24px !important;
 }
 
  .mat-row:nth-child(even) {
@@ -14,10 +14,28 @@ body .mat-table
 
  .mat-cell {
    font-size: 10px;
-  /* FOr debugging */
+  /* For debugging */
+   border-style: dotted;
+   border-width: 1px;
+   padding: 5px;
+
+ }
+
+ .mat-form-field {
+   font-size: 10px;
+   /* For debugging */
    border-style: dotted;
    border-width: 1px;
  }
+
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
 
 
 
