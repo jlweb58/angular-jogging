@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
   }
 
    newRun() {
-    this.logger.log('new run');
     const dialogRef = this.dialog.open(RunDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {

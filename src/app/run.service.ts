@@ -62,6 +62,8 @@ export class RunService {
         data => {
           this.dataStore.runs.push(data);
           this._runs.next(Object.assign({}, this.dataStore).runs);
+          // Key for getting the table to update automatically
+          this.loadAll();
         },
         error => console.log('Could not create run.')
       );

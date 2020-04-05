@@ -15,8 +15,7 @@ import {LoggerService} from '../logger/logger.service';
   styleUrls: ['./run-table.component.css']
 })
 export class RunTableComponent implements OnInit {
-  runs: Run[];
-  dataSource = new MatTableDataSource<Run>(this.runs);
+  dataSource = new MatTableDataSource<Run>();
   displayedColumns = ['date', 'course', 'distance', 'time', 'weather', 'comments', 'avgheartrate', 'shoes'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

@@ -1,11 +1,10 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Run} from '../models/run.model';
 import {LoggerService} from '../logger/logger.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {RunService} from '../run.service';
 import {ShoesService} from '../shoes.service';
 import {Shoes} from '../models/shoes.model';
-
 
 @Component({
   templateUrl: './run-dialog.component.html',
@@ -35,7 +34,7 @@ export class RunDialogComponent implements OnInit {
       if (!results) {
         return;
       }
-      this.shoes = results;
+      this.shoes = results.filter(shoe => shoe.active);
     });
     this.logger.log('init run dialog');
     this.logger.log('isEdit=' + this.isEdit);
