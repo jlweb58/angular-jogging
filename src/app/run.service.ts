@@ -1,7 +1,8 @@
 import {Injectable, OnInit} from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Run } from './models/run.model';
+import {LoggerService} from './logger/logger.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,8 @@ export class RunService {
 
   constructor(
     private http: HttpClient,
+    private logger: LoggerService,
+
   ) { }
 
   loadAll() {
@@ -24,12 +27,8 @@ export class RunService {
         this.dataStore.runs = data;
         this._runs.next(Object.assign({}, this.dataStore).runs);
       },
-      error => console.log('Could not load runs.')
+      error => this.logger.log('Could not load runs.')
     );
-  }
-
-  replaceNullDurations() {
-
   }
 
     load(id: number | string) {
@@ -50,19 +49,21 @@ export class RunService {
 
         this._runs.next(Object.assign({}, this.dataStore).runs);
       },
-      error => console.log('Could not load run.')
+      error => this.logger.log('Could not load run.')
     );
   }
 
   create(run: Run) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
     this.http
-      .post<Run>(this.serviceUrl, JSON.stringify(run))
+      .post<Run>(this.serviceUrl, run, { headers })
       .subscribe(
         data => {
           this.dataStore.runs.push(data);
           this._runs.next(Object.assign({}, this.dataStore).runs);
         },
-        error => console.log('Could not create todo.')
+        error => console.log('Could not create run.')
       );
   }
 

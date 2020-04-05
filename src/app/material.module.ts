@@ -10,6 +10,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {RunDialogComponent} from './run-dialog/run-dialog.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
 
@@ -21,6 +22,7 @@ import {RunDialogComponent} from './run-dialog/run-dialog.component';
     MatTableModule,
     MatInputModule,
     MatPaginatorModule,
+    MatSelectModule,
     MatSortModule,
     MatToolbarModule,
     MatProgressSpinnerModule
@@ -34,6 +36,7 @@ import {RunDialogComponent} from './run-dialog/run-dialog.component';
     MatTableModule,
     MatInputModule,
     MatPaginatorModule,
+    MatSelectModule,
     MatSortModule,
     MatToolbarModule,
     MatProgressSpinnerModule

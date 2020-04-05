@@ -17,7 +17,7 @@ import {LoggerService} from '../logger/logger.service';
 export class RunTableComponent implements OnInit {
   runs: Run[];
   dataSource = new MatTableDataSource<Run>(this.runs);
-  displayedColumns = ['date', 'course', 'distance', 'time', 'weather', 'comments', 'avgheartrate'];
+  displayedColumns = ['date', 'course', 'distance', 'time', 'weather', 'comments', 'avgheartrate', 'shoes'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -43,10 +43,6 @@ export class RunTableComponent implements OnInit {
 
   public doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
-  }
-
-  showNewRunDialog() {
-    this.logger.log('New run dialog works');
   }
 
   onRowClicked(row) {

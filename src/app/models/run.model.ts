@@ -1,3 +1,5 @@
+import {Shoes} from './shoes.model';
+
 export class Run {
   id: number;
   date: string;
@@ -9,10 +11,12 @@ export class Run {
   weather: string;
   comments: string;
   avgHeartRate: number;
+  shoes: Shoes;
 
   constructor() {
     this.runDuration = {
       time: ''
     };
+    this.shoes = new Shoes();
   }
 }

@@ -1,64 +1,51 @@
+<h2 mat-dialog-title>New Run</h2>
+<mat-dialog-content>
+  <form class="run-dialog-form">
+    <mat-form-field class="run-dialog-full-width">
+      <mat-label>Date</mat-label>
+      <input matInput type="date" name="date" [(ngModel)]="run.date">
+    </mat-form-field>
 
+    <mat-form-field class="run-dialog-full-width">
+      <mat-label>Distance</mat-label>
+      <input matInput name="distance" [(ngModel)]="run.distance">
+    </mat-form-field>
 
-  <input type="hidden" id="id" ngModel="run.id">
+    <mat-form-field class="run-dialog-full-width">
+      <mat-label>Course</mat-label>
+      <input matInput name="course" [(ngModel)]="run.course">
+    </mat-form-field>
 
-  <div class="ui-g">
-    <!--
-  <div class="ui-g-4">
-       <span>Date: </span>
-     </div>
-     <div class="ui-g-8">
-       <p-calendar id="date" ngModel="run.date"></p-calendar>
-     </div>
-   <br/>
+    <mat-form-field class="run-dialog-full-width">
+      <mat-label>Time</mat-label>
+      <input matInput name="time" [(ngModel)]="run.runDuration.time">
+    </mat-form-field>
+    <mat-form-field class="run-dialog-full-width">
+      <mat-label>Weather</mat-label>
+      <input matInput name="weather" [(ngModel)]="run.weather">
+    </mat-form-field>
+    <mat-form-field class="run-dialog-full-width">
+      <mat-label>Comments</mat-label>
+      <input matInput name="comments" [(ngModel)]="run.comments">
+    </mat-form-field>
+    <mat-form-field class="run-dialog-full-width">
+      <mat-label>Avg. Heart Rate</mat-label>
+      <input matInput name="avgHeartRate" [(ngModel)]="run.avgHeartRate">
+    </mat-form-field>
+    <mat-form-field class="run-dialog-full-width">
+      <mat-label>Shoes</mat-label>
+      <mat-select [(ngModel)]="selectedShoe" name="shoes">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let shoe of shoes" [value]="shoe">{{shoe.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
 
- -->
-  <div class="ui-g-4">
-    <label for="distance" class="textField">Distance: </label>
-  </div>
-  <div class="ui-g-6">
-    <input type="text" id="distance" class="textField" [(ngModel)]="run.distance">
-  </div>
-  <br/>
-  <div class="ui-g-4">
-    <label for="course" class="textField">Course: </label>
-  </div>
-  <div class="ui-g-8">
-    <input type="text" id="course" class="textField" [(ngModel)]="run.course">
-  </div>
-    <br/>
-  <div class="ui-g-4">
-    <label for="time" class="textField">Time: </label>
-  </div>
-  <div class="ui-g-8">
-    <input type="text" id="time" class="textField" [(ngModel)]="run.runDuration.time">
-  </div>
-  <br/>
-  <div class="ui-g-4">
-    <label for="weather" class="textField">Weather: </label>
-  </div>
-  <div class="ui-g-8">
-    <input type="text" id="weather" class="textField" [(ngModel)]="run.weather">
-  </div>
-  <br/>
-  <div class="ui-g-4">
-    <label for="comments" class="textField">Comments: </label>
-  </div>
-  <div class="ui-g-8">
-    <input type="text" id="comments" class="textField" [(ngModel)]="run.comments">
-  </div>
-  <br/>
-  <div class="ui-g-4">
-    <label for="shoes" class="textField">Shoes: </label>
-  </div>
-  <div class="ui-g-8">
-    <select id="shoes" class="textField">  </select>
-  </div>
-  <br/>
-  <label for="avgHeartRate" class="textField">Avg. Heart Rate</label>
-  <input type="text" id="avgHeartRate" class="textField" [(ngModel)]="run.avgHeartRate">
-  <br/>
-  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button [mat-dialog-close]="true" (click)="createRun($event)">Save</button>
 
+</mat-dialog-actions>
 
 
