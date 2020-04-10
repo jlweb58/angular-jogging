@@ -3,7 +3,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.5.
 
 ## Known bugs
-- On editing a run the shoes are not saved
+- (FIXED) On editing a run the shoes are not saved - seems to be due to a CORS problem on loading the shoes while editing.
+   -- needed to select on shoes.id, not shoes
 
 
 ## Development server

@@ -35,6 +35,9 @@ export class RunDialogComponent implements OnInit {
         return;
       }
       this.shoes = results.filter(shoe => shoe.active);
+      if (this.isEdit) {
+        this.selectedShoe = this.run.shoes;
+      }
     });
     this.logger.log('init run dialog');
     this.logger.log('isEdit=' + this.isEdit);
