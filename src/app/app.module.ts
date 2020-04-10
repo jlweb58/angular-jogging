@@ -11,8 +11,9 @@ import {RunTableComponent} from './run-table/run-table.component';
 import {RunDialogComponent} from './run-dialog/run-dialog.component';
 import {MaterialModule} from './material.module';
 import {LoggerService} from './logger/logger.service';
-import { ShoesDialogComponent } from './shoes-dialog/shoes-dialog.component';
-import { ShoesListComponent } from './shoes-list/shoes-list.component';
+import {ShoesDialogComponent } from './shoes-dialog/shoes-dialog.component';
+import {ShoesListComponent} from './shoes-list/shoes-list.component';
+import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ShoesListComponent } from './shoes-list/shoes-list.component';
     RunDialogComponent,
     ShoesDialogComponent,
     ShoesListComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,13 +34,15 @@ import { ShoesListComponent } from './shoes-list/shoes-list.component';
     MaterialModule
   ],
   exports: [
-    RunDialogComponent
+    RunDialogComponent,
+    ConfirmDialogComponent
   ],
   providers: [
     LoggerService,
     ],
   entryComponents: [
-    RunDialogComponent
+    RunDialogComponent,
+    ConfirmDialogComponent
   ],
   bootstrap: [AppComponent]
 })

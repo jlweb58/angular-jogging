@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ShoesService} from '../shoes.service';
 import {Shoes} from '../models/shoes.model';
 import {LoggerService} from '../logger/logger.service';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-shoe-list',
@@ -15,7 +17,7 @@ export class ShoesListComponent implements OnInit {
 
   columnsToDisplay = ['preferred', 'name', 'mileage', 'retire'];
 
-  constructor(private shoesService: ShoesService, private logger: LoggerService) {
+  constructor(private shoesService: ShoesService, private logger: LoggerService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -42,8 +44,16 @@ export class ShoesListComponent implements OnInit {
   }
 
   retireShoes(shoes) {
-    this.logger.log('Retiring shoes: ' + shoes.name);
-    shoes.active = false;
-    this.shoesService.update(shoes);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '350px',
+      data: 'Do you really want to retire these shoes?'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.logger.log('Retiring shoes: ' + shoes.name);
+        shoes.active = false;
+        this.shoesService.update(shoes);
+      }
+    });
   }
 }
