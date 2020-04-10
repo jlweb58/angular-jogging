@@ -63,7 +63,7 @@ export class RunService {
           // Key for getting the table to update automatically
           this.loadAll();
         },
-        error => console.log('Could not create run.')
+        error => this.logger.log('Could not create run.')
       );
   }
 
@@ -82,7 +82,7 @@ export class RunService {
           // Key for getting the table to update automatically
           this.loadAll();
         },
-        error => console.log('Could not update run.')
+        error => this.logger.log('Could not update run.')
       );
   }
 

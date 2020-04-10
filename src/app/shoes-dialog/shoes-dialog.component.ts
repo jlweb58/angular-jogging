@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {LoggerService} from '../logger/logger.service';
 import {Shoes} from '../models/shoes.model';
+import {Run} from '../models/run.model';
+import {ShoesService} from '../shoes.service';
 
 
 @Component({
@@ -10,11 +12,17 @@ import {Shoes} from '../models/shoes.model';
 })
 export class ShoesDialogComponent implements OnInit {
 
-  shoes: Shoes[];
+  shoes: Shoes;
 
-  constructor() { }
+  constructor(private logger: LoggerService, private shoesService: ShoesService) {
+    this.shoes = new Shoes();
+  }
 
   ngOnInit(): void {
+  }
+
+  createShoes(shoes) {
+    this.shoesService.create(shoes);
   }
 
 }

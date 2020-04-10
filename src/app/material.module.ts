@@ -11,6 +11,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
 
@@ -26,7 +27,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatSortModule,
     MatToolbarModule,
     MatProgressSpinnerModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDividerModule
   ],
 
   exports: [
@@ -41,7 +43,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatSortModule,
     MatToolbarModule,
     MatProgressSpinnerModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDividerModule
   ],
 
   providers: [

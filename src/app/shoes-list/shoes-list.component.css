@@ -24,3 +24,8 @@ tr.mat-row  {
 table {
   width: 60%;
 }
+
+.mat-raised-button  {
+ margin-top: 20px !important;
+ margin-left: 20px !important;
+}

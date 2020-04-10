@@ -4,6 +4,7 @@ import {Shoes} from '../models/shoes.model';
 import {LoggerService} from '../logger/logger.service';
 import {MatDialog} from '@angular/material/dialog';
 import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
+import {ShoesDialogComponent} from '../shoes-dialog/shoes-dialog.component';
 
 @Component({
   selector: 'app-shoe-list',
@@ -35,6 +36,12 @@ export class ShoesListComponent implements OnInit {
   updateShoes(shoes: Shoes) {
     shoes.preferred = (shoes === this.preferredShoes);
     this.shoesService.update(shoes);
+  }
+
+  createShoes() {
+    const dialogRef = this.dialog.open(ShoesDialogComponent, {
+      width: '350px'
+    });
   }
 
   setPreferredShoes(event) {
