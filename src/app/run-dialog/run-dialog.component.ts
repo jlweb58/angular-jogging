@@ -12,9 +12,9 @@ import {Shoes} from '../models/shoes.model';
 })
 export class RunDialogComponent implements OnInit {
 
-  @Input() run: Run;
+  run: Run;
   @Output() displayChange = new EventEmitter();
-  isEdit: boolean;
+  public isEdit: boolean;
   shoes: Shoes[];
   selectedShoe: Shoes;
 
@@ -41,10 +41,26 @@ export class RunDialogComponent implements OnInit {
   }
 
   createRun(event) {
-    this.logger.log('create run ' + JSON.stringify(this.run));
+    this.logger.log('edit or create run ' + JSON.stringify(this.run));
     this.run.shoes = this.selectedShoe;
-    this.runService.create(this.run);
+    if (this.run.runDuration && this.run.runDuration.time) {
+      this.run.runDuration.time = this.correctDurationFormat(this.run.runDuration.time);
+    }
+    if (this.isEdit) {
+      this.runService.update(this.run);
+    } else {
+      this.runService.create(this.run);
+    }
     this.run = new Run();
+  }
+
+  correctDurationFormat(durationString: string): string {
+    const firstIndex = durationString.indexOf(':');
+    const lastIndex = durationString.lastIndexOf(':');
+    if (firstIndex === lastIndex) {
+      durationString = '00:' + durationString;
+    }
+    return durationString;
   }
 
   onClose() {

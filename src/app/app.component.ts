@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {RunDialogComponent} from './run-dialog/run-dialog.component';
-import {Run} from './models/run.model';
 import {LoggerService} from './logger/logger.service';
 import {MatDialog} from '@angular/material/dialog';
 

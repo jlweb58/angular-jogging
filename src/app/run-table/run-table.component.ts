@@ -1,13 +1,13 @@
-import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, OnInit, Output, ViewChild} from '@angular/core';
 import { RunService} from '../run.service';
-import { Observable } from 'rxjs';
-import { DataSource } from '@angular/cdk/collections';
 import { Run} from '../models/run.model';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {RunDialogComponent} from '../run-dialog/run-dialog.component';
 import {LoggerService} from '../logger/logger.service';
+import {MatDialog} from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-run-table',
@@ -20,12 +20,13 @@ export class RunTableComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  selectedRun: Run;
+  @Output() run: Run;
   runDialog: RunDialogComponent;
 
   constructor(
     private runService: RunService,
-    private logger: LoggerService
+    private logger: LoggerService,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -45,11 +46,14 @@ export class RunTableComponent implements OnInit {
   }
 
   onRowClicked(row) {
-    this.logger.log('Clicked ' + this.selectedRun.id + ' ' + this.selectedRun.date);
-  }
-
-  onRowSelect(event) {
-    this.logger.log('Selected ' + this.selectedRun.id + ' ' + this.selectedRun.date);
+    this.run = row;
+    this.logger.log('Clicked ' + this.run.id + ' ' + this.run.date);
+    const dialogRef = this.dialog.open(RunDialogComponent);
+    dialogRef.componentInstance.run = this.run;
+    dialogRef.componentInstance.isEdit = true;
+    dialogRef.afterClosed().subscribe(result => {
+      this.logger.log('The dialog was closed');
+    });
   }
 
 }
