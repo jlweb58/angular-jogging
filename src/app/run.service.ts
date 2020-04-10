@@ -54,10 +54,8 @@ export class RunService {
   }
 
   create(run: Run) {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
     this.http
-      .post<Run>(this.serviceUrl, run, { headers })
+      .post<Run>(this.serviceUrl, run )
       .subscribe(
         data => {
           this.dataStore.runs.push(data);
@@ -71,7 +69,7 @@ export class RunService {
 
   update(run: Run) {
     this.http
-      .put<Run>(`${this.serviceUrl}/${run.id}`, JSON.stringify(run))
+      .put<Run>(`${this.serviceUrl}/${run.id}`, run)
       .subscribe(
         data => {
           this.dataStore.runs.forEach((t, i) => {
@@ -81,6 +79,8 @@ export class RunService {
           });
 
           this._runs.next(Object.assign({}, this.dataStore).runs);
+          // Key for getting the table to update automatically
+          this.loadAll();
         },
         error => console.log('Could not update run.')
       );
