@@ -26,11 +26,15 @@
 
 .mat-menu-item {
   font-size: 10px !important;
- height: 24px;
+  height: 24px;
   line-height: 24px;
   display: flex;
 }
 
 .material-icons {
   font-size: smaller;
+}
+
+.menu-item-right {
+  padding-left: 50px;
 }

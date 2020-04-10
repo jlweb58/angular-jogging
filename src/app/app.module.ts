@@ -11,12 +11,16 @@ import {RunTableComponent} from './run-table/run-table.component';
 import {RunDialogComponent} from './run-dialog/run-dialog.component';
 import {MaterialModule} from './material.module';
 import {LoggerService} from './logger/logger.service';
+import { ShoesDialogComponent } from './shoes-dialog/shoes-dialog.component';
+import { ShoesListComponent } from './shoes-list/shoes-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RunTableComponent,
     RunDialogComponent,
+    ShoesDialogComponent,
+    ShoesListComponent,
   ],
   imports: [
     BrowserModule,

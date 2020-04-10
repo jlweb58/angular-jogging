@@ -9,8 +9,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
-import {RunDialogComponent} from './run-dialog/run-dialog.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
 
@@ -25,7 +25,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatSelectModule,
     MatSortModule,
     MatToolbarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatRadioModule
   ],
 
   exports: [
@@ -39,12 +40,13 @@ import {MatSelectModule} from '@angular/material/select';
     MatSelectModule,
     MatSortModule,
     MatToolbarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatRadioModule
   ],
 
   providers: [
     MatDialog,
-    { provide: MatDialogRef, useValue: {} },
+    {provide: MatDialogRef, useValue: {}},
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ]
 })

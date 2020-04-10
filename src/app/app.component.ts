@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RunDialogComponent} from './run-dialog/run-dialog.component';
 import {LoggerService} from './logger/logger.service';
 import {MatDialog} from '@angular/material/dialog';
+import {ShoesDialogComponent} from './shoes-dialog/shoes-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,5 @@ export class AppComponent implements OnInit {
        this.logger.log('The dialog was closed');
      });
   }
-
 
 }

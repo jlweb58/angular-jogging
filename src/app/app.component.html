@@ -1,8 +1,8 @@
 <mat-toolbar color="primary" class="app-run">
-  <button mat-icon-button>
+  <a mat-icon-button routerLink="/home" routerLinkActive="active">
     <mat-icon>home</mat-icon>
     <span>Home</span>
-  </button>
+  </a>
   <button mat-icon-button (click)="newRun()">
     <mat-icon>add_circle</mat-icon>
     <span>New Run</span>
@@ -34,10 +34,10 @@
     <span>Settings</span>
   </button>
   <mat-menu #settingsMenu="matMenu">
-    <button mat-menu-item>
+    <a mat-menu-item routerLink="/shoes" routerLinkActive="active">
       <mat-icon inline="true">edit</mat-icon>
-      <span>Shoes</span>
-    </button>
+      <span class="menu-item-right">Shoes</span>
+    </a>
     <button mat-menu-item>
       <mat-icon inline="true">lock</mat-icon>
       <span>Change password</span>
@@ -52,5 +52,5 @@
     <span>Logout</span>
   </button>
 </mat-toolbar>
-<app-run-table></app-run-table>
+<router-outlet></router-outlet>
 

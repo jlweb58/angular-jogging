@@ -1,0 +1,26 @@
+tr.mat-row  {
+  background: #f0f3f5;
+  height: 24px !important;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #def1ff;
+}
+
+
+.mat-header-cell {
+  font-size: 10px;
+}
+
+.mat-cell {
+  font-size: 10px;
+  padding-right: 5px;
+}
+
+.mat-form-field {
+  font-size: 10px;
+}
+
+table {
+  width: 60%;
+}
