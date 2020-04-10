@@ -16,7 +16,7 @@ export class RunDialogComponent implements OnInit {
   @Output() displayChange = new EventEmitter();
   public isEdit: boolean;
   shoes: Shoes[];
-  selectedShoe: Shoes;
+  selectedShoe: Shoes = new Shoes();
 
   constructor(private logger: LoggerService,
               private runService: RunService,
@@ -35,8 +35,10 @@ export class RunDialogComponent implements OnInit {
         return;
       }
       this.shoes = results.filter(shoe => shoe.active);
-      if (this.isEdit) {
+      if (this.isEdit && this.run.shoes) {
         this.selectedShoe = this.run.shoes;
+      } else {
+        this.selectedShoe = new Shoes();
       }
     });
     this.logger.log('init run dialog');
@@ -45,7 +47,11 @@ export class RunDialogComponent implements OnInit {
 
   createRun(event) {
     this.logger.log('edit or create run ' + JSON.stringify(this.run));
-    this.run.shoes = this.selectedShoe;
+    if (this.selectedShoe.id) {
+      this.run.shoes = this.selectedShoe;
+    } else {
+      this.run.shoes = null;
+    }
     if (this.run.runDuration && this.run.runDuration.time) {
       this.run.runDuration.time = this.correctDurationFormat(this.run.runDuration.time);
     }

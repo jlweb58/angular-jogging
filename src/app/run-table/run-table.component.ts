@@ -7,6 +7,7 @@ import {MatSort} from '@angular/material/sort';
 import {RunDialogComponent} from '../run-dialog/run-dialog.component';
 import {LoggerService} from '../logger/logger.service';
 import {MatDialog} from '@angular/material/dialog';
+import {Shoes} from '../models/shoes.model';
 
 
 @Component({

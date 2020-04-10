@@ -5,6 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Known bugs
 - (FIXED) On editing a run the shoes are not saved - seems to be due to a CORS problem on loading the shoes while editing.
    -- needed to select on shoes.id, not shoes
+- (FIXED) If a run doesn't already have shoes it can't be edited (the selectedShoe ref is null)   
 
 
 ## Development server
