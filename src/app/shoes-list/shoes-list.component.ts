@@ -40,7 +40,7 @@ export class ShoesListComponent implements OnInit {
 
   createShoes() {
     const dialogRef = this.dialog.open(ShoesDialogComponent, {
-      width: '350px'
+      width: '250px'
     });
   }
 
@@ -52,7 +52,7 @@ export class ShoesListComponent implements OnInit {
 
   retireShoes(shoes) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: '350px',
+      width: '200px',
       data: 'Do you really want to retire these shoes?'
     });
     dialogRef.afterClosed().subscribe(result => {
