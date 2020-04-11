@@ -90,4 +90,16 @@ export class RunService {
     return this.http.get<Run[]>(this.serviceUrl);
   }
 
+  isBetweenDates(startDate: Date, endDate: Date, run: Run) {
+    const runDate: Date = new Date(run.date + 'T00:00:00Z');
+    const after = runDate.getTime() >= startDate.getTime();
+    const before = runDate.getTime() <= endDate.getTime();
+    return after && before;
+  }
+
+  getRunsForDateRange(startDate: Date, endDate: Date): Run[] {
+    this.logger.log('Getting runs between ' + startDate + ' ' + endDate);
+    return this.dataStore.runs.filter(run => this.isBetweenDates(startDate, endDate, run));
+  }
+
 }

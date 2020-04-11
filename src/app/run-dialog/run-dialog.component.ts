@@ -47,6 +47,8 @@ export class RunDialogComponent implements OnInit {
 
   createRun(event) {
     this.logger.log('edit or create run ' + JSON.stringify(this.run));
+    const runDate: Date = new Date(this.run.date);
+    this.logger.log('run date=' + runDate);
     if (this.selectedShoe.id) {
       this.run.shoes = this.selectedShoe;
     } else {
