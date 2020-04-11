@@ -7,7 +7,7 @@ import {ShoesDialogComponent} from './shoes-dialog/shoes-dialog.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css', '../../node_modules/primeflex/primeflex.css'],
+  styleUrls: ['./app.component.css'],
 
 })
 export class AppComponent implements OnInit {
