@@ -10,7 +10,7 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>End Date</mat-label>
-      <input matInput [matDatepicker]="end" [(ngModel]="endDate">
+      <input matInput [matDatepicker]="end" name="endDate" [(ngModel)]="endDate">
       <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
       <mat-datepicker #end></mat-datepicker>
     </mat-form-field>
