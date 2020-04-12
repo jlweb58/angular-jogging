@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ChartDataSets, ChartOptions, ChartTooltipOptions, ChartType} from 'chart.js';
+import {ChartDataSets, ChartFontOptions, ChartOptions, ChartTooltipOptions, ChartType} from 'chart.js';
 import {Label} from 'ng2-charts';
 import {LoggerService} from '../logger/logger.service';
 import {Run} from '../models/run.model';
 import {ChartIntervalType} from '../models/chart-interval-type';
+import * as Chart from 'chart.js';
 
 @Component({
   selector: 'app-bar-chart',
@@ -29,22 +30,35 @@ export class BarChartComponent implements OnInit {
   barChartToolTipOptions: ChartTooltipOptions =  {
     bodyFontSize: 8,
     titleFontSize: 9,
+    callbacks: {
+      label: (tooltipItem, data) => {
+        let label = data.datasets[tooltipItem.datasetIndex].label || '';
+        // @ts-ignore
+        label = Math.round(tooltipItem.yLabel * 100) / 100 + ' ' + label;
+        return label;
+      }
+    }
   };
   barChartOptions: ChartOptions = {
     responsive: true,
     tooltips: this.barChartToolTipOptions,
+    title: {
+      display: true,
+      fontSize: 10,
+    },
   };
   barChartData: ChartDataSets[] = [];
 
   constructor(private logger: LoggerService) { }
 
   ngOnInit(): void {
-    this.logger.log('BarChartComponent ' + this.startDate + ' ' + this.endDate);
-    this.logger.log('runs: ' + this.runs);
-    this.logger.log('type: ' + this.chartIntervalType);
+    Chart.defaults.global.defaultFontSize = 9;
     if (this.chartIntervalType === ChartIntervalType.Monthly) {
+      this.barChartOptions.title.text = 'Monthly km chart';
       this.prepareMonthlyChart();
+
     } else {
+      this.barChartOptions.title.text = 'Yearly km chart';
       this.prepareYearlyChart();
     }
   }
@@ -66,6 +80,18 @@ export class BarChartComponent implements OnInit {
 
   prepareYearlyChart() {
     this.logger.log('Prepare yearly chart');
+    this.logger.log('Prepare monthly chart');
+    const resultMap = new Map();
+    this.runs.forEach(run =>  {
+      const year: string = run.date.substr(0, 4);
+      if (resultMap.has(year)) {
+        resultMap.set(year, resultMap.get(year) + run.distance);
+      } else {
+        resultMap.set(year, run.distance);
+      }
+    });
+    this.barChartLabels = [ ... resultMap.keys()].sort();
+    this.barChartData = [{ data: [ ... resultMap.values()], label: 'km', backgroundColor: 'blue' }];
 
   }
 }

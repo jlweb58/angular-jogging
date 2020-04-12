@@ -22,25 +22,31 @@ export class AppComponent implements OnInit {
 
   }
 
-  prepareBarChart() {
+  prepareBarChartYearly() {
+    this.prepareBarChart(ChartIntervalType.Yearly);
+  }
+
+  prepareBarChartMonthly() {
+    this.prepareBarChart(ChartIntervalType.Monthly);
+  }
+
+  prepareBarChart(chartIntervalType: ChartIntervalType) {
     const dialogRef = this.dialog.open(ChartDateRangeDialogComponent);
+    dialogRef.componentInstance.chartIntervalType = chartIntervalType;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.logger.log('Drawing chart');
-        this.showBarChart(dialogRef.componentInstance.startDate, dialogRef.componentInstance.endDate);
+        this.showBarChart(dialogRef.componentInstance.startDate, dialogRef.componentInstance.endDate, chartIntervalType);
       }
     });
   }
 
-  showBarChart(startDate: string, endDate: string) {
-    const localStartDate = new Date(startDate + 'T00:00:00Z');
-    const localEndDate = new Date(endDate + 'T00:00:00Z');
-    const runs = this.runService.getRunsForDateRange(localStartDate, localEndDate);
+  showBarChart(startDate: Date, endDate: Date, chartIntervalType: ChartIntervalType) {
+    const runs = this.runService.getRunsForDateRange(startDate, endDate);
     const dialogRef = this.dialog.open(BarChartComponent);
-    dialogRef.componentInstance.chartIntervalType = ChartIntervalType.Monthly;
+    dialogRef.componentInstance.chartIntervalType = chartIntervalType;
     dialogRef.componentInstance.runs = runs;
-    dialogRef.componentInstance.startDate = localStartDate;
-    dialogRef.componentInstance.endDate = localEndDate;
+    dialogRef.componentInstance.startDate = startDate;
+    dialogRef.componentInstance.endDate = endDate;
     dialogRef.afterClosed().subscribe(result => {
       this.logger.log('The dialog was closed');
     });
@@ -48,7 +54,6 @@ export class AppComponent implements OnInit {
 
   newRun() {
     const dialogRef = this.dialog.open(RunDialogComponent);
-
     dialogRef.afterClosed().subscribe(result => {
        this.logger.log('The dialog was closed');
      });

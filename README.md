@@ -7,6 +7,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
    -- needed to select on shoes.id, not shoes
 - (FIXED) If a run doesn't already have shoes it can't be edited (the selectedShoe ref is null)   
 
+## TODOS
+- Construct a better date picker for the chart range picker (especially for yearly)
+- Spring Security
+- Implement change password
+- Implement a calendar view like Garmin Connect (should replace Query Runs)
+- Come up with a replacement for Chart This
+- Implement Find Runs
 
 ## Development server
 

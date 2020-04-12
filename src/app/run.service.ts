@@ -1,7 +1,7 @@
-import {Injectable, OnInit} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Run } from './models/run.model';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {Run} from './models/run.model';
 import {LoggerService} from './logger/logger.service';
 
 @Injectable({

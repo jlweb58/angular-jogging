@@ -4,11 +4,15 @@
   <form class="chart-dialog-form">
     <mat-form-field>
       <mat-label>Start Date</mat-label>
-      <input matInput type="date" name="startDate" [(ngModel)]="startDate">
+      <input matInput [matDatepicker]="start" name="startDate" [(ngModel)]="startDate">
+      <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+      <mat-datepicker #start></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
       <mat-ltabel>End Date</mat-ltabel>
-      <input matInput type="date" name="endDate" [(ngModel)]="endDate">
+      <input matInput [matDatepicker]="end" [(ngModel]="endDate">
+      <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+      <mat-datepicker #end></mat-datepicker>
     </mat-form-field>
   </form>
 </mat-dialog-content>
