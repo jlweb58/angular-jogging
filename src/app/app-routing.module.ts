@@ -5,12 +5,14 @@ import {RunTableComponent} from './run-table/run-table.component';
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {AuthGuardService} from './services/auth-guard.service';
+import {ChangePasswordComponent} from './change-password/change-password.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', component: RunTableComponent, canActivate: [AuthGuardService]},
   {path: 'shoes', component: ShoesListComponent, canActivate: [AuthGuardService]},
   {path: 'logout', component: LogoutComponent, canActivate: [AuthGuardService]},
+  {path: 'changePassword', component: ChangePasswordComponent, canActivate: [AuthGuardService]},
   {path: '', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuardService]}
 ];
 

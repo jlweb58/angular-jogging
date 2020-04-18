@@ -21,8 +21,10 @@ export class UserService {
           this.logger.log('Change password successful');
           this.message = data.message;
         },
-        error => this.logger.log('Error changing password')
+        error => {
+          this.logger.log('Error changing password');
+          alert('Couldn\'t change password \n' + error);
+        }
       );
-
   }
 }
