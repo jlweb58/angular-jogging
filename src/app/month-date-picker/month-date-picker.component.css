@@ -1,0 +1,15 @@
+.month-date-picker-button {
+  line-height: 15px;
+  font-size: xx-small;
+  margin-top: 10px;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: 10px;
+}
+
+.month-date-picker-select {
+  margin-right: 15px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}

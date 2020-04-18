@@ -23,6 +23,7 @@ import {LogoutComponent} from './logout/logout.component';
 import {authInterceptorProviders} from './helpers/auth.interceptor';
 import {errorInterceptorProviders} from './helpers/error.interceptor';
 import {ChangePasswordComponent} from './change-password/change-password.component';
+import { MonthDatePickerComponent } from './month-date-picker/month-date-picker.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {ChangePasswordComponent} from './change-password/change-password.compone
     LoginComponent,
     LogoutComponent,
     ChangePasswordComponent,
+    MonthDatePickerComponent,
   ],
   imports: [
     BrowserModule,

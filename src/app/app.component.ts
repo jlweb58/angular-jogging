@@ -8,6 +8,7 @@ import {RunService} from './services/run.service';
 import {ChartIntervalType} from './models/chart-interval-type';
 import {TokenStorageService} from './services/token-storage.service';
 import {ChangePasswordComponent} from './change-password/change-password.component';
+import {MonthDatePickerComponent} from './month-date-picker/month-date-picker.component';
 
 @Component({
   selector: 'app-root',
@@ -64,11 +65,13 @@ export class AppComponent implements OnInit {
      });
   }
 
-  changePassword() {
-    const dialogRef = this.dialog.open(ChangePasswordComponent);
+  showDatePicker() {
+    const dialogRef = this.dialog.open(MonthDatePickerComponent);
     dialogRef.afterClosed().subscribe(result => {
-      this.logger.log('Change password dialog closed');
+      this.logger.log('The dialog was closed');
     });
+
   }
+
 
 }
