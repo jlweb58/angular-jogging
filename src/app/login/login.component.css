@@ -12,3 +12,8 @@
   margin-top: 25px;
 }
 
+.has-error {
+  font-size: larger;
+  color: orangered;
+}
+

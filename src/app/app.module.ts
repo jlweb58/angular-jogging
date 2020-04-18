@@ -4,7 +4,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule} from '@angular/forms';
-
+import {ReactiveFormsModule} from '@angular/forms';
 import {ChartsModule} from 'ng2-charts';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -18,9 +18,11 @@ import {ShoesListComponent} from './shoes-list/shoes-list.component';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import {BarChartComponent} from './bar-chart/bar-chart.component';
 import {ChartDateRangeDialogComponent} from './chart-date-range-dialog/chart-date-range-dialog.component';
-import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
+import {LoginComponent} from './login/login.component';
+import {LogoutComponent} from './logout/logout.component';
 import {authInterceptorProviders} from './helpers/auth.interceptor';
+import {errorInterceptorProviders} from './helpers/error.interceptor';
+import {ChangePasswordComponent} from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import {authInterceptorProviders} from './helpers/auth.interceptor';
     ChartDateRangeDialogComponent,
     LoginComponent,
     LogoutComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import {authInterceptorProviders} from './helpers/auth.interceptor';
     BrowserAnimationsModule,
     FlexLayoutModule,
     FormsModule,
+    ReactiveFormsModule,
     ChartsModule,
     MaterialModule
   ],
@@ -52,6 +56,7 @@ import {authInterceptorProviders} from './helpers/auth.interceptor';
   providers: [
     LoggerService,
     authInterceptorProviders,
+    errorInterceptorProviders,
     ],
   entryComponents: [
     RunDialogComponent,

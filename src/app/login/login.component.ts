@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
   isLoggedIn: boolean;
+  isError: boolean;
   roles: string[] = [];
 
   constructor(private router: Router,
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
+      this.isError = false;
       this.roles = this.tokenStorageService.getUser().roles;
     }
   }
@@ -32,11 +34,13 @@ export class LoginComponent implements OnInit {
        this.tokenStorageService.saveToken(jwtResponse.accessToken);
        this.tokenStorageService.saveUser(jwtResponse);
        this.isLoggedIn = true;
+       this.isError = false;
        this.roles = this.tokenStorageService.getUser().roles;
        this.router.navigate(['']);
       },
       error => {
         this.isLoggedIn = false;
+        this.isError = true;
       }
     );
   }

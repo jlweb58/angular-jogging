@@ -7,6 +7,7 @@ import {ChartDateRangeDialogComponent} from './chart-date-range-dialog/chart-dat
 import {RunService} from './services/run.service';
 import {ChartIntervalType} from './models/chart-interval-type';
 import {TokenStorageService} from './services/token-storage.service';
+import {ChangePasswordComponent} from './change-password/change-password.component';
 
 @Component({
   selector: 'app-root',
@@ -61,6 +62,13 @@ export class AppComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
        this.logger.log('The dialog was closed');
      });
+  }
+
+  changePassword() {
+    const dialogRef = this.dialog.open(ChangePasswordComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      this.logger.log('Change password dialog closed');
+    });
   }
 
 }

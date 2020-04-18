@@ -1,4 +1,7 @@
 <form class="login-form">
+  <p *ngIf="isError" class="has-error">
+    Login Error!
+  </p>
 <mat-form-field >
     <mat-label>User Name</mat-label>
     <input matInput name="username" [(ngModel)]="username">
