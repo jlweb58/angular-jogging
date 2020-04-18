@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {LoggerService} from '../logger/logger.service';
+import {LoggerService} from '../services/logger.service';
 import {ChartIntervalType} from '../models/chart-interval-type';
 
 @Component({

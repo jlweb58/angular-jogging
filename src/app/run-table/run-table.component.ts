@@ -1,11 +1,11 @@
 import {Component, OnInit, Output, ViewChild} from '@angular/core';
-import { RunService} from '../run.service';
+import { RunService} from '../services/run.service';
 import { Run} from '../models/run.model';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {RunDialogComponent} from '../run-dialog/run-dialog.component';
-import {LoggerService} from '../logger/logger.service';
+import {LoggerService} from '../services/logger.service';
 import {MatDialog} from '@angular/material/dialog';
 import {Shoes} from '../models/shoes.model';
 

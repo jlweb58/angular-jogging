@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="app-run">
+<mat-toolbar *ngIf="tokenStorageService.getUser()" color="primary" class="app-run">
   <a mat-icon-button routerLink="/home" routerLinkActive="active">
     <mat-icon>home</mat-icon>
     <span>Home</span>
@@ -47,7 +47,7 @@
       <span>What's new?</span>
     </button>
   </mat-menu>
-  <button mat-icon-button>
+  <button mat-icon-button routerLink="/logout" routerLinkActive="active">
     <mat-icon>exit_to_app</mat-icon>
     <span>Logout</span>
   </button>

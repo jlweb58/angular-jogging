@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {RunDialogComponent} from './run-dialog/run-dialog.component';
-import {LoggerService} from './logger/logger.service';
+import {LoggerService} from './services/logger.service';
 import {MatDialog} from '@angular/material/dialog';
 import {BarChartComponent} from './bar-chart/bar-chart.component';
 import {ChartDateRangeDialogComponent} from './chart-date-range-dialog/chart-date-range-dialog.component';
-import {RunService} from './run.service';
+import {RunService} from './services/run.service';
 import {ChartIntervalType} from './models/chart-interval-type';
+import {TokenStorageService} from './services/token-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,10 @@ import {ChartIntervalType} from './models/chart-interval-type';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private logger: LoggerService, private dialog: MatDialog, private runService: RunService) {
+  constructor(private logger: LoggerService,
+              private dialog: MatDialog,
+              private runService: RunService,
+              public tokenStorageService: TokenStorageService) {
   }
 
   ngOnInit() {

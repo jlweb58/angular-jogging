@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ShoesService} from '../shoes.service';
+import {ShoesService} from '../services/shoes.service';
 import {Shoes} from '../models/shoes.model';
-import {LoggerService} from '../logger/logger.service';
+import {LoggerService} from '../services/logger.service';
 import {MatDialog} from '@angular/material/dialog';
 import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
 import {ShoesDialogComponent} from '../shoes-dialog/shoes-dialog.component';
