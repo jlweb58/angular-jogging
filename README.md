@@ -6,6 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - (FIXED) On editing a run the shoes are not saved - seems to be due to a CORS problem on loading the shoes while editing.
    -- needed to select on shoes.id, not shoes
 - (FIXED) If a run doesn't already have shoes it can't be edited (the selectedShoe ref is null)   
+- The monthly totals in the chart are incorrect. Must be a logic error in the tabulation.
 
 ## TODOS
 - Construct a better date picker for the chart range picker (especially for yearly) (probably must be manually implemented)

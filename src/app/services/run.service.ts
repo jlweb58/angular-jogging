@@ -3,12 +3,13 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Run} from '../models/run.model';
 import {LoggerService} from './logger.service';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RunService {
-  private serviceUrl = 'http://localhost:9000/jogging/runs';
+  private serviceUrl = environment.baseUrl + '/jogging/runs';
   // tslint:disable-next-line:variable-name
   private _runs = new BehaviorSubject<Run[]>([]);
   private dataStore: { runs: Run[] } = { runs: [] }; // store our data in memory

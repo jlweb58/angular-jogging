@@ -3,12 +3,13 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject} from 'rxjs';
 import {Shoes} from '../models/shoes.model';
 import {LoggerService} from './logger.service';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoesService {
-  private serviceUrl = 'http://localhost:9000/jogging/shoes';
+  private serviceUrl = environment.baseUrl + '/jogging/shoes';
 
   // tslint:disable-next-line:variable-name
   private _shoes = new BehaviorSubject<Shoes[]>([]);
