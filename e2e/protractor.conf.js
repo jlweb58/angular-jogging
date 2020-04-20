@@ -3,7 +3,6 @@
 // https://github.com/angular/protractor/blob/master/lib/config.ts
 
 const { SpecReporter } = require('jasmine-spec-reporter');
-
 /**
  * @type { import("protractor").Config }
  */
@@ -12,6 +11,8 @@ exports.config = {
   specs: [
     './src/**/*.e2e-spec.ts'
   ],
+  chromeDriver: 'E:\\JohnsDocuments\\workspace\\angular-jogging\\node_modules\\protractor\\node_modules\\webdriver-manager\\selenium\\chromedriver_81.0.4044.69',
+  seleniumServerJar: 'E:\\JohnsDocuments\\workspace\\angular-jogging\\node_modules\\protractor\\node_modules\\webdriver-manager\\selenium\\selenium-server-standalone-3.141.59.jar',
   capabilities: {
     browserName: 'chrome'
   },

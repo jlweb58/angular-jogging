@@ -6,7 +6,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - (FIXED) On editing a run the shoes are not saved - seems to be due to a CORS problem on loading the shoes while editing.
    -- needed to select on shoes.id, not shoes
 - (FIXED) If a run doesn't already have shoes it can't be edited (the selectedShoe ref is null)   
-- The monthly totals in the chart are incorrect. Must be a logic error in the tabulation.
+- (FIXED) The monthly totals in the chart are incorrect. Must be a logic error in the tabulation. (Fixed by implementing proper
+   map sort function)   
+- (FIXED Yearly chart totals also incorrect. (e.g. only 885 for 2019 instead of 1200+)
+- Default shoes are not pre-selected on new run
+- Fonts are much smaller on production, why is this?
 
 ## TODOS
 - Construct a better date picker for the chart range picker (especially for yearly) (probably must be manually implemented)
@@ -25,7 +29,8 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build,
+with base-href argument, e.g. ng build --prod --base-href https://www.webber-jogging.de
 
 ## Running unit tests
 
