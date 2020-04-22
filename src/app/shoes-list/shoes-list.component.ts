@@ -29,7 +29,6 @@ export class ShoesListComponent implements OnInit {
       }
       this.shoes = results.filter(shoe => shoe.active);
       this.preferredShoes = results.find(shoe => shoe.preferred === true);
-      this.logger.log('Initialized Shoes List');
     });
   }
 
@@ -50,7 +49,7 @@ export class ShoesListComponent implements OnInit {
     this.shoes.forEach(shoes => this.updateShoes(shoes));
   }
 
-  retireShoes(shoes) {
+  retireShoes(shoes: Shoes) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '200px',
       data: 'Do you really want to retire these shoes?'

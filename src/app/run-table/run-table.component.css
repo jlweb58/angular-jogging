@@ -10,6 +10,7 @@ tr.mat-row  {
 
  .mat-cell {
    padding-right: 5px;
+   font-size: 12px;
  }
 
  .mat-form-field {
