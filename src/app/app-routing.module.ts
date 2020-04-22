@@ -6,11 +6,13 @@ import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {AuthGuardService} from './services/auth-guard.service';
 import {ChangePasswordComponent} from './change-password/change-password.component';
+import {CalendarViewComponent} from './calendar-view/calendar-view.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', component: RunTableComponent, canActivate: [AuthGuardService]},
   {path: 'shoes', component: ShoesListComponent, canActivate: [AuthGuardService]},
+  {path: 'calendar', component: CalendarViewComponent, canActivate: [AuthGuardService]},
   {path: 'logout', component: LogoutComponent, canActivate: [AuthGuardService]},
   {path: 'changePassword', component: ChangePasswordComponent, canActivate: [AuthGuardService]},
   {path: '', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuardService]}

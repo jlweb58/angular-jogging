@@ -9,12 +9,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - (FIXED) The monthly totals in the chart are incorrect. Must be a logic error in the tabulation. (Fixed by implementing proper
    map sort function)   
 - (FIXED Yearly chart totals also incorrect. (e.g. only 885 for 2019 instead of 1200+)
-- Default shoes are not pre-selected on new run
+- (FIXED Default shoes are not pre-selected on new run
 - Fonts are much smaller on production, why is this?
 
 ## TODOS
 - Construct a better date picker for the chart range picker (especially for yearly) (probably must be manually implemented)
-- Implement a calendar view like Garmin Connect (should replace Query Runs)
 - Come up with a replacement for Chart This
 - Implement Find Runs
 - Dockerize the application(s)

@@ -7,7 +7,6 @@ import {MatSort} from '@angular/material/sort';
 import {RunDialogComponent} from '../run-dialog/run-dialog.component';
 import {LoggerService} from '../services/logger.service';
 import {MatDialog} from '@angular/material/dialog';
-import {Shoes} from '../models/shoes.model';
 
 
 @Component({
@@ -22,7 +21,6 @@ export class RunTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @Output() run: Run;
-  runDialog: RunDialogComponent;
 
   constructor(
     private runService: RunService,

@@ -1,0 +1,86 @@
+.calendar-header {
+  padding: 15px 0 15px 10px;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.calendar-table-cell {
+  border-color: #0a59b2;
+  border-width: 1px;
+  border-style: solid;
+  height: 100px;
+  width: 100px;
+  position: relative;
+}
+
+.calendar-table-cell.other-month {
+  background-color: lightgray;
+  background-clip: padding-box; /* keeps the background color from covering the border */
+}
+
+th.calendar-table-cell {
+  height: auto;
+  font-size: larger;
+}
+
+.weekly-totals-cell {
+  background-color: darkgray;
+  border-color: #0a59b2;
+  border-width: 1px;
+  border-style: solid;
+  color: white;
+}
+
+.calendar-day-header {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2px 2px;
+  font-size: larger;
+  position: absolute;
+  top: 5px;
+}
+
+.weekly-totals-title {
+  font-size: smaller;
+  font-weight: bold;
+  padding: 2px 2px;
+}
+
+.weekly-totals-item {
+  font-size: smaller;
+  padding: 2px 2px;
+
+}
+
+.calendar-activity {
+  cursor: pointer;
+  font-size: smaller;
+  background-color: aquamarine;
+  border-radius: 3px;
+  margin-top: 20px;
+  padding: 1px;
+}
+
+.calendar-table-row {
+
+}
+
+.calendar-footer {
+  height: 20px;
+  border: #0a59b2;
+  border-width: 1px;
+  border-style: solid;
+  font-size: smaller;
+}
+
+.calendar-footer-item {
+  margin-left: 10px;
+}
+
+dd {
+  margin-left: 2px;
+}
+
+table {
+  border-collapse:collapse;
+}

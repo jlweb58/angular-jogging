@@ -1,22 +1,26 @@
 <mat-toolbar *ngIf="tokenStorageService.getUser()" color="primary" class="app-run">
-  <a mat-icon-button routerLink="/home" routerLinkActive="active">
-    <mat-icon>home</mat-icon>
+  <button mat-button routerLink="/home" routerLinkActive="active">
+   <mat-icon>home</mat-icon>
     <span>Home</span>
-  </a>
-  <button mat-icon-button (click)="newRun()">
+  </button>
+  <button mat-button routerLink="/calendar" routerLinkActive="active">
+    <mat-icon>calendar_today</mat-icon>
+    <span style="overflow-wrap: break-word">Activity Calendar</span>
+  </button>
+  <button mat-button (click)="newRun()">
     <mat-icon>add_circle</mat-icon>
     <span>New Run</span>
   </button>
-  <button mat-icon-button [matMenuTriggerFor]="toolsMenu">
+  <button mat-button [matMenuTriggerFor]="toolsMenu">
     <mat-icon>build</mat-icon>
     <span>Tools</span>
   </button>
   <mat-menu #toolsMenu="matMenu" >
-    <button mat-menu-item>
+    <button mat-menu-item disabled="true">
       <mat-icon inline="true">search</mat-icon>
       <span>Find runs</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item disabled="true">
       <mat-icon inline="true">show_chart</mat-icon>
       <span>Chart this</span>
     </button>
@@ -29,15 +33,15 @@
       <span>Yearly chart</span>
     </button>
   </mat-menu>
-  <button mat-icon-button [matMenuTriggerFor]="settingsMenu">
+  <button mat-button [matMenuTriggerFor]="settingsMenu">
     <mat-icon>settings</mat-icon>
     <span>Settings</span>
   </button>
   <mat-menu #settingsMenu="matMenu">
-    <a mat-menu-item routerLink="/shoes" routerLinkActive="active">
+    <button mat-menu-item routerLink="/shoes" routerLinkActive="active">
       <mat-icon inline="true">edit</mat-icon>
       <span class="menu-item-right">Shoes</span>
-    </a>
+    </button>
     <button mat-menu-item routerLink="/changePassword" routerLinkActive="active">
       <mat-icon inline="true">lock</mat-icon>
       <span>Change password</span>
@@ -47,7 +51,7 @@
       <span>What's new?</span>
     </button>
   </mat-menu>
-  <button mat-icon-button routerLink="/logout" routerLinkActive="active">
+  <button mat-button routerLink="/logout" routerLinkActive="active">
     <mat-icon>exit_to_app</mat-icon>
     <span>Logout</span>
   </button>

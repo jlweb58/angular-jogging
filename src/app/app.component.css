@@ -7,18 +7,25 @@
 }
 
 .mat-toolbar-single-row {
-  height: 24px;
+  min-height: 24px;
+  max-height: 48px;
+  overflow-wrap: break-word;
 }
 
-.mat-button {
+.mat-button  {
   color: black;
   display: flex;
+
+}
+.mat-icon {
+  vertical-align: baseline !important;
 }
 
 .mat-icon-button {
   color: black;
   display: flex;
   min-width: 80px;
+  max-width: 150px;
 }
 
 
@@ -26,6 +33,8 @@
   height: 24px;
   line-height: 24px;
   display: flex;
+  min-width: 80px;
+
 }
 
 .material-icons {

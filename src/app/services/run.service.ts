@@ -99,6 +99,9 @@ export class RunService {
   }
 
   getRunsForDateRange(startDate: Date, endDate: Date): Run[] {
+    if (this.dataStore.runs.length === 0) {
+      this.loadAll();
+    }
     this.logger.log('Getting runs between ' + startDate + ' ' + endDate);
     return this.dataStore.runs.filter(run => this.isBetweenDates(startDate, endDate, run));
   }

@@ -1,0 +1,157 @@
+<div class = "calendar-header">
+  <button mat-icon-button (click)="prevMonth()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+  <button mat-icon-button (click)="nextMonth()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+  <span>{{currentMonth}} {{currentYear}}</span>
+</div>
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th class="calendar-table-cell">Monday</th>
+      <th class="calendar-table-cell"><span>Tuesday</span></th>
+      <th class="calendar-table-cell"><span>Wednesday</span></th>
+      <th class="calendar-table-cell"><span>Thursday</span></th>
+      <th class="calendar-table-cell"><span>Friday</span></th>
+      <th class="calendar-table-cell"><span>Saturday</span></th>
+      <th class="calendar-table-cell"><span>Sunday</span></th>
+      <th class="weekly-totals-cell"><span>Weekly Totals</span></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="calendar-table-row">
+      <ng-container *ngFor="let calendarDay of getRow(1)">
+        <td [ngClass]="getClassForDate(calendarDay.day)">
+          <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
+          <ng-container *ngIf="calendarDay.run">
+            <div class="calendar-activity" (click)="showActivity(calendarDay.run)">
+              <dl>
+                <dd>{{calendarDay.run.course}}</dd>
+                <dd>{{calendarDay.run.distance}} km</dd>
+                <dd>{{calendarDay.run.runDuration.time}}</dd>
+              </dl>
+            </div>
+
+          </ng-container>
+        </td>
+      </ng-container>
+      <td  class="weekly-totals-cell">
+        <dl>
+          <dt class="weekly-totals-title">Distance:</dt>
+          <dd class="weekly-totals-item">{{getDistanceForRow(getRow(1)) | number:'1.2-2'}} km</dd>
+          <dt class="weekly-totals-title">Time:</dt>
+          <dd class="weekly-totals-item">{{getTimeForRow(getRow(1))}}</dd>
+        </dl>
+      </td>
+    </tr>
+      <tr class="calendar-table-row">
+        <ng-container *ngFor="let calendarDay of getRow(2)">
+          <td [ngClass]="getClassForDate(calendarDay.day)">
+            <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
+            <ng-container *ngIf="calendarDay.run">
+              <div class="calendar-activity" (click)="showActivity(calendarDay.run)">
+                <dl>
+                  <dd>{{calendarDay.run.course}}</dd>
+                  <dd>{{calendarDay.run.distance}} km</dd>
+                  <dd>{{calendarDay.run.runDuration.time}}</dd>
+                </dl>
+              </div>
+
+            </ng-container>
+          </td>
+
+        </ng-container>
+        <td  class="weekly-totals-cell">
+          <dl>
+            <dt class="weekly-totals-title">Distance:</dt>
+            <dd class="weekly-totals-item">{{getDistanceForRow(getRow(2)) | number:'1.2-2'}} km</dd>
+            <dt class="weekly-totals-title">Time:</dt>
+            <dd class="weekly-totals-item">{{getTimeForRow(getRow(2))}}</dd>
+          </dl>
+        </td>
+      </tr>
+
+    <tr class="calendar-table-row">
+      <ng-container *ngFor="let calendarDay of getRow(3)">
+        <td [ngClass]="getClassForDate(calendarDay.day)">
+          <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
+          <ng-container *ngIf="calendarDay.run">
+            <div class="calendar-activity" (click)="showActivity(calendarDay.run)">
+              <dl>
+                <dd>{{calendarDay.run.course}}</dd>
+                <dd>{{calendarDay.run.distance}} km</dd>
+                <dd>{{calendarDay.run.runDuration.time}}</dd>
+              </dl>
+            </div>
+
+          </ng-container>
+        </td>
+
+      </ng-container>
+      <td  class="weekly-totals-cell">
+        <dl>
+          <dt class="weekly-totals-title">Distance:</dt>
+          <dd class="weekly-totals-item">{{getDistanceForRow(getRow(3)) | number:'1.2-2'}} km</dd>
+          <dt class="weekly-totals-title">Time:</dt>
+          <dd class="weekly-totals-item">{{getTimeForRow(getRow(3))}}</dd>
+        </dl>
+      </td>    </tr>
+    <tr class="calendar-table-row">
+      <ng-container *ngFor="let calendarDay of getRow(4)">
+        <td [ngClass]="getClassForDate(calendarDay.day)">
+          <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
+          <ng-container *ngIf="calendarDay.run">
+            <div class="calendar-activity" (click)="showActivity(calendarDay.run)">
+              <dl>
+                <dd>{{calendarDay.run.course}}</dd>
+                <dd>{{calendarDay.run.distance}} km</dd>
+                <dd>{{calendarDay.run.runDuration.time}}</dd>
+              </dl>
+            </div>
+
+          </ng-container>
+        </td>
+
+      </ng-container>
+      <td  class="weekly-totals-cell">
+        <dl>
+          <dt class="weekly-totals-title">Distance:</dt>
+          <dd class="weekly-totals-item">{{getDistanceForRow(getRow(4)) | number:'1.2-2'}} km</dd>
+          <dt class="weekly-totals-title">Time:</dt>
+          <dd class="weekly-totals-item">{{getTimeForRow(getRow(4))}}</dd>
+        </dl>
+      </td>    </tr>
+    <tr class="calendar-table-row">
+      <ng-container *ngFor="let calendarDay of getRow(5)">
+        <td [ngClass]="getClassForDate(calendarDay.day)">
+          <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
+          <ng-container *ngIf="calendarDay.run">
+            <div class="calendar-activity" (click)="showActivity(calendarDay.run)">
+              <dl>
+                <dd>{{calendarDay.run.course}}</dd>
+                <dd>{{calendarDay.run.distance}} km</dd>
+                <dd>{{calendarDay.run.runDuration.time}}</dd>
+              </dl>
+            </div>
+
+          </ng-container>
+        </td>
+
+      </ng-container>
+      <td  class="weekly-totals-cell">
+        <dl>
+          <dt class="weekly-totals-title">Distance:</dt>
+          <dd class="weekly-totals-item">{{getDistanceForRow(getRow(5)) | number:'1.2-2'}} km</dd>
+          <dt class="weekly-totals-title">Time:</dt>
+          <dd class="weekly-totals-item">{{getTimeForRow(getRow(5))}}</dd>
+        </dl>
+      </td>    </tr>
+    </tbody>
+    <tfoot>
+    <tr><td colspan="8" class="calendar-footer">
+      <span class="calendar-footer-item">Activities: </span><span>{{countActivitiesForCurrentMonth()}}</span>
+      <span class="calendar-footer-item">Distance: </span><span>{{getDistanceForCurrentMonth() | number:'1.2-2'}} km</span>
+      <span class="calendar-footer-item">Total Time: </span><span>{{getTimeForCurrentMonth()}}</span></td></tr>
+    </tfoot>
+
+  </table>
+</div>

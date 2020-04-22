@@ -24,6 +24,7 @@ import {authInterceptorProviders} from './helpers/auth.interceptor';
 import {errorInterceptorProviders} from './helpers/error.interceptor';
 import {ChangePasswordComponent} from './change-password/change-password.component';
 import { MonthDatePickerComponent } from './month-date-picker/month-date-picker.component';
+import { CalendarViewComponent } from './calendar-view/calendar-view.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MonthDatePickerComponent } from './month-date-picker/month-date-picker.
     LogoutComponent,
     ChangePasswordComponent,
     MonthDatePickerComponent,
+    CalendarViewComponent,
   ],
   imports: [
     BrowserModule,
