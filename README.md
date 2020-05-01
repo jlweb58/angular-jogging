@@ -14,7 +14,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - (FIXED) On production the preferred shoe radio button is not showing as selected (but it works) 
 
 ## TODOS
-- Construct a better date picker for the chart range picker (especially for yearly) (probably must be manually implemented)
+- (DONE) Construct a better date picker for the chart range picker (especially for yearly) (probably must be manually implemented)
 - Come up with a replacement for Chart This
 - Implement Find Runs
 - Dockerize the application(s)

@@ -17,7 +17,6 @@ import {ShoesDialogComponent } from './shoes-dialog/shoes-dialog.component';
 import {ShoesListComponent} from './shoes-list/shoes-list.component';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import {BarChartComponent} from './bar-chart/bar-chart.component';
-import {ChartDateRangeDialogComponent} from './chart-date-range-dialog/chart-date-range-dialog.component';
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {authInterceptorProviders} from './helpers/auth.interceptor';
@@ -25,6 +24,7 @@ import {errorInterceptorProviders} from './helpers/error.interceptor';
 import {ChangePasswordComponent} from './change-password/change-password.component';
 import { MonthDatePickerComponent } from './month-date-picker/month-date-picker.component';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
+import { YearDatePickerComponent } from './year-date-picker/year-date-picker.component';
 
 @NgModule({
   declarations: [
@@ -35,12 +35,12 @@ import { CalendarViewComponent } from './calendar-view/calendar-view.component';
     ShoesListComponent,
     ConfirmDialogComponent,
     BarChartComponent,
-    ChartDateRangeDialogComponent,
     LoginComponent,
     LogoutComponent,
     ChangePasswordComponent,
     MonthDatePickerComponent,
     CalendarViewComponent,
+    YearDatePickerComponent,
   ],
   imports: [
     BrowserModule,

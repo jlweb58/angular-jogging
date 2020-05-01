@@ -46,6 +46,13 @@ export class BarChartComponent implements OnInit {
       display: true,
       fontSize: 10,
     },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
   };
   barChartData: ChartDataSets[] = [];
 
@@ -64,7 +71,7 @@ export class BarChartComponent implements OnInit {
   }
 
 
-  sortMap(map: Map<string, number>):  Map<string, number>  {
+  sortMap(map: Map<string, number>): Map<string, number>  {
     const sortedMap = new Map();
     const sortedKeys = [ ... map.keys()].sort();
     sortedKeys.forEach( (k) => {
@@ -74,7 +81,6 @@ export class BarChartComponent implements OnInit {
   }
 
   prepareMonthlyChart() {
-    this.logger.log('Prepare monthly chart');
     const resultMap = new Map();
 
     this.runs.forEach(run =>  {
@@ -92,7 +98,6 @@ export class BarChartComponent implements OnInit {
   }
 
   prepareYearlyChart() {
-    this.logger.log('Prepare yearly chart');
     const resultMap = new Map();
     this.runs.forEach(run =>  {
       const year: string = run.date.substr(0, 4);

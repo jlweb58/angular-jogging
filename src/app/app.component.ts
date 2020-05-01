@@ -3,11 +3,11 @@ import {RunDialogComponent} from './run-dialog/run-dialog.component';
 import {LoggerService} from './services/logger.service';
 import {MatDialog} from '@angular/material/dialog';
 import {BarChartComponent} from './bar-chart/bar-chart.component';
-import {ChartDateRangeDialogComponent} from './chart-date-range-dialog/chart-date-range-dialog.component';
 import {RunService} from './services/run.service';
 import {ChartIntervalType} from './models/chart-interval-type';
 import {TokenStorageService} from './services/token-storage.service';
 import {MonthDatePickerComponent} from './month-date-picker/month-date-picker.component';
+import {YearDatePickerComponent} from './year-date-picker/year-date-picker.component';
 
 @Component({
   selector: 'app-root',
@@ -40,8 +40,7 @@ export class AppComponent implements OnInit {
     if (chartIntervalType === ChartIntervalType.Monthly) {
       dialogRef = this.dialog.open(MonthDatePickerComponent);
     } else {
-      dialogRef = this.dialog.open(ChartDateRangeDialogComponent);
-      dialogRef.componentInstance.chartIntervalType = chartIntervalType;
+      dialogRef = this.dialog.open(YearDatePickerComponent);
     }
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -70,7 +69,7 @@ export class AppComponent implements OnInit {
   }
 
   showDatePicker() {
-    const dialogRef = this.dialog.open(MonthDatePickerComponent);
+    const dialogRef = this.dialog.open(YearDatePickerComponent);
     dialogRef.afterClosed().subscribe(result => {
       this.logger.log('The dialog was closed');
       this.logger.log(dialogRef.componentInstance.startDate);
