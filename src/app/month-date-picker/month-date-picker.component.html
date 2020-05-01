@@ -1,12 +1,31 @@
-<form class="change-password-form" [formGroup]="dateForm">
-  <select formControlName="selectedMonth" class="month-date-picker-select">
-  <option *ngFor="let month of months">{{month}}</option>
-</select>
-<select formControlName="selectedYear" class="month-date-picker-select">
-  <option *ngFor="let year of years">{{year}}</option>
-</select>
+<form [formGroup]="dateFormStartDate" name="startDate">
+  <div class="formgrid">
+    <label>Start Date</label>
+    <select formControlName="selectedMonth" class="month-date-picker-select">
+      <option *ngFor="let month of months" [selected]="month === fStart.selectedMonth.value">{{month}}</option>
+    </select>
+    <select formControlName="selectedYear" class="month-date-picker-select">
+      <option *ngFor="let year of years" [selected]="year === fStart.selectedYear.value">{{year}}</option>
+    </select>
+  </div>
+</form>
 
-<br>
-  <button mat-raised-button mat-dialog-close color="primary" class="month-date-picker-button">Cancel</button>
-  <button mat-raised-button [mat-dialog-close]="true" (click)="setDate()" color="primary" class="month-date-picker-button">Save</button>
+<form [formGroup]="dateFormEndDate">
+  <div class="formgrid">
+
+    <label>End Date</label>
+    <select formControlName="selectedMonth" class="month-date-picker-select">
+      <option *ngFor="let month of months" [selected]="month === fEnd.selectedMonth.value">{{month}}</option>
+    </select>
+    <select formControlName="selectedYear" class="month-date-picker-select">
+      <option *ngFor="let year of years" [selected]="year === fEnd.selectedYear.value">{{year}}</option>
+    </select>
+  </div>
+  <br>
+  <div>
+    <button mat-raised-button mat-dialog-close color="primary" class="month-date-picker-button">Cancel</button>
+    <button mat-raised-button [mat-dialog-close]="true" (click)="setDate()" color="primary"
+            class="month-date-picker-button">Show Chart
+    </button>
+  </div>
 </form>

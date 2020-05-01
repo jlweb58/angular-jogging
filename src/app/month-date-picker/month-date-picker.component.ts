@@ -12,13 +12,18 @@ export class MonthDatePickerComponent implements OnInit {
 
   months: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   years: number[] = [];
-  dateForm: FormGroup;
-  selectedDate: Date;
-
+  dateFormStartDate: FormGroup;
+  dateFormEndDate: FormGroup;
+  startDate: Date;
+  endDate: Date;
 
 
   constructor(private logger: LoggerService, private formBuilder: FormBuilder) {
-    this.dateForm = this.formBuilder.group({
+    this.dateFormStartDate = this.formBuilder.group({
+      selectedMonth: [''],
+      selectedYear: [null]
+    });
+    this.dateFormEndDate = this.formBuilder.group({
       selectedMonth: [''],
       selectedYear: [null]
     });
@@ -31,20 +36,26 @@ export class MonthDatePickerComponent implements OnInit {
     for (let i = 0; i < 11; i++) {
       this.years.push(thisYear - i);
     }
-    this.f.selectedYear.setValue(thisYear);
-    this.f.selectedMonth.setValue(this.months[now.getMonth()]);
+    this.fStart.selectedYear.setValue(thisYear);
+    this.fStart.selectedMonth.setValue(this.months[0]);
+    this.fEnd.selectedYear.setValue(thisYear);
+    this.fEnd.selectedMonth.setValue(this.months[now.getMonth()]);
   }
 
-  get f() { return this.dateForm.controls; }
+  get fStart() { return this.dateFormStartDate.controls; }
 
+  get fEnd() { return this.dateFormEndDate.controls; }
 
   setDate(): void {
-    this.logger.log('Month: ' + this.f.selectedMonth.value + ' Year: ' + this.f.selectedYear.value);
-    this.selectedDate = new Date();
-    this.selectedDate.setFullYear(this.f.selectedYear.value);
-    this.selectedDate.setMonth(this.months.indexOf(this.f.selectedMonth.value));
-    this.selectedDate.setDate(1);
-    this.logger.log('selectedDate=' + this.selectedDate);
+    this.startDate = new Date();
+    this.startDate.setFullYear(this.fStart.selectedYear.value);
+    this.startDate.setMonth(this.months.indexOf(this.fStart.selectedMonth.value));
+    this.startDate.setDate(1);
+    this.endDate = new Date();
+    this.endDate.setFullYear(this.fEnd.selectedYear.value);
+    this.endDate.setMonth(this.months.indexOf(this.fEnd.selectedMonth.value));
+    this.endDate.setDate(new Date(this.endDate.getFullYear(), this.endDate.getMonth() + 1, 0).getDate());
+    this.logger.log('startDate=' + this.startDate + ' endDate=' + this.endDate);
   }
 
 }

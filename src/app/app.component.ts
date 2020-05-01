@@ -7,7 +7,6 @@ import {ChartDateRangeDialogComponent} from './chart-date-range-dialog/chart-dat
 import {RunService} from './services/run.service';
 import {ChartIntervalType} from './models/chart-interval-type';
 import {TokenStorageService} from './services/token-storage.service';
-import {ChangePasswordComponent} from './change-password/change-password.component';
 import {MonthDatePickerComponent} from './month-date-picker/month-date-picker.component';
 
 @Component({
@@ -37,8 +36,13 @@ export class AppComponent implements OnInit {
   }
 
   prepareBarChart(chartIntervalType: ChartIntervalType) {
-    const dialogRef = this.dialog.open(ChartDateRangeDialogComponent);
-    dialogRef.componentInstance.chartIntervalType = chartIntervalType;
+    let dialogRef;
+    if (chartIntervalType === ChartIntervalType.Monthly) {
+      dialogRef = this.dialog.open(MonthDatePickerComponent);
+    } else {
+      dialogRef = this.dialog.open(ChartDateRangeDialogComponent);
+      dialogRef.componentInstance.chartIntervalType = chartIntervalType;
+    }
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.showBarChart(dialogRef.componentInstance.startDate, dialogRef.componentInstance.endDate, chartIntervalType);
@@ -69,7 +73,11 @@ export class AppComponent implements OnInit {
     const dialogRef = this.dialog.open(MonthDatePickerComponent);
     dialogRef.afterClosed().subscribe(result => {
       this.logger.log('The dialog was closed');
+      this.logger.log(dialogRef.componentInstance.startDate);
+      this.logger.log(dialogRef.componentInstance.endDate);
+
     });
+
 
   }
 

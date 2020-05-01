@@ -75,12 +75,10 @@ export class BarChartComponent implements OnInit {
 
   prepareMonthlyChart() {
     this.logger.log('Prepare monthly chart');
-    this.runs.forEach(r => this.logger.log(r.date + ' ' + r.distance));
     const resultMap = new Map();
 
     this.runs.forEach(run =>  {
       const yearMonth: string = run.date.substr(0, 7);
-      this.logger.log('yearMonth=' + yearMonth);
       if (resultMap.has(yearMonth)) {
         resultMap.set(yearMonth, resultMap.get(yearMonth) + run.distance);
       } else {
