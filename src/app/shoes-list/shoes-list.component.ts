@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShoesService} from '../services/shoes.service';
 import {Shoes} from '../models/shoes.model';
 import {LoggerService} from '../services/logger.service';
@@ -15,10 +15,11 @@ export class ShoesListComponent implements OnInit {
 
   shoes: Shoes[];
   preferredShoes: Shoes;
-
   columnsToDisplay = ['preferred', 'name', 'mileage', 'retire'];
 
-  constructor(private shoesService: ShoesService, private logger: LoggerService, public dialog: MatDialog) {
+  constructor(private shoesService: ShoesService,
+              private logger: LoggerService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {

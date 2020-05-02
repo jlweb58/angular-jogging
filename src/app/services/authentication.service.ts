@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {LoggerService} from './logger.service';
 import {JwtResponse} from '../models/jwt-response.model';

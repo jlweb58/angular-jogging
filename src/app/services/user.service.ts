@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {LoggerService} from './logger.service';
 import {ChangePasswordRequest} from '../models/change-password-request.model';

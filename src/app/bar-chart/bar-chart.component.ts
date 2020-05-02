@@ -22,7 +22,6 @@ export class BarChartComponent implements OnInit {
   @Input()
   chartIntervalType: ChartIntervalType;
 
-
   barChartLabels: Label[] = [];
   barChartType: ChartType = 'bar';
   barChartLegend = true;

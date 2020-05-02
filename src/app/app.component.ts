@@ -68,17 +68,4 @@ export class AppComponent implements OnInit {
      });
   }
 
-  showDatePicker() {
-    const dialogRef = this.dialog.open(YearDatePickerComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      this.logger.log('The dialog was closed');
-      this.logger.log(dialogRef.componentInstance.startDate);
-      this.logger.log(dialogRef.componentInstance.endDate);
-
-    });
-
-
-  }
-
-
 }
