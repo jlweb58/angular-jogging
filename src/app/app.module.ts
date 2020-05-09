@@ -5,7 +5,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ChartsModule} from 'ng2-charts';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -16,7 +15,6 @@ import {LoggerService} from './services/logger.service';
 import {ShoesDialogComponent } from './shoes-dialog/shoes-dialog.component';
 import {ShoesListComponent} from './shoes-list/shoes-list.component';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
-import {BarChartComponent} from './bar-chart/bar-chart.component';
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {authInterceptorProviders} from './helpers/auth.interceptor';
@@ -25,6 +23,7 @@ import {ChangePasswordComponent} from './change-password/change-password.compone
 import {MonthDatePickerComponent} from './month-date-picker/month-date-picker.component';
 import {CalendarViewComponent} from './calendar-view/calendar-view.component';
 import {YearDatePickerComponent} from './year-date-picker/year-date-picker.component';
+import {ChartModule} from './chart/chart.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,6 @@ import {YearDatePickerComponent} from './year-date-picker/year-date-picker.compo
     ShoesDialogComponent,
     ShoesListComponent,
     ConfirmDialogComponent,
-    BarChartComponent,
     LoginComponent,
     LogoutComponent,
     ChangePasswordComponent,
@@ -50,7 +48,7 @@ import {YearDatePickerComponent} from './year-date-picker/year-date-picker.compo
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartsModule,
+    ChartModule,
     MaterialModule
   ],
   exports: [

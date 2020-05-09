@@ -2,12 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {RunDialogComponent} from './run-dialog/run-dialog.component';
 import {LoggerService} from './services/logger.service';
 import {MatDialog} from '@angular/material/dialog';
-import {BarChartComponent} from './bar-chart/bar-chart.component';
 import {RunService} from './services/run.service';
 import {ChartIntervalType} from './models/chart-interval-type';
 import {TokenStorageService} from './services/token-storage.service';
 import {MonthDatePickerComponent} from './month-date-picker/month-date-picker.component';
 import {YearDatePickerComponent} from './year-date-picker/year-date-picker.component';
+import {BarChartComponent} from './chart/bar-chart/bar-chart.component';
 
 @Component({
   selector: 'app-root',
