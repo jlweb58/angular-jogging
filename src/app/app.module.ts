@@ -14,7 +14,6 @@ import {MaterialModule} from './material.module';
 import {LoggerService} from './services/logger.service';
 import {ShoesDialogComponent } from './shoes-dialog/shoes-dialog.component';
 import {ShoesListComponent} from './shoes-list/shoes-list.component';
-import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {authInterceptorProviders} from './helpers/auth.interceptor';
@@ -24,6 +23,7 @@ import {MonthDatePickerComponent} from './month-date-picker/month-date-picker.co
 import {CalendarViewComponent} from './calendar-view/calendar-view.component';
 import {YearDatePickerComponent} from './year-date-picker/year-date-picker.component';
 import {ChartModule} from './chart/chart.module';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,6 @@ import {ChartModule} from './chart/chart.module';
     RunDialogComponent,
     ShoesDialogComponent,
     ShoesListComponent,
-    ConfirmDialogComponent,
     LoginComponent,
     LogoutComponent,
     ChangePasswordComponent,
@@ -49,11 +48,11 @@ import {ChartModule} from './chart/chart.module';
     FormsModule,
     ReactiveFormsModule,
     ChartModule,
+    SharedModule,
     MaterialModule
   ],
   exports: [
     RunDialogComponent,
-    ConfirmDialogComponent
   ],
   providers: [
     LoggerService,
@@ -62,7 +61,6 @@ import {ChartModule} from './chart/chart.module';
     ],
   entryComponents: [
     RunDialogComponent,
-    ConfirmDialogComponent
   ],
   bootstrap: [AppComponent]
 })
