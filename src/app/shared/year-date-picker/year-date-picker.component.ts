@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {LoggerService} from '../services/logger.service';
+import {LoggerService} from '../../services/logger.service';
 
 @Component({
   selector: 'app-year-date-picker',
@@ -10,18 +9,13 @@ import {LoggerService} from '../services/logger.service';
 export class YearDatePickerComponent implements OnInit {
 
   years: number[] = [];
-  dateFormStartDate: FormGroup;
-  dateFormEndDate: FormGroup;
   startDate: Date;
   endDate: Date;
+  selectedStartYear: number;
+  selectedEndYear: number;
 
-  constructor(private logger: LoggerService, private formBuilder: FormBuilder) {
-    this.dateFormStartDate = this.formBuilder.group({
-      selectedYear: [null]
-    });
-    this.dateFormEndDate = this.formBuilder.group({
-      selectedYear: [null]
-    });
+  constructor(private logger: LoggerService) {
+
   }
 
   ngOnInit(): void {
@@ -30,21 +24,17 @@ export class YearDatePickerComponent implements OnInit {
     for (let i = 0; i < 21; i++) {
       this.years.push(thisYear - i);
     }
-    this.fStart.selectedYear.setValue(thisYear);
-    this.fEnd.selectedYear.setValue(thisYear);
+    this.selectedStartYear = thisYear;
+    this.selectedEndYear = thisYear;
   }
-
-  get fStart() { return this.dateFormStartDate.controls; }
-
-  get fEnd() { return this.dateFormEndDate.controls; }
 
   setDate(): void {
     this.startDate = new Date();
-    this.startDate.setFullYear(this.fStart.selectedYear.value);
+    this.startDate.setFullYear(this.selectedStartYear);
     this.startDate.setMonth(0);
     this.startDate.setDate(1);
     this.endDate = new Date();
-    this.endDate.setFullYear(this.fEnd.selectedYear.value);
+    this.endDate.setFullYear(this.selectedEndYear);
     this.endDate.setMonth(11);
     this.endDate.setDate(31);
     this.logger.log('startDate=' + this.startDate + ' endDate=' + this.endDate);

@@ -1,0 +1,25 @@
+<form name="startDate">
+  <div class="formgrid">
+    <label>Start Date</label>
+    <select name="selectedStartYear" [(ngModel)]="selectedStartYear" class="year-date-picker-select">
+      <option *ngFor="let year of years" [value]="year"  [selected]="year === selectedStartYear">{{year}}</option>
+    </select>
+  </div>
+</form>
+
+<form name="endDate">
+  <div class="formgrid">
+
+    <label>End Date</label>
+    <select name="selectedEndYear" [(ngModel)]="selectedEndYear" class="year-date-picker-select">
+      <option *ngFor="let year of years" [value]="year" [selected]="year === selectedEndYear">{{year}}</option>
+    </select>
+  </div>
+  <br>
+  <div>
+    <button mat-raised-button mat-dialog-close color="primary" class="year-date-picker-button">Cancel</button>
+    <button mat-raised-button [mat-dialog-close]="true" (click)="setDate()" color="primary"
+            class="year-date-picker-button">Show Chart
+    </button>
+  </div>
+</form>

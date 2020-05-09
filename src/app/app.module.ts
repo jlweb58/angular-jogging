@@ -19,9 +19,7 @@ import {LogoutComponent} from './logout/logout.component';
 import {authInterceptorProviders} from './helpers/auth.interceptor';
 import {errorInterceptorProviders} from './helpers/error.interceptor';
 import {ChangePasswordComponent} from './change-password/change-password.component';
-import {MonthDatePickerComponent} from './month-date-picker/month-date-picker.component';
 import {CalendarViewComponent} from './calendar-view/calendar-view.component';
-import {YearDatePickerComponent} from './year-date-picker/year-date-picker.component';
 import {ChartModule} from './chart/chart.module';
 import {SharedModule} from './shared/shared.module';
 
@@ -35,9 +33,7 @@ import {SharedModule} from './shared/shared.module';
     LoginComponent,
     LogoutComponent,
     ChangePasswordComponent,
-    MonthDatePickerComponent,
     CalendarViewComponent,
-    YearDatePickerComponent,
   ],
   imports: [
     BrowserModule,
