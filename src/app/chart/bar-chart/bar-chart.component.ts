@@ -2,8 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ChartDataSets, ChartFontOptions, ChartOptions, ChartTooltipOptions, ChartType} from 'chart.js';
 import {Label} from 'ng2-charts';
 import {LoggerService} from '../../services/logger.service';
-import {Run} from '../../models/run.model';
-import {ChartIntervalType} from '../../models/chart-interval-type';
+import {Run} from '../../core/models/run.model';
+import {ChartIntervalType} from '../../core/models/chart-interval-type';
 import * as Chart from 'chart.js';
 
 @Component({

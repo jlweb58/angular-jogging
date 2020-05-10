@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LoggerService} from '../services/logger.service';
-import {ChangePasswordRequest} from '../models/change-password-request.model';
+import {ChangePasswordRequest} from '../core/models/change-password-request.model';
 import {UserService} from '../services/user.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MustMatch} from '../helpers/must-match.validator';

@@ -3,7 +3,7 @@ import {RunDialogComponent} from './run-dialog/run-dialog.component';
 import {LoggerService} from './services/logger.service';
 import {MatDialog} from '@angular/material/dialog';
 import {RunService} from './services/run.service';
-import {ChartIntervalType} from './models/chart-interval-type';
+import {ChartIntervalType} from './core/models/chart-interval-type';
 import {TokenStorageService} from './services/token-storage.service';
 import {MonthDatePickerComponent} from './shared/month-date-picker/month-date-picker.component';
 import {YearDatePickerComponent} from './shared/year-date-picker/year-date-picker.component';

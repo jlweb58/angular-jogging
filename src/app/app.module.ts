@@ -22,6 +22,7 @@ import {ChangePasswordComponent} from './change-password/change-password.compone
 import {CalendarViewComponent} from './calendar-view/calendar-view.component';
 import {ChartModule} from './chart/chart.module';
 import {SharedModule} from './shared/shared.module';
+import {CoreModule} from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {SharedModule} from './shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     ChartModule,
+    CoreModule,
     SharedModule,
     MaterialModule
   ],

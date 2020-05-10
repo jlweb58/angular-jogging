@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, ViewChild} from '@angular/core';
 import {RunService} from '../services/run.service';
-import {Run} from '../models/run.model';
+import {Run} from '../core/models/run.model';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
