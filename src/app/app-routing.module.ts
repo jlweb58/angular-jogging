@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {ShoesListComponent} from './shoes-list/shoes-list.component';
+import {ShoesListComponent} from './shoes/shoes-list/shoes-list.component';
 import {RunTableComponent} from './run-table/run-table.component';
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
