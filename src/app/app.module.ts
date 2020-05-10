@@ -15,8 +15,6 @@ import {ShoesDialogComponent } from './shoes-dialog/shoes-dialog.component';
 import {ShoesListComponent} from './shoes-list/shoes-list.component';
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
-import {authInterceptorProviders} from './helpers/auth.interceptor';
-import {errorInterceptorProviders} from './helpers/error.interceptor';
 import {ChangePasswordComponent} from './change-password/change-password.component';
 import {CalendarViewComponent} from './calendar-view/calendar-view.component';
 import {ChartModule} from './chart/chart.module';
@@ -52,8 +50,6 @@ import {CoreModule} from './core/core.module';
     RunDialogComponent,
   ],
   providers: [
-    authInterceptorProviders,
-    errorInterceptorProviders,
     ],
   entryComponents: [
     RunDialogComponent,

@@ -7,6 +7,8 @@ import {RunService} from './services/run.service';
 import {ShoesService} from './services/shoes.service';
 import {TokenStorageService} from './services/token-storage.service';
 import {UserService} from './services/user.service';
+import {authInterceptorProviders} from './interceptors/auth.interceptor';
+import {errorInterceptorProviders} from './interceptors/error.interceptor';
 
 
 
@@ -22,6 +24,8 @@ import {UserService} from './services/user.service';
     ShoesService,
     TokenStorageService,
     UserService,
+    authInterceptorProviders,
+    errorInterceptorProviders,
   ],
 })
 export class CoreModule {}
