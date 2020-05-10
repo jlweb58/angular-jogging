@@ -8,7 +8,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {RunDialogComponent} from './run-dialog/run-dialog.component';
 import {MaterialModule} from './material.module';
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
@@ -23,7 +22,6 @@ import {RunModule} from './run/run.module';
 @NgModule({
   declarations: [
     AppComponent,
-    RunDialogComponent,
     LoginComponent,
     LogoutComponent,
     ChangePasswordComponent,
@@ -45,13 +43,9 @@ import {RunModule} from './run/run.module';
     MaterialModule
   ],
   exports: [
-    RunDialogComponent,
   ],
   providers: [
     ],
-  entryComponents: [
-    RunDialogComponent,
-  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

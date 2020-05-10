@@ -3,7 +3,7 @@ import {LoggerService} from '../core/services/logger.service';
 import {CalendarDay} from '../core/models/calendar.day';
 import {RunService} from '../core/services/run.service';
 import {Run} from '../core/models/run.model';
-import {RunDialogComponent} from '../run-dialog/run-dialog.component';
+import {RunDialogComponent} from '../run/run-dialog/run-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 
 @Component({
