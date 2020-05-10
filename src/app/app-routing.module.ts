@@ -5,7 +5,7 @@ import {RunTableComponent} from './run/run-table/run-table.component';
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {AuthGuardService} from './core/services/auth-guard.service';
-import {ChangePasswordComponent} from './change-password/change-password.component';
+import {ChangePasswordComponent} from './user/change-password/change-password.component';
 import {CalendarViewComponent} from './calendar-view/calendar-view.component';
 
 const routes: Routes = [
