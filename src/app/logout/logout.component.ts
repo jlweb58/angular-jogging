@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from '../services/authentication.service';
+import {AuthenticationService} from '../core/services/authentication.service';
 import {Router} from '@angular/router';
-import {TokenStorageService} from '../services/token-storage.service';
+import {TokenStorageService} from '../core/services/token-storage.service';
 
 @Component({
     selector: 'app-logout',

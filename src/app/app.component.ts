@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {RunDialogComponent} from './run-dialog/run-dialog.component';
-import {LoggerService} from './services/logger.service';
+import {LoggerService} from './core/services/logger.service';
 import {MatDialog} from '@angular/material/dialog';
-import {RunService} from './services/run.service';
+import {RunService} from './core/services/run.service';
 import {ChartIntervalType} from './core/models/chart-interval-type';
-import {TokenStorageService} from './services/token-storage.service';
+import {TokenStorageService} from './core/services/token-storage.service';
 import {MonthDatePickerComponent} from './shared/month-date-picker/month-date-picker.component';
 import {YearDatePickerComponent} from './shared/year-date-picker/year-date-picker.component';
 import {BarChartComponent} from './chart/bar-chart/bar-chart.component';

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {LoggerService} from '../services/logger.service';
+import {LoggerService} from '../core/services/logger.service';
 import {CalendarDay} from '../core/models/calendar.day';
-import {RunService} from '../services/run.service';
+import {RunService} from '../core/services/run.service';
 import {Run} from '../core/models/run.model';
 import {RunDialogComponent} from '../run-dialog/run-dialog.component';
 import {MatDialog} from '@angular/material/dialog';

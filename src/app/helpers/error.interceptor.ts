@@ -3,7 +3,7 @@ import {HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS}
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import {TokenStorageService} from '../services/token-storage.service';
+import {TokenStorageService} from '../core/services/token-storage.service';
 import {AuthInterceptor} from './auth.interceptor';
 
 @Injectable()

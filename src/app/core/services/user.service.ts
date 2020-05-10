@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {LoggerService} from './logger.service';
-import {ChangePasswordRequest} from '../core/models/change-password-request.model';
-import {ChangePasswordResponse} from '../core/models/change-password-response.model';
-import {environment} from '../../environments/environment';
+import {ChangePasswordRequest} from '../models/change-password-request.model';
+import {ChangePasswordResponse} from '../models/change-password-response.model';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

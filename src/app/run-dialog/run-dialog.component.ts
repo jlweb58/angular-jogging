@@ -1,9 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Run} from '../core/models/run.model';
-import {LoggerService} from '../services/logger.service';
+import {LoggerService} from '../core/services/logger.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {RunService} from '../services/run.service';
-import {ShoesService} from '../services/shoes.service';
+import {RunService} from '../core/services/run.service';
+import {ShoesService} from '../core/services/shoes.service';
 import {Shoes} from '../core/models/shoes.model';
 
 @Component({

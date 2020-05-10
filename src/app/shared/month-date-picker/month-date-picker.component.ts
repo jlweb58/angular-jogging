@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {LoggerService} from '../../services/logger.service';
+import {LoggerService} from '../../core/services/logger.service';
 
 @Component({
   selector: 'app-month-date-picker',

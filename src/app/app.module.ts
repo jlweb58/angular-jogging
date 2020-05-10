@@ -11,7 +11,6 @@ import {AppComponent} from './app.component';
 import {RunTableComponent} from './run-table/run-table.component';
 import {RunDialogComponent} from './run-dialog/run-dialog.component';
 import {MaterialModule} from './material.module';
-import {LoggerService} from './services/logger.service';
 import {ShoesDialogComponent } from './shoes-dialog/shoes-dialog.component';
 import {ShoesListComponent} from './shoes-list/shoes-list.component';
 import {LoginComponent} from './login/login.component';
@@ -53,7 +52,6 @@ import {CoreModule} from './core/core.module';
     RunDialogComponent,
   ],
   providers: [
-    LoggerService,
     authInterceptorProviders,
     errorInterceptorProviders,
     ],

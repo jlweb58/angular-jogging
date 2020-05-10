@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {LoggerService} from '../services/logger.service';
+import {LoggerService} from '../core/services/logger.service';
 import {Shoes} from '../core/models/shoes.model';
-import {ShoesService} from '../services/shoes.service';
+import {ShoesService} from '../core/services/shoes.service';
 
 
 @Component({
