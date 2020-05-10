@@ -11,7 +11,6 @@ import {AppComponent} from './app.component';
 import {RunTableComponent} from './run-table/run-table.component';
 import {RunDialogComponent} from './run-dialog/run-dialog.component';
 import {MaterialModule} from './material.module';
-import {ShoesDialogComponent } from './shoes-dialog/shoes-dialog.component';
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {ChangePasswordComponent} from './change-password/change-password.component';
@@ -26,7 +25,6 @@ import {ShoesModule} from './shoes/shoes.module';
     AppComponent,
     RunTableComponent,
     RunDialogComponent,
-    ShoesDialogComponent,
     LoginComponent,
     LogoutComponent,
     ChangePasswordComponent,

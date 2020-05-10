@@ -4,7 +4,7 @@ import {Shoes} from '../../core/models/shoes.model';
 import {LoggerService} from '../../core/services/logger.service';
 import {MatDialog} from '@angular/material/dialog';
 import {ConfirmDialogComponent} from '../../shared/confirm-dialog/confirm-dialog.component';
-import {ShoesDialogComponent} from '../../shoes-dialog/shoes-dialog.component';
+import {ShoesDialogComponent} from '../shoes-dialog/shoes-dialog.component';
 
 @Component({
   selector: 'app-shoe-list',
