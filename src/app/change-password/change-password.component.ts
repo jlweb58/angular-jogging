@@ -3,7 +3,7 @@ import {LoggerService} from '../core/services/logger.service';
 import {ChangePasswordRequest} from '../core/models/change-password-request.model';
 import {UserService} from '../core/services/user.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MustMatch} from '../helpers/must-match.validator';
+import {MustMatch} from '../shared/validators/must-match.validator';
 import {Location} from '@angular/common';
 
 @Component({
