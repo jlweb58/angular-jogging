@@ -1,6 +1,7 @@
 # AngularJogging
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.5.
+It runs together with the jogging3 project as a Java/SpringBoot backend
 
 ## Known bugs
 - (FIXED) On editing a run the shoes are not saved - seems to be due to a CORS problem on loading the shoes while editing.
@@ -12,12 +13,18 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - (FIXED) Default shoes are not pre-selected on new run
 - Fonts are much smaller on production, why is this?
 - (FIXED) On production the preferred shoe radio button is not showing as selected (but it works) 
+- Positioning and look of filter field on run table page is unattractive
+- Positioning of calendar on page (calendar view)
 
 ## TODOS
 - (DONE) Construct a better date picker for the chart range picker (especially for yearly) (probably must be manually implemented)
+- Implement a chart showing average run tempo over time
+- Implement a chart showing average pulse rate over time
+- Investigate the possibility of importing gpx tracks from Strava
+- If gpx tracks can be imported, implement a map view
 - Come up with a replacement for Chart This
 - Implement Find Runs
-- Dockerize the application(s)
+- Dockerize the application(s) (probably no need/benefit, if done only backend)
 
 ## Development server
 

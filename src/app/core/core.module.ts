@@ -9,12 +9,14 @@ import {TokenStorageService} from './services/token-storage.service';
 import {UserService} from './services/user.service';
 import {authInterceptorProviders} from './interceptors/auth.interceptor';
 import {errorInterceptorProviders} from './interceptors/error.interceptor';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
     ],
   providers: [
     AuthGuardService,

@@ -1,11 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {FormsModule} from '@angular/forms';
-import {ReactiveFormsModule} from '@angular/forms';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MaterialModule} from './material.module';
@@ -16,6 +10,7 @@ import {CoreModule} from './core/core.module';
 import {ShoesModule} from './shoes/shoes.module';
 import {RunModule} from './run/run.module';
 import {UserModule} from './user/user.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,13 +18,9 @@ import {UserModule} from './user/user.module';
     CalendarViewComponent,
   ],
   imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
-    FormsModule,
-    ReactiveFormsModule,
+    BrowserModule,
+    AppRoutingModule,
     ChartModule,
     CoreModule,
     RunModule,

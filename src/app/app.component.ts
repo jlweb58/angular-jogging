@@ -56,16 +56,10 @@ export class AppComponent implements OnInit {
     dialogRef.componentInstance.runs = runs;
     dialogRef.componentInstance.startDate = startDate;
     dialogRef.componentInstance.endDate = endDate;
-    dialogRef.afterClosed().subscribe(result => {
-      this.logger.log('The dialog was closed');
-    });
   }
 
   newRun() {
-    const dialogRef = this.dialog.open(RunDialogComponent);
-    dialogRef.afterClosed().subscribe(result => {
-       this.logger.log('The dialog was closed');
-     });
+    this.dialog.open(RunDialogComponent);
   }
 
 }
