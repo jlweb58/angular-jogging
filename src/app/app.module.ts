@@ -9,8 +9,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MaterialModule} from './material.module';
-import {LoginComponent} from './login/login.component';
-import {LogoutComponent} from './logout/logout.component';
 import {CalendarViewComponent} from './calendar-view/calendar-view.component';
 import {ChartModule} from './chart/chart.module';
 import {SharedModule} from './shared/shared.module';
@@ -22,8 +20,6 @@ import {UserModule} from './user/user.module';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    LogoutComponent,
     CalendarViewComponent,
   ],
   imports: [
