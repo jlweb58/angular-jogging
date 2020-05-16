@@ -8,6 +8,7 @@ import {TokenStorageService} from './core/services/token-storage.service';
 import {MonthDatePickerComponent} from './shared/month-date-picker/month-date-picker.component';
 import {YearDatePickerComponent} from './shared/year-date-picker/year-date-picker.component';
 import {BarChartComponent} from './chart/bar-chart/bar-chart.component';
+import {LineChartComponent} from './chart/line-chart/line-chart.component';
 
 @Component({
   selector: 'app-root',
@@ -23,9 +24,7 @@ export class AppComponent implements OnInit {
               public tokenStorageService: TokenStorageService) {
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   prepareBarChartYearly() {
     this.prepareBarChart(ChartIntervalType.Yearly);
@@ -53,6 +52,23 @@ export class AppComponent implements OnInit {
     const runs = this.runService.getRunsForDateRange(startDate, endDate);
     const dialogRef = this.dialog.open(BarChartComponent);
     dialogRef.componentInstance.chartIntervalType = chartIntervalType;
+    dialogRef.componentInstance.runs = runs;
+    dialogRef.componentInstance.startDate = startDate;
+    dialogRef.componentInstance.endDate = endDate;
+  }
+
+  prepareLineChart() {
+    const dialogRef = this.dialog.open(MonthDatePickerComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.showLineChart(dialogRef.componentInstance.startDate, dialogRef.componentInstance.endDate);
+      }
+    });
+  }
+
+  showLineChart(startDate: Date, endDate: Date) {
+    const runs = this.runService.getRunsForDateRange(startDate, endDate);
+    const dialogRef = this.dialog.open(LineChartComponent);
     dialogRef.componentInstance.runs = runs;
     dialogRef.componentInstance.startDate = startDate;
     dialogRef.componentInstance.endDate = endDate;
