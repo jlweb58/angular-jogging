@@ -1,12 +1,4 @@
 <div class="chart-wrapper">
-  <canvas baseChart
-          [datasets]="barChartData"
-          [labels]="barChartLabels"
-          [options]="barChartOptions"
-          [plugins]="barChartPlugins"
-          [legend]="barChartLegend"
-          [chartType]="barChartType"
+  <plotly-plot [data]="graph.data" [layout]="graph.layout"></plotly-plot>
 
-          >
-  </canvas>
 </div>

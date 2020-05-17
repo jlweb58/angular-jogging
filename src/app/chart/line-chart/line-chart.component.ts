@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Run} from '../../core/models/run.model';
-import {LoggerService} from '../../core/services/logger.service';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-line-chart',
@@ -22,12 +20,13 @@ export class LineChartComponent implements OnInit {
       width: 600,
       height: 400,
       title: 'Average Tempo',
+      hovermode: 'closest',
       yaxis: { autorange: 'reversed', tickformat: '%H:%M:%S' },
       xaxis: { type: 'date' }
       },
   };
 
-  constructor(private logger: LoggerService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.prepareTempoLineChart();
@@ -56,8 +55,9 @@ export class LineChartComponent implements OnInit {
       formattedPace += seconds;
       resultMap.set(run.date, formattedPace);
     });
-    const dataPlot = {x: [ ... resultMap.keys()], y: [ ... resultMap.values()],
-       type: 'scatter', mode: 'lines+points', marker: {color: 'red'} };
+    const dataPlot = {x: [ ... resultMap.keys()],
+      y: [ ... resultMap.values()],
+      type: 'scatter', mode: 'lines+points', marker: {color: 'red'} };
     this.graph.data.push(dataPlot);
   }
 
