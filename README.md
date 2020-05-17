@@ -20,6 +20,7 @@ It runs together with the jogging3 project as a Java/SpringBoot backend
 - (DONE) Construct a better date picker for the chart range picker (especially for yearly) (probably must be manually implemented)
 - (DONE) Implement a chart showing average run tempo over time
 - (DONE) Transfer bar charts to Plotly
+- Calendar view could use some optical improvements
 - Implement a chart showing average pulse rate over time
 - Investigate the possibility of importing gpx tracks from Strava
 - If gpx tracks can be imported, implement a map view
