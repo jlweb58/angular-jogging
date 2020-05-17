@@ -1,3 +1,14 @@
+.run-filter {
+  margin-left: 25px;
+  margin-top: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.run-filter-input {
+  font-size: large;
+  background-color: #def1ff;
+}
+
 
 tr.mat-row  {
   background: #f0f3f5;

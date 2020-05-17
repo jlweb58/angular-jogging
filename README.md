@@ -13,8 +13,8 @@ It runs together with the jogging3 project as a Java/SpringBoot backend
 - (FIXED) Default shoes are not pre-selected on new run
 - Fonts are much smaller on production, why is this?
 - (FIXED) On production the preferred shoe radio button is not showing as selected (but it works) 
-- Positioning and look of filter field on run table page is unattractive
-- Positioning of calendar on page (calendar view)
+- (FIXED) Positioning and look of filter field on run table page is unattractive
+- (FIXED) Positioning of calendar on page (calendar view)
 
 ## TODOS
 - (DONE) Construct a better date picker for the chart range picker (especially for yearly) (probably must be manually implemented)
