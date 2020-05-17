@@ -1,9 +1,10 @@
+<div class = "calendar-wrapper">
 <div class = "calendar-header">
   <button mat-icon-button (click)="prevMonth()"><mat-icon>keyboard_arrow_left</mat-icon></button>
   <button mat-icon-button (click)="nextMonth()"><mat-icon>keyboard_arrow_right</mat-icon></button>
   <span>{{currentMonth}} {{currentYear}}</span>
 </div>
-<div>
+<div class="calendar-body">
   <table>
     <thead>
     <tr>
@@ -154,4 +155,5 @@
     </tfoot>
 
   </table>
+</div>
 </div>
