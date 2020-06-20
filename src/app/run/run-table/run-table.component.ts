@@ -29,7 +29,7 @@ export class RunTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.runService.loadAll();
-    this.runService.runs.subscribe(results => {
+    this.runService.getRuns().subscribe(results => {
       if (!results) { return; }
       this.dataSource.data = results;
       this.dataSource.paginator = this.paginator;
@@ -39,7 +39,7 @@ export class RunTableComponent implements OnInit {
     });
   }
 
-  public doFilter = (value: string) => {
+  public doFilter(value: string) {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
@@ -49,9 +49,6 @@ export class RunTableComponent implements OnInit {
     const dialogRef = this.dialog.open(RunDialogComponent);
     dialogRef.componentInstance.run = this.run;
     dialogRef.componentInstance.isEdit = true;
-    dialogRef.afterClosed().subscribe(result => {
-      this.logger.log('The dialog was closed');
-    });
-  }
+   }
 
 }

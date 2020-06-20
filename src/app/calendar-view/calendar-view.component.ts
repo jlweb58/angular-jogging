@@ -28,6 +28,11 @@ export class CalendarViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.runService.loadAll();
+    this.runService.getRuns().subscribe(results => {
+      if (!results) {
+        return;
+      }
+    });
     this.currentDate = new Date();
     this.currentMonth = this.currentDate.toLocaleString('default', { month: 'long' });
     this.currentYear = this.currentDate.getFullYear();
@@ -43,7 +48,7 @@ export class CalendarViewComponent implements OnInit {
     this.changeMonth(1);
   }
 
-  changeMonth(amount: number) {
+  private changeMonth(amount: number) {
     this.currentDate.setMonth(this.currentDate.getMonth() + amount);
     this.currentMonth = this.currentDate.toLocaleString('default', { month: 'long' });
     this.currentYear = this.currentDate.getFullYear();
@@ -72,7 +77,7 @@ export class CalendarViewComponent implements OnInit {
     return this.getFormattedTimeString(secondsSum);
   }
 
-  getFormattedTimeString(totalSeconds: number): string {
+  private getFormattedTimeString(totalSeconds: number): string {
     const hours =  Math.trunc(totalSeconds / 3600);
     const minutes = Math.trunc((totalSeconds / 60)  % 60);
     const seconds = Math.trunc(totalSeconds % 60);
@@ -94,7 +99,7 @@ export class CalendarViewComponent implements OnInit {
     return hoursString + ':' + minutesString + ':' + secondsString;
   }
 
-  getSeconds(time: string) {
+  private getSeconds(time: string) {
     const parts = time.split(':');
     return parseInt(parts[0], 10) * 3600 + parseInt(parts[1], 10) * 60 + parseInt(parts[2], 10);
   }
@@ -148,7 +153,7 @@ export class CalendarViewComponent implements OnInit {
   }
 
 
-  isSameDate(date1: string, date2: Date): boolean {
+  private isSameDate(date1: string, date2: Date): boolean {
     const ms: number = Date.parse(date1);
     const dateToCompare: Date = new Date();
     dateToCompare.setTime(ms);
@@ -160,7 +165,7 @@ export class CalendarViewComponent implements OnInit {
    // It's a six row month if:
    // the month has 31 days and the 1st is a Sat. or Sun;
    // the month has 30 days and the 1st is a Sun.
-  getNumberOfRowsForMonth(numDaysInMonth, firstDateInMonth: Date): number {
+  private getNumberOfRowsForMonth(numDaysInMonth, firstDateInMonth: Date): number {
     if (numDaysInMonth === 28 && firstDateInMonth.getDay() === 1) {
       return 4;
     } else {
@@ -172,7 +177,7 @@ export class CalendarViewComponent implements OnInit {
     }
   }
 
-  fillDateArray(today: Date): void {
+  private fillDateArray(today: Date): void {
     this.daysInCurrentView = [];
     const daysInCurrentMonth = this.daysInMonth(today);
     const firstDateInMonth = this.firstDateInMonth(today);
@@ -195,11 +200,11 @@ export class CalendarViewComponent implements OnInit {
     this.daysInCurrentView[numberOfDates - 1].setSeconds(59);
   }
 
-  firstDateInMonth(date: Date): Date {
+  private firstDateInMonth(date: Date): Date {
     return new Date(date.getFullYear(), date.getMonth(), 1);
   }
 
-  daysInMonth(date: Date): number {
+  private daysInMonth(date: Date): number {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
   }
 
@@ -239,9 +244,6 @@ export class CalendarViewComponent implements OnInit {
     const dialogRef = this.dialog.open(RunDialogComponent);
     dialogRef.componentInstance.run = run;
     dialogRef.componentInstance.isEdit = true;
-    dialogRef.afterClosed().subscribe(result => {
-      this.logger.log('The dialog was closed');
-    });
-  }
+   }
 
 }

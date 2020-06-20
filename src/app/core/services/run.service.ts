@@ -13,7 +13,6 @@ export class RunService {
   // tslint:disable-next-line:variable-name
   private _runs = new BehaviorSubject<Run[]>([]);
   private dataStore: { runs: Run[] } = { runs: [] }; // store our data in memory
-  readonly runs = this._runs.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -21,10 +20,14 @@ export class RunService {
 
   ) { }
 
-  loadAll() {
-       this.http.get<Run[]>(this.serviceUrl).subscribe(
+  public getRuns(): Observable<Run[]> {
+    return this._runs.asObservable();
+  }
+
+  public loadAll() {
+    this.http.get<Run[]>(this.serviceUrl).subscribe(
       data => {
-        // @ts-ignore
+        this.logger.log('data = ' + data);
         this.dataStore.runs = data;
         this._runs.next(Object.assign({}, this.dataStore).runs);
       },
@@ -32,29 +35,7 @@ export class RunService {
     );
   }
 
-    load(id: number | string) {
-    this.http.get<Run>(`${this.serviceUrl}/${id}`).subscribe(
-      data => {
-        let notFound = true;
-
-        this.dataStore.runs.forEach((item, index) => {
-          if (item.id === data.id) {
-            this.dataStore.runs[index] = data;
-            notFound = false;
-          }
-        });
-
-        if (notFound) {
-          this.dataStore.runs.push(data);
-        }
-
-        this._runs.next(Object.assign({}, this.dataStore).runs);
-      },
-      error => this.logger.log('Could not load run.')
-    );
-  }
-
-  create(run: Run) {
+  public create(run: Run) {
     this.http
       .post<Run>(this.serviceUrl, run )
       .subscribe(
@@ -68,7 +49,7 @@ export class RunService {
       );
   }
 
-  update(run: Run) {
+  public update(run: Run) {
     this.http
       .put<Run>(`${this.serviceUrl}/${run.id}`, run)
       .subscribe(
@@ -87,22 +68,22 @@ export class RunService {
       );
   }
 
-  getRuns(): Observable<Run[]> {
-    return this.http.get<Run[]>(this.serviceUrl);
-  }
-
-  isBetweenDates(startDate: Date, endDate: Date, run: Run) {
+  private isBetweenDates(startDate: Date, endDate: Date, run: Run) {
     const runDate: Date = new Date(run.date + 'T00:00:00Z');
     const after = runDate.getTime() >= startDate.getTime();
     const before = runDate.getTime() <= endDate.getTime();
     return after && before;
   }
 
-  getRunsForDateRange(startDate: Date, endDate: Date): Run[] {
-    if (this.dataStore.runs.length === 0) {
-      this.loadAll();
-    }
-    return this.dataStore.runs.filter(run => this.isBetweenDates(startDate, endDate, run));
+  public getRunsForDateRange(startDate: Date, endDate: Date): Run[] {
+    let runs;
+    this.getRuns().subscribe(results => {
+      if (!results) {
+        return;
+      }
+      runs = results;
+    });
+    return runs.filter(run => this.isBetweenDates(startDate, endDate, run));
   }
 
 }
