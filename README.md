@@ -22,7 +22,7 @@ It runs together with the jogging3 project as a Java/SpringBoot backend
 - (DONE) Implement a chart showing average run tempo over time
 - (DONE) Transfer bar charts to Plotly
 - (DONE) Calendar view could use some optical improvements
-- Get some serious unit tests working
+- Get some more unit tests
 - Implement a chart showing average pulse rate over time
 - Investigate the possibility of importing gpx tracks from Strava
 - If gpx tracks can be imported, implement a map view

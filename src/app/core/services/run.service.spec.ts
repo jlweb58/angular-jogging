@@ -6,75 +6,10 @@ import {LoggerService} from './logger.service';
 
 describe('RunService', () => {
 
-  const data = [
-    {
-      id: 1838,
-      course: 'Buga 1x Berg',
-      runDuration: {
-        time: '01:21:02'
-      },
-      distance: 13.18,
-      comments: 'Not bad. Started strong and easy, got a little tired.',
-      weather: '15 pc',
-      date: '2020-05-31',
-      avgHeartRate: 132,
-      shoes: {
-        id: 9,
-        name: 'Saucony Omni ISO',
-        mileageOffset: 0.0,
-        mileage: 0.0,
-        active: true,
-        preferred: true,
-        new: false
-      },
-      new: false
-    },
-    {
-      id: 1837,
-      course: 'Buga 1x Berg',
-      runDuration: {
-        time: '01:21:20'
-      },
-      distance: 13.21,
-      comments: 'Good',
-      weather: '10 pc',
-      date: '2020-05-03',
-      avgHeartRate: 130,
-      shoes: {
-        id: 10,
-        name: 'Brooks Adrenaline GTS 19',
-        mileageOffset: 0.0,
-        mileage: 0.0,
-        active: true,
-        preferred: false,
-        new: false
-      },
-      new: false
-    },
-    {
-      id: 1836,
-      course: 'Buga 0x Berg',
-      runDuration: {
-        time: '01:09:41'
-      },
-      distance: 11.2,
-      comments: 'Quite hard',
-      weather: '16 sunny',
-      date: '2020-04-19',
-      avgHeartRate: 134,
-      shoes: {
-        id: 9,
-        name: 'Saucony Omni ISO',
-        mileageOffset: 0.0,
-        mileage: 0.0,
-        active: true,
-        preferred: true,
-        new: false
-      },
-      new: false
-    }
-  ];
-
+  const run1: Run = new Run();
+  const run2: Run = new Run();
+  const run3: Run = new Run();
+  const runs: Run[] = [ run1, run2, run3 ];
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -91,7 +26,10 @@ describe('RunService', () => {
     runService.loadAll();
     const req = httpMock.expectOne('http://localhost:9000/jogging/runs');
     expect(req.request.method).toBe('GET');
-    req.flush(data);
+    run1.date = '2020-05-31';
+    run2.date = '2020-05-03';
+    run3.date = '2020-04-19';
+    req.flush(runs);
 
     runService.getRuns().subscribe(results => {
       if (!results) { return; }
@@ -105,13 +43,27 @@ describe('RunService', () => {
       runService.loadAll();
       const req = httpMock.expectOne('http://localhost:9000/jogging/runs');
       expect(req.request.method).toBe('GET');
-      req.flush(data);
+      run1.date = '2020-05-31';
+      run2.date = '2020-05-03';
+      run3.date = '2020-04-19';
+      req.flush(runs);
       const result: Run[] = runService.getRunsForDateRange(new Date('2020-05-01T00:00:00Z'), new Date('2020-05-31T00:00:00Z'));
 
       expect(result.length).toBe(2);
       httpMock.verify();
-      }));
+    }));
 
-
-
+  it('should include runs on the edge of the date range',
+    inject([HttpTestingController, RunService], async (httpMock: HttpTestingController, runService: RunService) => {
+      runService.loadAll();
+      const req = httpMock.expectOne('http://localhost:9000/jogging/runs');
+      expect(req.request.method).toBe('GET');
+      run1.date = '2020-05-31';
+      run2.date = '2020-05-03';
+      run3.date = '2020-05-01';
+      req.flush(runs);
+      const result: Run[] = runService.getRunsForDateRange(new Date('2020-05-01T00:00:00Z'), new Date('2020-05-31T00:00:00Z'));
+      expect(result.length).toBe(3);
+      httpMock.verify();
+    }));
 });

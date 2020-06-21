@@ -240,7 +240,6 @@ export class CalendarViewComponent implements OnInit {
   }
 
   showActivity(run: Run): void {
-    this.logger.log('Showing activity');
     const dialogRef = this.dialog.open(RunDialogComponent);
     dialogRef.componentInstance.run = run;
     dialogRef.componentInstance.isEdit = true;
