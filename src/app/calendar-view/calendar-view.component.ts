@@ -13,71 +13,17 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class CalendarViewComponent implements OnInit {
 
-  currentMonth: string;
-  currentYear: number;
-  daysInCurrentView: Date[] = [];
-  calendarDays: CalendarDay[] = [];
-  currentDate: Date;
-
   constructor(private logger: LoggerService,
               private runService: RunService,
               private dialog: MatDialog,
   ) { }
 
-  // Need to redo this - just have the calendarday array, either it has a run or not
+  currentMonth: string;
+  currentYear: number;
+  calendarDays: CalendarDay[] = [];
+  currentDate: Date;
 
-  ngOnInit(): void {
-    this.runService.loadAll();
-    this.runService.getRuns().subscribe(results => {
-      if (!results) {
-        return;
-      }
-    });
-    this.currentDate = new Date();
-    this.currentMonth = this.currentDate.toLocaleString('default', { month: 'long' });
-    this.currentYear = this.currentDate.getFullYear();
-    this.fillDateArray(this.currentDate);
-    this.fillCalendarDays();
-  }
-
-  prevMonth(): void {
-    this.changeMonth(-1);
-  }
-
-  nextMonth(): void {
-    this.changeMonth(1);
-  }
-
-  private changeMonth(amount: number) {
-    this.currentDate.setMonth(this.currentDate.getMonth() + amount);
-    this.currentMonth = this.currentDate.toLocaleString('default', { month: 'long' });
-    this.currentYear = this.currentDate.getFullYear();
-    this.fillDateArray(this.currentDate);
-    this.fillCalendarDays();
-  }
-
-  getDistanceForRow(row: CalendarDay[]): number {
-    let res = 0;
-    row.forEach(d => {
-      if (d.run) {
-        res += d.run.distance;
-      }
-    });
-    return res;
-  }
-
-  getTimeForRow(row: CalendarDay[]): string {
-    let secondsSum = 0;
-    row.forEach(d => {
-      if (d.run && d.run.runDuration) {
-        secondsSum += this.getSeconds(d.run.runDuration.time);
-      }
-    });
-
-    return this.getFormattedTimeString(secondsSum);
-  }
-
-  private getFormattedTimeString(totalSeconds: number): string {
+  private static getFormattedTimeString(totalSeconds: number): string {
     const hours =  Math.trunc(totalSeconds / 3600);
     const minutes = Math.trunc((totalSeconds / 60)  % 60);
     const seconds = Math.trunc(totalSeconds % 60);
@@ -99,9 +45,119 @@ export class CalendarViewComponent implements OnInit {
     return hoursString + ':' + minutesString + ':' + secondsString;
   }
 
-  private getSeconds(time: string) {
+  private static firstDateInMonth(date: Date): Date {
+    return new Date(date.getFullYear(), date.getMonth(), 1);
+  }
+
+  private static daysInMonth(date: Date): number {
+    return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+  }
+
+  private static getSeconds(time: string) {
     const parts = time.split(':');
     return parseInt(parts[0], 10) * 3600 + parseInt(parts[1], 10) * 60 + parseInt(parts[2], 10);
+  }
+
+
+  private static isSameDate(date1: string, date2: Date): boolean {
+    const ms: number = Date.parse(date1);
+    const dateToCompare: Date = new Date();
+    dateToCompare.setTime(ms);
+    return dateToCompare.getFullYear() === date2.getFullYear()
+    && dateToCompare.getMonth() === date2.getMonth()
+    && dateToCompare.getDate() === date2.getDate();
+   }
+
+   // It's a six row month if:
+   // the month has 31 days and the 1st is a Sat. or Sun;
+   // the month has 30 days and the 1st is a Sun.
+  private static getNumberOfRowsForMonth(numDaysInMonth, firstDateInMonth: Date): number {
+    if (numDaysInMonth === 28 && firstDateInMonth.getDay() === 1) {
+      return 4;
+    } else {
+      if (firstDateInMonth.getDay() === 0 || (firstDateInMonth.getDay() === 6 && numDaysInMonth === 31)) {
+        return 6;
+      } else {
+        return 5;
+      }
+    }
+  }
+
+  static fillDateArray(today: Date): Date[] {
+    const daysInCurrentView: Date[] = [];
+    const daysInCurrentMonth = CalendarViewComponent.daysInMonth(today);
+    const firstDateInMonth = CalendarViewComponent.firstDateInMonth(today);
+    const numberOfDates = CalendarViewComponent.getNumberOfRowsForMonth(daysInCurrentMonth, firstDateInMonth) * 7;
+    let offset = firstDateInMonth.getDay() - 1; // Sunday = 0, we start the week with Monday
+    if (offset < 0) {
+      offset = 6;
+    }
+    const startDate = firstDateInMonth;
+    startDate.setDate(startDate.getDate() - offset);
+    for (let i = 0; i < numberOfDates; i++) {
+      const nextDate = new Date();
+      nextDate.setTime(startDate.getTime());
+      daysInCurrentView.push(nextDate);
+      startDate.setDate(startDate.getDate() + 1);
+    }
+
+    daysInCurrentView[numberOfDates - 1].setHours(23);
+    daysInCurrentView[numberOfDates - 1].setMinutes(59);
+    daysInCurrentView[numberOfDates - 1].setSeconds(59);
+    return daysInCurrentView;
+  }
+
+  // Need to redo this - just have the calendarday array, either it has a run or not
+
+  ngOnInit(): void {
+    this.runService.loadAll();
+    this.runService.getRuns().subscribe(results => {
+      if (!results) {
+        return;
+      }
+    });
+    this.currentDate = new Date();
+    this.currentMonth = this.currentDate.toLocaleString('default', { month: 'long' });
+    this.currentYear = this.currentDate.getFullYear();
+    const daysInCurrentView: Date[] = CalendarViewComponent.fillDateArray(this.currentDate);
+    this.fillCalendarDays(daysInCurrentView);
+  }
+
+  prevMonth(): void {
+    this.changeMonth(-1);
+  }
+
+  nextMonth(): void {
+    this.changeMonth(1);
+  }
+
+  private changeMonth(amount: number) {
+    this.currentDate.setMonth(this.currentDate.getMonth() + amount);
+    this.currentMonth = this.currentDate.toLocaleString('default', { month: 'long' });
+    this.currentYear = this.currentDate.getFullYear();
+    const daysInCurrentView: Date[] = CalendarViewComponent.fillDateArray(this.currentDate);
+    this.fillCalendarDays(daysInCurrentView);
+  }
+
+  getDistanceForRow(row: CalendarDay[]): number {
+    let res = 0;
+    row.forEach(d => {
+      if (d.run) {
+        res += d.run.distance;
+      }
+    });
+    return res;
+  }
+
+  getTimeForRow(row: CalendarDay[]): string {
+    let secondsSum = 0;
+    row.forEach(d => {
+      if (d.run && d.run.runDuration) {
+        secondsSum += CalendarViewComponent.getSeconds(d.run.runDuration.time);
+      }
+    });
+
+    return CalendarViewComponent.getFormattedTimeString(secondsSum);
   }
 
   getRow(index: number): CalendarDay[] {
@@ -131,11 +187,11 @@ export class CalendarViewComponent implements OnInit {
   }
 
 
-  fillCalendarDays(): void {
+  fillCalendarDays(daysInCurrentView: Date[]): void {
     this.calendarDays = [];
-    const currentDaysLength = this.daysInCurrentView.length;
-    const runs: Run[] = this.runService.getRunsForDateRange(this.daysInCurrentView[0], this.daysInCurrentView[currentDaysLength - 1]);
-    this.daysInCurrentView.forEach(d => {
+    const currentDaysLength = daysInCurrentView.length;
+    const runs: Run[] = this.runService.getRunsForDateRange(daysInCurrentView[0], daysInCurrentView[currentDaysLength - 1]);
+    daysInCurrentView.forEach(d => {
       const run: Run = this.getRunForDate(d, runs);
       this.calendarDays.push(new CalendarDay(d, run));
     });
@@ -145,67 +201,11 @@ export class CalendarViewComponent implements OnInit {
   getRunForDate(day: Date, runs: Run[]): Run {
     let retVal: Run = null;
     runs.forEach(r => {
-      if (this.isSameDate(r.date, day)) {
+      if (CalendarViewComponent.isSameDate(r.date, day)) {
         retVal = r;
       }
     });
     return retVal;
-  }
-
-
-  private isSameDate(date1: string, date2: Date): boolean {
-    const ms: number = Date.parse(date1);
-    const dateToCompare: Date = new Date();
-    dateToCompare.setTime(ms);
-    return dateToCompare.getFullYear() === date2.getFullYear()
-    && dateToCompare.getMonth() === date2.getMonth()
-    && dateToCompare.getDate() === date2.getDate();
-   }
-
-   // It's a six row month if:
-   // the month has 31 days and the 1st is a Sat. or Sun;
-   // the month has 30 days and the 1st is a Sun.
-  private getNumberOfRowsForMonth(numDaysInMonth, firstDateInMonth: Date): number {
-    if (numDaysInMonth === 28 && firstDateInMonth.getDay() === 1) {
-      return 4;
-    } else {
-      if (firstDateInMonth.getDay() === 0 || (firstDateInMonth.getDay() === 6 && numDaysInMonth === 31)) {
-        return 6;
-      } else {
-        return 5;
-      }
-    }
-  }
-
-  private fillDateArray(today: Date): void {
-    this.daysInCurrentView = [];
-    const daysInCurrentMonth = this.daysInMonth(today);
-    const firstDateInMonth = this.firstDateInMonth(today);
-    const numberOfDates = this.getNumberOfRowsForMonth(daysInCurrentMonth, firstDateInMonth) * 7;
-    let offset = firstDateInMonth.getDay() - 1; // Sunday = 0, we start the week with Monday
-    if (offset < 0) {
-      offset = 6;
-    }
-    const startDate = firstDateInMonth;
-    startDate.setDate(startDate.getDate() - offset);
-    for (let i = 0; i < numberOfDates; i++) {
-      const nextDate = new Date();
-      nextDate.setTime(startDate.getTime());
-      this.daysInCurrentView.push(nextDate);
-      startDate.setDate(startDate.getDate() + 1);
-    }
-
-    this.daysInCurrentView[numberOfDates - 1].setHours(23);
-    this.daysInCurrentView[numberOfDates - 1].setMinutes(59);
-    this.daysInCurrentView[numberOfDates - 1].setSeconds(59);
-  }
-
-  private firstDateInMonth(date: Date): Date {
-    return new Date(date.getFullYear(), date.getMonth(), 1);
-  }
-
-  private daysInMonth(date: Date): number {
-    return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
   }
 
   getClassForDate(date: Date): string {
@@ -227,8 +227,10 @@ export class CalendarViewComponent implements OnInit {
 
   getDistanceForCurrentMonth(): number {
     let retVal = 0;
+    this.logger.log(' currentDateMonth=' + this.currentDate.getMonth());
+
     this.calendarDays.forEach(d => {
-      if (d.run) {
+      if (d.run && d.day.getMonth() === this.currentDate.getMonth()) {
         retVal += d.run.distance;
       }
     });

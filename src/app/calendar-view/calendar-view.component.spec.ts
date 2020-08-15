@@ -8,7 +8,9 @@ import {CalendarDay} from '../core/models/calendar.day';
 import {Run} from '../core/models/run.model';
 
 describe('CalendarViewComponent', () => {
-  beforeEach(async(() => {
+   let spy: any;
+
+   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         CalendarViewComponent
@@ -17,16 +19,17 @@ describe('CalendarViewComponent', () => {
         { provide: MatDialog, useValue: {} },
         { provide: HttpClient, useValue: {} },
         { provide: CalendarViewComponent, useClass: CalendarViewComponent },
-        { provide: LoggerService, useClass: LoggerService }
+        { provide: LoggerService, useClass: LoggerService },
+        { provide: RunService, useClass: RunService }
       ]
     }).compileComponents();
   }));
 
-  it('should be initialized', inject([CalendarViewComponent], (calendarViewComponent: CalendarViewComponent) => {
+   it('should be initialized', inject([CalendarViewComponent], (calendarViewComponent: CalendarViewComponent) => {
     expect(calendarViewComponent).toBeTruthy();
   }));
 
-  it('should calculate the distance for a row',
+   it('should calculate the distance for a row',
     inject([CalendarViewComponent], (calendarViewComponent: CalendarViewComponent) => {
     const calendarDays: CalendarDay[] = [];
     const run1: Run = new Run();
@@ -40,7 +43,7 @@ describe('CalendarViewComponent', () => {
     expect(result).toBeCloseTo(23.1, 0.01);
     }));
 
-  it('should calculate the time for a row',
+   it('should calculate the time for a row',
     inject([CalendarViewComponent], (calendarViewComponent: CalendarViewComponent) => {
       const calendarDays: CalendarDay[] = [];
       const run1: Run = new Run();
@@ -55,7 +58,7 @@ describe('CalendarViewComponent', () => {
       expect(result).toBe('01:01:01');
     }));
 
-  it('should calculate the time for a row where the total is 1 hour',
+   it('should calculate the time for a row where the total is 1 hour',
     inject([CalendarViewComponent], (calendarViewComponent: CalendarViewComponent) => {
       const calendarDays: CalendarDay[] = [];
       const run1: Run = new Run();
@@ -69,5 +72,33 @@ describe('CalendarViewComponent', () => {
       const result = calendarViewComponent.getTimeForRow(calendarDays);
       expect(result).toBe('01:00:00');
     }));
+
+   it('should calculate the distance for the current month',
+    inject([CalendarViewComponent], (calendarViewComponent: CalendarViewComponent) => {
+      const run1: Run = new Run();
+      run1.distance = 5.3;
+      run1.date = '2020-02-28';
+      const run2: Run = new Run();
+      run2.distance = 6.2;
+      run2.date = '2020-03-01';
+      const run3: Run = new Run();
+      run3.distance = 7.1;
+      run3.date = '2020-03-31';
+      const runs: Run[]  = [];
+      runs.push(run1, run2, run3);
+      const runService = TestBed.inject(RunService);
+      spy = spyOn(runService, 'getRunsForDateRange').and.returnValue(runs);
+      const currentDate: Date = new Date();
+      currentDate.setMonth(2);
+      currentDate.setFullYear(2020);
+      currentDate.setDate(15);
+      calendarViewComponent.currentDate = currentDate;
+      const daysInCurrentView: Date[] = CalendarViewComponent.fillDateArray(currentDate);
+      calendarViewComponent.fillCalendarDays(daysInCurrentView);
+      const result = calendarViewComponent.getDistanceForCurrentMonth();
+      expect(result).toBe(13.3);
+
+    }));
+
 
 });
