@@ -19,4 +19,11 @@ export class Run {
     };
     this.shoes = new Shoes();
   }
+
+  public static fromDateAndDistance(distance: number, date: string): Run {
+    const run: Run = new Run();
+    run.date = date;
+    run.distance = distance;
+    return run;
+  }
 }

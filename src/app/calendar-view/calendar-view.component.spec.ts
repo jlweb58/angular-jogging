@@ -38,7 +38,7 @@ describe('CalendarViewComponent', () => {
     run1.distance = 5.2;
     run2.distance = 6.1;
     run3.distance = 11.8;
-    calendarDays.push(new CalendarDay(null, run1), new CalendarDay(null, run2), new CalendarDay(null, run3));
+    calendarDays.push(new CalendarDay(null, Array.of(run1)), new CalendarDay(null, Array.of(run2)), new CalendarDay(null, Array.of(run3)));
     const result = calendarViewComponent.getDistanceForRow(calendarDays);
     expect(result).toBeCloseTo(23.1, 0.01);
     }));
@@ -53,7 +53,9 @@ describe('CalendarViewComponent', () => {
       run2.runDuration = { time: '00:21:00'};
       run3.runDuration = { time: '00:20:01'};
 
-      calendarDays.push(new CalendarDay(null, run1), new CalendarDay(null, run2), new CalendarDay(null, run3));
+      calendarDays.push(new CalendarDay(null, Array.of(run1)),
+        new CalendarDay(null, Array.of(run2)),
+        new CalendarDay(null, Array.of(run3)));
       const result = calendarViewComponent.getTimeForRow(calendarDays);
       expect(result).toBe('01:01:01');
     }));
@@ -68,22 +70,18 @@ describe('CalendarViewComponent', () => {
       run2.runDuration = { time: '00:20:00'};
       run3.runDuration = { time: '00:20:00'};
 
-      calendarDays.push(new CalendarDay(null, run1), new CalendarDay(null, run2), new CalendarDay(null, run3));
+      calendarDays.push(new CalendarDay(null, Array.of(run1)),
+        new CalendarDay(null, Array.of(run2)),
+        new CalendarDay(null, Array.of(run3)));
       const result = calendarViewComponent.getTimeForRow(calendarDays);
       expect(result).toBe('01:00:00');
     }));
 
    it('should calculate the distance for the current month',
     inject([CalendarViewComponent], (calendarViewComponent: CalendarViewComponent) => {
-      const run1: Run = new Run();
-      run1.distance = 5.3;
-      run1.date = '2020-02-28';
-      const run2: Run = new Run();
-      run2.distance = 6.2;
-      run2.date = '2020-03-01';
-      const run3: Run = new Run();
-      run3.distance = 7.1;
-      run3.date = '2020-03-31';
+      const run1: Run = Run.fromDateAndDistance(5.3, '2020-02-28');
+      const run2: Run = Run.fromDateAndDistance(6.2, '2020-03-01');
+      const run3: Run = Run.fromDateAndDistance(7.1, '2020-03-31');
       const runs: Run[]  = [];
       runs.push(run1, run2, run3);
       const runService = TestBed.inject(RunService);
@@ -100,5 +98,26 @@ describe('CalendarViewComponent', () => {
 
     }));
 
+   it('should handle two runs on the same day',
+    inject([CalendarViewComponent], (calendarViewComponent: CalendarViewComponent) => {
+      const run1: Run = Run.fromDateAndDistance(5.3, '2020-02-28');
+      const run2: Run = Run.fromDateAndDistance(6.2, '2020-03-01');
+      const run3: Run = Run.fromDateAndDistance(7.1, '2020-03-31');
+      const run4: Run = Run.fromDateAndDistance(1.5, '2020-03-31');
+      const runs: Run[]  = [];
+      runs.push(run1, run2, run3, run4);
+      const runService = TestBed.inject(RunService);
+      spy = spyOn(runService, 'getRunsForDateRange').and.returnValue(runs);
+      const currentDate: Date = new Date();
+      currentDate.setMonth(2);
+      currentDate.setFullYear(2020);
+      currentDate.setDate(15);
+      calendarViewComponent.currentDate = currentDate;
+      const daysInCurrentView: Date[] = CalendarViewComponent.fillDateArray(currentDate);
+      calendarViewComponent.fillCalendarDays(daysInCurrentView);
+      const result = calendarViewComponent.getDistanceForCurrentMonth();
+      expect(result).toBe(14.8);
+
+    }));
 
 });

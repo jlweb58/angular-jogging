@@ -3,11 +3,11 @@ import {Run} from './run.model';
 export class CalendarDay {
 
   day: Date;
-  run: Run;
+  runs: Run[];
 
-  constructor(d: Date, run: Run) {
+  constructor(d: Date, run: Run[]) {
     this.day = d;
-    this.run = run;
+    this.runs = run;
   }
 
 }

@@ -53,11 +53,10 @@ export class CalendarViewComponent implements OnInit {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
   }
 
-  private static getSeconds(time: string) {
+  private static getSeconds(time: string): number {
     const parts = time.split(':');
     return parseInt(parts[0], 10) * 3600 + parseInt(parts[1], 10) * 60 + parseInt(parts[2], 10);
   }
-
 
   private static isSameDate(date1: string, date2: Date): boolean {
     const ms: number = Date.parse(date1);
@@ -107,8 +106,6 @@ export class CalendarViewComponent implements OnInit {
     return daysInCurrentView;
   }
 
-  // Need to redo this - just have the calendarday array, either it has a run or not
-
   ngOnInit(): void {
     this.runService.loadAll();
     this.runService.getRuns().subscribe(results => {
@@ -142,20 +139,17 @@ export class CalendarViewComponent implements OnInit {
   getDistanceForRow(row: CalendarDay[]): number {
     let res = 0;
     row.forEach(d => {
-      if (d.run) {
-        res += d.run.distance;
+      if (d.runs) {
+        res += d.runs.reduce((sum: number, b: Run) => sum + b.distance, 0);
       }
     });
     return res;
   }
 
   getTimeForRow(row: CalendarDay[]): string {
-    let secondsSum = 0;
-    row.forEach(d => {
-      if (d.run && d.run.runDuration) {
-        secondsSum += CalendarViewComponent.getSeconds(d.run.runDuration.time);
-      }
-    });
+    const secondsSum = row.filter((calendarDay: CalendarDay) => calendarDay.runs)
+      .flatMap(day => day.runs)
+      .reduce((sum: number, run: Run) => sum + CalendarViewComponent.getSeconds(run.runDuration.time), 0);
 
     return CalendarViewComponent.getFormattedTimeString(secondsSum);
   }
@@ -186,23 +180,21 @@ export class CalendarViewComponent implements OnInit {
     }
   }
 
-
   fillCalendarDays(daysInCurrentView: Date[]): void {
     this.calendarDays = [];
     const currentDaysLength = daysInCurrentView.length;
     const runs: Run[] = this.runService.getRunsForDateRange(daysInCurrentView[0], daysInCurrentView[currentDaysLength - 1]);
     daysInCurrentView.forEach(d => {
-      const run: Run = this.getRunForDate(d, runs);
-      this.calendarDays.push(new CalendarDay(d, run));
+      this.calendarDays.push(new CalendarDay(d, this.getRunsForDate(d, runs)));
     });
     this.logger.log('Created calendar days: ' + this.calendarDays.length);
   }
 
-  getRunForDate(day: Date, runs: Run[]): Run {
-    let retVal: Run = null;
+  getRunsForDate(day: Date, runs: Run[]): Run[] {
+    const retVal: Run[] = [];
     runs.forEach(r => {
       if (CalendarViewComponent.isSameDate(r.date, day)) {
-        retVal = r;
+        retVal.push(r);
       }
     });
     return retVal;
@@ -218,7 +210,7 @@ export class CalendarViewComponent implements OnInit {
   countActivitiesForCurrentMonth(): number {
     let retVal = 0;
     this.calendarDays.forEach(d => {
-      if (d.run) {
+      if (d.runs) {
         retVal++;
       }
     });
@@ -226,15 +218,10 @@ export class CalendarViewComponent implements OnInit {
   }
 
   getDistanceForCurrentMonth(): number {
-    let retVal = 0;
     this.logger.log(' currentDateMonth=' + this.currentDate.getMonth());
-
-    this.calendarDays.forEach(d => {
-      if (d.run && d.day.getMonth() === this.currentDate.getMonth()) {
-        retVal += d.run.distance;
-      }
-    });
-    return retVal;
+    return this.calendarDays.filter((d: CalendarDay) => d.runs && d.day.getMonth() === this.currentDate.getMonth())
+      .flatMap(day => day.runs)
+      .reduce((sum: number, run: Run) => sum + run.distance, 0);
   }
 
   getTimeForCurrentMonth(): string {
