@@ -28,7 +28,15 @@ export class ShoesListComponent implements OnInit {
       if (!results) {
         return;
       }
-      this.shoes = results.filter(shoe => shoe.active);
+      this.shoes = results.sort(
+        (a, b) => {
+          if (b.active !== a.active) {
+            return b.active ? 1 : -1;
+          } else {
+            return b.mileage > a.mileage ? 1 : -1;
+          }
+        }
+      );
       this.preferredShoes = results.find(shoe => shoe.preferred === true);
     });
   }
@@ -47,20 +55,28 @@ export class ShoesListComponent implements OnInit {
   setPreferredShoes(event) {
     this.logger.log('Preferred Shoes: ' + event.value.name);
     this.preferredShoes = event.value;
+    event.value.active = true;
     this.shoes.forEach(shoes => this.updateShoes(shoes));
   }
 
-  retireShoes(shoes: Shoes) {
+  activateShoes(shoes: Shoes) {
+    this.toggleShoeState(shoes, 'Do you really want to activate these shoes?', true);
+  }
+
+  private toggleShoeState(shoes: Shoes, message: string, active: boolean) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '200px',
-      data: 'Do you really want to retire these shoes?'
+      data: message
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.logger.log('Retiring shoes: ' + shoes.name);
-        shoes.active = false;
+        shoes.active = active;
         this.shoesService.update(shoes);
       }
     });
+  }
+
+  retireShoes(shoes: Shoes) {
+   this.toggleShoeState(shoes, 'Do you really want to retire these shoes?', false);
   }
 }

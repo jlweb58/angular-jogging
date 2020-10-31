@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "angular-jogging"
+  "defaultProject": "angular-jogging",
+  "cli": {
+    "analytics": "e412e7d0-8bc3-4ac5-915d-baca7f463fca"
+  }
 }
