@@ -10,6 +10,8 @@ import {UserService} from './services/user.service';
 import {authInterceptorProviders} from './interceptors/auth.interceptor';
 import {errorInterceptorProviders} from './interceptors/error.interceptor';
 import {HttpClientModule} from '@angular/common/http';
+import {FileUploadService} from './services/file-upload.service';
+import {GpxTrackService} from './services/gpx-track.service';
 
 
 
@@ -26,6 +28,8 @@ import {HttpClientModule} from '@angular/common/http';
     ShoesService,
     TokenStorageService,
     UserService,
+    FileUploadService,
+    GpxTrackService,
     authInterceptorProviders,
     errorInterceptorProviders,
   ],

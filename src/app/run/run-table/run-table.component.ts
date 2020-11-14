@@ -7,6 +7,7 @@ import {MatSort} from '@angular/material/sort';
 import {RunDialogComponent} from '../run-dialog/run-dialog.component';
 import {LoggerService} from '../../core/services/logger.service';
 import {MatDialog} from '@angular/material/dialog';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-run-table',
@@ -25,6 +26,7 @@ export class RunTableComponent implements OnInit {
     private runService: RunService,
     private logger: LoggerService,
     private dialog: MatDialog,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -45,10 +47,13 @@ export class RunTableComponent implements OnInit {
 
   onRowClicked(row) {
     this.run = row;
-    this.logger.log('Clicked ' + this.run.id + ' ' + this.run.date);
+    this.router.navigate(['/run'], {state: {run: this.run}});
+/*
+
     const dialogRef = this.dialog.open(RunDialogComponent);
     dialogRef.componentInstance.run = this.run;
     dialogRef.componentInstance.isEdit = true;
+*/
    }
 
 }

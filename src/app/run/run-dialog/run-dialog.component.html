@@ -39,6 +39,9 @@
         <mat-option *ngFor="let shoe of shoes" [value]="shoe.id">{{shoe.name}} ({{shoe.mileage | number: '1.0-2'}} km)</mat-option>
       </mat-select>
     </mat-form-field>
+    <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="fileInputChange($event)" />
+    <button mat-flat-button color="primary" (click)="csvInput.click()">Choose GPX Track</button>
+
   </form>
 
 </mat-dialog-content>

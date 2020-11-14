@@ -27,7 +27,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     SharedModule,
     ShoesModule,
     UserModule,
-    MaterialModule
+    MaterialModule,
   ],
   exports: [
   ],

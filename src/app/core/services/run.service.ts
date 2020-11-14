@@ -27,7 +27,6 @@ export class RunService {
   public loadAll() {
     this.http.get<Run[]>(this.serviceUrl).subscribe(
       data => {
-        this.logger.log('data = ' + data);
         this.dataStore.runs = data;
         this._runs.next(Object.assign({}, this.dataStore).runs);
       },

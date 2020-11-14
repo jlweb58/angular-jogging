@@ -5,6 +5,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {RunService} from '../../core/services/run.service';
 import {ShoesService} from '../../core/services/shoes.service';
 import {Shoes} from '../../core/models/shoes.model';
+import {FileUploadService} from '../../core/services/file-upload.service';
 
 @Component({
   templateUrl: './run-dialog.component.html',
@@ -13,6 +14,7 @@ import {Shoes} from '../../core/models/shoes.model';
 export class RunDialogComponent implements OnInit {
 
   run: Run;
+  gpxTrack;
   @Output() displayChange = new EventEmitter();
   public isEdit: boolean;
   shoes: Shoes[];
@@ -21,6 +23,7 @@ export class RunDialogComponent implements OnInit {
   constructor(private logger: LoggerService,
               private runService: RunService,
               private shoesService: ShoesService,
+              private fileUploadService: FileUploadService,
               private dialogRef: MatDialogRef<RunDialogComponent> ) {
     if (!this.run) {
       this.run = new Run();
@@ -41,8 +44,14 @@ export class RunDialogComponent implements OnInit {
         this.selectedShoe = this.shoes.find(shoe => shoe.preferred);
       }
     });
-    this.logger.log('init run dialog');
   }
+
+  async fileInputChange(fileInputEvent: any) {
+    if (this.run != null) {
+      this.gpxTrack = await this.fileUploadService.uploadFileToText(fileInputEvent.target.files[0]);
+    }
+  }
+
 
   createRun(event) {
     const runDate: Date = new Date(this.run.date);

@@ -13,6 +13,7 @@
 tr.mat-row  {
   background: #f0f3f5;
   height: 24px !important;
+  cursor: pointer;
 }
 
  .mat-row:nth-child(even) {
