@@ -31,29 +31,38 @@ export class MapViewComponent implements OnInit {
 
   ngOnInit(): void {
     const gpxTrackElements: GpxTrackElement[] = this.gpxTrack.trackElements;
-    const path = gpxTrackElements.map(gpx => ({ lat: gpx.latitude, lng: gpx.longitude}));
-    this.polylineOptions.path = path;
-/*
-    this.polylineOptions.path = [
-      { lat: 48.101343, lng: 11.670856 },
-      { lng: 11.66917, lat: 48.101488 },
-      { lng: 11.669025, lat: 48.101515 },
-      { lng: 11.668924, lat: 48.101527 },
-      { lng: 11.668819, lat: 48.101541 },
-      { lng: 11.668644, lat: 48.101569 },
-      { lng: 11.668574, lat: 48.101585 },
-      { lng: 11.665126, lat: 48.102306 },
-    ];
-*/
+    this.polylineOptions.path = gpxTrackElements.map(gpx => ({lat: gpx.latitude, lng: gpx.longitude}));
+    /*
+        this.polylineOptions.path = [
+          { lat: 48.101343, lng: 11.670856 },
+          { lng: 11.66917, lat: 48.101488 },
+          { lng: 11.669025, lat: 48.101515 },
+          { lng: 11.668924, lat: 48.101527 },
+          { lng: 11.668819, lat: 48.101541 },
+          { lng: 11.668644, lat: 48.101569 },
+          { lng: 11.668574, lat: 48.101585 },
+          { lng: 11.665126, lat: 48.102306 },
+        ];
+    */
 
-    this.logger.log('Map View ' + this.gpxTrack);
+    const centerLat = this.getAverageForField(this.polylineOptions.path, 'lat');
+    const centerLong = this.getAverageForField(this.polylineOptions.path, 'lng');
 
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.center = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      };
-    });
+    this.center = {
+      lat: centerLat,
+      lng: centerLong
+    };
   }
+  
+  getAverageForField(arr, key): number {
+      let sum = 0;
+      let count = 0;
+      arr.forEach(e => {
+        count++;
+        sum += e[key];
+      });
+      return sum / count;
+
+    }
 
 }
