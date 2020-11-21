@@ -1,6 +1,21 @@
-<p>run-view works!</p>
+<div class="run-view-title">
+  {{run.course}}
+</div>
+<div id="run-infos">
+  <div class="run-view-info">
+    {{run.date}}
+  </div>
+  <div class="run-view-info">
+    {{run.distance}}km
+  </div>
+  <div class="run-view-info">
+    {{run.runDuration.time}}
+  </div>
+  <div class ="run-view-info">
+    <button mat-raised-button color="primary" (click)="editRun()">Edit Run</button>
 
-
+  </div>
+</div>
 
 <ng-container *ngIf="gpxTrack">
   <app-map-view [gpxTrack]="gpxTrack"></app-map-view>

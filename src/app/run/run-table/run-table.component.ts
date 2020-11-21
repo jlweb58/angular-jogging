@@ -4,9 +4,7 @@ import {Run} from '../../core/models/run.model';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {RunDialogComponent} from '../run-dialog/run-dialog.component';
 import {LoggerService} from '../../core/services/logger.service';
-import {MatDialog} from '@angular/material/dialog';
 import {Router} from '@angular/router';
 
 @Component({
@@ -25,7 +23,6 @@ export class RunTableComponent implements OnInit {
   constructor(
     private runService: RunService,
     private logger: LoggerService,
-    private dialog: MatDialog,
     private router: Router,
   ) { }
 
@@ -48,12 +45,6 @@ export class RunTableComponent implements OnInit {
   onRowClicked(row) {
     this.run = row;
     this.router.navigate(['/run'], {state: {run: this.run}});
-/*
-
-    const dialogRef = this.dialog.open(RunDialogComponent);
-    dialogRef.componentInstance.run = this.run;
-    dialogRef.componentInstance.isEdit = true;
-*/
    }
 
 }

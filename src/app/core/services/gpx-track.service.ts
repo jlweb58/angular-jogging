@@ -23,4 +23,8 @@ export class GpxTrackService {
     return this.http.get<GpxTrack>(`${this.serviceUrl}/${run.id}`);
   }
 
+  public saveGpxTrack(run: Run, gpxData: string): Observable<GpxTrack> {
+    return this.http.post<GpxTrack>(`${this.serviceUrl}/${run.id}`, gpxData);
+  }
+
 }

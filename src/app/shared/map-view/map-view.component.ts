@@ -9,14 +9,14 @@ import {GpxTrackElement} from '../../core/models/gpx-track-element.model';
   styleUrls: ['./map-view.component.css']
 })
 export class MapViewComponent implements OnInit {
-  zoom = 15;
+  zoom = 14;
   center: google.maps.LatLngLiteral;
   @Input() gpxTrack: GpxTrack;
 
   options: google.maps.MapOptions = {
     mapTypeId: 'roadmap',
     zoomControl: true,
-    scrollwheel: false,
+    scrollwheel: true,
     disableDoubleClickZoom: true,
     maxZoom: 20,
     minZoom: 8,
@@ -32,19 +32,6 @@ export class MapViewComponent implements OnInit {
   ngOnInit(): void {
     const gpxTrackElements: GpxTrackElement[] = this.gpxTrack.trackElements;
     this.polylineOptions.path = gpxTrackElements.map(gpx => ({lat: gpx.latitude, lng: gpx.longitude}));
-    /*
-        this.polylineOptions.path = [
-          { lat: 48.101343, lng: 11.670856 },
-          { lng: 11.66917, lat: 48.101488 },
-          { lng: 11.669025, lat: 48.101515 },
-          { lng: 11.668924, lat: 48.101527 },
-          { lng: 11.668819, lat: 48.101541 },
-          { lng: 11.668644, lat: 48.101569 },
-          { lng: 11.668574, lat: 48.101585 },
-          { lng: 11.665126, lat: 48.102306 },
-        ];
-    */
-
     const centerLat = this.getAverageForField(this.polylineOptions.path, 'lat');
     const centerLong = this.getAverageForField(this.polylineOptions.path, 'lng');
 
@@ -53,7 +40,7 @@ export class MapViewComponent implements OnInit {
       lng: centerLong
     };
   }
-  
+
   getAverageForField(arr, key): number {
       let sum = 0;
       let count = 0;

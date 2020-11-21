@@ -14,6 +14,14 @@ export class RunService {
   private _runs = new BehaviorSubject<Run[]>([]);
   private dataStore: { runs: Run[] } = { runs: [] }; // store our data in memory
 
+  private static isBetweenDates(startDate: Date, endDate: Date, run: Run) {
+    const runDate: Date = new Date(run.date + 'T00:00:00Z');
+    const after = runDate.getTime() >= startDate.getTime();
+    const before = runDate.getTime() <= endDate.getTime();
+    return after && before;
+  }
+
+
   constructor(
     private http: HttpClient,
     private logger: LoggerService,
@@ -39,6 +47,7 @@ export class RunService {
       .post<Run>(this.serviceUrl, run )
       .subscribe(
         data => {
+          run.id = data.id;
           this.dataStore.runs.push(data);
           this._runs.next(Object.assign({}, this.dataStore).runs);
           // Key for getting the table to update automatically
@@ -67,13 +76,6 @@ export class RunService {
       );
   }
 
-  private isBetweenDates(startDate: Date, endDate: Date, run: Run) {
-    const runDate: Date = new Date(run.date + 'T00:00:00Z');
-    const after = runDate.getTime() >= startDate.getTime();
-    const before = runDate.getTime() <= endDate.getTime();
-    return after && before;
-  }
-
   public getRunsForDateRange(startDate: Date, endDate: Date): Run[] {
     let runs;
     this.getRuns().subscribe(results => {
@@ -82,7 +84,7 @@ export class RunService {
       }
       runs = results;
     });
-    return runs.filter(run => this.isBetweenDates(startDate, endDate, run));
+    return runs.filter(run => RunService.isBetweenDates(startDate, endDate, run));
   }
 
 }

@@ -26,11 +26,11 @@ It runs together with the jogging3 project as a Java/SpringBoot backend
 - Get some more unit tests
 - Implement a chart showing average pulse rate over time
 - Investigate the possibility of importing gpx tracks from Strava
-- If gpx tracks can be imported, implement a map view
+- (DONE) If gpx tracks can be imported, implement a map view
 - Come up with a replacement for Chart This
 - Implement Find Runs (same as monthly/yearly chart, but with course parameter)
 - Dockerize the application(s) (probably no need/benefit, if done only backend)
-
+- Use local storage so we don't have to keep reloading the runs
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

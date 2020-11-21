@@ -4,6 +4,8 @@ import {LoggerService} from '../../core/services/logger.service';
 import {RunService} from '../../core/services/run.service';
 import {GpxTrack} from '../../core/models/gpx-track.model';
 import {GpxTrackService} from '../../core/services/gpx-track.service';
+import {RunDialogComponent} from '../run-dialog/run-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-run-view',
@@ -18,7 +20,8 @@ export class RunViewComponent implements OnInit {
 
   constructor(private logger: LoggerService,
               private runService: RunService,
-              private gpxTrackService: GpxTrackService) {
+              private gpxTrackService: GpxTrackService,
+              private dialog: MatDialog) {
   }
 
 
@@ -27,12 +30,14 @@ export class RunViewComponent implements OnInit {
     this.run = history.state.run;
     this.gpxTrackService.getGpxTrack(this.run).subscribe( data => {
       this.gpxTrack = data;
-      this.logger.log('Got GPX track, ' + this.gpxTrack);
       }
     );
-    this.logger.log('Our run is ' + this.run.course);
-    this.logger.log('GPX Track: ' + this.gpxTrack !== null);
-    this.logger.log('GPX Track elements: ' + this.gpxTrack.gpxTrackElements.length);
+  }
+
+  editRun(): void {
+    const dialogRef = this.dialog.open(RunDialogComponent);
+    dialogRef.componentInstance.run = this.run;
+    dialogRef.componentInstance.isEdit = true;
   }
 
 }

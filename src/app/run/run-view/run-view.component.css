@@ -1,0 +1,19 @@
+.run-view-title {
+  font-size: x-large;
+  font-weight: bold;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+
+}
+
+.run-view-info {
+  font-size: larger;
+  font-weight: normal;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  margin-bottom: 50px;
+  float: left;
+  width: 15%;
+}
