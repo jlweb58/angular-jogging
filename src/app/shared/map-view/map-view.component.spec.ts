@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { MapViewComponent } from './map-view.component';
+import {MapViewComponent} from './map-view.component';
 
 describe('MapViewComponent', () => {
   let component: MapViewComponent;
@@ -16,6 +16,9 @@ describe('MapViewComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MapViewComponent);
     component = fixture.componentInstance;
+    component.gpxTrack =  {
+      trackElements: []
+    };
     fixture.detectChanges();
   });
 

@@ -12,6 +12,7 @@ import {errorInterceptorProviders} from './interceptors/error.interceptor';
 import {HttpClientModule} from '@angular/common/http';
 import {FileUploadService} from './services/file-upload.service';
 import {GpxTrackService} from './services/gpx-track.service';
+import {StorageService} from './services/storage.service';
 
 
 
@@ -30,6 +31,7 @@ import {GpxTrackService} from './services/gpx-track.service';
     UserService,
     FileUploadService,
     GpxTrackService,
+    StorageService,
     authInterceptorProviders,
     errorInterceptorProviders,
   ],
