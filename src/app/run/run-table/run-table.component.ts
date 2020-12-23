@@ -29,12 +29,13 @@ export class RunTableComponent implements OnInit {
   ngOnInit(): void {
     this.runService.loadAll();
     this.runService.getRuns().subscribe(results => {
-      if (!results) { return; }
+      if (!results) {
+        return;
+      }
       this.dataSource.data = results;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.logger.log('Loaded runs');
-
     });
   }
 

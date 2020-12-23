@@ -7,6 +7,7 @@ import {ShoesService} from '../../core/services/shoes.service';
 import {Shoes} from '../../core/models/shoes.model';
 import {FileUploadService} from '../../core/services/file-upload.service';
 import {GpxTrackService} from '../../core/services/gpx-track.service';
+import {Observable} from 'rxjs';
 
 @Component({
   templateUrl: './run-dialog.component.html',
@@ -56,6 +57,7 @@ export class RunDialogComponent implements OnInit {
 
 
   createRun(event) {
+    this.logger.log('Starting create run');
     const runDate: Date = new Date(this.run.date);
     if (this.selectedShoe.id) {
       this.run.shoes = this.selectedShoe;
@@ -68,11 +70,14 @@ export class RunDialogComponent implements OnInit {
     if (this.isEdit) {
       this.runService.update(this.run);
     } else {
-      this.runService.create(this.run);
-    }
-    if (this.gpxTrack != null) {
-      this.gpxTrackService.saveGpxTrack(this.run, this.gpxTrack).subscribe( data => {
-        this.logger.log('saved gpx track');
+      const runObservable: Observable<Run> = this.runService.create(this.run);
+      runObservable.subscribe( data => {
+        if (this.gpxTrack != null) {
+          this.gpxTrackService.saveGpxTrack(data, this.gpxTrack).subscribe( track => {
+            this.logger.log('saved gpx track');
+          });
+        }
+
       });
     }
     this.run = new Run();
