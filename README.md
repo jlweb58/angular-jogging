@@ -23,6 +23,7 @@ It runs together with the jogging3 project as a Java/SpringBoot backend
 - (DONE) Transfer bar charts to Plotly
 - (DONE) Calendar view could use some optical improvements
 - (DONE) Show/manage retired shoes
+- Lots of cleanup in the run/map view component
 - Get some more unit tests
 - Implement a chart showing average pulse rate over time
 - Investigate the possibility of importing gpx tracks from Strava
@@ -30,7 +31,7 @@ It runs together with the jogging3 project as a Java/SpringBoot backend
 - Come up with a replacement for Chart This
 - Implement Find Runs (same as monthly/yearly chart, but with course parameter)
 - Dockerize the application(s) (probably no need/benefit, if done only backend)
-- Use local storage so we don't have to keep reloading the runs
+- Use local storage so we don't have to keep reloading the runs (started)
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

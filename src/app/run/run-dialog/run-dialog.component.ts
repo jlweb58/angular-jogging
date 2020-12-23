@@ -57,7 +57,6 @@ export class RunDialogComponent implements OnInit {
 
 
   createRun(event) {
-    this.logger.log('Starting create run');
     const runDate: Date = new Date(this.run.date);
     if (this.selectedShoe.id) {
       this.run.shoes = this.selectedShoe;
@@ -68,6 +67,12 @@ export class RunDialogComponent implements OnInit {
       this.run.runDuration.time = this.correctDurationFormat(this.run.runDuration.time);
     }
     if (this.isEdit) {
+      if (this.gpxTrack != null) {
+        this.gpxTrackService.saveGpxTrack(this.run, this.gpxTrack).subscribe( track => {
+          this.logger.log('saved gpx track');
+        });
+      }
+
       this.runService.update(this.run);
     } else {
       const runObservable: Observable<Run> = this.runService.create(this.run);

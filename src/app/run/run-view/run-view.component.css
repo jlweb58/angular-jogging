@@ -1,8 +1,8 @@
 .run-view-title {
-  font-size: x-large;
+  font-size: xx-large;
   font-weight: bold;
   padding-left: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
   padding-top: 20px;
 
 }
@@ -10,10 +10,33 @@
 .run-view-info {
   font-size: larger;
   font-weight: normal;
-  padding-left: 20px;
+  padding-left: 3px;
   padding-bottom: 20px;
   padding-top: 20px;
   margin-bottom: 50px;
-  float: left;
   width: 15%;
+  float: inline-start;
+}
+
+.run-view-info-group {
+  float: left;
+  margin-right: 30px;
+  margin-left: 20px;
+}
+
+.run-view-info-label {
+  font-size: smaller;
+  font-style: italic;
+  color: darkgrey;
+}
+
+.run-view-divider {
+  clear: both;
+  margin-bottom: 40px;
+}
+
+.run-view-button {
+  float: right;
+  padding-top: 10px;
+  padding-right: 100px;
 }

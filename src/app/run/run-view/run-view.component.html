@@ -1,22 +1,37 @@
 <div class="run-view-title">
   {{run.course}}
 </div>
+
 <div id="run-infos">
-  <div class="run-view-info">
-    {{run.date}}
+  <div class="run-view-info-group">
+    <div class="run-view-info-label">Date</div>
+    <div id="date" class="run-view-info">
+      {{run.date}}
+    </div>
   </div>
-  <div class="run-view-info">
-    {{run.distance}}km
+  <div class="run-view-info-group">
+    <div class="run-view-info-label">Distance</div>
+    <div id="distance" class="run-view-info">
+      {{run.distance}}km
+    </div>
   </div>
-  <div class="run-view-info">
-    {{run.runDuration.time}}
+  <div class="run-view-info-group">
+    <div class="run-view-info-label">Time</div>
+    <div id="time" class="run-view-info">
+      {{run.runDuration.time}}
+    </div>
   </div>
-  <div class ="run-view-info">
-    <button mat-raised-button color="primary" (click)="editRun()">Edit Run</button>
-
+  <div class="run-view-info-group">
+    <div class="run-view-info-label">Avg. Heart Rate</div>
+    <div id="avgHeartRate" class="run-view-info">
+      {{run.avgHeartRate}}
+    </div>
   </div>
+    <div class ="run-view-button">
+      <button mat-raised-button color="primary" (click)="editRun()">Edit Run</button>
+    </div>
 </div>
-
+<div class="run-view-divider"></div>
 <ng-container *ngIf="gpxTrack">
   <app-map-view [gpxTrack]="gpxTrack"></app-map-view>
 

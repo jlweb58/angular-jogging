@@ -59,13 +59,13 @@ export class RunService {
         this.dataStore.runs.push(data);
         this.storageService.putRun(data);
         this._runs.next(Object.assign({}, this.dataStore).runs);
+        // This refreshes the table view - shouldn't be necessary!
         this.loadAll();
       },
       error => {
         this.logger.log('Could not create run.');
       }
     );
-
 
     return replaySubject.asObservable();
   }
