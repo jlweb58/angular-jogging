@@ -3,8 +3,7 @@ import {LoggerService} from '../core/services/logger.service';
 import {CalendarDay} from '../core/models/calendar.day';
 import {RunService} from '../core/services/run.service';
 import {Run} from '../core/models/run.model';
-import {RunDialogComponent} from '../run/run-dialog/run-dialog.component';
-import {MatDialog} from '@angular/material/dialog';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-calendar-view',
@@ -15,7 +14,7 @@ export class CalendarViewComponent implements OnInit {
 
   constructor(private logger: LoggerService,
               private runService: RunService,
-              private dialog: MatDialog,
+              private router: Router,
   ) { }
 
   currentMonth: string;
@@ -112,12 +111,13 @@ export class CalendarViewComponent implements OnInit {
       if (!results) {
         return;
       }
+      this.currentDate = new Date();
+      this.currentMonth = this.currentDate.toLocaleString('default', { month: 'long' });
+      this.currentYear = this.currentDate.getFullYear();
+      const daysInCurrentView: Date[] = CalendarViewComponent.fillDateArray(this.currentDate);
+      this.fillCalendarDays(daysInCurrentView);
     });
-    this.currentDate = new Date();
-    this.currentMonth = this.currentDate.toLocaleString('default', { month: 'long' });
-    this.currentYear = this.currentDate.getFullYear();
-    const daysInCurrentView: Date[] = CalendarViewComponent.fillDateArray(this.currentDate);
-    this.fillCalendarDays(daysInCurrentView);
+
   }
 
   prevMonth(): void {
@@ -187,7 +187,6 @@ export class CalendarViewComponent implements OnInit {
     daysInCurrentView.forEach(d => {
       this.calendarDays.push(new CalendarDay(d, this.getRunsForDate(d, runs)));
     });
-    this.logger.log('Created calendar days: ' + this.calendarDays.length);
   }
 
   getRunsForDate(day: Date, runs: Run[]): Run[] {
@@ -218,7 +217,6 @@ export class CalendarViewComponent implements OnInit {
   }
 
   getDistanceForCurrentMonth(): number {
-    this.logger.log(' currentDateMonth=' + this.currentDate.getMonth());
     return this.calendarDays.filter((d: CalendarDay) => d.runs && d.day.getMonth() === this.currentDate.getMonth())
       .flatMap(day => day.runs)
       .reduce((sum: number, run: Run) => sum + run.distance, 0);
@@ -229,9 +227,7 @@ export class CalendarViewComponent implements OnInit {
   }
 
   showActivity(run: Run): void {
-    const dialogRef = this.dialog.open(RunDialogComponent);
-    dialogRef.componentInstance.run = run;
-    dialogRef.componentInstance.isEdit = true;
+    this.router.navigate(['/run'], {state: {run: run}});
    }
 
 }

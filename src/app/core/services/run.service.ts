@@ -14,7 +14,7 @@ export class RunService {
   // tslint:disable-next-line:variable-name
   private _runs = new BehaviorSubject<Run[]>([]);
   private dataStore: { runs: Run[] } = { runs: [] }; // store our data in memory
-  private isReady = false;
+  private shouldReload = true;
 
   private static isBetweenDates(startDate: Date, endDate: Date, run: Run) {
     const runDate: Date = new Date(run.date + 'T00:00:00Z');
@@ -36,11 +36,14 @@ export class RunService {
   }
 
   public loadAll() {
+    if (!this.shouldReload) { return; }
     this.http.get<Run[]>(this.serviceUrl).subscribe(
       data => {
         this.dataStore.runs = data;
         this._runs.next(Object.assign({}, this.dataStore).runs);
         this.storageService.putRuns(data);
+        this.logger.log('Loaded runs');
+        this.shouldReload = false;
       },
       error => this.logger.log('Could not load runs.')
     );
@@ -59,6 +62,7 @@ export class RunService {
         this.dataStore.runs.push(data);
         this.storageService.putRun(data);
         this._runs.next(Object.assign({}, this.dataStore).runs);
+        this.shouldReload = true;
         // This refreshes the table view - shouldn't be necessary!
         this.loadAll();
       },
@@ -83,6 +87,7 @@ export class RunService {
           });
 
           this._runs.next(Object.assign({}, this.dataStore).runs);
+          this.shouldReload = true;
         },
         error => this.logger.log('Could not update run.')
       );
