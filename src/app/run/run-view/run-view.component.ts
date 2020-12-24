@@ -38,6 +38,10 @@ export class RunViewComponent implements OnInit {
     const dialogRef = this.dialog.open(RunDialogComponent);
     dialogRef.componentInstance.run = this.run;
     dialogRef.componentInstance.isEdit = true;
+    dialogRef.afterClosed().subscribe(result => {
+      this.logger.log('The dialog was closed');
+      this.ngOnInit();
+    });
   }
 
 }
