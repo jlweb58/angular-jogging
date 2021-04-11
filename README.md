@@ -23,7 +23,7 @@ It runs together with the jogging3 project as a Java/SpringBoot backend
 - (DONE) Transfer bar charts to Plotly
 - (DONE) Calendar view could use some optical improvements
 - (DONE) Show/manage retired shoes
-- After new run go to run view
+- (DONE) After new run go to run view
 - Lots of cleanup in the run/map view component
 - Get some more unit tests
 - Implement a chart showing average pulse rate over time

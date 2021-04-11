@@ -5,7 +5,7 @@ import {RunService} from '../../core/services/run.service';
 import {GpxTrack} from '../../core/models/gpx-track.model';
 import {GpxTrackService} from '../../core/services/gpx-track.service';
 import {RunDialogComponent} from '../run-dialog/run-dialog.component';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-run-view',
@@ -26,7 +26,9 @@ export class RunViewComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.run = history.state.run;
+    if (!this.run) {
+      this.run = history.state.run;
+    }
     this.gpxTrackService.getGpxTrack(this.run).subscribe( data => {
       this.gpxTrack = data;
       }
@@ -34,10 +36,12 @@ export class RunViewComponent implements OnInit {
   }
 
   editRun(): void {
-    const dialogRef = this.dialog.open(RunDialogComponent);
-    dialogRef.componentInstance.run = this.run;
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = Run.clone(this.run);
+    const dialogRef = this.dialog.open(RunDialogComponent, dialogConfig);
     dialogRef.componentInstance.isEdit = true;
     dialogRef.afterClosed().subscribe(result => {
+      this.run = dialogRef.componentInstance.run;
       this.ngOnInit();
     });
   }

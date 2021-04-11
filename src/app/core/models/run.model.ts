@@ -26,4 +26,19 @@ export class Run {
     run.distance = distance;
     return run;
   }
+
+  public static clone(runToClone: Run): Run {
+    const run: Run = new Run();
+    run.date = runToClone.date;
+    run.distance = runToClone.distance;
+    run.id = runToClone.id;
+    run.avgHeartRate = runToClone.avgHeartRate;
+    run.runDuration = runToClone.runDuration;
+    run.course = runToClone.course;
+    run.comments = runToClone.comments;
+    run.shoes = runToClone.shoes;
+    run.weather = runToClone.weather;
+    return run;
+  }
+
 }

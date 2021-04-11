@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
 import {Run} from '../../core/models/run.model';
 import {LoggerService} from '../../core/services/logger.service';
 import {RunService} from '../../core/services/run.service';
@@ -8,6 +8,7 @@ import {FileUploadService} from '../../core/services/file-upload.service';
 import {GpxTrackService} from '../../core/services/gpx-track.service';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   templateUrl: './run-dialog.component.html',
@@ -16,6 +17,7 @@ import {Router} from '@angular/router';
 export class RunDialogComponent implements OnInit {
 
   run: Run;
+  cachedRun: Run;
   gpxTrack;
   @Output() displayChange = new EventEmitter();
   public isEdit: boolean;
@@ -27,10 +29,14 @@ export class RunDialogComponent implements OnInit {
               private shoesService: ShoesService,
               private gpxTrackService: GpxTrackService,
               private fileUploadService: FileUploadService,
-              private router: Router) {
-    if (!this.run) {
+              private router: Router,
+              @Inject(MAT_DIALOG_DATA) data) {
+    if (!data) {
       this.run = new Run();
       this.isEdit = false;
+    } else {
+      this.run = data;
+      this.cachedRun = Run.clone(this.run);
     }
   }
 
@@ -53,6 +59,10 @@ export class RunDialogComponent implements OnInit {
     if (this.run != null) {
       this.gpxTrack = await this.fileUploadService.uploadFileToText(fileInputEvent.target.files[0]);
     }
+  }
+
+  cancel() {
+    this.run = this.cachedRun;
   }
 
 
