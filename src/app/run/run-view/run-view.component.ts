@@ -15,7 +15,6 @@ import {MatDialog} from '@angular/material/dialog';
 export class RunViewComponent implements OnInit {
 
   run: Run;
-
   gpxTrack: GpxTrack;
 
   constructor(private logger: LoggerService,
@@ -39,7 +38,6 @@ export class RunViewComponent implements OnInit {
     dialogRef.componentInstance.run = this.run;
     dialogRef.componentInstance.isEdit = true;
     dialogRef.afterClosed().subscribe(result => {
-      this.logger.log('The dialog was closed');
       this.ngOnInit();
     });
   }

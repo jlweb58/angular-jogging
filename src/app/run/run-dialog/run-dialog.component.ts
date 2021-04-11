@@ -1,13 +1,13 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Run} from '../../core/models/run.model';
 import {LoggerService} from '../../core/services/logger.service';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {RunService} from '../../core/services/run.service';
 import {ShoesService} from '../../core/services/shoes.service';
 import {Shoes} from '../../core/models/shoes.model';
 import {FileUploadService} from '../../core/services/file-upload.service';
 import {GpxTrackService} from '../../core/services/gpx-track.service';
 import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   templateUrl: './run-dialog.component.html',
@@ -27,7 +27,7 @@ export class RunDialogComponent implements OnInit {
               private shoesService: ShoesService,
               private gpxTrackService: GpxTrackService,
               private fileUploadService: FileUploadService,
-              private dialogRef: MatDialogRef<RunDialogComponent> ) {
+              private router: Router) {
     if (!this.run) {
       this.run = new Run();
       this.isEdit = false;
@@ -80,12 +80,12 @@ export class RunDialogComponent implements OnInit {
         if (this.gpxTrack != null) {
           this.gpxTrackService.saveGpxTrack(data, this.gpxTrack).subscribe( track => {
             this.logger.log('saved gpx track');
+            this.router.navigate(['/run'], {state: {run: this.run}});
           });
         }
 
       });
     }
-    this.run = new Run();
   }
 
   correctDurationFormat(durationString: string): string {
