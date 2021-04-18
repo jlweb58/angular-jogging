@@ -31,7 +31,7 @@ It runs together with the jogging3 project as a Java/SpringBoot backend
 - (DONE) If gpx tracks can be imported, implement a map view
 - Come up with a replacement for Chart This
 - Implement Find Runs (same as monthly/yearly chart, but with course parameter)
-- Dockerize the application(s) (probably no need/benefit, if done only backend)
+- (DONE) Dockerize the application(s) (probably no need/benefit, if done only backend)
 - Use local storage so we don't have to keep reloading the runs (started)
 ## Development server
 
