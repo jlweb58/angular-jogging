@@ -207,13 +207,9 @@ export class CalendarViewComponent implements OnInit {
   }
 
   countActivitiesForCurrentMonth(): number {
-    let retVal = 0;
-    this.calendarDays.forEach(d => {
-      if (d.runs) {
-        retVal++;
-      }
-    });
-    return retVal;
+    return this.calendarDays.filter((d: CalendarDay) => d.runs && d.day.getMonth() === this.currentDate.getMonth())
+      .flatMap(day => day.runs)
+      .length;
   }
 
   getDistanceForCurrentMonth(): number {
@@ -223,7 +219,7 @@ export class CalendarViewComponent implements OnInit {
   }
 
   getTimeForCurrentMonth(): string {
-    return this.getTimeForRow(this.calendarDays);
+    return this.getTimeForRow(this.calendarDays.filter((d: CalendarDay) => d.runs && d.day.getMonth() === this.currentDate.getMonth()));
   }
 
   showActivity(run: Run): void {
