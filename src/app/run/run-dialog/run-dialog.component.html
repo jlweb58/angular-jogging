@@ -12,6 +12,18 @@
     </mat-form-field>
 
     <mat-form-field class="run-dialog-full-width">
+      <mat-label>Activity Type</mat-label>
+      <mat-select [(ngModel)]="run.activityType" name="activityType">
+        <mat-option>--</mat-option>
+        <mat-option [value]="activityTypes.Run">Run</mat-option>
+        <mat-option [value]="activityTypes.Bike">Bike</mat-option>
+        <mat-option [value]="activityTypes.Swim">Swim</mat-option>
+        <mat-option [value]="activityTypes.Hike">Hike</mat-option>
+        <mat-option [value]="activityTypes.Other">Other</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="run-dialog-full-width">
       <mat-label>Course</mat-label>
       <input matInput name="course" [(ngModel)]="run.course">
     </mat-form-field>

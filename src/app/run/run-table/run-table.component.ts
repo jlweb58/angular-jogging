@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
 })
 export class RunTableComponent implements OnInit {
   dataSource = new MatTableDataSource<Run>();
-  displayedColumns = ['date', 'course', 'distance', 'time', 'weather', 'comments', 'avgheartrate', 'shoes'];
+  displayedColumns = ['date', 'activityType', 'course', 'distance', 'time', 'weather', 'comments', 'avgheartrate', 'shoes'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

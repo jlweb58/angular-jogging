@@ -1,4 +1,5 @@
 import {Shoes} from './shoes.model';
+import {ActivityType} from './activity-type.model';
 
 export class Run {
   id: number;
@@ -12,6 +13,7 @@ export class Run {
   comments: string;
   avgHeartRate: number;
   shoes: Shoes;
+  public activityType: ActivityType;
 
   constructor() {
     this.runDuration = {
@@ -38,6 +40,7 @@ export class Run {
     run.comments = runToClone.comments;
     run.shoes = runToClone.shoes;
     run.weather = runToClone.weather;
+    run.activityType = runToClone.activityType;
     return run;
   }
 

@@ -9,6 +9,7 @@ import {GpxTrackService} from '../../core/services/gpx-track.service';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {ActivityType, ActivityTypeType} from '../../core/models/activity-type.model';
 
 @Component({
   templateUrl: './run-dialog.component.html',
@@ -18,11 +19,12 @@ export class RunDialogComponent implements OnInit {
 
   run: Run;
   cachedRun: Run;
-  gpxTrack;
+  gpxTrack: string;
   @Output() displayChange = new EventEmitter();
   public isEdit: boolean;
   shoes: Shoes[];
   selectedShoe: Shoes = new Shoes();
+  activityTypes: ActivityTypeType = ActivityType;
 
   constructor(private logger: LoggerService,
               private runService: RunService,
@@ -57,7 +59,7 @@ export class RunDialogComponent implements OnInit {
 
   async fileInputChange(fileInputEvent: any) {
     if (this.run != null) {
-      this.gpxTrack = await this.fileUploadService.uploadFileToText(fileInputEvent.target.files[0]);
+      this.gpxTrack = await this.fileUploadService.uploadFileToText(fileInputEvent.target.files[0]) as string;
     }
   }
 
@@ -66,7 +68,7 @@ export class RunDialogComponent implements OnInit {
   }
 
 
-  createRun(event) {
+  createRun() {
     const runDate: Date = new Date(this.run.date);
     if (this.selectedShoe.id) {
       this.run.shoes = this.selectedShoe;
@@ -110,4 +112,5 @@ export class RunDialogComponent implements OnInit {
   onClose() {
     this.displayChange.emit(false);
   }
+
 }
