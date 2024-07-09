@@ -1,43 +1,43 @@
-<div class="run-view-title">
+<div class="activity-view-title">
   {{activity.course}}
 </div>
 
-<div id="run-infos">
-  <div class="run-view-info-group">
-    <div class="run-view-info-label">Date</div>
-    <div id="date" class="run-view-info">
+<div id="activity-infos">
+  <div class="activity-view-info-group">
+    <div class="activity-view-info-label">Date</div>
+    <div id="date" class="activity-view-info">
       {{activity.date}}
     </div>
   </div>
-  <div class="run-view-info-group">
-    <div class="run-view-info-label">Activity Type</div>
-    <div id="activity-type" class="run-view-info">
+  <div class="activity-view-info-group">
+    <div class="activity-view-info-label">Activity Type</div>
+    <div id="activity-type" class="activity-view-info">
       {{activity.activityType}}
     </div>
   </div>
-  <div class="run-view-info-group">
-    <div class="run-view-info-label">Distance</div>
-    <div id="distance" class="run-view-info">
+  <div class="activity-view-info-group">
+    <div class="activity-view-info-label">Distance</div>
+    <div id="distance" class="activity-view-info">
       {{activity.distance}}km
     </div>
   </div>
-  <div class="run-view-info-group">
-    <div class="run-view-info-label">Time</div>
-    <div id="time" class="run-view-info">
+  <div class="activity-view-info-group">
+    <div class="activity-view-info-label">Time</div>
+    <div id="time" class="activity-view-info">
       {{activity.activityDuration.time}}
     </div>
   </div>
-  <div class="run-view-info-group">
-    <div class="run-view-info-label">Avg. Heart Rate</div>
-    <div id="avgHeartRate" class="run-view-info">
+  <div class="activity-view-info-group">
+    <div class="activity-view-info-label">Avg. Heart Rate</div>
+    <div id="avgHeartRate" class="activity-view-info">
       {{activity.avgHeartRate}}
     </div>
   </div>
-    <div class ="run-view-button">
+    <div class ="activity-view-button">
       <button mat-raised-button color="primary" (click)="editActivity()">Edit Activity</button>
     </div>
 </div>
-<div class="run-view-divider"></div>
+<div class="activity-view-divider"></div>
 <ng-container *ngIf="gpxTrack">
     <app-map-view [gpxTrack]="gpxTrack"></app-map-view>
 </ng-container>

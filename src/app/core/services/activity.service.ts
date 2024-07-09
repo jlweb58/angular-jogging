@@ -41,11 +41,11 @@ export class ActivityService {
       data => {
         this.dataStore.activity = data;
         this._activities.next(Object.assign({}, this.dataStore).activity);
-        this.storageService.putRuns(data);
+        this.storageService.putActivities(data);
         this.logger.log('Loaded activities');
         this.shouldReload = false;
       },
-      error => this.logger.log('Could not load runs.')
+      error => this.logger.log('Could not load activities.')
     );
   }
 
@@ -60,7 +60,7 @@ export class ActivityService {
       data => {
         activity.id = data.id;
         this.dataStore.activity.push(data);
-        this.storageService.putRun(data);
+        this.storageService.putActivity(data);
         this._activities.next(Object.assign({}, this.dataStore).activity);
         this.shouldReload = true;
         // This refreshes the table view - shouldn't be necessary!
@@ -82,7 +82,7 @@ export class ActivityService {
           this.dataStore.activity.forEach((t, i) => {
             if (t.id === data.id) {
               this.dataStore.activity[i] = data;
-              this.storageService.putRun(data);
+              this.storageService.putActivity(data);
             }
           });
 

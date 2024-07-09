@@ -13,7 +13,7 @@ export class LineChartComponent implements OnInit {
   @Input()
   endDate: Date;
   @Input()
-  runs: Activity[];
+  activities: Activity[];
   public graph =  {
     data: [],
     layout: {
@@ -41,11 +41,11 @@ export class LineChartComponent implements OnInit {
 
   prepareTempoLineChart() {
     const resultMap = new Map();
-    this.runs.forEach(run => {
+    this.activities.forEach(activity => {
 
-      const runDistance: number = run.distance;
-      const runDurationSeconds = this.durationToSeconds(run.activityDuration.time);
-      const avgPace = runDurationSeconds / runDistance;
+      const activityDistance: number = activity.distance;
+      const activityDurationSeconds = this.durationToSeconds(activity.activityDuration.time);
+      const avgPace = activityDurationSeconds / activityDistance;
       const minutes = Math.floor(avgPace / 60);
       const seconds = Math.floor(avgPace % 60);
       let formattedPace = '2020-01-01 00:0' + minutes + ':';
@@ -53,7 +53,7 @@ export class LineChartComponent implements OnInit {
         formattedPace += '0';
       }
       formattedPace += seconds;
-      resultMap.set(run.date, formattedPace);
+      resultMap.set(activity.date, formattedPace);
     });
     const dataPlot = {x: [ ... resultMap.keys()],
       y: [ ... resultMap.values()],

@@ -19,12 +19,12 @@ export class GpxTrackService {
   ) {  }
 
 
-  public getGpxTrack(run: Activity): Observable<GpxTrack> {
-    return this.http.get<GpxTrack>(`${this.serviceUrl}/${run.id}`);
+  public getGpxTrack(activity: Activity): Observable<GpxTrack> {
+    return this.http.get<GpxTrack>(`${this.serviceUrl}/${activity.id}`);
   }
 
-  public saveGpxTrack(run: Activity, gpxData: string): Observable<GpxTrack> {
-    return this.http.post<GpxTrack>(`${this.serviceUrl}/${run.id}`, gpxData);
+  public saveGpxTrack(activity: Activity, gpxData: string): Observable<GpxTrack> {
+    return this.http.post<GpxTrack>(`${this.serviceUrl}/${activity.id}`, gpxData);
   }
 
 }

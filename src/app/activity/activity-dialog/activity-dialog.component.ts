@@ -87,8 +87,8 @@ export class ActivityDialogComponent implements OnInit {
 
       this.activityService.update(this.activity);
     } else {
-      const runObservable: Observable<Activity> = this.activityService.create(this.activity);
-      runObservable.subscribe( data => {
+      const activityObservable: Observable<Activity> = this.activityService.create(this.activity);
+      activityObservable.subscribe( data => {
         if (this.gpxTrack != null) {
           this.gpxTrackService.saveGpxTrack(data, this.gpxTrack).subscribe( track => {
             this.logger.log('saved gpx track');

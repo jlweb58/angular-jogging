@@ -1,4 +1,4 @@
-.run-view-title {
+.activity-view-title {
   font-size: xx-large;
   font-weight: bold;
   padding-left: 20px;
@@ -7,7 +7,7 @@
 
 }
 
-.run-view-info {
+.activity-view-info {
   font-size: larger;
   font-weight: normal;
   padding-left: 3px;
@@ -18,24 +18,24 @@
   float: inline-start;
 }
 
-.run-view-info-group {
+.activity-view-info-group {
   float: left;
   margin-right: 30px;
   margin-left: 20px;
 }
 
-.run-view-info-label {
+.activity-view-info-label {
   font-size: smaller;
   font-style: italic;
   color: darkgrey;
 }
 
-.run-view-divider {
+.activity-view-divider {
   clear: both;
   margin-bottom: 40px;
 }
 
-.run-view-button {
+.activity-view-button {
   float: right;
   padding-top: 10px;
   padding-right: 100px;

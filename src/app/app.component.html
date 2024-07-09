@@ -1,4 +1,4 @@
-<mat-toolbar *ngIf="tokenStorageService.getUser()" color="primary" class="app-run">
+<mat-toolbar *ngIf="tokenStorageService.getUser()" color="primary" class="app-activity">
   <button mat-button routerLink="/home" routerLinkActive="active">
    <mat-icon>home</mat-icon>
     <span>Home</span>
@@ -7,7 +7,7 @@
     <mat-icon>calendar_today</mat-icon>
     <span style="overflow-wrap: break-word">Activity Calendar</span>
   </button>
-  <button mat-button (click)="newRun()">
+  <button mat-button (click)="newActivity()">
     <mat-icon>add_circle</mat-icon>
     <span>New Activity</span>
   </button>

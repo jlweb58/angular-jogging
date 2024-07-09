@@ -8,7 +8,7 @@ import {LoggerService} from '../../core/services/logger.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-run-table',
+  selector: 'app-activity-table',
   templateUrl: './activity-table.component.html',
   styleUrls: ['./activity-table.component.css']
 })

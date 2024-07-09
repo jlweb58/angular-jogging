@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
   constructor(private logger: LoggerService,
               private dialog: MatDialog,
-              private runService: ActivityService,
+              private activityService: ActivityService,
               public tokenStorageService: TokenStorageService) {
   }
 
@@ -49,10 +49,10 @@ export class AppComponent implements OnInit {
   }
 
   showBarChart(startDate: Date, endDate: Date, chartIntervalType: ChartIntervalType) {
-    const runs = this.runService.getActivitiesForDateRange(startDate, endDate);
+    const activities = this.activityService.getActivitiesForDateRange(startDate, endDate);
     const dialogRef = this.dialog.open(BarChartComponent);
     dialogRef.componentInstance.chartIntervalType = chartIntervalType;
-    dialogRef.componentInstance.runs = runs;
+    dialogRef.componentInstance.activities = activities;
     dialogRef.componentInstance.startDate = startDate;
     dialogRef.componentInstance.endDate = endDate;
   }
@@ -67,14 +67,14 @@ export class AppComponent implements OnInit {
   }
 
   showLineChart(startDate: Date, endDate: Date) {
-    const runs = this.runService.getActivitiesForDateRange(startDate, endDate);
+    const activities = this.activityService.getActivitiesForDateRange(startDate, endDate);
     const dialogRef = this.dialog.open(LineChartComponent);
-    dialogRef.componentInstance.runs = runs;
+    dialogRef.componentInstance.activities = activities;
     dialogRef.componentInstance.startDate = startDate;
     dialogRef.componentInstance.endDate = endDate;
   }
 
-  newRun() {
+  newActivity() {
     this.dialog.open(ActivityDialogComponent);
   }
 

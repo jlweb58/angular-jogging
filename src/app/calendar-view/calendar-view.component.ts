@@ -183,9 +183,10 @@ export class CalendarViewComponent implements OnInit {
   fillCalendarDays(daysInCurrentView: Date[]): void {
     this.calendarDays = [];
     const currentDaysLength = daysInCurrentView.length;
-    const runs: Activity[] = this.activityService.getActivitiesForDateRange(daysInCurrentView[0], daysInCurrentView[currentDaysLength - 1]);
+    const activities: Activity[] = this.activityService.getActivitiesForDateRange(daysInCurrentView[0],
+      daysInCurrentView[currentDaysLength - 1]);
     daysInCurrentView.forEach(d => {
-      this.calendarDays.push(new CalendarDay(d, this.getActivitiesForDate(d, runs)));
+      this.calendarDays.push(new CalendarDay(d, this.getActivitiesForDate(d, activities)));
     });
   }
 

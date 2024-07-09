@@ -14,7 +14,7 @@ export class BarChartComponent implements OnInit {
   @Input()
   endDate: Date;
   @Input()
-  runs: Activity[];
+  activities: Activity[];
   @Input()
   chartIntervalType: ChartIntervalType;
 
@@ -64,12 +64,12 @@ export class BarChartComponent implements OnInit {
   prepareMonthlyChart() {
     const resultMap = new Map();
 
-    this.runs.forEach(run =>  {
-      const yearMonth: string = run.date.substr(0, 7);
+    this.activities.forEach(activity =>  {
+      const yearMonth: string = activity.date.substr(0, 7);
       if (resultMap.has(yearMonth)) {
-        resultMap.set(yearMonth, resultMap.get(yearMonth) + run.distance);
+        resultMap.set(yearMonth, resultMap.get(yearMonth) + activity.distance);
       } else {
-        resultMap.set(yearMonth, run.distance);
+        resultMap.set(yearMonth, activity.distance);
       }
     });
     this.pushToGraphData(this.sortMap(resultMap));
@@ -84,12 +84,12 @@ export class BarChartComponent implements OnInit {
 
   prepareYearlyChart() {
     const resultMap = new Map();
-    this.runs.forEach(run =>  {
-      const year: string = run.date.substr(0, 4);
+    this.activities.forEach(activity =>  {
+      const year: string = activity.date.substr(0, 4);
       if (resultMap.has(year)) {
-        resultMap.set(year, resultMap.get(year) + run.distance);
+        resultMap.set(year, resultMap.get(year) + activity.distance);
       } else {
-        resultMap.set(year, run.distance);
+        resultMap.set(year, activity.distance);
       }
     });
     this.pushToGraphData(this.sortMap(resultMap));

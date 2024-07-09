@@ -6,13 +6,13 @@ import {LoggerService} from '../../core/services/logger.service';
 import {GpxTrackService} from '../../core/services/gpx-track.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-describe('RunViewComponent', () => {
+describe('ActivityViewComponent', () => {
   let component: ActivityViewComponent;
   let fixture: ComponentFixture<ActivityViewComponent>;
 
   beforeEach(async(() => {
-    window.history.pushState({run: {
-      runDuration: {
+    window.history.pushState({activity: {
+      activityDuration: {
 
       }
       }}, '', '' );
