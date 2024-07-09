@@ -12,14 +12,14 @@ import {StorageService} from './storage.service';
 export class ActivityService {
   private serviceUrl = environment.baseUrl + '/jogging/runs';
   // tslint:disable-next-line:variable-name
-  private _runs = new BehaviorSubject<Activity[]>([]);
-  private dataStore: { runs: Activity[] } = { runs: [] }; // store our data in memory
+  private _activities = new BehaviorSubject<Activity[]>([]);
+  private dataStore: { activity: Activity[] } = { activity: [] }; // store our data in memory
   private shouldReload = true;
 
-  private static isBetweenDates(startDate: Date, endDate: Date, run: Activity) {
-    const runDate: Date = new Date(run.date + 'T00:00:00Z');
-    const after = runDate.getTime() >= startDate.getTime();
-    const before = runDate.getTime() <= endDate.getTime();
+  private static isBetweenDates(startDate: Date, endDate: Date, activity: Activity) {
+    const activityDate: Date = new Date(activity.date + 'T00:00:00Z');
+    const after = activityDate.getTime() >= startDate.getTime();
+    const before = activityDate.getTime() <= endDate.getTime();
     return after && before;
   }
 
@@ -31,77 +31,77 @@ export class ActivityService {
 
   ) { }
 
-  public getRuns(): Observable<Activity[]> {
-    return this._runs.asObservable();
+  public getActivities(): Observable<Activity[]> {
+    return this._activities.asObservable();
   }
 
   public loadAll() {
     if (!this.shouldReload) { return; }
     this.http.get<Activity[]>(this.serviceUrl).subscribe(
       data => {
-        this.dataStore.runs = data;
-        this._runs.next(Object.assign({}, this.dataStore).runs);
+        this.dataStore.activity = data;
+        this._activities.next(Object.assign({}, this.dataStore).activity);
         this.storageService.putRuns(data);
-        this.logger.log('Loaded runs');
+        this.logger.log('Loaded activities');
         this.shouldReload = false;
       },
       error => this.logger.log('Could not load runs.')
     );
   }
 
-  public create(run: Activity): Observable<Activity> {
+  public create(activity: Activity): Observable<Activity> {
     const replaySubject: ReplaySubject<Activity> = new ReplaySubject<Activity>(1);
     const httpRequest: Observable<Activity> = this.http
-      .post<Activity>(this.serviceUrl, run );
+      .post<Activity>(this.serviceUrl, activity );
     httpRequest.subscribe(
         replaySubject
       );
     replaySubject.subscribe(
       data => {
-        run.id = data.id;
-        this.dataStore.runs.push(data);
+        activity.id = data.id;
+        this.dataStore.activity.push(data);
         this.storageService.putRun(data);
-        this._runs.next(Object.assign({}, this.dataStore).runs);
+        this._activities.next(Object.assign({}, this.dataStore).activity);
         this.shouldReload = true;
         // This refreshes the table view - shouldn't be necessary!
         this.loadAll();
       },
       error => {
-        this.logger.log('Could not create run.');
+        this.logger.log('Could not create activity.');
       }
     );
 
     return replaySubject.asObservable();
   }
 
-  public update(run: Activity) {
+  public update(activity: Activity) {
     this.http
-      .put<Activity>(`${this.serviceUrl}/${run.id}`, run)
+      .put<Activity>(`${this.serviceUrl}/${activity.id}`, activity)
       .subscribe(
         data => {
-          this.dataStore.runs.forEach((t, i) => {
+          this.dataStore.activity.forEach((t, i) => {
             if (t.id === data.id) {
-              this.dataStore.runs[i] = data;
+              this.dataStore.activity[i] = data;
               this.storageService.putRun(data);
             }
           });
 
-          this._runs.next(Object.assign({}, this.dataStore).runs);
+          this._activities.next(Object.assign({}, this.dataStore).activity);
           this.shouldReload = true;
         },
-        error => this.logger.log('Could not update run.')
+        error => this.logger.log('Could not update activity.')
       );
   }
 
-  public getRunsForDateRange(startDate: Date, endDate: Date): Activity[] {
-    let runs;
-    this.getRuns().subscribe(results => {
+  public getActivitiesForDateRange(startDate: Date, endDate: Date): Activity[] {
+    let activities: any[];
+    this.getActivities().subscribe(results => {
       if (!results) {
         return;
       }
-      runs = results;
+      activities = results;
     });
-    return runs.filter(run => ActivityService.isBetweenDates(startDate, endDate, run));
+    return activities.filter(activity => ActivityService.isBetweenDates(startDate, endDate, activity));
   }
 
 }

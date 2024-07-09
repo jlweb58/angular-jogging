@@ -23,13 +23,13 @@
       <ng-container *ngFor="let calendarDay of getRow(1)">
         <td [ngClass]="getClassForDate(calendarDay.day)">
           <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
-          <ng-container *ngIf="calendarDay.runs">
-            <ng-container *ngFor="let run of calendarDay.runs">
+          <ng-container *ngIf="calendarDay.activities">
+            <ng-container *ngFor="let run of calendarDay.activities">
               <div class="calendar-activity" (click)="showActivity(run)">
                 <dl>
                   <dd>{{run.course}}</dd>
                   <dd>{{run.distance}} km</dd>
-                  <dd>{{run.runDuration.time}}</dd>
+                  <dd>{{run.activityDuration.time}}</dd>
                 </dl>
               </div>
             </ng-container>
@@ -49,13 +49,13 @@
         <ng-container *ngFor="let calendarDay of getRow(2)">
           <td [ngClass]="getClassForDate(calendarDay.day)">
             <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
-            <ng-container *ngIf="calendarDay.runs">
-              <ng-container *ngFor="let run of calendarDay.runs">
+            <ng-container *ngIf="calendarDay.activities">
+              <ng-container *ngFor="let run of calendarDay.activities">
                 <div class="calendar-activity" (click)="showActivity(run)">
                   <dl>
                     <dd>{{run.course}}</dd>
                     <dd>{{run.distance}} km</dd>
-                    <dd>{{run.runDuration.time}}</dd>
+                    <dd>{{run.activityDuration.time}}</dd>
                   </dl>
                 </div>
               </ng-container>
@@ -78,13 +78,13 @@
       <ng-container *ngFor="let calendarDay of getRow(3)">
         <td [ngClass]="getClassForDate(calendarDay.day)">
           <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
-          <ng-container *ngIf="calendarDay.runs">
-            <ng-container *ngFor="let run of calendarDay.runs">
+          <ng-container *ngIf="calendarDay.activities">
+            <ng-container *ngFor="let run of calendarDay.activities">
               <div class="calendar-activity" (click)="showActivity(run)">
                 <dl>
                   <dd>{{run.course}}</dd>
                   <dd>{{run.distance}} km</dd>
-                  <dd>{{run.runDuration.time}}</dd>
+                  <dd>{{run.activityDuration.time}}</dd>
                 </dl>
               </div>
             </ng-container>
@@ -105,13 +105,13 @@
       <ng-container *ngFor="let calendarDay of getRow(4)">
         <td [ngClass]="getClassForDate(calendarDay.day)">
           <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
-          <ng-container *ngIf="calendarDay.runs">
-            <ng-container *ngFor="let run of calendarDay.runs">
+          <ng-container *ngIf="calendarDay.activities">
+            <ng-container *ngFor="let run of calendarDay.activities">
               <div class="calendar-activity" (click)="showActivity(run)">
                 <dl>
                   <dd>{{run.course}}</dd>
                   <dd>{{run.distance}} km</dd>
-                  <dd>{{run.runDuration.time}}</dd>
+                  <dd>{{run.activityDuration.time}}</dd>
                 </dl>
               </div>
             </ng-container>
@@ -132,13 +132,13 @@
       <ng-container *ngFor="let calendarDay of getRow(5)">
         <td [ngClass]="getClassForDate(calendarDay.day)">
           <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
-          <ng-container *ngIf="calendarDay.runs">
-            <ng-container *ngFor="let run of calendarDay.runs">
+          <ng-container *ngIf="calendarDay.activities">
+            <ng-container *ngFor="let run of calendarDay.activities">
               <div class="calendar-activity" (click)="showActivity(run)">
                 <dl>
                   <dd>{{run.course}}</dd>
                   <dd>{{run.distance}} km</dd>
-                  <dd>{{run.runDuration.time}}</dd>
+                  <dd>{{run.activityDuration.time}}</dd>
                 </dl>
               </div>
             </ng-container>
@@ -160,13 +160,13 @@
       <ng-container *ngFor="let calendarDay of getRow(6)">
         <td [ngClass]="getClassForDate(calendarDay.day)">
           <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
-          <ng-container *ngIf="calendarDay.runs">
-            <ng-container *ngFor="let run of calendarDay.runs">
+          <ng-container *ngIf="calendarDay.activities">
+            <ng-container *ngFor="let run of calendarDay.activities">
               <div class="calendar-activity" (click)="showActivity(run)">
                 <dl>
                   <dd>{{run.course}}</dd>
                   <dd>{{run.distance}} km</dd>
-                  <dd>{{run.runDuration.time}}</dd>
+                  <dd>{{run.activityDuration.time}}</dd>
                 </dl>
               </div>
             </ng-container>

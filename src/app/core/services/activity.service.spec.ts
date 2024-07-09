@@ -31,7 +31,7 @@ describe('RunService', () => {
     run3.date = '2020-04-19';
     req.flush(runs);
 
-    runService.getRuns().subscribe(results => {
+    runService.getActivities().subscribe(results => {
       if (!results) { return; }
       expect(results.length).toBe(3);
       });
@@ -47,7 +47,7 @@ describe('RunService', () => {
       run2.date = '2020-05-03';
       run3.date = '2020-04-19';
       req.flush(runs);
-      const result: Activity[] = runService.getRunsForDateRange(new Date('2020-05-01T00:00:00Z'), new Date('2020-05-31T00:00:00Z'));
+      const result: Activity[] = runService.getActivitiesForDateRange(new Date('2020-05-01T00:00:00Z'), new Date('2020-05-31T00:00:00Z'));
 
       expect(result.length).toBe(2);
       httpMock.verify();
@@ -62,7 +62,7 @@ describe('RunService', () => {
       run2.date = '2020-05-03';
       run3.date = '2020-05-01';
       req.flush(runs);
-      const result: Activity[] = runService.getRunsForDateRange(new Date('2020-05-01T00:00:00Z'), new Date('2020-05-31T00:00:00Z'));
+      const result: Activity[] = runService.getActivitiesForDateRange(new Date('2020-05-01T00:00:00Z'), new Date('2020-05-31T00:00:00Z'));
       expect(result.length).toBe(3);
       httpMock.verify();
     }));

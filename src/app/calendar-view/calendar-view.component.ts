@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 export class CalendarViewComponent implements OnInit {
 
   constructor(private logger: LoggerService,
-              private runService: ActivityService,
+              private activityService: ActivityService,
               private router: Router,
   ) { }
 
@@ -106,8 +106,8 @@ export class CalendarViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.runService.loadAll();
-    this.runService.getRuns().subscribe(results => {
+    this.activityService.loadAll();
+    this.activityService.getActivities().subscribe(results => {
       if (!results) {
         return;
       }
@@ -139,17 +139,17 @@ export class CalendarViewComponent implements OnInit {
   getDistanceForRow(row: CalendarDay[]): number {
     let res = 0;
     row.forEach(d => {
-      if (d.runs) {
-        res += d.runs.reduce((sum: number, b: Activity) => sum + b.distance, 0);
+      if (d.activities) {
+        res += d.activities.reduce((sum: number, b: Activity) => sum + b.distance, 0);
       }
     });
     return res;
   }
 
   getTimeForRow(row: CalendarDay[]): string {
-    const secondsSum = row.filter((calendarDay: CalendarDay) => calendarDay.runs)
-      .flatMap(day => day.runs)
-      .reduce((sum: number, run: Activity) => sum + CalendarViewComponent.getSeconds(run.runDuration.time), 0);
+    const secondsSum = row.filter((calendarDay: CalendarDay) => calendarDay.activities)
+      .flatMap(day => day.activities)
+      .reduce((sum: number, activity: Activity) => sum + CalendarViewComponent.getSeconds(activity.activityDuration.time), 0);
 
     return CalendarViewComponent.getFormattedTimeString(secondsSum);
   }
@@ -183,17 +183,17 @@ export class CalendarViewComponent implements OnInit {
   fillCalendarDays(daysInCurrentView: Date[]): void {
     this.calendarDays = [];
     const currentDaysLength = daysInCurrentView.length;
-    const runs: Activity[] = this.runService.getRunsForDateRange(daysInCurrentView[0], daysInCurrentView[currentDaysLength - 1]);
+    const runs: Activity[] = this.activityService.getActivitiesForDateRange(daysInCurrentView[0], daysInCurrentView[currentDaysLength - 1]);
     daysInCurrentView.forEach(d => {
-      this.calendarDays.push(new CalendarDay(d, this.getRunsForDate(d, runs)));
+      this.calendarDays.push(new CalendarDay(d, this.getActivitiesForDate(d, runs)));
     });
   }
 
-  getRunsForDate(day: Date, runs: Activity[]): Activity[] {
+  getActivitiesForDate(day: Date, activities: Activity[]): Activity[] {
     const retVal: Activity[] = [];
-    runs.forEach(r => {
-      if (CalendarViewComponent.isSameDate(r.date, day)) {
-        retVal.push(r);
+    activities.forEach(a => {
+      if (CalendarViewComponent.isSameDate(a.date, day)) {
+        retVal.push(a);
       }
     });
     return retVal;
@@ -207,23 +207,24 @@ export class CalendarViewComponent implements OnInit {
   }
 
   countActivitiesForCurrentMonth(): number {
-    return this.calendarDays.filter((d: CalendarDay) => d.runs && d.day.getMonth() === this.currentDate.getMonth())
-      .flatMap(day => day.runs)
+    return this.calendarDays.filter((d: CalendarDay) => d.activities && d.day.getMonth() === this.currentDate.getMonth())
+      .flatMap(day => day.activities)
       .length;
   }
 
   getDistanceForCurrentMonth(): number {
-    return this.calendarDays.filter((d: CalendarDay) => d.runs && d.day.getMonth() === this.currentDate.getMonth())
-      .flatMap(day => day.runs)
-      .reduce((sum: number, run: Activity) => sum + run.distance, 0);
+    return this.calendarDays.filter((d: CalendarDay) => d.activities && d.day.getMonth() === this.currentDate.getMonth())
+      .flatMap(day => day.activities)
+      .reduce((sum: number, activity: Activity) => sum + activity.distance, 0);
   }
 
   getTimeForCurrentMonth(): string {
-    return this.getTimeForRow(this.calendarDays.filter((d: CalendarDay) => d.runs && d.day.getMonth() === this.currentDate.getMonth()));
+    return this.getTimeForRow(this.calendarDays.filter((d: CalendarDay) =>
+      d.activities && d.day.getMonth() === this.currentDate.getMonth()));
   }
 
-  showActivity(run: Activity): void {
-    this.router.navigate(['/run'], {state: {run: run}});
+  showActivity(activity: Activity): void {
+    this.router.navigate(['/activity'], {state: {activity}});
    }
 
 }

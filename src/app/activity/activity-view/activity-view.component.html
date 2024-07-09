@@ -1,40 +1,40 @@
 <div class="run-view-title">
-  {{run.course}}
+  {{activity.course}}
 </div>
 
 <div id="run-infos">
   <div class="run-view-info-group">
     <div class="run-view-info-label">Date</div>
     <div id="date" class="run-view-info">
-      {{run.date}}
+      {{activity.date}}
     </div>
   </div>
   <div class="run-view-info-group">
     <div class="run-view-info-label">Activity Type</div>
     <div id="activity-type" class="run-view-info">
-      {{run.activityType}}
+      {{activity.activityType}}
     </div>
   </div>
   <div class="run-view-info-group">
     <div class="run-view-info-label">Distance</div>
     <div id="distance" class="run-view-info">
-      {{run.distance}}km
+      {{activity.distance}}km
     </div>
   </div>
   <div class="run-view-info-group">
     <div class="run-view-info-label">Time</div>
     <div id="time" class="run-view-info">
-      {{run.runDuration.time}}
+      {{activity.activityDuration.time}}
     </div>
   </div>
   <div class="run-view-info-group">
     <div class="run-view-info-label">Avg. Heart Rate</div>
     <div id="avgHeartRate" class="run-view-info">
-      {{run.avgHeartRate}}
+      {{activity.avgHeartRate}}
     </div>
   </div>
     <div class ="run-view-button">
-      <button mat-raised-button color="primary" (click)="editRun()">Edit Run</button>
+      <button mat-raised-button color="primary" (click)="editActivity()">Edit Activity</button>
     </div>
 </div>
 <div class="run-view-divider"></div>

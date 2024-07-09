@@ -18,17 +18,17 @@ export class ActivityTableComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @Output() run: Activity;
+  @Output() activity: Activity;
 
   constructor(
-    private runService: ActivityService,
+    private activityService: ActivityService,
     private logger: LoggerService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.runService.loadAll();
-    this.runService.getRuns().subscribe(results => {
+    this.activityService.loadAll();
+    this.activityService.getActivities().subscribe(results => {
       if (!results) {
         return;
       }
@@ -43,8 +43,8 @@ export class ActivityTableComponent implements OnInit {
   }
 
   onRowClicked(row) {
-    this.run = row;
-    this.router.navigate(['/run'], {state: {run: this.run}});
+    this.activity = row;
+    this.router.navigate(['/activity'], {state: {activity: this.activity}});
    }
 
 }

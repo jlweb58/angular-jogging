@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
   }
 
   showBarChart(startDate: Date, endDate: Date, chartIntervalType: ChartIntervalType) {
-    const runs = this.runService.getRunsForDateRange(startDate, endDate);
+    const runs = this.runService.getActivitiesForDateRange(startDate, endDate);
     const dialogRef = this.dialog.open(BarChartComponent);
     dialogRef.componentInstance.chartIntervalType = chartIntervalType;
     dialogRef.componentInstance.runs = runs;
@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
   }
 
   showLineChart(startDate: Date, endDate: Date) {
-    const runs = this.runService.getRunsForDateRange(startDate, endDate);
+    const runs = this.runService.getActivitiesForDateRange(startDate, endDate);
     const dialogRef = this.dialog.open(LineChartComponent);
     dialogRef.componentInstance.runs = runs;
     dialogRef.componentInstance.startDate = startDate;

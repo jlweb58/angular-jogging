@@ -14,11 +14,11 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 })
 export class ActivityViewComponent implements OnInit {
 
-  run: Activity;
+  activity: Activity;
   gpxTrack: GpxTrack;
 
   constructor(private logger: LoggerService,
-              private runService: ActivityService,
+              private activityService: ActivityService,
               private gpxTrackService: GpxTrackService,
               private dialog: MatDialog) {
   }
@@ -26,22 +26,22 @@ export class ActivityViewComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if (!this.run) {
-      this.run = history.state.run;
+    if (!this.activity) {
+      this.activity = history.state.activity;
     }
-    this.gpxTrackService.getGpxTrack(this.run).subscribe( data => {
+    this.gpxTrackService.getGpxTrack(this.activity).subscribe(data => {
       this.gpxTrack = data;
       }
     );
   }
 
-  editRun(): void {
+  editActivity(): void {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = Activity.clone(this.run);
+    dialogConfig.data = Activity.clone(this.activity);
     const dialogRef = this.dialog.open(ActivityDialogComponent, dialogConfig);
     dialogRef.componentInstance.isEdit = true;
     dialogRef.afterClosed().subscribe(result => {
-      this.run = dialogRef.componentInstance.run;
+      this.activity = dialogRef.componentInstance.activity;
       this.ngOnInit();
     });
   }

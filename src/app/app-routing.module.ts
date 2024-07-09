@@ -12,7 +12,7 @@ import {ActivityViewComponent} from './activity/activity-view/activity-view.comp
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', component: ActivityTableComponent, canActivate: [AuthGuardService]},
-  {path: 'run', component: ActivityViewComponent, canActivate: [AuthGuardService]},
+  {path: 'activity', component: ActivityViewComponent, canActivate: [AuthGuardService]},
   {path: 'shoes', component: ShoesListComponent, canActivate: [AuthGuardService]},
   {path: 'calendar', component: CalendarViewComponent, canActivate: [AuthGuardService]},
   {path: 'logout', component: LogoutComponent, canActivate: [AuthGuardService]},

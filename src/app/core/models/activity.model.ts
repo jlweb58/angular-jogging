@@ -6,7 +6,7 @@ export class Activity {
   date: string;
   course: string;
   distance: number;
-  runDuration: {
+  activityDuration: {
     time: string;
   };
   weather: string;
@@ -16,32 +16,32 @@ export class Activity {
   public activityType: ActivityType;
 
   constructor() {
-    this.runDuration = {
+    this.activityDuration = {
       time: ''
     };
     this.shoes = new Shoes();
   }
 
   public static fromDateAndDistance(distance: number, date: string): Activity {
-    const run: Activity = new Activity();
-    run.date = date;
-    run.distance = distance;
-    return run;
+    const activity: Activity = new Activity();
+    activity.date = date;
+    activity.distance = distance;
+    return activity;
   }
 
-  public static clone(runToClone: Activity): Activity {
-    const run: Activity = new Activity();
-    run.date = runToClone.date;
-    run.distance = runToClone.distance;
-    run.id = runToClone.id;
-    run.avgHeartRate = runToClone.avgHeartRate;
-    run.runDuration = runToClone.runDuration;
-    run.course = runToClone.course;
-    run.comments = runToClone.comments;
-    run.shoes = runToClone.shoes;
-    run.weather = runToClone.weather;
-    run.activityType = runToClone.activityType;
-    return run;
+  public static clone(activityToClone: Activity): Activity {
+    const activity: Activity = new Activity();
+    activity.date = activityToClone.date;
+    activity.distance = activityToClone.distance;
+    activity.id = activityToClone.id;
+    activity.avgHeartRate = activityToClone.avgHeartRate;
+    activity.activityDuration = activityToClone.activityDuration;
+    activity.course = activityToClone.course;
+    activity.comments = activityToClone.comments;
+    activity.shoes = activityToClone.shoes;
+    activity.weather = activityToClone.weather;
+    activity.activityType = activityToClone.activityType;
+    return activity;
   }
 
 }

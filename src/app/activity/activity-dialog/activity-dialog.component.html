@@ -3,17 +3,17 @@
   <form class="run-dialog-form">
     <mat-form-field class="run-dialog-full-width">
       <mat-label>Date</mat-label>
-      <input matInput type="date" name="date" [(ngModel)]="run.date">
+      <input matInput type="date" name="date" [(ngModel)]="activity.date">
     </mat-form-field>
 
     <mat-form-field class="run-dialog-full-width">
       <mat-label>Distance</mat-label>
-      <input matInput name="distance" [(ngModel)]="run.distance">
+      <input matInput name="distance" [(ngModel)]="activity.distance">
     </mat-form-field>
 
     <mat-form-field class="run-dialog-full-width">
       <mat-label>Activity Type</mat-label>
-      <mat-select [(ngModel)]="run.activityType" name="activityType">
+      <mat-select [(ngModel)]="activity.activityType" name="activityType">
         <mat-option>--</mat-option>
         <mat-option [value]="activityTypes.Run">Run</mat-option>
         <mat-option [value]="activityTypes.Bike">Bike</mat-option>
@@ -25,24 +25,24 @@
 
     <mat-form-field class="run-dialog-full-width">
       <mat-label>Course</mat-label>
-      <input matInput name="course" [(ngModel)]="run.course">
+      <input matInput name="course" [(ngModel)]="activity.course">
     </mat-form-field>
 
     <mat-form-field class="run-dialog-full-width">
       <mat-label>Time</mat-label>
-      <input matInput name="time" [(ngModel)]="run.runDuration.time">
+      <input matInput name="time" [(ngModel)]="activity.activityDuration.time">
     </mat-form-field>
     <mat-form-field class="run-dialog-full-width">
       <mat-label>Weather</mat-label>
-      <input matInput name="weather" [(ngModel)]="run.weather">
+      <input matInput name="weather" [(ngModel)]="activity.weather">
     </mat-form-field>
     <mat-form-field class="run-dialog-full-width">
       <mat-label>Comments</mat-label>
-      <input matInput name="comments" [(ngModel)]="run.comments">
+      <input matInput name="comments" [(ngModel)]="activity.comments">
     </mat-form-field>
     <mat-form-field class="run-dialog-full-width">
       <mat-label>Avg. Heart Rate</mat-label>
-      <input matInput name="avgHeartRate" [(ngModel)]="run.avgHeartRate">
+      <input matInput name="avgHeartRate" [(ngModel)]="activity.avgHeartRate">
     </mat-form-field>
     <mat-form-field class="run-dialog-full-width">
       <mat-label>Shoes</mat-label>
@@ -59,7 +59,7 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-raised-button mat-dialog-close color="primary" (click)="cancel()">Cancel</button>
-  <button mat-raised-button [mat-dialog-close]="true" (click)="createRun($event)" color="primary">Save</button>
+  <button mat-raised-button [mat-dialog-close]="true" (click)="createActivity($event)" color="primary">Save</button>
 
 </mat-dialog-actions>
 

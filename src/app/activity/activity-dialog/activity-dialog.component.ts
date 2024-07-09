@@ -17,8 +17,8 @@ import {ActivityType, ActivityTypeType} from '../../core/models/activity-type.mo
 })
 export class ActivityDialogComponent implements OnInit {
 
-  run: Activity;
-  cachedRun: Activity;
+  activity: Activity;
+  cachedActivity: Activity;
   gpxTrack: string;
   @Output() displayChange = new EventEmitter();
   public isEdit: boolean;
@@ -27,18 +27,18 @@ export class ActivityDialogComponent implements OnInit {
   activityTypes: ActivityTypeType = ActivityType;
 
   constructor(private logger: LoggerService,
-              private runService: ActivityService,
+              private activityService: ActivityService,
               private shoesService: ShoesService,
               private gpxTrackService: GpxTrackService,
               private fileUploadService: FileUploadService,
               private router: Router,
               @Inject(MAT_DIALOG_DATA) data) {
     if (!data) {
-      this.run = new Activity();
+      this.activity = new Activity();
       this.isEdit = false;
     } else {
-      this.run = data;
-      this.cachedRun = Activity.clone(this.run);
+      this.activity = data;
+      this.cachedActivity = Activity.clone(this.activity);
     }
   }
 
@@ -49,8 +49,8 @@ export class ActivityDialogComponent implements OnInit {
         return;
       }
       this.shoes = results.filter(shoe => shoe.active);
-      if (this.isEdit && this.run.shoes) {
-        this.selectedShoe = this.run.shoes;
+      if (this.isEdit && this.activity.shoes) {
+        this.selectedShoe = this.activity.shoes;
       } else {
         this.selectedShoe = this.shoes.find(shoe => shoe.preferred);
       }
@@ -58,41 +58,41 @@ export class ActivityDialogComponent implements OnInit {
   }
 
   async fileInputChange(fileInputEvent: any) {
-    if (this.run != null) {
+    if (this.activity != null) {
       this.gpxTrack = await this.fileUploadService.uploadFileToText(fileInputEvent.target.files[0]) as string;
     }
   }
 
   cancel() {
-    this.run = this.cachedRun;
+    this.activity = this.cachedActivity;
   }
 
 
-  createRun() {
-    const runDate: Date = new Date(this.run.date);
+  createActivity() {
+    const activityDate: Date = new Date(this.activity.date);
     if (this.selectedShoe.id) {
-      this.run.shoes = this.selectedShoe;
+      this.activity.shoes = this.selectedShoe;
     } else {
-      this.run.shoes = null;
+      this.activity.shoes = null;
     }
-    if (this.run.runDuration && this.run.runDuration.time) {
-      this.run.runDuration.time = this.correctDurationFormat(this.run.runDuration.time);
+    if (this.activity.activityDuration && this.activity.activityDuration.time) {
+      this.activity.activityDuration.time = this.correctDurationFormat(this.activity.activityDuration.time);
     }
     if (this.isEdit) {
       if (this.gpxTrack != null) {
-        this.gpxTrackService.saveGpxTrack(this.run, this.gpxTrack).subscribe( track => {
+        this.gpxTrackService.saveGpxTrack(this.activity, this.gpxTrack).subscribe(track => {
           this.logger.log('saved gpx track');
         });
       }
 
-      this.runService.update(this.run);
+      this.activityService.update(this.activity);
     } else {
-      const runObservable: Observable<Activity> = this.runService.create(this.run);
+      const runObservable: Observable<Activity> = this.activityService.create(this.activity);
       runObservable.subscribe( data => {
         if (this.gpxTrack != null) {
           this.gpxTrackService.saveGpxTrack(data, this.gpxTrack).subscribe( track => {
             this.logger.log('saved gpx track');
-            this.router.navigate(['/run'], {state: {run: this.run}});
+            this.router.navigate(['/activity'], {state: {activity: this.activity}});
           });
         }
 

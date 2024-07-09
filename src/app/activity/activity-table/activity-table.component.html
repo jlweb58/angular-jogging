@@ -1,46 +1,46 @@
 
-<div fxLayout fxLayoutAlign="end end" class="run-filter">
+<div fxLayout fxLayoutAlign="end end" class="activity-filter">
   <mat-form-field fxFlex="20%">
-    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter" class="run-filter-input">
+    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter" class="activity-filter-input">
   </mat-form-field>
 </div>
 <div>
 <table mat-table [dataSource]="dataSource" matSort>
   <ng-container matColumnDef="date">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
-    <td mat-cell *matCellDef="let run"> {{run.date}} </td>
+    <td mat-cell *matCellDef="let activity"> {{activity.date}} </td>
   </ng-container>
   <ng-container matColumnDef="activityType">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Activity Type </th>
-    <td mat-cell *matCellDef="let run"> {{run.activityType}} </td>
+    <td mat-cell *matCellDef="let activity"> {{activity["activityType"]}} </td>
   </ng-container>
   <ng-container matColumnDef="course">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Course </th>
-    <td mat-cell *matCellDef="let run"> {{run.course}} </td>
+    <td mat-cell *matCellDef="let activity"> {{activity["course"]}} </td>
   </ng-container>
   <ng-container matColumnDef="distance">
     <th mat-header-cell *matHeaderCellDef  mat-sort-header> Distance </th>
-    <td mat-cell *matCellDef="let run"> {{run.distance}} </td>
+    <td mat-cell *matCellDef="let activity"> {{activity.distance}} </td>
   </ng-container>
   <ng-container matColumnDef="time">
     <th mat-header-cell *matHeaderCellDef  mat-sort-header> Time </th>
-    <td mat-cell *matCellDef="let run"> {{run.runDuration.time}} </td>
+    <td mat-cell *matCellDef="let activity"> {{activity["activityDuration"].time}} </td>
   </ng-container>
   <ng-container matColumnDef="weather">
     <th mat-header-cell *matHeaderCellDef> Weather </th>
-    <td mat-cell *matCellDef="let run"> {{run.weather}} </td>
+    <td mat-cell *matCellDef="let activity"> {{activity["weather"]}} </td>
   </ng-container>
   <ng-container matColumnDef="comments">
     <th mat-header-cell *matHeaderCellDef> Comments </th>
-    <td mat-cell *matCellDef="let run"> {{run.comments}} </td>
+    <td mat-cell *matCellDef="let activity"> {{activity.comments}} </td>
   </ng-container>
   <ng-container matColumnDef="avgheartrate">
     <th mat-header-cell *matHeaderCellDef> Avg Heart Rate </th>
-    <td mat-cell *matCellDef="let run"> {{run.avgHeartRate}} </td>
+    <td mat-cell *matCellDef="let activity"> {{activity["avgHeartRate"]}} </td>
   </ng-container>
   <ng-container matColumnDef="shoes">
     <th mat-header-cell *matHeaderCellDef> Shoes </th>
-    <td mat-cell *matCellDef="let run"> {{run.shoes ? run.shoes.name : ''}}</td>
+    <td mat-cell *matCellDef="let activity"> {{activity.shoes ? activity.shoes.name : ''}}</td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" ></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></tr>
