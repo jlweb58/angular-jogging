@@ -7,7 +7,7 @@ import {CalendarViewComponent} from './calendar-view/calendar-view.component';
 import {ChartModule} from './chart/chart.module';
 import {SharedModule} from './shared/shared.module';
 import {CoreModule} from './core/core.module';
-import {ShoesModule} from './shoes/shoes.module';
+import {GearModule} from './gear/gear.module';
 import {ActivityModule} from './activity/activity.module';
 import {UserModule} from './user/user.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -25,7 +25,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     CoreModule,
     ActivityModule,
     SharedModule,
-    ShoesModule,
+    GearModule,
     UserModule,
     MaterialModule,
   ],

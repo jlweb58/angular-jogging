@@ -25,7 +25,7 @@ describe('ActivityService', () => {
   it('should return activities', inject([HttpTestingController, ActivityService],
     (httpMock: HttpTestingController, activityService: ActivityService) => {
     activityService.loadAll();
-    const req = httpMock.expectOne('http://localhost:9000/jogging/runs');
+    const req = httpMock.expectOne('http://localhost:9000/jogging/activities');
     expect(req.request.method).toBe('GET');
     activity1.date = '2020-05-31';
     activity2.date = '2020-05-03';
@@ -42,7 +42,7 @@ describe('ActivityService', () => {
   it('should fetch activities for date range',
     inject([HttpTestingController, ActivityService], async (httpMock: HttpTestingController, activityService: ActivityService) => {
       activityService.loadAll();
-      const req = httpMock.expectOne('http://localhost:9000/jogging/runs');
+      const req = httpMock.expectOne('http://localhost:9000/jogging/activities');
       expect(req.request.method).toBe('GET');
       activity1.date = '2020-05-31';
       activity2.date = '2020-05-03';
@@ -58,7 +58,7 @@ describe('ActivityService', () => {
   it('should include activities on the edge of the date range',
     inject([HttpTestingController, ActivityService], async (httpMock: HttpTestingController, activityService: ActivityService) => {
       activityService.loadAll();
-      const req = httpMock.expectOne('http://localhost:9000/jogging/runs');
+      const req = httpMock.expectOne('http://localhost:9000/jogging/activities');
       expect(req.request.method).toBe('GET');
       activity1.date = '2020-05-31';
       activity2.date = '2020-05-03';

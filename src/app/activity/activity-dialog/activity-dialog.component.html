@@ -45,10 +45,10 @@
       <input matInput name="avgHeartRate" [(ngModel)]="activity.avgHeartRate">
     </mat-form-field>
     <mat-form-field class="activity-dialog-full-width">
-      <mat-label>Shoes</mat-label>
-      <mat-select [(ngModel)]="selectedShoe.id" name="shoes">
+      <mat-label>Gear</mat-label>
+      <mat-select [(ngModel)]="selectedGear.id" name="gears">
         <mat-option>--</mat-option>
-        <mat-option *ngFor="let shoe of shoes" [value]="shoe.id">{{shoe.name}} ({{shoe.mileage | number: '1.0-2'}} km)</mat-option>
+        <mat-option *ngFor="let gear of gears" [value]="gear.id">{{gear.name}} ({{gear.mileage | number: '1.0-2'}} km)</mat-option>
       </mat-select>
     </mat-form-field>
     <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="fileInputChange($event)" />

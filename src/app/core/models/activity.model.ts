@@ -1,4 +1,4 @@
-import {Shoes} from './shoes.model';
+import {Gear} from './gear.model';
 import {ActivityType} from './activity-type.model';
 
 export class Activity {
@@ -12,14 +12,14 @@ export class Activity {
   weather: string;
   comments: string;
   avgHeartRate: number;
-  shoes: Shoes;
+  gear: Gear;
   public activityType: ActivityType;
 
   constructor() {
     this.activityDuration = {
       time: ''
     };
-    this.shoes = new Shoes();
+    this.gear = new Gear();
   }
 
   public static fromDateAndDistance(distance: number, date: string): Activity {
@@ -38,7 +38,7 @@ export class Activity {
     activity.activityDuration = activityToClone.activityDuration;
     activity.course = activityToClone.course;
     activity.comments = activityToClone.comments;
-    activity.shoes = activityToClone.shoes;
+    activity.gear = activityToClone.gear;
     activity.weather = activityToClone.weather;
     activity.activityType = activityToClone.activityType;
     return activity;

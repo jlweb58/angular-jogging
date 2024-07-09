@@ -4,7 +4,7 @@ import {AuthGuardService} from './services/auth-guard.service';
 import {AuthenticationService} from './services/authentication.service';
 import {LoggerService} from './services/logger.service';
 import {ActivityService} from './services/activity.service';
-import {ShoesService} from './services/shoes.service';
+import {GearService} from './services/gear.service';
 import {TokenStorageService} from './services/token-storage.service';
 import {UserService} from './services/user.service';
 import {authInterceptorProviders} from './interceptors/auth.interceptor';
@@ -26,7 +26,7 @@ import {StorageService} from './services/storage.service';
     AuthenticationService,
     LoggerService,
     ActivityService,
-    ShoesService,
+    GearService,
     TokenStorageService,
     UserService,
     FileUploadService,

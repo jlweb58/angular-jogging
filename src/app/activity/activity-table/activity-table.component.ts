@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
 })
 export class ActivityTableComponent implements OnInit {
   dataSource = new MatTableDataSource<Activity>();
-  displayedColumns = ['date', 'activityType', 'course', 'distance', 'time', 'weather', 'comments', 'avgheartrate', 'shoes'];
+  displayedColumns = ['date', 'activityType', 'course', 'distance', 'time', 'weather', 'comments', 'avgheartrate', 'gear'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

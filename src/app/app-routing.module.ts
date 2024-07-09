@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {ShoesListComponent} from './shoes/shoes-list/shoes-list.component';
+import {GearListComponent} from './gear/gear-list/gear-list.component';
 import {ActivityTableComponent} from './activity/activity-table/activity-table.component';
 import {LoginComponent} from './user/login/login.component';
 import {LogoutComponent} from './user/logout/logout.component';
@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', component: ActivityTableComponent, canActivate: [AuthGuardService]},
   {path: 'activity', component: ActivityViewComponent, canActivate: [AuthGuardService]},
-  {path: 'shoes', component: ShoesListComponent, canActivate: [AuthGuardService]},
+  {path: 'gear', component: GearListComponent, canActivate: [AuthGuardService]},
   {path: 'calendar', component: CalendarViewComponent, canActivate: [AuthGuardService]},
   {path: 'logout', component: LogoutComponent, canActivate: [AuthGuardService]},
   {path: 'changePassword', component: ChangePasswordComponent, canActivate: [AuthGuardService]},

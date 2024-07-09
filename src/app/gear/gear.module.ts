@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
-import {ShoesListComponent} from './shoes-list/shoes-list.component';
+import {GearListComponent} from './gear-list/gear-list.component';
 import {MaterialModule} from '../material.module';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {ShoesDialogComponent} from './shoes-dialog/shoes-dialog.component';
+import {GearDialogComponent} from './gear-dialog/gear-dialog.component';
 
 
 @NgModule({
@@ -13,12 +13,12 @@ import {ShoesDialogComponent} from './shoes-dialog/shoes-dialog.component';
     FormsModule,
   ],
   declarations: [
-    ShoesListComponent,
-    ShoesDialogComponent
+    GearListComponent,
+    GearDialogComponent
   ],
   exports: [
-    ShoesListComponent,
-    ShoesDialogComponent,
+    GearListComponent,
+    GearDialogComponent,
   ]
 })
-export class ShoesModule {}
+export class GearModule {}

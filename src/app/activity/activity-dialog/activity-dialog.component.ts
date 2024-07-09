@@ -2,8 +2,8 @@ import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
 import {Activity} from '../../core/models/activity.model';
 import {LoggerService} from '../../core/services/logger.service';
 import {ActivityService} from '../../core/services/activity.service';
-import {ShoesService} from '../../core/services/shoes.service';
-import {Shoes} from '../../core/models/shoes.model';
+import {GearService} from '../../core/services/gear.service';
+import {Gear} from '../../core/models/gear.model';
 import {FileUploadService} from '../../core/services/file-upload.service';
 import {GpxTrackService} from '../../core/services/gpx-track.service';
 import {Observable} from 'rxjs';
@@ -22,13 +22,13 @@ export class ActivityDialogComponent implements OnInit {
   gpxTrack: string;
   @Output() displayChange = new EventEmitter();
   public isEdit: boolean;
-  shoes: Shoes[];
-  selectedShoe: Shoes = new Shoes();
+  gears: Gear[];
+  selectedGear: Gear = new Gear();
   activityTypes: ActivityTypeType = ActivityType;
 
   constructor(private logger: LoggerService,
               private activityService: ActivityService,
-              private shoesService: ShoesService,
+              private gearService: GearService,
               private gpxTrackService: GpxTrackService,
               private fileUploadService: FileUploadService,
               private router: Router,
@@ -43,16 +43,16 @@ export class ActivityDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.shoesService.loadAll();
-    this.shoesService.shoes.subscribe(results => {
+    this.gearService.loadAll();
+    this.gearService.gear.subscribe(results => {
       if (!results) {
         return;
       }
-      this.shoes = results.filter(shoe => shoe.active);
-      if (this.isEdit && this.activity.shoes) {
-        this.selectedShoe = this.activity.shoes;
+      this.gears = results.filter(gear => gear.active);
+      if (this.isEdit && this.activity.gear) {
+        this.selectedGear = this.activity.gear;
       } else {
-        this.selectedShoe = this.shoes.find(shoe => shoe.preferred);
+        this.selectedGear = this.gears.find(gear => gear.preferred);
       }
     });
   }
@@ -70,10 +70,10 @@ export class ActivityDialogComponent implements OnInit {
 
   createActivity() {
     const activityDate: Date = new Date(this.activity.date);
-    if (this.selectedShoe.id) {
-      this.activity.shoes = this.selectedShoe;
+    if (this.selectedGear.id) {
+      this.activity.gear = this.selectedGear;
     } else {
-      this.activity.shoes = null;
+      this.activity.gear = null;
     }
     if (this.activity.activityDuration && this.activity.activityDuration.time) {
       this.activity.activityDuration.time = this.correctDurationFormat(this.activity.activityDuration.time);

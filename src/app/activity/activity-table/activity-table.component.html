@@ -38,9 +38,9 @@
     <th mat-header-cell *matHeaderCellDef> Avg Heart Rate </th>
     <td mat-cell *matCellDef="let activity"> {{activity["avgHeartRate"]}} </td>
   </ng-container>
-  <ng-container matColumnDef="shoes">
-    <th mat-header-cell *matHeaderCellDef> Shoes </th>
-    <td mat-cell *matCellDef="let activity"> {{activity.shoes ? activity.shoes.name : ''}}</td>
+  <ng-container matColumnDef="gear">
+    <th mat-header-cell *matHeaderCellDef> Gear </th>
+    <td mat-cell *matCellDef="let activity"> {{activity.gear ? activity.gear.name : ''}}</td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" ></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></tr>

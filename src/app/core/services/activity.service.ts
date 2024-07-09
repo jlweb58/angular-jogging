@@ -10,7 +10,7 @@ import {StorageService} from './storage.service';
   providedIn: 'root'
 })
 export class ActivityService {
-  private serviceUrl = environment.baseUrl + '/jogging/runs';
+  private serviceUrl = environment.baseUrl + '/jogging/activities';
   // tslint:disable-next-line:variable-name
   private _activities = new BehaviorSubject<Activity[]>([]);
   private dataStore: { activity: Activity[] } = { activity: [] }; // store our data in memory

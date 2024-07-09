@@ -1,0 +1,34 @@
+<mat-radio-group [(ngModel)]="preferredGear">
+<table mat-table [dataSource]="gear">
+  <ng-container matColumnDef="preferred">
+    <th mat-header-cell *matHeaderCellDef> Default </th>
+    <td mat-cell *matCellDef="let gear">
+      <mat-radio-button [value]="gear" (change)="setPreferredGear($event)" [checked]="gear.preferred"></mat-radio-button>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td [ngClass]="{'gear-active' : gear.active, 'gear-inactive' : !gear.active }"  mat-cell *matCellDef="let gear"> {{gear.name}} </td>
+  </ng-container>
+  <ng-container matColumnDef="mileage">
+    <th mat-header-cell *matHeaderCellDef> Mileage </th>
+    <td mat-cell *matCellDef="let gear"> {{gear.mileage  | number: '1.0-2'}} km</td>
+  </ng-container>
+  <ng-container matColumnDef="retire">
+    <th mat-header-cell *matHeaderCellDef> Change active state </th>
+    <td mat-cell *matCellDef="let gear">
+      <button *ngIf="gear.active" mat-icon-button (click)="retireGear(gear)">
+        <mat-icon inline="true">delete</mat-icon>
+      </button>
+      <button *ngIf="!gear.active" mat-icon-button (click)="activateGear(gear)">
+        <mat-icon inline="true">settings_power</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let gear; columns: columnsToDisplay"></tr>
+</table>
+</mat-radio-group>
+<mat-divider [inset]="true"></mat-divider>
+<button mat-raised-button (click)="createGear()" color="primary" class="margin-top-left">New gear</button>
+

@@ -25,11 +25,11 @@ table {
   width: 60%;
 }
 
-.shoe-active {
+.gear-active {
   font-weight: bold;
 }
 
-.shoe-inactive {
+.gear-inactive {
   font-weight: lighter;
   font-style: italic;
 }
