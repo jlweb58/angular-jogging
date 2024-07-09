@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Run} from '../../core/models/run.model';
+import {Activity} from '../../core/models/activity.model';
 import {ChartIntervalType} from '../../core/models/chart-interval-type';
 
 @Component({
@@ -14,7 +14,7 @@ export class BarChartComponent implements OnInit {
   @Input()
   endDate: Date;
   @Input()
-  runs: Run[];
+  runs: Activity[];
   @Input()
   chartIntervalType: ChartIntervalType;
 

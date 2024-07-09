@@ -1,14 +1,14 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {RunViewComponent} from './run-view.component';
+import {ActivityViewComponent} from './activity-view.component';
 import {MatDialog} from '@angular/material/dialog';
 import {LoggerService} from '../../core/services/logger.service';
 import {GpxTrackService} from '../../core/services/gpx-track.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('RunViewComponent', () => {
-  let component: RunViewComponent;
-  let fixture: ComponentFixture<RunViewComponent>;
+  let component: ActivityViewComponent;
+  let fixture: ComponentFixture<ActivityViewComponent>;
 
   beforeEach(async(() => {
     window.history.pushState({run: {
@@ -18,7 +18,7 @@ describe('RunViewComponent', () => {
       }}, '', '' );
 
     TestBed.configureTestingModule({
-      declarations: [ RunViewComponent ],
+      declarations: [ ActivityViewComponent ],
       imports: [ HttpClientTestingModule],
       providers: [
         { provide: MatDialog, useValue: {} },
@@ -30,7 +30,7 @@ describe('RunViewComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RunViewComponent);
+    fixture = TestBed.createComponent(ActivityViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,28 +1,28 @@
 import {TestBed, async, getTestBed, inject, ComponentFixture, fakeAsync, tick} from '@angular/core/testing';
-import {RunService} from './run.service';
+import {ActivityService} from './activity.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {Run} from '../models/run.model';
+import {Activity} from '../models/activity.model';
 import {LoggerService} from './logger.service';
 
 describe('RunService', () => {
 
-  const run1: Run = new Run();
-  const run2: Run = new Run();
-  const run3: Run = new Run();
-  const runs: Run[] = [ run1, run2, run3 ];
+  const run1: Activity = new Activity();
+  const run2: Activity = new Activity();
+  const run3: Activity = new Activity();
+  const runs: Activity[] = [ run1, run2, run3 ];
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [RunService, LoggerService],
+      providers: [ActivityService, LoggerService],
     });
   });
 
-  it('should be initialized', inject([RunService], (runService: RunService) => {
+  it('should be initialized', inject([ActivityService], (runService: ActivityService) => {
     expect(runService).toBeTruthy();
   }));
 
-  it('should return runs', inject([HttpTestingController, RunService], (httpMock: HttpTestingController, runService: RunService) => {
+  it('should return runs', inject([HttpTestingController, ActivityService], (httpMock: HttpTestingController, runService: ActivityService) => {
     runService.loadAll();
     const req = httpMock.expectOne('http://localhost:9000/jogging/runs');
     expect(req.request.method).toBe('GET');
@@ -39,7 +39,7 @@ describe('RunService', () => {
 
 
   it('should fetch runs for date range',
-    inject([HttpTestingController, RunService], async (httpMock: HttpTestingController, runService: RunService) => {
+    inject([HttpTestingController, ActivityService], async (httpMock: HttpTestingController, runService: ActivityService) => {
       runService.loadAll();
       const req = httpMock.expectOne('http://localhost:9000/jogging/runs');
       expect(req.request.method).toBe('GET');
@@ -47,14 +47,14 @@ describe('RunService', () => {
       run2.date = '2020-05-03';
       run3.date = '2020-04-19';
       req.flush(runs);
-      const result: Run[] = runService.getRunsForDateRange(new Date('2020-05-01T00:00:00Z'), new Date('2020-05-31T00:00:00Z'));
+      const result: Activity[] = runService.getRunsForDateRange(new Date('2020-05-01T00:00:00Z'), new Date('2020-05-31T00:00:00Z'));
 
       expect(result.length).toBe(2);
       httpMock.verify();
     }));
 
   it('should include runs on the edge of the date range',
-    inject([HttpTestingController, RunService], async (httpMock: HttpTestingController, runService: RunService) => {
+    inject([HttpTestingController, ActivityService], async (httpMock: HttpTestingController, runService: ActivityService) => {
       runService.loadAll();
       const req = httpMock.expectOne('http://localhost:9000/jogging/runs');
       expect(req.request.method).toBe('GET');
@@ -62,7 +62,7 @@ describe('RunService', () => {
       run2.date = '2020-05-03';
       run3.date = '2020-05-01';
       req.flush(runs);
-      const result: Run[] = runService.getRunsForDateRange(new Date('2020-05-01T00:00:00Z'), new Date('2020-05-31T00:00:00Z'));
+      const result: Activity[] = runService.getRunsForDateRange(new Date('2020-05-01T00:00:00Z'), new Date('2020-05-31T00:00:00Z'));
       expect(result.length).toBe(3);
       httpMock.verify();
     }));

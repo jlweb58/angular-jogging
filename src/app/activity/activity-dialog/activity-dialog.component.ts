@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
-import {Run} from '../../core/models/run.model';
+import {Activity} from '../../core/models/activity.model';
 import {LoggerService} from '../../core/services/logger.service';
-import {RunService} from '../../core/services/run.service';
+import {ActivityService} from '../../core/services/activity.service';
 import {ShoesService} from '../../core/services/shoes.service';
 import {Shoes} from '../../core/models/shoes.model';
 import {FileUploadService} from '../../core/services/file-upload.service';
@@ -12,13 +12,13 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {ActivityType, ActivityTypeType} from '../../core/models/activity-type.model';
 
 @Component({
-  templateUrl: './run-dialog.component.html',
-  styleUrls: ['./run-dialog.component.css']
+  templateUrl: './activity-dialog.component.html',
+  styleUrls: ['./activity-dialog.component.css']
 })
-export class RunDialogComponent implements OnInit {
+export class ActivityDialogComponent implements OnInit {
 
-  run: Run;
-  cachedRun: Run;
+  run: Activity;
+  cachedRun: Activity;
   gpxTrack: string;
   @Output() displayChange = new EventEmitter();
   public isEdit: boolean;
@@ -27,18 +27,18 @@ export class RunDialogComponent implements OnInit {
   activityTypes: ActivityTypeType = ActivityType;
 
   constructor(private logger: LoggerService,
-              private runService: RunService,
+              private runService: ActivityService,
               private shoesService: ShoesService,
               private gpxTrackService: GpxTrackService,
               private fileUploadService: FileUploadService,
               private router: Router,
               @Inject(MAT_DIALOG_DATA) data) {
     if (!data) {
-      this.run = new Run();
+      this.run = new Activity();
       this.isEdit = false;
     } else {
       this.run = data;
-      this.cachedRun = Run.clone(this.run);
+      this.cachedRun = Activity.clone(this.run);
     }
   }
 
@@ -87,7 +87,7 @@ export class RunDialogComponent implements OnInit {
 
       this.runService.update(this.run);
     } else {
-      const runObservable: Observable<Run> = this.runService.create(this.run);
+      const runObservable: Observable<Activity> = this.runService.create(this.run);
       runObservable.subscribe( data => {
         if (this.gpxTrack != null) {
           this.gpxTrackService.saveGpxTrack(data, this.gpxTrack).subscribe( track => {

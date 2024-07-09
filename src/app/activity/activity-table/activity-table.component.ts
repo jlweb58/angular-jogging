@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, ViewChild} from '@angular/core';
-import {RunService} from '../../core/services/run.service';
-import {Run} from '../../core/models/run.model';
+import {ActivityService} from '../../core/services/activity.service';
+import {Activity} from '../../core/models/activity.model';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
@@ -9,19 +9,19 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-run-table',
-  templateUrl: './run-table.component.html',
-  styleUrls: ['./run-table.component.css']
+  templateUrl: './activity-table.component.html',
+  styleUrls: ['./activity-table.component.css']
 })
-export class RunTableComponent implements OnInit {
-  dataSource = new MatTableDataSource<Run>();
+export class ActivityTableComponent implements OnInit {
+  dataSource = new MatTableDataSource<Activity>();
   displayedColumns = ['date', 'activityType', 'course', 'distance', 'time', 'weather', 'comments', 'avgheartrate', 'shoes'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @Output() run: Run;
+  @Output() run: Activity;
 
   constructor(
-    private runService: RunService,
+    private runService: ActivityService,
     private logger: LoggerService,
     private router: Router,
   ) { }

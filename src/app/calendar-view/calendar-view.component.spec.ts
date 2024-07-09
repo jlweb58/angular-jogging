@@ -3,10 +3,10 @@ import {MatDialog} from '@angular/material/dialog';
 import {HttpClient} from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import {CalendarViewComponent} from './calendar-view.component';
-import {RunService} from '../core/services/run.service';
+import {ActivityService} from '../core/services/activity.service';
 import {LoggerService} from '../core/services/logger.service';
 import {CalendarDay} from '../core/models/calendar.day';
-import {Run} from '../core/models/run.model';
+import {Activity} from '../core/models/activity.model';
 
 describe('CalendarViewComponent', () => {
    let spy: any;
@@ -22,7 +22,7 @@ describe('CalendarViewComponent', () => {
         { provide: HttpClient, useValue: {} },
         { provide: CalendarViewComponent, useClass: CalendarViewComponent },
         { provide: LoggerService, useClass: LoggerService },
-        { provide: RunService, useClass: RunService }
+        { provide: ActivityService, useClass: ActivityService }
       ]
     }).compileComponents();
   }));
@@ -35,9 +35,9 @@ describe('CalendarViewComponent', () => {
    it('should calculate the distance for a row',
     inject([CalendarViewComponent], (calendarViewComponent: CalendarViewComponent) => {
     const calendarDays: CalendarDay[] = [];
-    const run1: Run = new Run();
-    const run2: Run = new Run();
-    const run3: Run = new Run();
+    const run1: Activity = new Activity();
+    const run2: Activity = new Activity();
+    const run3: Activity = new Activity();
     run1.distance = 5.2;
     run2.distance = 6.1;
     run3.distance = 11.8;
@@ -49,9 +49,9 @@ describe('CalendarViewComponent', () => {
    it('should calculate the time for a row',
     inject([CalendarViewComponent], (calendarViewComponent: CalendarViewComponent) => {
       const calendarDays: CalendarDay[] = [];
-      const run1: Run = new Run();
-      const run2: Run = new Run();
-      const run3: Run = new Run();
+      const run1: Activity = new Activity();
+      const run2: Activity = new Activity();
+      const run3: Activity = new Activity();
       run1.runDuration = { time: '00:20:00'};
       run2.runDuration = { time: '00:21:00'};
       run3.runDuration = { time: '00:20:01'};
@@ -66,9 +66,9 @@ describe('CalendarViewComponent', () => {
    it('should calculate the time for a row where the total is 1 hour',
     inject([CalendarViewComponent], (calendarViewComponent: CalendarViewComponent) => {
       const calendarDays: CalendarDay[] = [];
-      const run1: Run = new Run();
-      const run2: Run = new Run();
-      const run3: Run = new Run();
+      const run1: Activity = new Activity();
+      const run2: Activity = new Activity();
+      const run3: Activity = new Activity();
       run1.runDuration = { time: '00:20:00'};
       run2.runDuration = { time: '00:20:00'};
       run3.runDuration = { time: '00:20:00'};
@@ -83,12 +83,12 @@ describe('CalendarViewComponent', () => {
 
    it('should calculate the distance for the current month',
     inject([CalendarViewComponent], (calendarViewComponent: CalendarViewComponent) => {
-      const run1: Run = Run.fromDateAndDistance(5.3, '2020-02-28');
-      const run2: Run = Run.fromDateAndDistance(6.2, '2020-03-01');
-      const run3: Run = Run.fromDateAndDistance(7.1, '2020-03-31');
-      const runs: Run[]  = [];
+      const run1: Activity = Activity.fromDateAndDistance(5.3, '2020-02-28');
+      const run2: Activity = Activity.fromDateAndDistance(6.2, '2020-03-01');
+      const run3: Activity = Activity.fromDateAndDistance(7.1, '2020-03-31');
+      const runs: Activity[]  = [];
       runs.push(run1, run2, run3);
-      const runService = TestBed.inject(RunService);
+      const runService = TestBed.inject(ActivityService);
       spy = spyOn(runService, 'getRunsForDateRange').and.returnValue(runs);
       const currentDate: Date = new Date();
       currentDate.setMonth(2);
@@ -105,13 +105,13 @@ describe('CalendarViewComponent', () => {
 
    it('should count the activities for the current month',
     inject([CalendarViewComponent], (calendarViewComponent: CalendarViewComponent) => {
-      const run1: Run = Run.fromDateAndDistance(5.3, '2020-02-28');
-      const run2: Run = Run.fromDateAndDistance(6.2, '2020-03-01');
-      const run3: Run = Run.fromDateAndDistance(7.1, '2020-03-31');
+      const run1: Activity = Activity.fromDateAndDistance(5.3, '2020-02-28');
+      const run2: Activity = Activity.fromDateAndDistance(6.2, '2020-03-01');
+      const run3: Activity = Activity.fromDateAndDistance(7.1, '2020-03-31');
 
-      const runs: Run[]  = [];
+      const runs: Activity[]  = [];
       runs.push(run1, run2, run3);
-      const runService = TestBed.inject(RunService);
+      const runService = TestBed.inject(ActivityService);
       spy = spyOn(runService, 'getRunsForDateRange').and.returnValue(runs);
       const currentDate: Date = new Date();
       currentDate.setMonth(2);
@@ -129,13 +129,13 @@ describe('CalendarViewComponent', () => {
 
    it('should handle two runs on the same day',
     inject([CalendarViewComponent], (calendarViewComponent: CalendarViewComponent) => {
-      const run1: Run = Run.fromDateAndDistance(5.3, '2020-02-28');
-      const run2: Run = Run.fromDateAndDistance(6.2, '2020-03-01');
-      const run3: Run = Run.fromDateAndDistance(7.1, '2020-03-31');
-      const run4: Run = Run.fromDateAndDistance(1.5, '2020-03-31');
-      const runs: Run[]  = [];
+      const run1: Activity = Activity.fromDateAndDistance(5.3, '2020-02-28');
+      const run2: Activity = Activity.fromDateAndDistance(6.2, '2020-03-01');
+      const run3: Activity = Activity.fromDateAndDistance(7.1, '2020-03-31');
+      const run4: Activity = Activity.fromDateAndDistance(1.5, '2020-03-31');
+      const runs: Activity[]  = [];
       runs.push(run1, run2, run3, run4);
-      const runService = TestBed.inject(RunService);
+      const runService = TestBed.inject(ActivityService);
       spy = spyOn(runService, 'getRunsForDateRange').and.returnValue(runs);
       const currentDate: Date = new Date();
       currentDate.setMonth(2);

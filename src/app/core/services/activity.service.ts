@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable, ReplaySubject, Subscription} from 'rxjs';
-import {Run} from '../models/run.model';
+import {Activity} from '../models/activity.model';
 import {LoggerService} from './logger.service';
 import {environment} from '../../../environments/environment';
 import {StorageService} from './storage.service';
@@ -9,14 +9,14 @@ import {StorageService} from './storage.service';
 @Injectable({
   providedIn: 'root'
 })
-export class RunService {
+export class ActivityService {
   private serviceUrl = environment.baseUrl + '/jogging/runs';
   // tslint:disable-next-line:variable-name
-  private _runs = new BehaviorSubject<Run[]>([]);
-  private dataStore: { runs: Run[] } = { runs: [] }; // store our data in memory
+  private _runs = new BehaviorSubject<Activity[]>([]);
+  private dataStore: { runs: Activity[] } = { runs: [] }; // store our data in memory
   private shouldReload = true;
 
-  private static isBetweenDates(startDate: Date, endDate: Date, run: Run) {
+  private static isBetweenDates(startDate: Date, endDate: Date, run: Activity) {
     const runDate: Date = new Date(run.date + 'T00:00:00Z');
     const after = runDate.getTime() >= startDate.getTime();
     const before = runDate.getTime() <= endDate.getTime();
@@ -31,13 +31,13 @@ export class RunService {
 
   ) { }
 
-  public getRuns(): Observable<Run[]> {
+  public getRuns(): Observable<Activity[]> {
     return this._runs.asObservable();
   }
 
   public loadAll() {
     if (!this.shouldReload) { return; }
-    this.http.get<Run[]>(this.serviceUrl).subscribe(
+    this.http.get<Activity[]>(this.serviceUrl).subscribe(
       data => {
         this.dataStore.runs = data;
         this._runs.next(Object.assign({}, this.dataStore).runs);
@@ -49,10 +49,10 @@ export class RunService {
     );
   }
 
-  public create(run: Run): Observable<Run> {
-    const replaySubject: ReplaySubject<Run> = new ReplaySubject<Run>(1);
-    const httpRequest: Observable<Run> = this.http
-      .post<Run>(this.serviceUrl, run );
+  public create(run: Activity): Observable<Activity> {
+    const replaySubject: ReplaySubject<Activity> = new ReplaySubject<Activity>(1);
+    const httpRequest: Observable<Activity> = this.http
+      .post<Activity>(this.serviceUrl, run );
     httpRequest.subscribe(
         replaySubject
       );
@@ -74,9 +74,9 @@ export class RunService {
     return replaySubject.asObservable();
   }
 
-  public update(run: Run) {
+  public update(run: Activity) {
     this.http
-      .put<Run>(`${this.serviceUrl}/${run.id}`, run)
+      .put<Activity>(`${this.serviceUrl}/${run.id}`, run)
       .subscribe(
         data => {
           this.dataStore.runs.forEach((t, i) => {
@@ -93,7 +93,7 @@ export class RunService {
       );
   }
 
-  public getRunsForDateRange(startDate: Date, endDate: Date): Run[] {
+  public getRunsForDateRange(startDate: Date, endDate: Date): Activity[] {
     let runs;
     this.getRuns().subscribe(results => {
       if (!results) {
@@ -101,7 +101,7 @@ export class RunService {
       }
       runs = results;
     });
-    return runs.filter(run => RunService.isBetweenDates(startDate, endDate, run));
+    return runs.filter(run => ActivityService.isBetweenDates(startDate, endDate, run));
   }
 
 }

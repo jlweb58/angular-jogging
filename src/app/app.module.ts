@@ -8,7 +8,7 @@ import {ChartModule} from './chart/chart.module';
 import {SharedModule} from './shared/shared.module';
 import {CoreModule} from './core/core.module';
 import {ShoesModule} from './shoes/shoes.module';
-import {RunModule} from './run/run.module';
+import {ActivityModule} from './activity/activity.module';
 import {UserModule} from './user/user.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -23,7 +23,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     AppRoutingModule,
     ChartModule,
     CoreModule,
-    RunModule,
+    ActivityModule,
     SharedModule,
     ShoesModule,
     UserModule,

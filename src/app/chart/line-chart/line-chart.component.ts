@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Run} from '../../core/models/run.model';
+import {Activity} from '../../core/models/activity.model';
 
 @Component({
   selector: 'app-line-chart',
@@ -13,7 +13,7 @@ export class LineChartComponent implements OnInit {
   @Input()
   endDate: Date;
   @Input()
-  runs: Run[];
+  runs: Activity[];
   public graph =  {
     data: [],
     layout: {

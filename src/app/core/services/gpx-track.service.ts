@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {LoggerService} from './logger.service';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import {Run} from '../models/run.model';
+import {Activity} from '../models/activity.model';
 import {GpxTrack} from '../models/gpx-track.model';
 
 @Injectable({
@@ -19,11 +19,11 @@ export class GpxTrackService {
   ) {  }
 
 
-  public getGpxTrack(run: Run): Observable<GpxTrack> {
+  public getGpxTrack(run: Activity): Observable<GpxTrack> {
     return this.http.get<GpxTrack>(`${this.serviceUrl}/${run.id}`);
   }
 
-  public saveGpxTrack(run: Run, gpxData: string): Observable<GpxTrack> {
+  public saveGpxTrack(run: Activity, gpxData: string): Observable<GpxTrack> {
     return this.http.post<GpxTrack>(`${this.serviceUrl}/${run.id}`, gpxData);
   }
 

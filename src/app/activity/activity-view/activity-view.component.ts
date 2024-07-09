@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import {Run} from '../../core/models/run.model';
+import {Activity} from '../../core/models/activity.model';
 import {LoggerService} from '../../core/services/logger.service';
-import {RunService} from '../../core/services/run.service';
+import {ActivityService} from '../../core/services/activity.service';
 import {GpxTrack} from '../../core/models/gpx-track.model';
 import {GpxTrackService} from '../../core/services/gpx-track.service';
-import {RunDialogComponent} from '../run-dialog/run-dialog.component';
+import {ActivityDialogComponent} from '../activity-dialog/activity-dialog.component';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-run-view',
-  templateUrl: './run-view.component.html',
-  styleUrls: ['./run-view.component.css']
+  templateUrl: './activity-view.component.html',
+  styleUrls: ['./activity-view.component.css']
 })
-export class RunViewComponent implements OnInit {
+export class ActivityViewComponent implements OnInit {
 
-  run: Run;
+  run: Activity;
   gpxTrack: GpxTrack;
 
   constructor(private logger: LoggerService,
-              private runService: RunService,
+              private runService: ActivityService,
               private gpxTrackService: GpxTrackService,
               private dialog: MatDialog) {
   }
@@ -37,8 +37,8 @@ export class RunViewComponent implements OnInit {
 
   editRun(): void {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = Run.clone(this.run);
-    const dialogRef = this.dialog.open(RunDialogComponent, dialogConfig);
+    dialogConfig.data = Activity.clone(this.run);
+    const dialogRef = this.dialog.open(ActivityDialogComponent, dialogConfig);
     dialogRef.componentInstance.isEdit = true;
     dialogRef.afterClosed().subscribe(result => {
       this.run = dialogRef.componentInstance.run;

@@ -1,7 +1,7 @@
 import {Shoes} from './shoes.model';
 import {ActivityType} from './activity-type.model';
 
-export class Run {
+export class Activity {
   id: number;
   date: string;
   course: string;
@@ -22,15 +22,15 @@ export class Run {
     this.shoes = new Shoes();
   }
 
-  public static fromDateAndDistance(distance: number, date: string): Run {
-    const run: Run = new Run();
+  public static fromDateAndDistance(distance: number, date: string): Activity {
+    const run: Activity = new Activity();
     run.date = date;
     run.distance = distance;
     return run;
   }
 
-  public static clone(runToClone: Run): Run {
-    const run: Run = new Run();
+  public static clone(runToClone: Activity): Activity {
+    const run: Activity = new Activity();
     run.date = runToClone.date;
     run.distance = runToClone.distance;
     run.id = runToClone.id;

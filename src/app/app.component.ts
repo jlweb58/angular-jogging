@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {RunDialogComponent} from './run/run-dialog/run-dialog.component';
+import {ActivityDialogComponent} from './activity/activity-dialog/activity-dialog.component';
 import {LoggerService} from './core/services/logger.service';
 import {MatDialog} from '@angular/material/dialog';
-import {RunService} from './core/services/run.service';
+import {ActivityService} from './core/services/activity.service';
 import {ChartIntervalType} from './core/models/chart-interval-type';
 import {TokenStorageService} from './core/services/token-storage.service';
 import {MonthDatePickerComponent} from './shared/month-date-picker/month-date-picker.component';
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
   constructor(private logger: LoggerService,
               private dialog: MatDialog,
-              private runService: RunService,
+              private runService: ActivityService,
               public tokenStorageService: TokenStorageService) {
   }
 
@@ -75,7 +75,7 @@ export class AppComponent implements OnInit {
   }
 
   newRun() {
-    this.dialog.open(RunDialogComponent);
+    this.dialog.open(ActivityDialogComponent);
   }
 
 }
