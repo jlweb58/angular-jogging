@@ -49,11 +49,13 @@ export class ActivityDialogComponent implements OnInit {
         return;
       }
       this.gears = results.filter(gear => gear.active);
+
       if (this.isEdit && this.activity.gear) {
         this.selectedGear = this.activity.gear;
       } else {
         this.selectedGear = this.gears.find(gear => gear.preferred);
       }
+
     });
   }
 
@@ -67,10 +69,14 @@ export class ActivityDialogComponent implements OnInit {
     this.activity = this.cachedActivity;
   }
 
+  private getGearForId(id: number) {
+    return this.gears.find((gear) => gear.id === id);
+  }
 
   createActivity() {
     const activityDate: Date = new Date(this.activity.date);
     if (this.selectedGear.id) {
+      this.selectedGear = this.getGearForId(this.selectedGear.id);
       this.activity.gear = this.selectedGear;
     } else {
       this.activity.gear = null;
@@ -112,5 +118,4 @@ export class ActivityDialogComponent implements OnInit {
   onClose() {
     this.displayChange.emit(false);
   }
-
 }

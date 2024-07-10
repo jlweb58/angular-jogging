@@ -13,5 +13,4 @@ export class Gear {
     this.preferred = false;
   }
 
-
 }

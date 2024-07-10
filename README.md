@@ -15,7 +15,7 @@ It runs together with the jogging3 project as a Java/SpringBoot backend
 - (FIXED) On production the preferred shoe radio button is not showing as selected (but it works) 
 - (FIXED) Positioning and look of filter field on run table page is unattractive
 - (FIXED) Positioning of calendar on page (calendar view)
-- Activity view shows wrong gear after adding new activity or editing activity
+- (FIXED) Activity view shows wrong gear after adding new activity or editing activity
 - For any future bugs open an issue at GitHub
 
 ## TODOS
