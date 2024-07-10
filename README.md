@@ -15,6 +15,7 @@ It runs together with the jogging3 project as a Java/SpringBoot backend
 - (FIXED) On production the preferred shoe radio button is not showing as selected (but it works) 
 - (FIXED) Positioning and look of filter field on run table page is unattractive
 - (FIXED) Positioning of calendar on page (calendar view)
+- Activity view shows wrong gear after adding new activity or editing activity
 - For any future bugs open an issue at GitHub
 
 ## TODOS
@@ -27,7 +28,7 @@ It runs together with the jogging3 project as a Java/SpringBoot backend
 - Lots of cleanup in the run/map view component
 - Get some more unit tests
 - Implement a chart showing average pulse rate over time
-- Investigate the possibility of importing gpx tracks from Strava
+- (DONE) Investigate the possibility of importing gpx tracks from Strava
 - (DONE) If gpx tracks can be imported, implement a map view
 - Come up with a replacement for Chart This
 - Implement Find Runs (same as monthly/yearly chart, but with course parameter)
@@ -44,7 +45,10 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build,
-with base-href argument, e.g. ng build --prod --base-href https://www.webber-jogging.de
+with base-href argument, e.g. `ng build --prod --base-href https://www.webber-jogging.de`
+If you run into an Error: error:0308010C:digital envelope routines::unsupported
+do this: `export NODE_OPTIONS=--openssl-legacy-provider`
+
 
 ## Running unit tests
 
