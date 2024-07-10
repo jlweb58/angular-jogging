@@ -14,7 +14,10 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/angular-jogging",
-            "index": "src/index.html",
+            "index": {
+              "input": "src/index.env.html",
+              "output": "../index.html"
+            },
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
@@ -31,6 +34,10 @@
           },
           "configurations": {
             "production": {
+              "index": {
+                "input": "src/index.env.html",
+                "output": "index.html"
+              },
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
