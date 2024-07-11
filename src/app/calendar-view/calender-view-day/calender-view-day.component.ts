@@ -35,7 +35,7 @@ export class CalenderViewDayComponent implements OnInit {
         return 'pool';
       }
       case ActivityType.Hike: {
-        return 'hike';
+        return 'hiking';
       }
       default: {
         return 'sports_and_outdoors';

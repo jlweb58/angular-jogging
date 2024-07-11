@@ -4,6 +4,8 @@ import {CalendarDay} from '../core/models/calendar.day';
 import {ActivityService} from '../core/services/activity.service';
 import {Activity} from '../core/models/activity.model';
 import {Router} from '@angular/router';
+import {ActivityType, ActivityTypeType} from '../core/models/activity-type.model';
+import {CalendarFilter} from './calendar-filter';
 
 @Component({
   selector: 'app-calendar-view',
@@ -21,6 +23,9 @@ export class CalendarViewComponent implements OnInit {
   currentYear: number;
   calendarDays: CalendarDay[] = [];
   currentDate: Date;
+  calendarFilter: CalendarFilter;
+  activityTypes: ActivityTypeType = ActivityType;
+
 
   private static getFormattedTimeString(totalSeconds: number): string {
     const hours =  Math.trunc(totalSeconds / 3600);
@@ -111,6 +116,7 @@ export class CalendarViewComponent implements OnInit {
       if (!results) {
         return;
       }
+      this.calendarFilter = new CalendarFilter();
       this.currentDate = new Date();
       this.currentMonth = this.currentDate.toLocaleString('default', { month: 'long' });
       this.currentYear = this.currentDate.getFullYear();
@@ -152,6 +158,10 @@ export class CalendarViewComponent implements OnInit {
       .reduce((sum: number, activity: Activity) => sum + CalendarViewComponent.getSeconds(activity.activityDuration.time), 0);
 
     return CalendarViewComponent.getFormattedTimeString(secondsSum);
+  }
+
+  updateFilter(): void {
+    this.logger.log('Filter updated');
   }
 
   getRow(index: number): CalendarDay[] {

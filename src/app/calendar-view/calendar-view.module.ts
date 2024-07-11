@@ -6,8 +6,6 @@ import {SharedModule} from '../shared/shared.module';
 import {CalendarViewComponent} from './calendar-view.component';
 import {CalenderViewDayComponent} from './calender-view-day/calender-view-day.component';
 
-
-
 @NgModule({
   declarations: [
     CalendarViewComponent,
