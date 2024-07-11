@@ -1,0 +1,80 @@
+:host {
+  display: contents;
+}
+
+.calendar-table-cell {
+  border-color: #0a59b2;
+  border-width: 1px;
+  border-style: solid;
+  height: 100px;
+  width: 100px;
+  position: relative;
+}
+
+.calendar-table-cell.other-month {
+  background-color: lightgray;
+  background-clip: padding-box; /* keeps the background color from covering the border */
+}
+
+th.calendar-table-cell {
+  height: auto;
+  font-size: larger;
+}
+
+.calendar-day-header {
+  padding: 2px 2px;
+  font-size: larger;
+  text-align: left;
+  position: relative;
+  margin-bottom: 5px;
+  top: 5px;
+}
+
+.calendar-activity {
+  cursor: pointer;
+  font-size: x-small;
+  font-family: system-ui;
+  text-align: left;
+  background-color: ghostwhite;
+  border-radius: 3px;
+  margin-top: 1px;
+  padding-left: 3px;
+  padding-bottom: 1px;
+  padding-top: 1px;
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
+}
+
+.activity-bike {
+  box-shadow: inset 2px 0 0 green;
+}
+
+.activity-run {
+  box-shadow: inset 2px 0 0 red;
+}
+
+.activity-swim {
+  box-shadow: inset 2px 0 0 blue;
+}
+
+.activity-hike {
+  box-shadow: inset 2px 0 0 saddlebrown;
+}
+
+.activity-default {
+  box-shadow: inset 2px 0 0 black;
+}
+
+.calendar-activity-icon {
+  font-size: 12px;
+  height: 12px;
+  width: 12px;
+}
+
+dd {
+  margin-left: 2px;
+}
+
+

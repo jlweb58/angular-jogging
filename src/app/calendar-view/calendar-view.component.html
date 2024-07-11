@@ -21,20 +21,7 @@
     <tbody>
     <tr class="calendar-table-row">
       <ng-container *ngFor="let calendarDay of getRow(1)">
-        <td [ngClass]="getClassForDate(calendarDay.day)">
-          <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
-          <ng-container *ngIf="calendarDay.activities">
-            <ng-container *ngFor="let activity of calendarDay.activities">
-              <div class="calendar-activity" (click)="showActivity(activity)">
-                <dl>
-                  <dd>{{activity.course}}</dd>
-                  <dd>{{activity.distance}} km</dd>
-                  <dd>{{activity.activityDuration.time}}</dd>
-                </dl>
-              </div>
-            </ng-container>
-          </ng-container>
-        </td>
+        <app-calender-view-day [calendarDay] = "calendarDay" [currentMonth]="currentDate.getMonth()"></app-calender-view-day>
       </ng-container>
       <td  class="weekly-totals-cell">
         <dl>
@@ -47,22 +34,7 @@
     </tr>
       <tr class="calendar-table-row">
         <ng-container *ngFor="let calendarDay of getRow(2)">
-          <td [ngClass]="getClassForDate(calendarDay.day)">
-            <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
-            <ng-container *ngIf="calendarDay.activities">
-              <ng-container *ngFor="let activity of calendarDay.activities">
-                <div class="calendar-activity" (click)="showActivity(activity)">
-                  <dl>
-                    <dd>{{activity.course}}</dd>
-                    <dd>{{activity.distance}} km</dd>
-                    <dd>{{activity.activityDuration.time}}</dd>
-                  </dl>
-                </div>
-              </ng-container>
-
-            </ng-container>
-          </td>
-
+          <app-calender-view-day [calendarDay] = "calendarDay" [currentMonth]="currentDate.getMonth()"></app-calender-view-day>
         </ng-container>
         <td  class="weekly-totals-cell">
           <dl>
@@ -76,22 +48,7 @@
 
     <tr class="calendar-table-row">
       <ng-container *ngFor="let calendarDay of getRow(3)">
-        <td [ngClass]="getClassForDate(calendarDay.day)">
-          <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
-          <ng-container *ngIf="calendarDay.activities">
-            <ng-container *ngFor="let activity of calendarDay.activities">
-              <div class="calendar-activity" (click)="showActivity(activity)">
-                <dl>
-                  <dd>{{activity.course}}</dd>
-                  <dd>{{activity.distance}} km</dd>
-                  <dd>{{activity.activityDuration.time}}</dd>
-                </dl>
-              </div>
-            </ng-container>
-
-          </ng-container>
-        </td>
-
+        <app-calender-view-day [calendarDay] = "calendarDay" [currentMonth]="currentDate.getMonth()"></app-calender-view-day>
       </ng-container>
       <td  class="weekly-totals-cell">
         <dl>
@@ -103,22 +60,7 @@
       </td>    </tr>
     <tr class="calendar-table-row">
       <ng-container *ngFor="let calendarDay of getRow(4)">
-        <td [ngClass]="getClassForDate(calendarDay.day)">
-          <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
-          <ng-container *ngIf="calendarDay.activities">
-            <ng-container *ngFor="let activity of calendarDay.activities">
-              <div class="calendar-activity" (click)="showActivity(activity)">
-                <dl>
-                  <dd>{{activity.course}}</dd>
-                  <dd>{{activity.distance}} km</dd>
-                  <dd>{{activity.activityDuration.time}}</dd>
-                </dl>
-              </div>
-            </ng-container>
-
-          </ng-container>
-        </td>
-
+        <app-calender-view-day [calendarDay] = "calendarDay" [currentMonth]="currentDate.getMonth()"></app-calender-view-day>
       </ng-container>
       <td  class="weekly-totals-cell">
         <dl>
@@ -130,22 +72,7 @@
       </td>    </tr>
     <tr class="calendar-table-row" *ngIf="getRow(5)">
       <ng-container *ngFor="let calendarDay of getRow(5)">
-        <td [ngClass]="getClassForDate(calendarDay.day)">
-          <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
-          <ng-container *ngIf="calendarDay.activities">
-            <ng-container *ngFor="let activity of calendarDay.activities">
-              <div class="calendar-activity" (click)="showActivity(activity)">
-                <dl>
-                  <dd>{{activity.course}}</dd>
-                  <dd>{{activity.distance}} km</dd>
-                  <dd>{{activity.activityDuration.time}}</dd>
-                </dl>
-              </div>
-            </ng-container>
-
-          </ng-container>
-        </td>
-
+        <app-calender-view-day [calendarDay] = "calendarDay" [currentMonth]="currentDate.getMonth()"></app-calender-view-day>
       </ng-container>
       <td  class="weekly-totals-cell">
         <dl>
@@ -158,20 +85,7 @@
     </tr>
     <tr class="calendar-table-row" *ngIf="getRow(6)">
       <ng-container *ngFor="let calendarDay of getRow(6)">
-        <td [ngClass]="getClassForDate(calendarDay.day)">
-          <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
-          <ng-container *ngIf="calendarDay.activities">
-            <ng-container *ngFor="let activity of calendarDay.activities">
-              <div class="calendar-activity" (click)="showActivity(activity)">
-                <dl>
-                  <dd>{{activity.course}}</dd>
-                  <dd>{{activity.distance}} km</dd>
-                  <dd>{{activity.activityDuration.time}}</dd>
-                </dl>
-              </div>
-            </ng-container>
-          </ng-container>
-        </td>
+        <app-calender-view-day [calendarDay] = "calendarDay" [currentMonth]="currentDate.getMonth()"></app-calender-view-day>
       </ng-container>
       <td  class="weekly-totals-cell">
         <dl>

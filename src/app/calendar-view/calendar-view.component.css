@@ -12,23 +12,13 @@
   display: inline-block;
 }
 
-.calendar-table-cell {
+th.calendar-table-cell {
   border-color: #0a59b2;
   border-width: 1px;
   border-style: solid;
-  height: 100px;
+  height: 20px;
   width: 100px;
   position: relative;
-}
-
-.calendar-table-cell.other-month {
-  background-color: lightgray;
-  background-clip: padding-box; /* keeps the background color from covering the border */
-}
-
-th.calendar-table-cell {
-  height: auto;
-  font-size: larger;
 }
 
 .weekly-totals-cell {
@@ -37,15 +27,6 @@ th.calendar-table-cell {
   border-width: 1px;
   border-style: solid;
   color: white;
-}
-
-.calendar-day-header {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 2px 2px;
-  font-size: larger;
-  position: absolute;
-  top: 5px;
 }
 
 .weekly-totals-title {
@@ -58,15 +39,6 @@ th.calendar-table-cell {
   font-size: smaller;
   padding: 2px 2px;
 
-}
-
-.calendar-activity {
-  cursor: pointer;
-  font-size: smaller;
-  background-color: aquamarine;
-  border-radius: 3px;
-  margin-top: 20px;
-  padding: 1px;
 }
 
 .calendar-table-row {

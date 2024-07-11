@@ -11,11 +11,11 @@ import {GearModule} from './gear/gear.module';
 import {ActivityModule} from './activity/activity.module';
 import {UserModule} from './user/user.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CalendarViewModule} from "./calendar-view/calendar-view.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarViewComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -24,6 +24,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ChartModule,
     CoreModule,
     ActivityModule,
+    CalendarViewModule,
     SharedModule,
     GearModule,
     UserModule,
