@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Activity} from '../../core/models/activity.model';
 import {ChartIntervalType} from '../../core/models/chart-interval-type';
+import {ActivityType} from '../../core/models/activity-type.model';
 
 @Component({
   selector: 'app-bar-chart',
@@ -63,8 +64,8 @@ export class BarChartComponent implements OnInit {
 
   prepareMonthlyChart() {
     const resultMap = new Map();
-
-    this.activities.forEach(activity =>  {
+    this.activities.filter((activity) => activity.activityType === ActivityType.Run)
+     .forEach(activity =>  {
       const yearMonth: string = activity.date.substr(0, 7);
       if (resultMap.has(yearMonth)) {
         resultMap.set(yearMonth, resultMap.get(yearMonth) + activity.distance);
@@ -84,7 +85,8 @@ export class BarChartComponent implements OnInit {
 
   prepareYearlyChart() {
     const resultMap = new Map();
-    this.activities.forEach(activity =>  {
+    this.activities.filter((activity) => activity.activityType === ActivityType.Run)
+    .forEach(activity =>  {
       const year: string = activity.date.substr(0, 4);
       if (resultMap.has(year)) {
         resultMap.set(year, resultMap.get(year) + activity.distance);
