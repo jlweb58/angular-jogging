@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'calendar', component: CalendarViewComponent, canActivate: [AuthGuardService]},
   {path: 'logout', component: LogoutComponent, canActivate: [AuthGuardService]},
   {path: 'changePassword', component: ChangePasswordComponent, canActivate: [AuthGuardService]},
-  {path: '', redirectTo: '/home', pathMatch: 'full'}
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
 ];
 
 @NgModule({

@@ -46,3 +46,4 @@ testem.log
 Thumbs.db
 /.env
 /src/index.env.html
+/.angular/
