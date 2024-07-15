@@ -46,7 +46,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 The index.html file is no longer under version control, due to the presence of the Google API key. The build will copy index.env.html to index.html
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build,
-with base-href argument, e.g. `ng build --prod --base-href https://www.webber-jogging.de`
+with base-href argument, e.g. `ng build --configuratioin production --base-href https://www.webber-jogging.de`
 If you run into an Error: error:0308010C:digital envelope routines::unsupported
 do this: `export NODE_OPTIONS=--openssl-legacy-provider`
 
