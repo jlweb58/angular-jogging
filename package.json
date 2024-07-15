@@ -24,7 +24,6 @@
     "@angular/platform-browser": "^18.0.4",
     "@angular/platform-browser-dynamic": "^18.0.4",
     "@angular/router": "^18.0.4",
-    "angular-material-fileupload": "^0.0.11",
     "angular-plotly.js": "^5.2.2",
     "moment": "^2.27.0",
     "plotly.js": "^2.33.0",
