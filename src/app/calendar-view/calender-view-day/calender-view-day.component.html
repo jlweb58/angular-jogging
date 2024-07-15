@@ -2,7 +2,7 @@
   <div class="calendar-day-header">{{calendarDay.day.getDate()}}</div>
   <ng-container *ngIf="calendarDay.activities">
     <ng-container *ngFor="let activity of calendarDay.activities">
-      <div class="calendar-activity" [ngClass] = "getClassForActivity(activity)" click="showActivity(activity)">
+      <div class="calendar-activity" [ngClass] = "getClassForActivity(activity)" (click)="showActivity(activity)">
         <div><mat-icon class="calendar-activity-icon">{{getIcon(activity)}}</mat-icon>&nbsp;{{activity.course}} - </div><div>{{activity.distance}} km {{activity.activityDuration.time}}</div>
 
       </div>
