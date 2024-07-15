@@ -64,6 +64,19 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "development": {
+              "index": {
+                "input": "src/index.env.html",
+                "output": "index.html"
+              },
+              "optimization": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "extractLicenses": false,
+              "vendorChunk": true,
+              "buildOptimizer": false,
+              "budgets": []
             }
           }
         },
@@ -75,8 +88,12 @@
           "configurations": {
             "production": {
               "browserTarget": "angular-jogging:build:production"
+            },
+            "development": {
+              "browserTarget": "angular-jogging:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
