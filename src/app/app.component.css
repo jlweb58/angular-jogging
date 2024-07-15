@@ -18,7 +18,7 @@
 
 }
 .mat-icon {
-  vertical-align: baseline !important;
+  font-size: medium;
 }
 
 .mat-icon-button {
@@ -35,10 +35,6 @@
   display: flex;
   min-width: 80px;
 
-}
-
-.material-icons {
-  font-size: smaller;
 }
 
 .menu-item-right {
