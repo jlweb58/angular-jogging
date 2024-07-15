@@ -33,6 +33,14 @@ table {
   width: 100%;
 }
 
+.mat-mdc-row:nth-child(odd) {
+  background: #def1ff;
+}
+
+.mat-mdc-row:nth-child(even) {
+  background: #f0f3f5;
+}
+
 th.mat-sort-header-sorted {
   color: black;
 }
