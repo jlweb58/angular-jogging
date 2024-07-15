@@ -6,8 +6,6 @@ import {ActivityTableComponent} from './activity-table/activity-table.component'
 import {ActivityDialogComponent} from './activity-dialog/activity-dialog.component';
 import {ActivityViewComponent} from './activity-view/activity-view.component';
 import {SharedModule} from '../shared/shared.module';
-import {MatSortModule} from '@angular/material/sort';
-
 
 @NgModule({
     imports: [
@@ -15,7 +13,6 @@ import {MatSortModule} from '@angular/material/sort';
         MaterialModule,
         FormsModule,
         SharedModule,
-        MatSortModule,
     ],
   declarations: [
     ActivityTableComponent,
