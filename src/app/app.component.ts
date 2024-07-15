@@ -37,9 +37,15 @@ export class AppComponent implements OnInit {
   prepareBarChart(chartIntervalType: ChartIntervalType) {
     let dialogRef;
     if (chartIntervalType === ChartIntervalType.Monthly) {
-      dialogRef = this.dialog.open(MonthDatePickerComponent);
+      dialogRef = this.dialog.open(MonthDatePickerComponent, {
+        height: '400px',
+        width: '300px',
+      });
     } else {
-      dialogRef = this.dialog.open(YearDatePickerComponent);
+      dialogRef = this.dialog.open(YearDatePickerComponent, {
+        height: '400px',
+        width: '300px',
+      });
     }
     dialogRef.afterClosed().subscribe(result => {
       if (result) {

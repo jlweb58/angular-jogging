@@ -1,10 +1,10 @@
 .month-date-picker-button {
   line-height: 15px;
-  font-size: xx-small;
+  font-size: small;
   margin-top: 10px;
   margin-left: 20px;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 5px;
+  padding-right: 5px;
   margin-right: 10px;
   display: inline-block;
 }
@@ -19,4 +19,7 @@
   display: grid;
   grid-template-columns: 30% 30% 40%;
   grid-gap: 0.3em;
+  padding-top: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

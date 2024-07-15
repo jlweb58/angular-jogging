@@ -3,7 +3,9 @@
   <form class="activity-dialog-form">
     <mat-form-field class="activity-dialog-full-width">
       <mat-label>Date</mat-label>
-      <input matInput type="date" name="date" [(ngModel)]="activity.date">
+      <input matInput name="date" [(ngModel)]="activity.date" [matDatepicker]="picker">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field class="activity-dialog-full-width">
