@@ -1,4 +1,4 @@
-import {TestBed, async, inject} from '@angular/core/testing';
+import {getTestBed, waitForAsync, inject} from '@angular/core/testing';
 import {MatDialog} from '@angular/material/dialog';
 import {HttpClient} from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -11,8 +11,8 @@ import {Activity} from '../core/models/activity.model';
 describe('CalendarViewComponent', () => {
    let spy: any;
 
-   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+   beforeEach(waitForAsync(() => {
+    getTestBed().configureTestingModule({
       declarations: [
         CalendarViewComponent
       ],
@@ -89,7 +89,7 @@ describe('CalendarViewComponent', () => {
       const activity3: Activity = Activity.fromDateAndDistance(7.1, '2020-03-31');
       const activities: Activity[]  = [];
       activities.push(activity1, activity2, activity3);
-      const activityService = TestBed.inject(ActivityService);
+      const activityService = getTestBed().inject(ActivityService);
       spy = spyOn(activityService, 'getActivitiesForDateRange').and.returnValue(activities);
       const currentDate: Date = new Date();
       currentDate.setMonth(2);
@@ -112,7 +112,7 @@ describe('CalendarViewComponent', () => {
 
       const activities: Activity[]  = [];
       activities.push(activity1, activity2, activity3);
-      const activityService = TestBed.inject(ActivityService);
+      const activityService = getTestBed().inject(ActivityService);
       spy = spyOn(activityService, 'getActivitiesForDateRange').and.returnValue(activities);
       const currentDate: Date = new Date();
       currentDate.setMonth(2);
@@ -136,7 +136,7 @@ describe('CalendarViewComponent', () => {
       const activity4: Activity = Activity.fromDateAndDistance(1.5, '2020-03-31');
       const activities: Activity[]  = [];
       activities.push(activity1, activity2, activity3, activity4);
-      const activityService = TestBed.inject(ActivityService);
+      const activityService = getTestBed().inject(ActivityService);
       spy = spyOn(activityService, 'getActivitiesForDateRange').and.returnValue(activities);
       const currentDate: Date = new Date();
       currentDate.setMonth(2);

@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, waitForAsync, getTestBed} from '@angular/core/testing';
 
 import {ActivityViewComponent} from './activity-view.component';
 import {MatDialog} from '@angular/material/dialog';
@@ -10,14 +10,14 @@ describe('ActivityViewComponent', () => {
   let component: ActivityViewComponent;
   let fixture: ComponentFixture<ActivityViewComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     window.history.pushState({activity: {
       activityDuration: {
 
       }
       }}, '', '' );
 
-    TestBed.configureTestingModule({
+    getTestBed().configureTestingModule({
       declarations: [ ActivityViewComponent ],
       imports: [ HttpClientTestingModule],
       providers: [
@@ -30,7 +30,7 @@ describe('ActivityViewComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ActivityViewComponent);
+    fixture = getTestBed().createComponent(ActivityViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
