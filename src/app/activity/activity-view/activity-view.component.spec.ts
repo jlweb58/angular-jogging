@@ -5,6 +5,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {LoggerService} from '../../core/services/logger.service';
 import {GpxTrackService} from '../../core/services/gpx-track.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {Activity} from '../../core/models/activity.model';
+import {GpxTrack} from '../../core/models/gpx-track.model';
 
 describe('ActivityViewComponent', () => {
   let component: ActivityViewComponent;
@@ -32,6 +34,8 @@ describe('ActivityViewComponent', () => {
   beforeEach(() => {
     fixture = getTestBed().createComponent(ActivityViewComponent);
     component = fixture.componentInstance;
+    component.activity = new Activity();
+    component.gpxTrack = new GpxTrack();
     fixture.detectChanges();
   });
 
