@@ -32,8 +32,8 @@
     "webdriver-manager": "^12.1.9"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^16.2.15",
-    "@angular/cli": "^16.2.15",
+    "@angular-devkit/build-angular": "^17.3.9",
+    "@angular/cli": "^17.3.9",
     "@angular/compiler-cli": "~17.3.12",
     "@angular/language-service": "~17.3.12",
     "@types/googlemaps": "^3.40.3",

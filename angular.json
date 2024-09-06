@@ -82,14 +82,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-jogging:build"
+            "buildTarget": "angular-jogging:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-jogging:build:production"
+              "buildTarget": "angular-jogging:build:production"
             },
             "development": {
-              "browserTarget": "angular-jogging:build:development"
+              "buildTarget": "angular-jogging:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -97,7 +97,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-jogging:build"
+            "buildTarget": "angular-jogging:build"
           }
         },
         "test": {
