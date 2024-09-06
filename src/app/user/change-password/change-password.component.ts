@@ -18,23 +18,26 @@ export class ChangePasswordComponent implements OnInit {
     newPassword: '',
   };
 
-  changePasswordForm: FormGroup = this.formBuilder.group({
-      oldPassword: ['', Validators.required],
-      newPassword: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
-    },
-    {
-      validator: MustMatch('newPassword', 'confirmPassword')
-    });
-
-  submitted: boolean;
-
   constructor(private logger: LoggerService,
               private userService: UserService,
               private formBuilder: FormBuilder,
               private location: Location) { }
 
+  changePasswordForm: FormGroup;
+
+  submitted: boolean;
+
+
+
   ngOnInit(): void {
+    this.changePasswordForm = this.formBuilder.group({
+        oldPassword: ['', Validators.required],
+        newPassword: ['', Validators.required],
+        confirmPassword: ['', Validators.required]
+      },
+      {
+        validator: MustMatch('newPassword', 'confirmPassword')
+      });
   }
 
   // Easy access to form fields
