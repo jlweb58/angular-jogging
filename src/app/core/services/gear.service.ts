@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {BehaviorSubject} from 'rxjs';
 import {Gear} from '../models/gear.model';
 import {LoggerService} from './logger.service';

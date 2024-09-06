@@ -1,8 +1,9 @@
 import {TestBed, async, getTestBed, inject, ComponentFixture, fakeAsync, tick} from '@angular/core/testing';
 import {ActivityService} from './activity.service';
-import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import {Activity} from '../models/activity.model';
 import {LoggerService} from './logger.service';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('ActivityService', () => {
 
@@ -13,9 +14,9 @@ describe('ActivityService', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [ActivityService, LoggerService],
-    });
+    imports: [],
+    providers: [ActivityService, LoggerService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
   });
 
   it('should be initialized', inject([ActivityService], (activityService: ActivityService) => {

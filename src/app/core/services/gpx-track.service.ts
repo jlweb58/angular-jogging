@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {LoggerService} from './logger.service';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Activity} from '../models/activity.model';
 import {GpxTrack} from '../models/gpx-track.model';

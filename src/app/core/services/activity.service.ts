@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {BehaviorSubject, Observable, ReplaySubject, Subscription} from 'rxjs';
 import {Activity} from '../models/activity.model';
 import {LoggerService} from './logger.service';

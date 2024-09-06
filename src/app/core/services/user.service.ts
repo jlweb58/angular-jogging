@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {LoggerService} from './logger.service';
 import {ChangePasswordRequest} from '../models/change-password-request.model';
 import {ChangePasswordResponse} from '../models/change-password-response.model';

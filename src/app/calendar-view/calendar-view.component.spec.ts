@@ -1,6 +1,6 @@
 import {getTestBed, waitForAsync, inject} from '@angular/core/testing';
 import {MatDialog} from '@angular/material/dialog';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import {CalendarViewComponent} from './calendar-view.component';
 import {ActivityService} from '../core/services/activity.service';

@@ -9,31 +9,26 @@ import {TokenStorageService} from './services/token-storage.service';
 import {UserService} from './services/user.service';
 import {authInterceptorProviders} from './interceptors/auth.interceptor';
 import {errorInterceptorProviders} from './interceptors/error.interceptor';
-import {HttpClientModule} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import {FileUploadService} from './services/file-upload.service';
 import {GpxTrackService} from './services/gpx-track.service';
 import {StorageService} from './services/storage.service';
 
 
 
-@NgModule({
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    ],
-  providers: [
-    AuthGuardService,
-    AuthenticationService,
-    LoggerService,
-    ActivityService,
-    GearService,
-    TokenStorageService,
-    UserService,
-    FileUploadService,
-    GpxTrackService,
-    StorageService,
-    authInterceptorProviders,
-    errorInterceptorProviders,
-  ],
-})
+@NgModule({ imports: [CommonModule], providers: [
+        AuthGuardService,
+        AuthenticationService,
+        LoggerService,
+        ActivityService,
+        GearService,
+        TokenStorageService,
+        UserService,
+        FileUploadService,
+        GpxTrackService,
+        StorageService,
+        authInterceptorProviders,
+        errorInterceptorProviders,
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class CoreModule {}
