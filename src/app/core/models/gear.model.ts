@@ -1,3 +1,5 @@
+import {GearType} from './gear-type.model';
+
 export class Gear {
   id: number;
   name: string;
@@ -5,6 +7,7 @@ export class Gear {
   mileage: number;
   active: boolean;
   preferred: boolean;
+  gearType: GearType;
 
   constructor() {
     this.mileageOffset = 0;
@@ -12,5 +15,7 @@ export class Gear {
     this.active = true;
     this.preferred = false;
   }
+
+
 
 }
