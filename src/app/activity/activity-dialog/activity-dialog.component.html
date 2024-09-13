@@ -15,7 +15,7 @@
 
     <mat-form-field class="activity-dialog-full-width">
       <mat-label>Activity Type</mat-label>
-      <mat-select [(ngModel)]="activity.activityType" name="activityType">
+      <mat-select [(ngModel)]="activity.activityType" name="activityType"  (selectionChange)="setSelectedGear()">
         <mat-option>--</mat-option>
         <mat-option [value]="activityTypes.Run">Run</mat-option>
         <mat-option [value]="activityTypes.Bike">Bike</mat-option>
@@ -46,11 +46,11 @@
       <mat-label>Avg. Heart Rate</mat-label>
       <input matInput name="avgHeartRate" [(ngModel)]="activity.avgHeartRate">
     </mat-form-field>
-    <mat-form-field class="activity-dialog-full-width">
+    <mat-form-field *ngIf="selectedGear" class="activity-dialog-full-width" >
       <mat-label>Gear</mat-label>
       <mat-select [(ngModel)]="selectedGear.id" name="gears">
         <mat-option>--</mat-option>
-        <mat-option *ngFor="let gear of gears" [value]="gear.id">{{gear.name}} ({{gear.mileage | number: '1.0-2'}} km)</mat-option>
+        <mat-option *ngFor="let gear of findGearForActivity(activity)" [value]="gear.id">{{gear.name}} ({{gear.mileage | number: '1.0-2'}} km)</mat-option>
       </mat-select>
     </mat-form-field>
     <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="fileInputChange($event)" />

@@ -5,6 +5,7 @@ import {LoggerService} from '../../core/services/logger.service';
 import {MatDialog} from '@angular/material/dialog';
 import {ConfirmDialogComponent} from '../../shared/confirm-dialog/confirm-dialog.component';
 import {GearDialogComponent} from '../gear-dialog/gear-dialog.component';
+import {GearType} from '../../core/models/gear-type.model';
 
 @Component({
   selector: 'app-gear-list',
@@ -13,9 +14,11 @@ import {GearDialogComponent} from '../gear-dialog/gear-dialog.component';
 })
 export class GearListComponent implements OnInit {
 
-  gear: Gear[];
-  preferredGear: Gear;
-  columnsToDisplay = ['preferred', 'name', 'mileage', 'retire'];
+  allShoes: Gear[];
+  allBikes: Gear[];
+  preferredBike: Gear;
+  preferredShoes: Gear;
+  columnsToDisplay = ['preferred', 'name', 'gearType', 'mileage', 'retire'];
 
   constructor(private gearService: GearService,
               private logger: LoggerService,
@@ -28,7 +31,8 @@ export class GearListComponent implements OnInit {
       if (!results) {
         return;
       }
-      this.gear = results.sort(
+      this.allShoes = results.filter(
+        g => g.gearType === GearType.Shoes).sort(
         (a, b) => {
           if (b.active !== a.active) {
             return b.active ? 1 : -1;
@@ -37,12 +41,23 @@ export class GearListComponent implements OnInit {
           }
         }
       );
-      this.preferredGear = results.find(gear => gear.preferred === true);
+      this.allBikes = results.filter(
+        g => g.gearType === GearType.Bike).sort(
+        (a, b) => {
+          if (b.active !== a.active) {
+            return b.active ? 1 : -1;
+          } else {
+            return b.mileage > a.mileage ? 1 : -1;
+          }
+        }
+      );
+      this.preferredBike = results.find(gear => gear.preferred === true && gear.gearType === GearType.Bike);
+      this.preferredShoes = results.find(gear => gear.preferred === true && gear.gearType === GearType.Shoes);
     });
   }
 
   updateGear(gear: Gear) {
-    gear.preferred = (gear === this.preferredGear);
+    gear.preferred = (gear === this.preferredBike || gear === this.preferredShoes);
     this.gearService.update(gear);
   }
 
@@ -53,10 +68,17 @@ export class GearListComponent implements OnInit {
   }
 
   setPreferredGear(event) {
-    this.logger.log('Preferred Gear: ' + event.value.name);
-    this.preferredGear = event.value;
+    let eventGearType = event.value.gearType;
+    switch (eventGearType) {
+      case GearType.Bike:
+        this.preferredBike = event.value;
+        break;
+      case GearType.Shoes:
+        this.preferredShoes = event.value;
+        break;
+    }
     event.value.active = true;
-    this.gear.forEach(gear => this.updateGear(gear));
+    this.allShoes.forEach(gear => this.updateGear(gear));
   }
 
   activateGear(gear: Gear) {
@@ -79,4 +101,6 @@ export class GearListComponent implements OnInit {
   retireGear(gear: Gear) {
    this.toggleGearState(gear, 'Do you really want to retire this gear?', false);
   }
+
+  protected readonly GearType = GearType;
 }
