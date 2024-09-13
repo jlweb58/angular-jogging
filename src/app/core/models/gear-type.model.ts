@@ -2,6 +2,7 @@ export enum GearType {
 
   Shoes = 'SHOES',
   Bike = 'BIKE',
+  None = '--',
 
 }
 

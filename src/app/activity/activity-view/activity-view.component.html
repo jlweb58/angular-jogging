@@ -30,7 +30,7 @@
   <div class="activity-view-info-group">
     <div class="activity-view-info-label">Gear</div>
     <div id="gear" class="activity-view-info">
-      {{activity.gear.name}}
+      {{activity.gear ? activity.gear.name : ""}}
     </div>
   </div>
   <div class="activity-view-info-group">

@@ -10,6 +10,7 @@ import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {ActivityType, ActivityTypeType} from '../../core/models/activity-type.model';
+import {GearType} from '../../core/models/gear-type.model';
 
 @Component({
   templateUrl: './activity-dialog.component.html',
@@ -69,6 +70,10 @@ export class ActivityDialogComponent implements OnInit {
     this.activity = this.cachedActivity;
   }
 
+  setSelectedGear() {
+    this.selectedGear = this.findGearForActivity(this.activity).find(gear => gear.preferred);
+  }
+
   private getGearForId(id: number) {
     return this.gears.find((gear) => gear.id === id);
   }
@@ -113,6 +118,18 @@ export class ActivityDialogComponent implements OnInit {
       durationString = '00:' + durationString;
     }
     return durationString;
+  }
+
+  findGearForActivity(activity: Activity): Gear[] {
+    return this.gears.filter(g => g.gearType === this.findGearTypeForActivityType(activity.activityType))
+  }
+
+  private findGearTypeForActivityType(activityType: ActivityType): GearType {
+    switch (activityType) {
+      case ActivityType.Bike: return GearType.Bike;
+      case ActivityType.Run: return GearType.Shoes;
+      default: return GearType.None;
+    }
   }
 
   onClose() {
