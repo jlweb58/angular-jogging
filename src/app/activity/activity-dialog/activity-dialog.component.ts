@@ -80,7 +80,7 @@ export class ActivityDialogComponent implements OnInit {
 
   createActivity() {
     const activityDate: Date = new Date(this.activity.date);
-    if (this.selectedGear.id) {
+    if (this.selectedGear && this.selectedGear.id) {
       this.selectedGear = this.getGearForId(this.selectedGear.id);
       this.activity.gear = this.selectedGear;
     } else {
