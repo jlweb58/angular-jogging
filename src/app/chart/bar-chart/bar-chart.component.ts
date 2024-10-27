@@ -18,6 +18,8 @@ export class BarChartComponent implements OnInit {
   activities: Activity[];
   @Input()
   chartIntervalType: ChartIntervalType;
+  @Input()
+  selectedActivityType: ActivityType;
 
   private dataPlot = {
     x: [],
@@ -64,7 +66,7 @@ export class BarChartComponent implements OnInit {
 
   prepareMonthlyChart() {
     const resultMap = new Map();
-    this.activities.filter((activity) => activity.activityType === ActivityType.Run)
+    this.activities.filter((activity) => activity.activityType === this.selectedActivityType)
      .forEach(activity =>  {
       const yearMonth: string = activity.date.substr(0, 7);
       if (resultMap.has(yearMonth)) {
@@ -85,7 +87,7 @@ export class BarChartComponent implements OnInit {
 
   prepareYearlyChart() {
     const resultMap = new Map();
-    this.activities.filter((activity) => activity.activityType === ActivityType.Run)
+    this.activities.filter((activity) => activity.activityType === this.selectedActivityType)
     .forEach(activity =>  {
       const year: string = activity.date.substr(0, 4);
       if (resultMap.has(year)) {

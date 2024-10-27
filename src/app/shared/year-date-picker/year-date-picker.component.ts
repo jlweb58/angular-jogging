@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LoggerService} from '../../core/services/logger.service';
+import {ActivityType} from '../../core/models/activity-type.model';
 
 @Component({
   selector: 'app-year-date-picker',
@@ -13,6 +14,8 @@ export class YearDatePickerComponent implements OnInit {
   endDate: Date;
   selectedStartYear: number;
   selectedEndYear: number;
+  activityTypes: ActivityType[] = [ActivityType.Run, ActivityType.Bike, ActivityType.Hike, ActivityType.Swim];
+  selectedActivityType: ActivityType;
 
   constructor(private logger: LoggerService) {
 
@@ -26,6 +29,7 @@ export class YearDatePickerComponent implements OnInit {
     }
     this.selectedStartYear = thisYear;
     this.selectedEndYear = thisYear;
+    this.selectedActivityType = ActivityType.Run;
   }
 
   setDate(): void {
@@ -37,6 +41,5 @@ export class YearDatePickerComponent implements OnInit {
     this.endDate.setFullYear(this.selectedEndYear);
     this.endDate.setMonth(11);
     this.endDate.setDate(31);
-    this.logger.log('startDate=' + this.startDate + ' endDate=' + this.endDate);
   }
 }

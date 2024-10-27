@@ -9,6 +9,7 @@ import {MonthDatePickerComponent} from './shared/month-date-picker/month-date-pi
 import {YearDatePickerComponent} from './shared/year-date-picker/year-date-picker.component';
 import {BarChartComponent} from './chart/bar-chart/bar-chart.component';
 import {LineChartComponent} from './chart/line-chart/line-chart.component';
+import {ActivityType} from './core/models/activity-type.model';
 
 @Component({
   selector: 'app-root',
@@ -49,18 +50,19 @@ export class AppComponent implements OnInit {
     }
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.showBarChart(dialogRef.componentInstance.startDate, dialogRef.componentInstance.endDate, chartIntervalType);
+        this.showBarChart(dialogRef.componentInstance.startDate, dialogRef.componentInstance.endDate, chartIntervalType, dialogRef.componentInstance.selectedActivityType);
       }
     });
   }
 
-  showBarChart(startDate: Date, endDate: Date, chartIntervalType: ChartIntervalType) {
+  showBarChart(startDate: Date, endDate: Date, chartIntervalType: ChartIntervalType, activityType: ActivityType) {
     const activities = this.activityService.getActivitiesForDateRange(startDate, endDate);
     const dialogRef = this.dialog.open(BarChartComponent);
     dialogRef.componentInstance.chartIntervalType = chartIntervalType;
     dialogRef.componentInstance.activities = activities;
     dialogRef.componentInstance.startDate = startDate;
     dialogRef.componentInstance.endDate = endDate;
+    dialogRef.componentInstance.selectedActivityType = activityType;
   }
 
   prepareLineChart() {

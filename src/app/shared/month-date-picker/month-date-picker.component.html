@@ -21,6 +21,12 @@
       <option *ngFor="let year of years" [value]="year" [selected]="year === selectedEndYear">{{year}}</option>
     </select>
   </div>
+  <div class="formgrid">
+    <label>Activity Type</label>
+    <select name="selectedActivityType" [(ngModel)]="selectedActivityType" class="month-date-picker-select">
+      <option *ngFor="let activityType of activityTypes" [value]="activityType" [selected]="activityType === selectedActivityType">{{activityType}}</option>
+    </select>
+  </div>
   <br>
   <div>
     <button mat-raised-button mat-dialog-close color="primary" class="month-date-picker-button">Cancel</button>

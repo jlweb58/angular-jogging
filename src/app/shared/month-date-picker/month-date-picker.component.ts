@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LoggerService} from '../../core/services/logger.service';
+import {ActivityType} from '../../core/models/activity-type.model';
 
 @Component({
   selector: 'app-month-date-picker',
@@ -11,12 +12,14 @@ export class MonthDatePickerComponent implements OnInit {
 
   months: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   years: number[] = [];
+  activityTypes: ActivityType[] = [ActivityType.Run, ActivityType.Bike, ActivityType.Hike, ActivityType.Swim];
   startDate: Date;
   endDate: Date;
   selectedStartMonth: string;
   selectedStartYear: number;
   selectedEndMonth: string;
   selectedEndYear: number;
+  selectedActivityType: ActivityType;
 
   constructor(private logger: LoggerService) {
 
@@ -33,6 +36,7 @@ export class MonthDatePickerComponent implements OnInit {
     this.selectedStartMonth = this.months[0];
     this.selectedEndYear = thisYear;
     this.selectedEndMonth = this.months[now.getMonth()];
+    this.selectedActivityType = ActivityType.Run;
   }
 
   setDate(): void {
@@ -44,7 +48,6 @@ export class MonthDatePickerComponent implements OnInit {
     this.endDate.setFullYear(this.selectedEndYear);
     this.endDate.setMonth(this.months.indexOf(this.selectedEndMonth));
     this.endDate.setDate(new Date(this.endDate.getFullYear(), this.endDate.getMonth() + 1, 0).getDate());
-    this.logger.log('startDate=' + this.startDate + ' endDate=' + this.endDate);
   }
 
 }
