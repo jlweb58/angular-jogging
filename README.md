@@ -1,38 +1,16 @@
 # AngularJogging
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.5.
 It runs together with the jogging3 project as a Java/SpringBoot backend
 
 ## Known bugs
-- (FIXED) On editing a run the shoes are not saved - seems to be due to a CORS problem on loading the shoes while editing.
-   -- needed to select on shoes.id, not shoes
-- (FIXED) If a run doesn't already have shoes it can't be edited (the selectedShoe ref is null)   
-- (FIXED) The monthly totals in the chart are incorrect. Must be a logic error in the tabulation. (Fixed by implementing proper
-   map sort function)   
-- (FIXED Yearly chart totals also incorrect. (e.g. only 885 for 2019 instead of 1200+)
-- (FIXED) Default shoes are not pre-selected on new run
-- Fonts are much smaller on production, why is this?
-- (FIXED) On production the preferred shoe radio button is not showing as selected (but it works) 
-- (FIXED) Positioning and look of filter field on run table page is unattractive
-- (FIXED) Positioning of calendar on page (calendar view)
-- (FIXED) Activity view shows wrong gear after adding new activity or editing activity
 - For any future bugs open an issue at GitHub
 
 ## TODOS
-- (DONE) Construct a better date picker for the chart range picker (especially for yearly) (probably must be manually implemented)
-- (DONE) Implement a chart showing average run tempo over time
-- (DONE) Transfer bar charts to Plotly
-- (DONE) Calendar view could use some optical improvements
-- (DONE) Show/manage retired shoes
-- (DONE) After new run go to run view
 - Lots of cleanup in the run/map view component
 - Get some more unit tests
 - Implement a chart showing average pulse rate over time
-- (DONE) Investigate the possibility of importing gpx tracks from Strava
-- (DONE) If gpx tracks can be imported, implement a map view
 - Come up with a replacement for Chart This
 - Implement Find Runs (same as monthly/yearly chart, but with course parameter)
-- (DONE) Dockerize the application(s) (probably no need/benefit, if done only backend)
 - Use local storage so we don't have to keep reloading the runs (started)
 ## Development server
 
