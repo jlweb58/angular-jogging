@@ -22,6 +22,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Replace Google API Key
+        run: |
+            sed -i "s/GOOGLE_API_KEY/${{ secrets.GOOGLE_API_KEY }}/g" src/index.html
+
+
       - name: Build application
         run: npm run build --production
 

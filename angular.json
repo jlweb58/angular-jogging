@@ -38,10 +38,6 @@
           },
           "configurations": {
             "production": {
-              "index": {
-                "input": "src/index.env.html",
-                "output": "index.html"
-              },
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
