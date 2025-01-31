@@ -16,6 +16,7 @@
             "outputPath": {
               "base": "dist/angular-jogging"
             },
+            "index": "src/index.html",
             "polyfills": [
               "src/polyfills.ts"
             ],
