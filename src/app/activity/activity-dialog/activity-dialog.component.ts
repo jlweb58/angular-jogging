@@ -13,8 +13,9 @@ import {ActivityType, ActivityTypeType} from '../../core/models/activity-type.mo
 import {GearType} from '../../core/models/gear-type.model';
 
 @Component({
-  templateUrl: './activity-dialog.component.html',
-  styleUrls: ['./activity-dialog.component.css']
+    templateUrl: './activity-dialog.component.html',
+    styleUrls: ['./activity-dialog.component.css'],
+    standalone: false
 })
 export class ActivityDialogComponent implements OnInit {
 

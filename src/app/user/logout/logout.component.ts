@@ -5,7 +5,8 @@ import {TokenStorageService} from '../../core/services/token-storage.service';
 @Component({
     selector: 'app-logout',
     template: '',
-  }
+    standalone: false
+}
 )
 export class LogoutComponent implements OnInit {
 

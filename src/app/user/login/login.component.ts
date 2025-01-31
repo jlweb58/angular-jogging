@@ -4,9 +4,10 @@ import {AuthenticationService} from '../../core/services/authentication.service'
 import {TokenStorageService} from '../../core/services/token-storage.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css'],
+    standalone: false
 })
 export class LoginComponent implements OnInit {
 

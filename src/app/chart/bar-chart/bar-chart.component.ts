@@ -4,9 +4,10 @@ import {ChartIntervalType} from '../../core/models/chart-interval-type';
 import {ActivityType} from '../../core/models/activity-type.model';
 
 @Component({
-  selector: 'app-bar-chart',
-  templateUrl: './bar-chart.component.html',
-  styleUrls: ['./bar-chart.component.css']
+    selector: 'app-bar-chart',
+    templateUrl: './bar-chart.component.html',
+    styleUrls: ['./bar-chart.component.css'],
+    standalone: false
 })
 export class BarChartComponent implements OnInit {
 
