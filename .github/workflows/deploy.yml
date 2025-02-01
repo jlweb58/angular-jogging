@@ -27,7 +27,7 @@ jobs:
             sed -i "s/GOOGLE_API_KEY/${{ secrets.GOOGLE_API_KEY }}/g" src/index.html
 
       - name: Build application
-        run: npm run build --production
+        run: npm run build --prod
 
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
