@@ -1,4 +1,4 @@
-name: Deploy NFL Angular App
+name: Deploy Angular Activity App
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
             sed -i "s/GOOGLE_API_KEY/${{ secrets.GOOGLE_API_KEY }}/g" src/index.html
 
       - name: Build application
-        run: npm run build --prod
+        run: npm run build -- --configuration=production
 
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
