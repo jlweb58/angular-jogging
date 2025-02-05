@@ -8,9 +8,10 @@ import {GearDialogComponent} from '../gear-dialog/gear-dialog.component';
 import {GearType} from '../../core/models/gear-type.model';
 
 @Component({
-  selector: 'app-gear-list',
-  templateUrl: './gear-list.component.html',
-  styleUrls: ['./gear-list.component.css']
+    selector: 'app-gear-list',
+    templateUrl: './gear-list.component.html',
+    styleUrls: ['./gear-list.component.css'],
+    standalone: false
 })
 export class GearListComponent implements OnInit {
 

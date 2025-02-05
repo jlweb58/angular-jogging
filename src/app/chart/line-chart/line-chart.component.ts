@@ -2,9 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Activity} from '../../core/models/activity.model';
 
 @Component({
-  selector: 'app-line-chart',
-  templateUrl: './line-chart.component.html',
-  styleUrls: ['./line-chart.component.css']
+    selector: 'app-line-chart',
+    templateUrl: './line-chart.component.html',
+    styleUrls: ['./line-chart.component.css'],
+    standalone: false
 })
 export class LineChartComponent implements OnInit {
 

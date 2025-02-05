@@ -3,9 +3,10 @@ import {LoggerService} from '../../core/services/logger.service';
 import {ActivityType} from '../../core/models/activity-type.model';
 
 @Component({
-  selector: 'app-month-date-picker',
-  templateUrl: './month-date-picker.component.html',
-  styleUrls: ['./month-date-picker.component.css']
+    selector: 'app-month-date-picker',
+    templateUrl: './month-date-picker.component.html',
+    styleUrls: ['./month-date-picker.component.css'],
+    standalone: false
 })
 export class MonthDatePickerComponent implements OnInit {
 

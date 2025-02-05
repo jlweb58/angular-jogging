@@ -3,9 +3,10 @@ import {LoggerService} from '../../core/services/logger.service';
 import {ActivityType} from '../../core/models/activity-type.model';
 
 @Component({
-  selector: 'app-year-date-picker',
-  templateUrl: './year-date-picker.component.html',
-  styleUrls: ['./year-date-picker.component.css']
+    selector: 'app-year-date-picker',
+    templateUrl: './year-date-picker.component.html',
+    styleUrls: ['./year-date-picker.component.css'],
+    standalone: false
 })
 export class YearDatePickerComponent implements OnInit {
 

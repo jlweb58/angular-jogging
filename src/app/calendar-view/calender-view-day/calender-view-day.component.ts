@@ -5,9 +5,10 @@ import {Router} from '@angular/router';
 import {ActivityType} from '../../core/models/activity-type.model';
 
 @Component({
-  selector: 'app-calender-view-day',
-  templateUrl: './calender-view-day.component.html',
-  styleUrls: ['./calender-view-day.component.css']
+    selector: 'app-calender-view-day',
+    templateUrl: './calender-view-day.component.html',
+    styleUrls: ['./calender-view-day.component.css'],
+    standalone: false
 })
 export class CalenderViewDayComponent implements OnInit {
 

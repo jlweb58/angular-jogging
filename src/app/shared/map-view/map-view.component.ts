@@ -4,9 +4,10 @@ import {GpxTrack} from '../../core/models/gpx-track.model';
 import {GpxTrackElement} from '../../core/models/gpx-track-element.model';
 
 @Component({
-  selector: 'app-map-view',
-  templateUrl: './map-view.component.html',
-  styleUrls: ['./map-view.component.css']
+    selector: 'app-map-view',
+    templateUrl: './map-view.component.html',
+    styleUrls: ['./map-view.component.css'],
+    standalone: false
 })
 export class MapViewComponent implements OnInit {
   zoom = 14;

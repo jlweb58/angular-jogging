@@ -8,9 +8,10 @@ import {ActivityDialogComponent} from '../activity-dialog/activity-dialog.compon
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-activity-view',
-  templateUrl: './activity-view.component.html',
-  styleUrls: ['./activity-view.component.css']
+    selector: 'app-activity-view',
+    templateUrl: './activity-view.component.html',
+    styleUrls: ['./activity-view.component.css'],
+    standalone: false
 })
 export class ActivityViewComponent implements OnInit {
 

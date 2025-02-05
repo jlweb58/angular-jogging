@@ -8,9 +8,10 @@ import {LoggerService} from '../../core/services/logger.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-activity-table',
-  templateUrl: './activity-table.component.html',
-  styleUrls: ['./activity-table.component.css']
+    selector: 'app-activity-table',
+    templateUrl: './activity-table.component.html',
+    styleUrls: ['./activity-table.component.css'],
+    standalone: false
 })
 export class ActivityTableComponent implements OnInit {
   dataSource = new MatTableDataSource<Activity>();

@@ -5,9 +5,10 @@ import {GearService} from '../../core/services/gear.service';
 
 
 @Component({
-  selector: 'app-gear-dialog',
-  templateUrl: './gear-dialog.component.html',
-  styleUrls: ['./gear-dialog.component.css']
+    selector: 'app-gear-dialog',
+    templateUrl: './gear-dialog.component.html',
+    styleUrls: ['./gear-dialog.component.css'],
+    standalone: false
 })
 export class GearDialogComponent implements OnInit {
 

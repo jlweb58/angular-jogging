@@ -8,9 +8,10 @@ import {ActivityType, ActivityTypeType} from '../core/models/activity-type.model
 import {CalendarFilter} from './calendar-filter';
 
 @Component({
-  selector: 'app-calendar-view',
-  templateUrl: './calendar-view.component.html',
-  styleUrls: ['./calendar-view.component.css']
+    selector: 'app-calendar-view',
+    templateUrl: './calendar-view.component.html',
+    styleUrls: ['./calendar-view.component.css'],
+    standalone: false
 })
 export class CalendarViewComponent implements OnInit {
 
