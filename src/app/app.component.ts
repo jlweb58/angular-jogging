@@ -12,10 +12,18 @@ import {LineChartComponent} from './chart/line-chart/line-chart.component';
 import {ActivityType} from './core/models/activity-type.model';
 
 @Component({
+<<<<<<< Updated upstream
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
     standalone: false
+=======
+  selector: 'app-root',
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+
+>>>>>>> Stashed changes
 })
 export class AppComponent implements OnInit {
 

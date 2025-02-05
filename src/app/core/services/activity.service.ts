@@ -5,6 +5,7 @@ import {Activity} from '../models/activity.model';
 import {LoggerService} from './logger.service';
 import {environment} from '../../../environments/environment';
 import {StorageService} from './storage.service';
+import {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -72,6 +73,16 @@ export class ActivityService {
     );
 
     return replaySubject.asObservable();
+  }
+
+  public delete(activity: Activity): Observable<String> {
+    return this.http.delete<String>(`${this.serviceUrl}/${activity.id}`)
+      .pipe(
+        catchError((error) => {
+          throw new Error(error);
+        })
+      )
+
   }
 
   public update(activity: Activity) {

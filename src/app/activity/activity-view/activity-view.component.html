@@ -1,4 +1,10 @@
-<div class="activity-view-title">
+<div class="mb-4">
+  <button mat-icon-button (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</div>
+
+  <div class="activity-view-title">
   {{activity.course}}
 </div>
 
@@ -39,9 +45,12 @@
       {{activity.avgHeartRate}}
     </div>
   </div>
-    <div class ="activity-view-button">
-      <button mat-raised-button color="primary" (click)="editActivity()">Edit Activity</button>
-    </div>
+  <div class ="activity-view-button">
+    <button class="activity-view-button-delete" mat-raised-button (click)="deleteActivity()">Delete Activity</button>
+  </div>
+  <div class ="activity-view-button">
+    <button mat-raised-button color="primary" (click)="editActivity()">Edit Activity</button>
+  </div>
 </div>
 <div class="activity-view-divider"></div>
 <ng-container *ngIf="gpxTrack">

@@ -40,3 +40,8 @@
   padding-top: 10px;
   padding-right: 100px;
 }
+
+.activity-view-button-delete {
+  background-color: darkred;
+  color: yellow;
+}
