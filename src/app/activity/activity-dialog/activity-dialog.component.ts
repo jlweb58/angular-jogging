@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
 import {Activity} from '../../core/models/activity.model';
 import {LoggerService} from '../../core/services/logger.service';
 import {ActivityService} from '../../core/services/activity.service';
@@ -14,10 +14,11 @@ import {GearType} from '../../core/models/gear-type.model';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
-import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from '@angular/material/datepicker';
+import {MatDatepicker, MatDatepickerInput, MatDatepickerModule, MatDatepickerToggle} from '@angular/material/datepicker';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {DecimalPipe, NgForOf, NgIf} from '@angular/common';
 import {MatButton} from '@angular/material/button';
+import {MatNativeDateModule, provideNativeDateAdapter} from '@angular/material/core';
 
 @Component({
   templateUrl: './activity-dialog.component.html',
@@ -30,8 +31,10 @@ import {MatButton} from '@angular/material/button';
     MatLabel,
     FormsModule,
     MatDatepickerInput,
+    MatDatepickerModule,
     MatDatepickerToggle,
     MatDatepicker,
+    MatNativeDateModule,
     MatSelect,
     MatOption,
     NgIf,
@@ -40,7 +43,11 @@ import {MatButton} from '@angular/material/button';
     DecimalPipe,
     MatDialogActions,
     MatDialogClose
-  ]
+  ],
+  providers: [
+    provideNativeDateAdapter(),
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActivityDialogComponent implements OnInit {
 

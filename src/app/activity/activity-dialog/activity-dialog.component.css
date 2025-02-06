@@ -1,5 +1,4 @@
 
-
 .activity-dialog-form {
   min-width: 150px;
   max-width: 300px;
@@ -11,13 +10,21 @@
   width: 100%;
 }
 
-.textField {
-  margin: 5px 3px 5px 3px;
-  display: inline-block;
-  float: left;
+.dialog-button-row {
+  padding-top: 10px;
 }
 
-.input-dialog {
-  /*font-size: 0.8em !important;*/
-  text-align: left;
+.mat-raised-button {
+  margin-left: 20px !important;
+}
+
+.mat-datepicker-toggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mdc-text-field__input {
+  padding-right: 40px; /* Make space for the toggle */
 }

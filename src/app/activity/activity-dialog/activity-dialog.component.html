@@ -1,10 +1,10 @@
 <h2 mat-dialog-title>{{ isEdit ? 'Edit activity' : 'New activity' }}</h2>
 <mat-dialog-content>
   <form class="activity-dialog-form">
-    <mat-form-field class="activity-dialog-full-width">
+    <mat-form-field class="activity-dialog-full-width mdc-form-field">
       <mat-label>Date</mat-label>
       <input matInput name="date" [(ngModel)]="activity.date" [matDatepicker]="picker">
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker-toggle matDatepickerToggleIcon [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
@@ -30,23 +30,23 @@
       <input matInput name="course" [(ngModel)]="activity.course">
     </mat-form-field>
 
-    <mat-form-field class="activity-dialog-full-width">
+    <mat-form-field class="activity-dialog-full-width" appearance="fill">
       <mat-label>Time</mat-label>
       <input matInput name="time" [(ngModel)]="activity.activityDuration!.time">
     </mat-form-field>
-    <mat-form-field class="activity-dialog-full-width">
+    <mat-form-field class="activity-dialog-full-width" appearance="fill">
       <mat-label>Weather</mat-label>
       <input matInput name="weather" [(ngModel)]="activity.weather">
     </mat-form-field>
-    <mat-form-field class="activity-dialog-full-width">
+    <mat-form-field class="activity-dialog-full-width" appearance="fill">
       <mat-label>Comments</mat-label>
       <input matInput name="comments" [(ngModel)]="activity.comments">
     </mat-form-field>
-    <mat-form-field class="activity-dialog-full-width">
+    <mat-form-field class="activity-dialog-full-width" appearance="fill">
       <mat-label>Avg. Heart Rate</mat-label>
       <input matInput name="avgHeartRate" [(ngModel)]="activity.avgHeartRate">
     </mat-form-field>
-    <mat-form-field *ngIf="selectedGear" class="activity-dialog-full-width" >
+    <mat-form-field *ngIf="selectedGear" class="activity-dialog-full-width"  appearance="fill">
       <mat-label>Gear</mat-label>
       <mat-select [(ngModel)]="selectedGear.id" name="gears">
         <mat-option>--</mat-option>
@@ -60,9 +60,10 @@
 
 </mat-dialog-content>
 <mat-dialog-actions>
+  <div class="dialog-button-row">
   <button mat-raised-button mat-dialog-close color="primary" (click)="cancel()">Cancel</button>
   <button mat-raised-button [mat-dialog-close]="true" (click)="createActivity()" color="primary">Save</button>
+  </div>
 
 </mat-dialog-actions>
-
 
