@@ -1,12 +1,21 @@
 import {Component, OnInit} from '@angular/core';
 import {LoggerService} from '../../core/services/logger.service';
 import {ActivityType} from '../../core/models/activity-type.model';
+import {FormsModule} from '@angular/forms';
+import {NgForOf} from '@angular/common';
+import {MatButton} from '@angular/material/button';
+import {MatDialogClose} from '@angular/material/dialog';
 
 @Component({
-    selector: 'app-year-date-picker',
-    templateUrl: './year-date-picker.component.html',
-    styleUrls: ['./year-date-picker.component.css'],
-    standalone: false
+  selector: 'app-year-date-picker',
+  templateUrl: './year-date-picker.component.html',
+  styleUrls: ['./year-date-picker.component.css'],
+  imports: [
+    FormsModule,
+    NgForOf,
+    MatButton,
+    MatDialogClose
+  ]
 })
 export class YearDatePickerComponent implements OnInit {
 

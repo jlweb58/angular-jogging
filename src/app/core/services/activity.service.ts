@@ -12,7 +12,6 @@ import {catchError} from 'rxjs/operators';
 })
 export class ActivityService {
   private serviceUrl = environment.baseUrl + '/jogging/activities';
-  // tslint:disable-next-line:variable-name
   private _activities = new BehaviorSubject<Activity[]>([]);
   private dataStore: { activity: Activity[] } = { activity: [] }; // store our data in memory
   private shouldReload = true;
@@ -75,10 +74,13 @@ export class ActivityService {
     return replaySubject.asObservable();
   }
 
-  public delete(activity: Activity): Observable<String> {
-    return this.http.delete<String>(`${this.serviceUrl}/${activity.id}`)
+  public delete(activity: Activity): Observable<any> {
+    return this.http.delete(`${this.serviceUrl}/${activity.id}`, {
+      responseType: 'text',
+    })
       .pipe(
         catchError((error) => {
+          this.logger.log('Error deleting activity');
           throw new Error(error);
         })
       )

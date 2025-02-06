@@ -1,17 +1,44 @@
 import {Component, OnInit, Output, ViewChild} from '@angular/core';
 import {ActivityService} from '../../core/services/activity.service';
 import {Activity} from '../../core/models/activity.model';
-import {MatTableDataSource} from '@angular/material/table';
+import {
+  MatCell, MatCellDef,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef,
+  MatHeaderRow,
+  MatHeaderRowDef, MatRow, MatRowDef,
+  MatTable,
+  MatTableDataSource
+} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import {MatSort, MatSortModule} from '@angular/material/sort';
 import {LoggerService} from '../../core/services/logger.service';
 import {Router} from '@angular/router';
+import {MatFormField} from '@angular/material/form-field';
+import {MatInput} from '@angular/material/input';
 
 @Component({
-    selector: 'app-activity-table',
-    templateUrl: './activity-table.component.html',
-    styleUrls: ['./activity-table.component.css'],
-    standalone: false
+  selector: 'app-activity-table',
+  templateUrl: './activity-table.component.html',
+  styleUrls: ['./activity-table.component.css'],
+  imports: [
+    MatFormField,
+    MatInput,
+    MatTable,
+    MatSort,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderCellDef,
+    MatCell,
+    MatPaginator,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatCellDef,
+    MatRow,
+    MatRowDef,
+    MatSortModule,
+  ]
 })
 export class ActivityTableComponent implements OnInit {
   dataSource = new MatTableDataSource<Activity>();
@@ -28,6 +55,7 @@ export class ActivityTableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.logger.log("activityTableComponent onInit");
     this.activityService.loadAll();
     this.activityService.getActivities().subscribe(results => {
       if (!results) {
@@ -39,7 +67,7 @@ export class ActivityTableComponent implements OnInit {
     });
   }
 
-  public doFilter(value: string) {
+  public doFilter(value: string ) {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 

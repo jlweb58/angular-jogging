@@ -3,12 +3,19 @@ import {CalendarDay} from '../../core/models/calendar.day';
 import {Activity} from '../../core/models/activity.model';
 import {Router} from '@angular/router';
 import {ActivityType} from '../../core/models/activity-type.model';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
-    selector: 'app-calender-view-day',
-    templateUrl: './calender-view-day.component.html',
-    styleUrls: ['./calender-view-day.component.css'],
-    standalone: false
+  selector: 'app-calender-view-day',
+  templateUrl: './calender-view-day.component.html',
+  styleUrls: ['./calender-view-day.component.css'],
+  imports: [
+    NgClass,
+    MatIcon,
+    NgIf,
+    NgForOf
+  ]
 })
 export class CalenderViewDayComponent implements OnInit {
 

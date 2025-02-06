@@ -1,12 +1,21 @@
 import {Component, OnInit} from '@angular/core';
 import {LoggerService} from '../../core/services/logger.service';
 import {ActivityType} from '../../core/models/activity-type.model';
+import {FormsModule} from '@angular/forms';
+import {NgForOf} from '@angular/common';
+import {MatButton} from '@angular/material/button';
+import {MatDialogClose} from '@angular/material/dialog';
 
 @Component({
-    selector: 'app-month-date-picker',
-    templateUrl: './month-date-picker.component.html',
-    styleUrls: ['./month-date-picker.component.css'],
-    standalone: false
+  selector: 'app-month-date-picker',
+  templateUrl: './month-date-picker.component.html',
+  styleUrls: ['./month-date-picker.component.css'],
+  imports: [
+    FormsModule,
+    NgForOf,
+    MatButton,
+    MatDialogClose
+  ]
 })
 export class MonthDatePickerComponent implements OnInit {
 

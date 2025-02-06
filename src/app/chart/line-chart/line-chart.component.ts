@@ -1,11 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Activity} from '../../core/models/activity.model';
+import {PlotlySharedModule} from 'angular-plotly.js';
 
 @Component({
-    selector: 'app-line-chart',
-    templateUrl: './line-chart.component.html',
-    styleUrls: ['./line-chart.component.css'],
-    standalone: false
+  selector: 'app-line-chart',
+  templateUrl: './line-chart.component.html',
+  styleUrls: ['./line-chart.component.css'],
+  imports: [
+    PlotlySharedModule
+  ]
 })
 export class LineChartComponent implements OnInit {
 

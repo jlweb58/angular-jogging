@@ -2,12 +2,26 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../core/services/authentication.service';
 import {TokenStorageService} from '../../core/services/token-storage.service';
+import {NgIf} from '@angular/common';
+import {MatFormField, MatLabel} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
+import {MatInput} from '@angular/material/input';
+import {MatDivider} from '@angular/material/divider';
+import {MatButton} from '@angular/material/button';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css'],
-    standalone: false
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
+  imports: [
+    NgIf,
+    MatFormField,
+    FormsModule,
+    MatInput,
+    MatLabel,
+    MatDivider,
+    MatButton
+  ]
 })
 export class LoginComponent implements OnInit {
 

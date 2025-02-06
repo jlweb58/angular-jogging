@@ -2,12 +2,15 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Activity} from '../../core/models/activity.model';
 import {ChartIntervalType} from '../../core/models/chart-interval-type';
 import {ActivityType} from '../../core/models/activity-type.model';
+import {PlotlySharedModule} from 'angular-plotly.js';
 
 @Component({
-    selector: 'app-bar-chart',
-    templateUrl: './bar-chart.component.html',
-    styleUrls: ['./bar-chart.component.css'],
-    standalone: false
+  selector: 'app-bar-chart',
+  templateUrl: './bar-chart.component.html',
+  styleUrls: ['./bar-chart.component.css'],
+  imports: [
+    PlotlySharedModule
+  ]
 })
 export class BarChartComponent implements OnInit {
 

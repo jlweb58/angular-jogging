@@ -6,12 +6,23 @@ import {Activity} from '../core/models/activity.model';
 import {Router} from '@angular/router';
 import {ActivityType, ActivityTypeType} from '../core/models/activity-type.model';
 import {CalendarFilter} from './calendar-filter';
+import {MatIconButton} from '@angular/material/button';
+import {MatIcon} from '@angular/material/icon';
+import {DecimalPipe, NgForOf, NgIf} from '@angular/common';
+import {CalenderViewDayComponent} from './calender-view-day/calender-view-day.component';
 
 @Component({
-    selector: 'app-calendar-view',
-    templateUrl: './calendar-view.component.html',
-    styleUrls: ['./calendar-view.component.css'],
-    standalone: false
+  selector: 'app-calendar-view',
+  templateUrl: './calendar-view.component.html',
+  styleUrls: ['./calendar-view.component.css'],
+  imports: [
+    MatIconButton,
+    MatIcon,
+    NgForOf,
+    DecimalPipe,
+    CalenderViewDayComponent,
+    NgIf
+  ]
 })
 export class CalendarViewComponent implements OnInit {
 

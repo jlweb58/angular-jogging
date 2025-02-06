@@ -32,7 +32,7 @@
 
     <mat-form-field class="activity-dialog-full-width">
       <mat-label>Time</mat-label>
-      <input matInput name="time" [(ngModel)]="activity.activityDuration.time">
+      <input matInput name="time" [(ngModel)]="activity.activityDuration!.time">
     </mat-form-field>
     <mat-form-field class="activity-dialog-full-width">
       <mat-label>Weather</mat-label>
@@ -53,7 +53,7 @@
         <mat-option *ngFor="let gear of findGearForActivity(activity)" [value]="gear.id">{{gear.name}} ({{gear.mileage | number: '1.0-2'}} km)</mat-option>
       </mat-select>
     </mat-form-field>
-    <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="fileInputChange($event)" />
+    <input #csvInput hidden="hidden" type="file" onclick="this.value=null" (change)="fileInputChange($event)" />
     <button mat-flat-button color="primary" (click)="csvInput.click()">Choose GPX Track</button>
 
   </form>

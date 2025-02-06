@@ -3,15 +3,52 @@ import {GearService} from '../../core/services/gear.service';
 import {Gear} from '../../core/models/gear.model';
 import {LoggerService} from '../../core/services/logger.service';
 import {MatDialog} from '@angular/material/dialog';
-import {ConfirmDialogComponent} from '../../shared/confirm-dialog/confirm-dialog.component';
 import {GearDialogComponent} from '../gear-dialog/gear-dialog.component';
 import {GearType} from '../../core/models/gear-type.model';
+import {ConfirmationDialog} from '../../shared/components/confirm-dialog.component';
+import {MatRadioButton, MatRadioGroup} from '@angular/material/radio';
+import {FormsModule} from '@angular/forms';
+import {
+  MatCell,
+  MatCellDef,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef,
+  MatHeaderRow,
+  MatHeaderRowDef, MatRow, MatRowDef,
+  MatTable
+} from '@angular/material/table';
+import {DecimalPipe, NgClass, NgIf} from '@angular/common';
+import {MatButton, MatIconButton} from '@angular/material/button';
+import {MatIcon} from '@angular/material/icon';
+import {MatDivider} from '@angular/material/divider';
 
 @Component({
-    selector: 'app-gear-list',
-    templateUrl: './gear-list.component.html',
-    styleUrls: ['./gear-list.component.css'],
-    standalone: false
+  selector: 'app-gear-list',
+  templateUrl: './gear-list.component.html',
+  styleUrls: ['./gear-list.component.css'],
+  imports: [
+    MatRadioGroup,
+    FormsModule,
+    MatTable,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderCellDef,
+    MatCell,
+    MatCellDef,
+    MatRadioButton,
+    NgClass,
+    NgIf,
+    MatIconButton,
+    MatIcon,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatRow,
+    MatRowDef,
+    MatDivider,
+    MatButton,
+    DecimalPipe
+  ]
 })
 export class GearListComponent implements OnInit {
 
@@ -87,7 +124,7 @@ export class GearListComponent implements OnInit {
   }
 
   private toggleGearState(gear: Gear, message: string, active: boolean) {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    const dialogRef = this.dialog.open(ConfirmationDialog, {
       width: '200px',
       data: message
     });

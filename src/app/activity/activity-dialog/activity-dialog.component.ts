@@ -8,14 +8,39 @@ import {FileUploadService} from '../../core/services/file-upload.service';
 import {GpxTrackService} from '../../core/services/gpx-track.service';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from '@angular/material/dialog';
 import {ActivityType, ActivityTypeType} from '../../core/models/activity-type.model';
 import {GearType} from '../../core/models/gear-type.model';
+import {MatFormField, MatLabel} from '@angular/material/form-field';
+import {MatInput} from '@angular/material/input';
+import {FormsModule} from '@angular/forms';
+import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from '@angular/material/datepicker';
+import {MatOption, MatSelect} from '@angular/material/select';
+import {DecimalPipe, NgForOf, NgIf} from '@angular/common';
+import {MatButton} from '@angular/material/button';
 
 @Component({
-    templateUrl: './activity-dialog.component.html',
-    styleUrls: ['./activity-dialog.component.css'],
-    standalone: false
+  templateUrl: './activity-dialog.component.html',
+  styleUrls: ['./activity-dialog.component.css'],
+  imports: [
+    MatDialogTitle,
+    MatDialogContent,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    FormsModule,
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatDatepicker,
+    MatSelect,
+    MatOption,
+    NgIf,
+    NgForOf,
+    MatButton,
+    DecimalPipe,
+    MatDialogActions,
+    MatDialogClose
+  ]
 })
 export class ActivityDialogComponent implements OnInit {
 

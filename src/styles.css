@@ -5,3 +5,34 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.custom-dialog-container {
+  border-radius: 16px;
+  padding: 16px;
+  background-color: #B2BBC5FF;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.custom-dialog-container h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #3f51b5;
+  margin-bottom: 8px;
+}
+
+.custom-dialog-container div[mat-dialog-content] {
+  font-size: 1rem;
+  color: #4a4a4a;
+  margin-bottom: 16px;
+}
+
+.custom-dialog-container div[mat-dialog-actions] {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.custom-dialog-container button {
+  color: #ffffff !important;
+  background-color: #3F51B5;
+  border-radius: 2px;
+  text-transform: none;
+}

@@ -2,15 +2,28 @@ import {Component, OnInit} from '@angular/core';
 import {LoggerService} from '../../core/services/logger.service';
 import {ChangePasswordRequest} from '../../core/models/change-password-request.model';
 import {UserService} from '../../core/services/user.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MustMatch} from '../../shared/validators/must-match.validator';
-import {Location} from '@angular/common';
+import {Location, NgIf} from '@angular/common';
+import {MatCard} from '@angular/material/card';
+import {MatError, MatFormField, MatLabel} from '@angular/material/form-field';
+import {MatInput} from '@angular/material/input';
+import {MatButton} from '@angular/material/button';
 
 @Component({
-    selector: 'app-change-password',
-    templateUrl: './change-password.component.html',
-    styleUrls: ['./change-password.component.css'],
-    standalone: false
+  selector: 'app-change-password',
+  templateUrl: './change-password.component.html',
+  styleUrls: ['./change-password.component.css'],
+  imports: [
+    ReactiveFormsModule,
+    MatCard,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    NgIf,
+    MatError,
+    MatButton
+  ]
 })
 export class ChangePasswordComponent implements OnInit {
 

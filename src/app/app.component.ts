@@ -10,20 +10,30 @@ import {YearDatePickerComponent} from './shared/year-date-picker/year-date-picke
 import {BarChartComponent} from './chart/bar-chart/bar-chart.component';
 import {LineChartComponent} from './chart/line-chart/line-chart.component';
 import {ActivityType} from './core/models/activity-type.model';
+import {MatToolbar} from '@angular/material/toolbar';
+import {NgIf} from '@angular/common';
+import {MatButton} from '@angular/material/button';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
-<<<<<<< Updated upstream
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
-    standalone: false
-=======
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-
->>>>>>> Stashed changes
+  imports: [
+    MatToolbar,
+    NgIf,
+    MatButton,
+    RouterLink,
+    RouterLinkActive,
+    MatMenuTrigger,
+    MatMenu,
+    MatIcon,
+    MatMenuItem,
+    RouterOutlet
+  ]
 })
 export class AppComponent implements OnInit {
 
