@@ -16,10 +16,7 @@
             "outputPath": {
               "base": "dist/angular-jogging"
             },
-            "index": {
-              "input": "src/index.env.html",
-              "output": "../index.html"
-            },
+            "index": "src/index.html",
             "polyfills": [
               "src/polyfills.ts"
             ],
@@ -38,10 +35,6 @@
           },
           "configurations": {
             "production": {
-              "index": {
-                "input": "src/index.env.html",
-                "output": "index.html"
-              },
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -67,10 +60,6 @@
               ]
             },
             "development": {
-              "index": {
-                "input": "src/index.env.html",
-                "output": "index.html"
-              },
               "optimization": false,
               "sourceMap": true,
               "namedChunks": true,

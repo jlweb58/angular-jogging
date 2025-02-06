@@ -1,0 +1,68 @@
+name: Deploy Angular Activity App
+
+on:
+  push:
+    branches:
+      - main  # or your default branch name
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'  # or your preferred Node.js version
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Replace Google API Key
+        run: |
+            sed -i "s/GOOGLE_API_KEY/${{ secrets.GOOGLE_API_KEY }}/g" src/index.html
+
+      - name: Build application
+        run: npm run build -- --configuration=production
+
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: unnecessary
+
+      - name: Add known hosts
+        run: |
+            mkdir -p ~/.ssh
+            ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Test SSH connection
+        run: |
+          ssh -T ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} 'echo "SSH connection successful"'
+
+      - name: Deploy to server
+        if: success()
+        run: |
+          cd  dist/angular-jogging/browser && rsync -avz --delete ./ ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:${{ secrets.DEPLOY_PATH }}
+
+      - name: Send deployment status email
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: ${{ job.status == 'success' && '✅ Activities Angular Deployment Successful' || '❌ Activities Angular Deployment Failed' }}
+          to: ${{ secrets.EMAIL_TO }}
+          from: GitHub Actions
+          body: |
+            Deployment Status: ${{ job.status }}
+
+            Branch: ${{ github.ref_name }}
+            Commit: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}
+            ${{ job.status != 'success' && format('Workflow run: {0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id) || '' }}

@@ -19,7 +19,6 @@ import {MatIcon} from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   imports: [

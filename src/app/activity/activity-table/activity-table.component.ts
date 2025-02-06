@@ -55,7 +55,6 @@ export class ActivityTableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.logger.log("activityTableComponent onInit");
     this.activityService.loadAll();
     this.activityService.getActivities().subscribe(results => {
       if (!results) {
@@ -67,7 +66,7 @@ export class ActivityTableComponent implements OnInit {
     });
   }
 
-  public doFilter(value: string ) {
+  public doFilter(value: string) {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
