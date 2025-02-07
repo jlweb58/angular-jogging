@@ -167,7 +167,7 @@ export class CalendarViewComponent implements OnInit {
   getTimeForRow(row: CalendarDay[]): string {
     const secondsSum = row.filter((calendarDay: CalendarDay) => calendarDay.activities)
       .flatMap(day => day.activities)
-      .reduce((sum: number, activity: Activity) => sum + CalendarViewComponent.getSeconds(activity.activityDuration.time), 0);
+      .reduce((sum: number, activity: Activity) => sum + CalendarViewComponent.getSeconds(activity.duration), 0);
 
     return CalendarViewComponent.getFormattedTimeString(secondsSum);
   }

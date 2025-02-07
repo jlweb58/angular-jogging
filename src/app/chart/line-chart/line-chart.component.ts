@@ -48,7 +48,7 @@ export class LineChartComponent implements OnInit {
     this.activities.forEach(activity => {
 
       const activityDistance: number = activity.distance;
-      const activityDurationSeconds = this.durationToSeconds(activity.activityDuration.time);
+      const activityDurationSeconds = this.durationToSeconds(activity.duration);
       const avgPace = activityDurationSeconds / activityDistance;
       const minutes = Math.floor(avgPace / 60);
       const seconds = Math.floor(avgPace % 60);

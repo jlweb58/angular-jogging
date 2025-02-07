@@ -19,7 +19,7 @@ export class StorageService {
     activities.forEach(activity => this.putActivity(activity));
   }
 
-  public getAll(): Activity[] {
+  public getActivities(): Activity[] {
     const activities: Activity[] = [];
     const storageSize = sessionStorage.length;
     for (let i = 0; i < storageSize; i++) {

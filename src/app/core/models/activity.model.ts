@@ -6,9 +6,7 @@ export class Activity {
   date: string;
   course: string;
   distance: number;
-  activityDuration: {
-    time: string;
-  };
+  duration: string;
   weather: string;
   comments: string;
   avgHeartRate: number;
@@ -16,9 +14,7 @@ export class Activity {
   public activityType: ActivityType;
 
   constructor() {
-    this.activityDuration = {
-      time: ''
-    };
+    this.duration = '00:00:00';
     this.gear = new Gear();
   }
 
@@ -35,7 +31,7 @@ export class Activity {
     activity.distance = activityToClone.distance;
     activity.id = activityToClone.id;
     activity.avgHeartRate = activityToClone.avgHeartRate;
-    activity.activityDuration = activityToClone.activityDuration;
+    activity.duration = activityToClone.duration;
     activity.course = activityToClone.course;
     activity.comments = activityToClone.comments;
     activity.gear = activityToClone.gear;

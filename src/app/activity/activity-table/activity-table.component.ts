@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {ActivityService} from '../../core/services/activity.service';
 import {Activity} from '../../core/models/activity.model';
 import {
@@ -17,6 +17,9 @@ import {LoggerService} from '../../core/services/logger.service';
 import {Router} from '@angular/router';
 import {MatFormField} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
+import {filter, takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {DurationPipe} from '../../shared/pipes/duration.pipe';
 
 @Component({
   selector: 'app-activity-table',
@@ -38,15 +41,17 @@ import {MatInput} from '@angular/material/input';
     MatRow,
     MatRowDef,
     MatSortModule,
+    DurationPipe,
   ]
 })
-export class ActivityTableComponent implements OnInit {
+export class ActivityTableComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource<Activity>();
   displayedColumns = ['date', 'activityType', 'course', 'distance', 'time', 'weather', 'comments', 'avgheartrate', 'gear'];
+  private readonly destroy$ = new Subject<void>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @Output() activity: Activity;
+  @Output() activity = new EventEmitter<Activity>();
 
   constructor(
     private activityService: ActivityService,
@@ -55,16 +60,30 @@ export class ActivityTableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.activityService.loadAll();
-    this.activityService.getActivities().subscribe(results => {
-      if (!results) {
-        return;
+    this.activityService.loadAll().pipe(
+      // Filter out null/undefined results
+      filter((results): results is Activity[] => !!results),
+      // Complete when component is destroyed
+      takeUntil(this.destroy$)
+    ).subscribe({
+      next: (activities) => {
+        this.dataSource.data = activities;
+        // Only set paginator and sort after ViewInit
+        Promise.resolve().then(() => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        });
+      },
+      error: (error) => {
+        this.logger.log('Failed to load activities: ' + error.message());
+        // Handle error appropriately - maybe show a message to the user
       }
-      this.dataSource.data = results;
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
     });
   }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();  }
 
   public doFilter(value: string) {
     this.dataSource.filter = value.trim().toLocaleLowerCase();

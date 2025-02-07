@@ -4,7 +4,7 @@ import {ActivityViewComponent} from './activity-view.component';
 import {MatDialog} from '@angular/material/dialog';
 import {LoggerService} from '../../core/services/logger.service';
 import {GpxTrackService} from '../../core/services/gpx-track.service';
-import {} from '@angular/common/http/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {Activity} from '../../core/models/activity.model';
 import {GpxTrack} from '../../core/models/gpx-track.model';
 
@@ -14,9 +14,6 @@ describe('ActivityViewComponent', () => {
 
   beforeEach(waitForAsync(() => {
     window.history.pushState({activity: {
-      activityDuration: {
-
-      }
       }}, '', '' );
 
     getTestBed().configureTestingModule({

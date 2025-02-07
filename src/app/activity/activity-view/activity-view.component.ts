@@ -13,6 +13,7 @@ import {MatIcon} from '@angular/material/icon';
 import {MapViewComponent} from '../../shared/map-view/map-view.component';
 import {NgIf} from '@angular/common';
 import {FeedbackDialog} from '../../shared/components/feedback-dialog.component';
+import {DurationPipe} from '../../shared/pipes/duration.pipe';
 
 @Component({
   selector: 'app-activity-view',
@@ -23,7 +24,8 @@ import {FeedbackDialog} from '../../shared/components/feedback-dialog.component'
     MatIcon,
     MatButton,
     MapViewComponent,
-    NgIf
+    NgIf,
+    DurationPipe
   ]
 })
 export class ActivityViewComponent implements OnInit {

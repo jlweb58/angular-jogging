@@ -10,4 +10,8 @@ export class LoggerService {
   log(msg: any) {
     console.log(new Date().toLocaleTimeString() + ': ' + JSON.stringify(msg));
   }
+
+  error(msg: any, error: any) {
+    console.error(msg, error);
+  }
 }

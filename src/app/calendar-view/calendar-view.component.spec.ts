@@ -53,9 +53,9 @@ describe('CalendarViewComponent', () => {
       const activity1: Activity = new Activity();
       const activity2: Activity = new Activity();
       const activity3: Activity = new Activity();
-      activity1.activityDuration = { time: '00:20:00'};
-      activity2.activityDuration = { time: '00:21:00'};
-      activity3.activityDuration = { time: '00:20:01'};
+      activity1.duration = '00:20:00';
+      activity2.duration = '00:21:00';
+      activity3.duration = '00:20:01';
 
       calendarDays.push(new CalendarDay(null, Array.of(activity1)),
         new CalendarDay(null, Array.of(activity2)),
@@ -70,9 +70,9 @@ describe('CalendarViewComponent', () => {
       const activity1: Activity = new Activity();
       const activity2: Activity = new Activity();
       const activity3: Activity = new Activity();
-      activity1.activityDuration = { time: '00:20:00'};
-      activity2.activityDuration = { time: '00:20:00'};
-      activity3.activityDuration = { time: '00:20:00'};
+      activity1.duration = '00:20:00';
+      activity2.duration = '00:20:00';
+      activity3.duration = '00:20:00';
 
       calendarDays.push(new CalendarDay(null, Array.of(activity1)),
         new CalendarDay(null, Array.of(activity2)),

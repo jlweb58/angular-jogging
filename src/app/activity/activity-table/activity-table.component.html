@@ -24,7 +24,7 @@
   </ng-container>
   <ng-container matColumnDef="time">
     <th mat-header-cell *matHeaderCellDef  mat-sort-header> Time </th>
-    <td mat-cell *matCellDef="let activity"> {{activity["activityDuration"]!.time}} </td>
+    <td mat-cell *matCellDef="let activity"> {{activity.duration | duration}} </td>
   </ng-container>
   <ng-container matColumnDef="weather">
     <th mat-header-cell *matHeaderCellDef> Weather </th>
