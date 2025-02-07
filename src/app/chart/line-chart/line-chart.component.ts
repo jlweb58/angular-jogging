@@ -1,13 +1,17 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Activity} from '../../core/models/activity.model';
-import {PlotlySharedModule} from 'angular-plotly.js';
+import {PlotlyModule} from 'angular-plotly.js';
+
+import * as PlotlyJS from 'plotly.js-dist-min';
+
+PlotlyModule.plotlyjs = PlotlyJS;
 
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.css'],
   imports: [
-    PlotlySharedModule
+    PlotlyModule
   ]
 })
 export class LineChartComponent implements OnInit {
@@ -37,10 +41,18 @@ export class LineChartComponent implements OnInit {
   }
 
   durationToSeconds(durationString: string): number {
-    const hours = parseInt(durationString.substr(0, 2), 10);
-    const minutes = parseInt(durationString.substr(3, 2), 10);
-    const seconds = parseInt(durationString.substr(6, 2), 10);
-    return (hours * 3600) + (minutes * 60) + seconds;
+
+    const matches = durationString.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+    if (!matches) return 0;
+
+    const [_, hours, minutes, seconds] = matches;
+
+    // Convert to numbers, defaulting to 0 if undefined
+    const h = Number(hours) || 0;
+    const m = Number(minutes) || 0;
+    const s = Number(seconds) || 0;
+
+    return (h * 3600) + (m * 60) + s;
   }
 
   prepareTempoLineChart() {
