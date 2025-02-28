@@ -1,6 +1,6 @@
 .activity-filter {
   margin-left: 25px;
-  margin-top: 10px;
+  margin-top: 50px;
   padding-top: 2px;
   padding-bottom: 2px;
 }
@@ -44,6 +44,20 @@ table {
 th.mat-sort-header-sorted {
   color: black;
 }
+
+.floating-button-container {
+  position: fixed;
+  top: 95px; /* Adjust for padding */
+  left: 300px;  /* Adjust for padding */
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+button[mat-fab] {
+  width: 64px; /* Optional: Customize size */
+  height: 64px; /* Optional: Customize size */
+  font-size: 24px; /* Optional: Customize icon size */
+}
+
 
 
 

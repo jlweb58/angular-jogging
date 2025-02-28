@@ -4,6 +4,12 @@
     <input matInput #filterInput type="text" (keyup)="doFilter(filterInput.value)" placeholder="Filter" class="activity-filter-input">
   </mat-form-field>
 </div>
+<div class="floating-button-container">
+  <button mat-fab color="primary" (click)="newActivity()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
 <div>
 <table mat-table [dataSource]="dataSource" matSort>
   <ng-container matColumnDef="date">

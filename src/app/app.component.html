@@ -7,10 +7,6 @@
     <mat-icon >calendar_today</mat-icon>
     <span style="overflow-wrap: break-word">Activity Calendar</span>
   </button>
-  <button mat-button (click)="newActivity()">
-    <mat-icon>add_circle</mat-icon>
-    <span>New Activity</span>
-  </button>
   <button mat-button [matMenuTriggerFor]="toolsMenu">
     <mat-icon>build</mat-icon>
     <span>Tools</span>
@@ -60,5 +56,6 @@
     <span>Logout</span>
   </button>
 </mat-toolbar>
+
 <router-outlet></router-outlet>
 

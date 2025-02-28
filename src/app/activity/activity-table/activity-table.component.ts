@@ -20,6 +20,10 @@ import {MatInput} from '@angular/material/input';
 import {filter, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {DurationPipe} from '../../shared/pipes/duration.pipe';
+import {ActivityDialogComponent} from '../activity-dialog/activity-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {MatFabButton} from '@angular/material/button';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
   selector: 'app-activity-table',
@@ -42,6 +46,8 @@ import {DurationPipe} from '../../shared/pipes/duration.pipe';
     MatRowDef,
     MatSortModule,
     DurationPipe,
+    MatFabButton,
+    MatIcon,
   ]
 })
 export class ActivityTableComponent implements OnInit, OnDestroy {
@@ -57,6 +63,7 @@ export class ActivityTableComponent implements OnInit, OnDestroy {
     private activityService: ActivityService,
     private logger: LoggerService,
     private router: Router,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -93,5 +100,10 @@ export class ActivityTableComponent implements OnInit, OnDestroy {
     this.activity = row;
     this.router.navigate(['/activity'], {state: {activity: this.activity}});
    }
+
+  newActivity() {
+    this.dialog.open(ActivityDialogComponent);
+  }
+
 
 }
