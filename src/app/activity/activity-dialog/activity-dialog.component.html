@@ -6,8 +6,8 @@
       <mat-form-field class="activity-dialog-full-width">
         <mat-label>Date</mat-label>
         <input matInput name="date" [(ngModel)]="activity.date" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       </mat-form-field>
 
       <mat-form-field class="activity-dialog-full-width">
@@ -54,13 +54,14 @@
     </div>
 
     <!-- Heart Rate and Gear Section -->
-    <div class="field-group">
+    <div class="field-group heart-gear-group">
       <mat-form-field class="activity-dialog-full-width">
         <mat-label>Avg. Heart Rate (bpm)</mat-label>
         <input matInput name="avgHeartRate" [(ngModel)]="activity.avgHeartRate" type="number">
       </mat-form-field>
 
-      <mat-form-field *ngIf="selectedGear" class="activity-dialog-full-width">
+      <!-- Show gear selection regardless of selectedGear state -->
+      <mat-form-field *ngIf="activity.activityType === activityTypes.Run || activity.activityType === activityTypes.Bike" class="activity-dialog-full-width">
         <mat-label>Gear</mat-label>
         <mat-select [(ngModel)]="selectedGear.id" name="gears">
           <mat-option>--</mat-option>
@@ -69,6 +70,9 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+
+      <!-- Placeholder for when no gear is needed -->
+      <div *ngIf="activity.activityType !== activityTypes.Run && activity.activityType !== activityTypes.Bike" class="gear-placeholder"></div>
     </div>
 
     <!-- Comments Section -->
