@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivityDialogComponent} from './activity/activity-dialog/activity-dialog.component';
 import {LoggerService} from './core/services/logger.service';
 import {MatDialog} from '@angular/material/dialog';
 import {ActivityService} from './core/services/activity.service';
@@ -12,7 +11,7 @@ import {LineChartComponent} from './chart/line-chart/line-chart.component';
 import {ActivityType} from './core/models/activity-type.model';
 import {MatToolbar} from '@angular/material/toolbar';
 import {NgIf} from '@angular/common';
-import {MatButton, MatFabButton} from '@angular/material/button';
+import {MatButton} from '@angular/material/button';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
 import {MatIcon} from '@angular/material/icon';
@@ -32,7 +31,6 @@ import {MatIcon} from '@angular/material/icon';
     MatIcon,
     MatMenuItem,
     RouterOutlet,
-    MatFabButton
   ]
 })
 export class AppComponent implements OnInit {

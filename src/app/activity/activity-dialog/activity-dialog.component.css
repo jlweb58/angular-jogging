@@ -1,30 +1,161 @@
-
+/* Main form styling */
 .activity-dialog-form {
-  min-width: 150px;
-  max-width: 300px;
-  width: 80%;
-  font-size: x-small;
+  min-width: 280px;
+  max-width: 500px;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  padding: 15px 0;
 }
 
+/* Full width form fields */
 .activity-dialog-full-width {
   width: 100%;
+  margin-bottom: 12px;
 }
 
+/* Dialog title styling */
+.mat-dialog-title {
+  color: #3f51b5;
+  font-size: 24px !important;
+  font-weight: 500;
+  margin-bottom: 20px !important;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+/* Dialog content styling */
+.mat-dialog-content {
+  padding: 0 24px !important;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Button row styling */
 .dialog-button-row {
-  padding-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  gap: 15px;
+  margin-top: 15px;
 }
 
+/* Button styling */
 .mat-raised-button {
-  margin-left: 20px !important;
+  margin-left: 0 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  padding: 0 24px;
+  border-radius: 4px;
 }
 
-.mat-datepicker-toggle {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+/* Save button specific styling */
+.save-button {
+  background-color: #3f51b5;
+  color: white;
 }
 
-.mdc-text-field__input {
-  padding-right: 40px; /* Make space for the toggle */
+/* Cancel button specific styling */
+.cancel-button {
+  background-color: transparent;
+  color: #3f51b5;
+}
+
+/* Date picker container styling */
+.date-field-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.date-field-container .activity-dialog-full-width {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.calendar-button {
+  color: #3f51b5;
+  margin-left: 8px;
+  min-width: 36px;
+  border: 1px solid #e0e0e0;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.calendar-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Form field spacing */
+.form-section {
+  margin-bottom: 16px;
+}
+
+/* GPX Track button styling */
+.gpx-button {
+  background-color: #f5f5f5;
+  color: #424242;
+  width: 100%;
+  margin-top: 10px;
+  border: 1px dashed #bdbdbd;
+  transition: all 0.3s ease;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gpx-button:hover {
+  background-color: #e0e0e0;
+  border-color: #9e9e9e;
+}
+
+.gpx-button mat-icon {
+  margin-right: 8px;
+}
+
+/* Form field label colors */
+.mat-form-field-label {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Add small shadow to form fields for depth */
+.mat-form-field {
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+/* Dialog actions styling */
+.mat-dialog-actions {
+  padding: 12px 24px 24px !important;
+  margin-bottom: 0;
+}
+
+/* Section divider */
+.section-divider {
+  border-top: 1px solid #e0e0e0;
+  margin: 20px 0;
+}
+
+/* Optional: Form field group styling for related fields */
+.field-group {
+  display: flex;
+  gap: 16px;
+}
+
+.field-group .activity-dialog-full-width {
+  flex: 1;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .field-group {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .mat-dialog-title {
+    font-size: 20px !important;
+  }
 }

@@ -21,6 +21,7 @@ import {MatButton} from '@angular/material/button';
 import {MatNativeDateModule, provideNativeDateAdapter} from '@angular/material/core';
 import {DurationPipe} from '../../shared/pipes/duration.pipe';
 import {catchError, map, switchMap} from 'rxjs/operators';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
   templateUrl: './activity-dialog.component.html',
@@ -45,7 +46,8 @@ import {catchError, map, switchMap} from 'rxjs/operators';
     DecimalPipe,
     MatDialogActions,
     MatDialogClose,
-    MatHint
+    MatHint,
+    MatIcon,
   ],
   providers: [
     provideNativeDateAdapter(),
