@@ -6,14 +6,14 @@ import {GearService} from '../../core/services/gear.service';
 import {Gear} from '../../core/models/gear.model';
 import {FileUploadService} from '../../core/services/file-upload.service';
 import {GpxTrackService} from '../../core/services/gpx-track.service';
-import {EMPTY, Observable, of} from 'rxjs';
+import {EMPTY, of} from 'rxjs';
 import {Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from '@angular/material/dialog';
 import {ActivityType, ActivityTypeType} from '../../core/models/activity-type.model';
 import {GearType} from '../../core/models/gear-type.model';
 import {MatFormField, MatHint, MatLabel} from '@angular/material/form-field';
-import {MatInput} from '@angular/material/input';
-import {FormsModule} from '@angular/forms';
+import {MatInput, MatInputModule} from '@angular/material/input';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDatepicker, MatDatepickerInput, MatDatepickerModule, MatDatepickerToggle} from '@angular/material/datepicker';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {DecimalPipe, NgForOf, NgIf} from '@angular/common';
@@ -36,8 +36,10 @@ import {MatIcon} from '@angular/material/icon';
     MatDatepickerInput,
     MatDatepickerModule,
     MatDatepickerToggle,
+    MatInputModule,
     MatDatepicker,
     MatNativeDateModule,
+    ReactiveFormsModule,
     MatSelect,
     MatOption,
     NgIf,

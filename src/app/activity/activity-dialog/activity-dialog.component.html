@@ -3,17 +3,12 @@
   <form class="activity-dialog-form">
     <!-- Date and Activity Type Section -->
     <div class="field-group">
-      <!-- Date field with explicit calendar button -->
-      <div class="date-field-container">
-        <mat-form-field class="activity-dialog-full-width">
-          <mat-label>Date</mat-label>
-          <input matInput name="date" [(ngModel)]="activity.date" [matDatepicker]="picker" readonly>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <button type="button" mat-icon-button class="calendar-button" (click)="picker.open()">
-          <mat-icon>calendar_today</mat-icon>
-        </button>
-      </div>
+      <mat-form-field class="activity-dialog-full-width">
+        <mat-label>Date</mat-label>
+        <input matInput name="date" [(ngModel)]="activity.date" [matDatepicker]="picker">
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      </mat-form-field>
 
       <mat-form-field class="activity-dialog-full-width">
         <mat-label>Activity Type</mat-label>
