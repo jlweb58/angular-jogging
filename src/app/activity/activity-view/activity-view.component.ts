@@ -8,24 +8,26 @@ import {ActivityDialogComponent} from '../activity-dialog/activity-dialog.compon
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {Router} from '@angular/router';
 import {ConfirmationDialog} from '../../shared/components/confirm-dialog.component';
-import {MatButton, MatIconButton} from '@angular/material/button';
+import {MatButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {MapViewComponent} from '../../shared/map-view/map-view.component';
 import {NgIf} from '@angular/common';
 import {FeedbackDialog} from '../../shared/components/feedback-dialog.component';
 import {DurationPipe} from '../../shared/pipes/duration.pipe';
+import {MatCard, MatCardContent} from '@angular/material/card';
 
 @Component({
   selector: 'app-activity-view',
   templateUrl: './activity-view.component.html',
   styleUrls: ['./activity-view.component.css'],
   imports: [
-    MatIconButton,
     MatIcon,
     MatButton,
     MapViewComponent,
     NgIf,
-    DurationPipe
+    DurationPipe,
+    MatCard,
+    MatCardContent
   ]
 })
 export class ActivityViewComponent implements OnInit {

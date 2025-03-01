@@ -1,47 +1,184 @@
-.activity-view-title {
-  font-size: xx-large;
-  font-weight: bold;
-  padding-left: 20px;
-  padding-bottom: 40px;
-  padding-top: 20px;
-
+:host {
+  display: block;
+  background-color: var(--background-light, #f5f5f5);
 }
 
-.activity-view-info {
-  font-size: larger;
-  font-weight: normal;
-  padding-left: 3px;
-  padding-bottom: 20px;
-  padding-top: 20px;
-  margin-bottom: 50px;
-  width: 100px;
-  float: inline-start;
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
 }
 
-.activity-view-info-group {
-  float: left;
-  margin-right: 30px;
-  margin-left: 20px;
+/* Header Section */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
 }
 
-.activity-view-info-label {
-  font-size: smaller;
-  font-style: italic;
-  color: darkgrey;
+.back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: var(--text-primary, #212121);
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
 }
 
-.activity-view-divider {
-  clear: both;
-  margin-bottom: 40px;
+.back-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
-.activity-view-button {
-  float: right;
-  padding-top: 10px;
-  padding-right: 100px;
+.action-buttons {
+  display: flex;
+  gap: 16px;
 }
 
-.activity-view-button-delete {
-  background-color: darkred;
-  color: yellow;
+/* Button Styles */
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn mat-icon {
+  margin-right: 8px;
+}
+
+.btn-danger {
+  color: var(--danger-color, #ea4335);
+}
+
+/* Activity Title */
+.activity-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 16px 0;
+  color: var(--text-primary, #212121);
+}
+
+/* Content Layout */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* Card Styling */
+mat-card {
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+.map-card-content {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+/* Activity Details Grid */
+.activity-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  padding: 24px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-label {
+  color: var(--text-secondary, #757575);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.detail-value {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-primary, #212121);
+}
+
+/* Section Title */
+.section-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: var(--text-primary, #212121);
+}
+
+.comment-text {
+  line-height: 1.6;
+  color: var(--text-primary, #212121);
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* Map Container */
+.map-container {
+  height: 500px;
+  width: 100%;
+  position: relative;
+}
+
+@media (min-height: 800px) {
+  .map-container {
+    height: 600px;
+  }
+}
+
+app-map-view {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 32px;
+  color: var(--text-secondary, #757575);
+}
+
+.empty-state mat-icon {
+  font-size: 48px;
+  height: 48px;
+  width: 48px;
+  margin-bottom: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .activity-details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .action-buttons .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .header {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
 }

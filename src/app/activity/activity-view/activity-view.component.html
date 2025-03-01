@@ -1,58 +1,84 @@
-<div class="mb-4">
-  <button mat-icon-button (click)="goBack()">
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-</div>
+<div class="container">
+  <!-- Header with back button and action buttons -->
+  <div class="header">
+    <button class="back-button" (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
 
-  <div class="activity-view-title">
-  {{activity.course}}
-</div>
+    <div class="action-buttons">
+      <button class="btn btn-primary" mat-raised-button color="primary" (click)="editActivity()">
+        <mat-icon>edit</mat-icon>
+        Edit Activity
+      </button>
+      <button class="btn btn-danger" mat-button (click)="deleteActivity()">
+        <mat-icon>delete</mat-icon>
+        Delete
+      </button>
+    </div>
+  </div>
 
-<div id="activity-infos">
-  <div class="activity-view-info-group">
-    <div class="activity-view-info-label">Date</div>
-    <div id="date" class="activity-view-info">
-      {{activity.date}}
-    </div>
-  </div>
-  <div class="activity-view-info-group">
-    <div class="activity-view-info-label">Activity Type</div>
-    <div id="activity-type" class="activity-view-info">
-      {{activity.activityType}}
-    </div>
-  </div>
-  <div class="activity-view-info-group">
-    <div class="activity-view-info-label">Distance</div>
-    <div id="distance" class="activity-view-info">
-      {{activity.distance}}km
-    </div>
-  </div>
-  <div class="activity-view-info-group">
-    <div class="activity-view-info-label">Time</div>
-    <div id="time" class="activity-view-info">
-      {{activity.duration | duration}}
-    </div>
-  </div>
-  <div class="activity-view-info-group">
-    <div class="activity-view-info-label">Gear</div>
-    <div id="gear" class="activity-view-info">
-      {{activity.gear ? activity.gear.name : ""}}
-    </div>
-  </div>
-  <div class="activity-view-info-group">
-    <div class="activity-view-info-label">Avg. Heart Rate</div>
-    <div id="avgHeartRate" class="activity-view-info">
-      {{activity.avgHeartRate}}
-    </div>
-  </div>
-  <div class ="activity-view-button">
-    <button class="activity-view-button-delete" mat-raised-button (click)="deleteActivity()">Delete Activity</button>
-  </div>
-  <div class ="activity-view-button">
-    <button mat-raised-button color="primary" (click)="editActivity()">Edit Activity</button>
+  <!-- Activity Title -->
+  <h1 class="activity-title">{{activity.course}}</h1>
+
+  <div class="content-wrapper">
+    <!-- Activity Details Card -->
+    <mat-card>
+      <mat-card-content>
+        <div class="activity-details">
+          <div class="detail-item">
+            <div class="detail-label">Date</div>
+            <div class="detail-value" id="date">{{activity.date}}</div>
+          </div>
+
+          <div class="detail-item">
+            <div class="detail-label">Activity Type</div>
+            <div class="detail-value" id="activity-type">{{activity.activityType}}</div>
+          </div>
+
+          <div class="detail-item">
+            <div class="detail-label">Distance</div>
+            <div class="detail-value" id="distance">{{activity.distance}} km</div>
+          </div>
+
+          <div class="detail-item">
+            <div class="detail-label">Time</div>
+            <div class="detail-value" id="time">{{activity.duration | duration}}</div>
+          </div>
+
+          <div class="detail-item">
+            <div class="detail-label">Gear</div>
+            <div class="detail-value" id="gear">{{activity.gear ? activity.gear.name : "—"}}</div>
+          </div>
+
+          <div class="detail-item">
+            <div class="detail-label">Avg. Heart Rate</div>
+            <div class="detail-value" id="avgHeartRate">{{activity.avgHeartRate ? activity.avgHeartRate + ' bpm' : '—'}}</div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Comments Card -->
+    <mat-card *ngIf="activity.comments">
+      <mat-card-content>
+        <h2 class="section-title">Comments</h2>
+        <p class="comment-text">{{activity.comments}}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Map Card -->
+    <mat-card *ngIf="gpxTrack || true">
+      <mat-card-content class="map-card-content">
+        <div class="map-container">
+          <ng-container *ngIf="gpxTrack">
+            <app-map-view [gpxTrack]="gpxTrack"></app-map-view>
+          </ng-container>
+          <div *ngIf="!gpxTrack" class="empty-state">
+            <mat-icon>place</mat-icon>
+            <p>No GPS track available for this activity</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
-<div class="activity-view-divider"></div>
-<ng-container *ngIf="gpxTrack">
-    <app-map-view [gpxTrack]="gpxTrack"></app-map-view>
-</ng-container>
