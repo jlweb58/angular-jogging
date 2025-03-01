@@ -4,8 +4,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {ActivityService} from './core/services/activity.service';
 import {ChartIntervalType} from './core/models/chart-interval-type';
 import {TokenStorageService} from './core/services/token-storage.service';
-import {MonthDatePickerComponent} from './shared/month-date-picker/month-date-picker.component';
-import {YearDatePickerComponent} from './shared/year-date-picker/year-date-picker.component';
+import {MonthDatePickerComponent} from './shared/date-picker/month-date-picker/month-date-picker.component';
+import {YearDatePickerComponent} from './shared/date-picker/year-date-picker/year-date-picker.component';
 import {BarChartComponent} from './chart/bar-chart/bar-chart.component';
 import {LineChartComponent} from './chart/line-chart/line-chart.component';
 import {ActivityType} from './core/models/activity-type.model';
@@ -55,13 +55,13 @@ export class AppComponent implements OnInit {
     let dialogRef;
     if (chartIntervalType === ChartIntervalType.Monthly) {
       dialogRef = this.dialog.open(MonthDatePickerComponent, {
-        height: '400px',
-        width: '300px',
+        height: '530px',
+        width: '500px',
       });
     } else {
       dialogRef = this.dialog.open(YearDatePickerComponent, {
-        height: '400px',
-        width: '300px',
+        height: '500px',
+        width: '350px',
       });
     }
     dialogRef.afterClosed().subscribe(result => {

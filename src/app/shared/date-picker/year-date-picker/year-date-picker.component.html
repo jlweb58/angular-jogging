@@ -1,0 +1,56 @@
+<div class="date-picker-container">
+  <h2 class="dialog-title">Select Date Range</h2>
+
+  <div class="date-range-form">
+    <div class="form-section">
+      <h3 class="section-label">Start Date</h3>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Year</mat-label>
+          <mat-select [(ngModel)]="selectedStartYear" name="selectedStartYear">
+            <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3 class="section-label">End Date</h3>
+      <div class="input-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Year</mat-label>
+          <mat-select [(ngModel)]="selectedEndYear" name="selectedEndYear">
+            <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Activity Type Section -->
+    <div class="form-section">
+      <h3 class="section-label">Activity Type</h3>
+      <div class="input-group single-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Activity</mat-label>
+          <mat-select [(ngModel)]="selectedActivityType" name="selectedActivityType">
+            <mat-option *ngFor="let activityType of activityTypes" [value]="activityType">
+              {{activityType}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="action-buttons">
+    <button mat-stroked-button mat-dialog-close class="month-date-picker-button">Cancel</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [mat-dialog-close]="true"
+      (click)="setDate()"
+      class="month-date-picker-button">
+      Show Chart
+    </button>
+  </div>

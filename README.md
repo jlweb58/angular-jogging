@@ -6,10 +6,8 @@ It runs together with the jogging3 project as a Java/SpringBoot backend
 - For any future bugs open an issue on the Jira board, https://jlweb58.atlassian.net/jira/software/c/projects/FAT/boards/2
 
 ## TODOS
-- Lots of cleanup in the run/map view component
 - Get some more unit tests
 - Implement a chart showing average pulse rate over time
-- Come up with a replacement for Chart This
 - Implement Find Runs (same as monthly/yearly chart, but with course parameter)
 - 
 ## Development server

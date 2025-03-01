@@ -1,0 +1,69 @@
+.date-picker-container {
+  padding: 24px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.dialog-title {
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: #333;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.date-range-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-label {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #555;
+}
+
+.input-group {
+  display: flex;
+  gap: 16px;
+}
+
+.input-group mat-form-field {
+  flex: 1;
+}
+
+.single-field {
+  max-width: 100%;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+  margin-right: 20px;
+}
+
+/* Make sure Angular Material form fields look good */
+::ng-deep .mat-form-field-wrapper {
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .input-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .date-picker-container {
+    padding: 16px;
+  }
+}

@@ -1,34 +1,37 @@
 import {Component, OnInit} from '@angular/core';
-import {LoggerService} from '../../core/services/logger.service';
-import {ActivityType} from '../../core/models/activity-type.model';
+import {LoggerService} from '../../../core/services/logger.service';
+import {ActivityType} from '../../../core/models/activity-type.model';
 import {FormsModule} from '@angular/forms';
 import {NgForOf} from '@angular/common';
 import {MatButton} from '@angular/material/button';
 import {MatDialogClose} from '@angular/material/dialog';
+import {MatFormField, MatLabel} from '@angular/material/form-field';
+import {MatOption} from '@angular/material/autocomplete';
+import {MatSelect} from '@angular/material/select';
 
 @Component({
-  selector: 'app-month-date-picker',
-  templateUrl: './month-date-picker.component.html',
-  styleUrls: ['./month-date-picker.component.css'],
+  selector: 'app-year-date-picker',
+  templateUrl: './year-date-picker.component.html',
+  styleUrls: ['../date-picker.component.css'],
   imports: [
     FormsModule,
     NgForOf,
     MatButton,
-    MatDialogClose
+    MatDialogClose,
+    MatFormField,
+    MatLabel,
+    MatOption,
+    MatSelect
   ]
 })
-export class MonthDatePickerComponent implements OnInit {
+export class YearDatePickerComponent implements OnInit {
 
-
-  months: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   years: number[] = [];
-  activityTypes: ActivityType[] = [ActivityType.Run, ActivityType.Bike, ActivityType.Hike, ActivityType.Swim];
   startDate: Date;
   endDate: Date;
-  selectedStartMonth: string;
   selectedStartYear: number;
-  selectedEndMonth: string;
   selectedEndYear: number;
+  activityTypes: ActivityType[] = [ActivityType.Run, ActivityType.Bike, ActivityType.Hike, ActivityType.Swim];
   selectedActivityType: ActivityType;
 
   constructor(private logger: LoggerService) {
@@ -36,28 +39,24 @@ export class MonthDatePickerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     const now: Date = new Date();
     const thisYear = now.getFullYear();
-    for (let i = 0; i < 11; i++) {
+    for (let i = 0; i < 21; i++) {
       this.years.push(thisYear - i);
     }
     this.selectedStartYear = thisYear;
-    this.selectedStartMonth = this.months[0];
     this.selectedEndYear = thisYear;
-    this.selectedEndMonth = this.months[now.getMonth()];
     this.selectedActivityType = ActivityType.Run;
   }
 
   setDate(): void {
     this.startDate = new Date();
     this.startDate.setFullYear(this.selectedStartYear);
-    this.startDate.setMonth(this.months.indexOf(this.selectedStartMonth));
+    this.startDate.setMonth(0);
     this.startDate.setDate(1);
     this.endDate = new Date();
     this.endDate.setFullYear(this.selectedEndYear);
-    this.endDate.setMonth(this.months.indexOf(this.selectedEndMonth));
-    this.endDate.setDate(new Date(this.endDate.getFullYear(), this.endDate.getMonth() + 1, 0).getDate());
+    this.endDate.setMonth(11);
+    this.endDate.setDate(31);
   }
-
 }
