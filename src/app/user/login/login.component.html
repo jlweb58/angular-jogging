@@ -1,4 +1,6 @@
-<form class="login-form">
+<div class="login-page">
+  <h1 class="login-title">John's Fitness Activities</h1>
+  <form class="login-form">
   <p *ngIf="isError" class="has-error">
     Login Error!
   </p>
@@ -10,8 +12,10 @@
     <mat-label>Password</mat-label>
     <input matInput type="password" name="password" [(ngModel)]="password" (keydown.enter)="checkLogin()">
   </mat-form-field>
+    <button  type="submit" mat-raised-button (click)=checkLogin() color="primary" class="login-button">
+      Login
+    </button>
 </form>
   <mat-divider></mat-divider>
-  <button  type="submit" mat-raised-button (click)=checkLogin() color="primary" class="login-button">
-    Login
-  </button>
+</div>
+<router-outlet></router-outlet>

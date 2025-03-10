@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, RouterOutlet} from '@angular/router';
 import {AuthenticationService} from '../../core/services/authentication.service';
 import {TokenStorageService} from '../../core/services/token-storage.service';
 import {NgIf} from '@angular/common';
@@ -20,7 +20,8 @@ import {MatButton} from '@angular/material/button';
     MatInput,
     MatLabel,
     MatDivider,
-    MatButton
+    MatButton,
+    RouterOutlet
   ]
 })
 export class LoginComponent implements OnInit {
