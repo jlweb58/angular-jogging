@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {ActivityType} from '../../core/models/activity-type.model';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
+import {DurationPipe} from '../../shared/pipes/duration.pipe';
 
 @Component({
   selector: 'app-calender-view-day',
@@ -14,7 +15,8 @@ import {MatIcon} from '@angular/material/icon';
     NgClass,
     MatIcon,
     NgIf,
-    NgForOf
+    NgForOf,
+    DurationPipe
   ]
 })
 export class CalenderViewDayComponent implements OnInit {

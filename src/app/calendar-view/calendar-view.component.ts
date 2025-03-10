@@ -10,6 +10,7 @@ import {MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {DecimalPipe, NgForOf, NgIf} from '@angular/common';
 import {CalenderViewDayComponent} from './calender-view-day/calender-view-day.component';
+import {DurationPipe} from '../shared/pipes/duration.pipe';
 
 @Component({
   selector: 'app-calendar-view',
@@ -70,7 +71,12 @@ export class CalendarViewComponent implements OnInit {
   }
 
   private static getSeconds(time: string): number {
-    const parts = time.split(':');
+    //This is a bit hacky, since we changed the format of the duration on the server side.
+    const convertedDuration = DurationPipe.formatDuration(time);
+    const parts = convertedDuration.split(':');
+    if (parts.length === 2) {
+      parts.unshift('00');
+    }
     return parseInt(parts[0], 10) * 3600 + parseInt(parts[1], 10) * 60 + parseInt(parts[2], 10);
   }
 
@@ -172,10 +178,6 @@ export class CalendarViewComponent implements OnInit {
     return CalendarViewComponent.getFormattedTimeString(secondsSum);
   }
 
-  updateFilter(): void {
-    this.logger.log('Filter updated');
-  }
-
   getRow(index: number): CalendarDay[] {
     // 0-6, 7-13, 14-20, 21-27, 28-34, 35-41
     switch (index) {
@@ -222,13 +224,6 @@ export class CalendarViewComponent implements OnInit {
     return retVal;
   }
 
-  getClassForDate(date: Date): string {
-    if (date.getMonth() === this.currentDate.getMonth()) {
-      return 'calendar-table-cell';
-    }
-    return 'calendar-table-cell other-month';
-  }
-
   countActivitiesForCurrentMonth(): number {
     return this.calendarDays.filter((d: CalendarDay) => d.activities && d.day.getMonth() === this.currentDate.getMonth())
       .flatMap(day => day.activities)
@@ -245,9 +240,5 @@ export class CalendarViewComponent implements OnInit {
     return this.getTimeForRow(this.calendarDays.filter((d: CalendarDay) =>
       d.activities && d.day.getMonth() === this.currentDate.getMonth()));
   }
-
-  showActivity(activity: Activity): void {
-    this.router.navigate(['/activity'], {state: {activity}});
-   }
 
 }
