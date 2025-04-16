@@ -18,7 +18,7 @@ export class ActivityService {
   private loadSubscription?: Subscription;
 
   private static isBetweenDates(startDate: Date, endDate: Date, activity: Activity) {
-    const activityDate: Date = new Date(activity.date + 'T00:00:00Z');
+    const activityDate: Date = new Date(activity.date);
     const after = activityDate.getTime() >= startDate.getTime();
     const before = activityDate.getTime() <= endDate.getTime();
     return after && before;

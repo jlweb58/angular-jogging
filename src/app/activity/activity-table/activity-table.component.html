@@ -14,7 +14,7 @@
 <table mat-table [dataSource]="dataSource" matSort>
   <ng-container matColumnDef="date">
     <th mat-header-cell *matHeaderCellDef> Date </th>
-    <td mat-cell *matCellDef="let activity"> {{activity.date}} </td>
+    <td mat-cell *matCellDef="let activity"> {{activity.date | formatDateTime}}</td>
   </ng-container>
   <ng-container matColumnDef="activityType">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Activity Type </th>

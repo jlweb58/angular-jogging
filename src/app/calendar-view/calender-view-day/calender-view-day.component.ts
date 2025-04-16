@@ -27,6 +27,7 @@ export class CalenderViewDayComponent implements OnInit {
   constructor(private router: Router, ) { }
 
   ngOnInit(): void {
+    this.calendarDay.activities.sort((a, b) => a.date.localeCompare(b.date));
   }
 
   showActivity(activity: Activity): void {

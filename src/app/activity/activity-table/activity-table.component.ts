@@ -24,6 +24,7 @@ import {ActivityDialogComponent} from '../activity-dialog/activity-dialog.compon
 import {MatDialog} from '@angular/material/dialog';
 import {MatFabButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
+import {FormatDateTimePipe} from '../../shared/pipes/format-date-time.pipe';
 
 @Component({
   selector: 'app-activity-table',
@@ -48,6 +49,7 @@ import {MatIcon} from '@angular/material/icon';
     DurationPipe,
     MatFabButton,
     MatIcon,
+    FormatDateTimePipe,
   ]
 })
 export class ActivityTableComponent implements OnInit, OnDestroy {

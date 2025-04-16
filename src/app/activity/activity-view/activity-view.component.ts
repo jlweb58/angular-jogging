@@ -15,6 +15,7 @@ import {NgIf} from '@angular/common';
 import {FeedbackDialog} from '../../shared/components/feedback-dialog.component';
 import {DurationPipe} from '../../shared/pipes/duration.pipe';
 import {MatCard, MatCardContent} from '@angular/material/card';
+import {FormatDateTimePipe} from '../../shared/pipes/format-date-time.pipe';
 
 @Component({
   selector: 'app-activity-view',
@@ -27,7 +28,8 @@ import {MatCard, MatCardContent} from '@angular/material/card';
     NgIf,
     DurationPipe,
     MatCard,
-    MatCardContent
+    MatCardContent,
+    FormatDateTimePipe
   ]
 })
 export class ActivityViewComponent implements OnInit {
