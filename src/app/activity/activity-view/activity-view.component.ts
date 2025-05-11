@@ -16,6 +16,7 @@ import {FeedbackDialog} from '../../shared/components/feedback-dialog.component'
 import {DurationPipe} from '../../shared/pipes/duration.pipe';
 import {MatCard, MatCardContent} from '@angular/material/card';
 import {FormatDateTimePipe} from '../../shared/pipes/format-date-time.pipe';
+import {CapitalizePipe} from '../../shared/pipes/capitalize.pipe';
 
 @Component({
   selector: 'app-activity-view',
@@ -29,7 +30,8 @@ import {FormatDateTimePipe} from '../../shared/pipes/format-date-time.pipe';
     DurationPipe,
     MatCard,
     MatCardContent,
-    FormatDateTimePipe
+    FormatDateTimePipe,
+    CapitalizePipe
   ]
 })
 export class ActivityViewComponent implements OnInit {
@@ -97,5 +99,7 @@ export class ActivityViewComponent implements OnInit {
       this.ngOnInit();
     });
   }
+
+  getIconForActivity
 
 }

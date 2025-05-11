@@ -58,6 +58,16 @@ button[mat-fab] {
   font-size: 24px; /* Optional: Customize icon size */
 }
 
+.activity-type-container {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Adds space between icon and text */
+}
+
+
+.activity-icon {
+}
+
 
 
 

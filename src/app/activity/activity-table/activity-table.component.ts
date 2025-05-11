@@ -25,6 +25,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {MatFabButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {FormatDateTimePipe} from '../../shared/pipes/format-date-time.pipe';
+import {CapitalizePipe} from '../../shared/pipes/capitalize.pipe';
+import {ActivityType} from '../../core/models/activity-type.model';
 
 @Component({
   selector: 'app-activity-table',
@@ -50,6 +52,7 @@ import {FormatDateTimePipe} from '../../shared/pipes/format-date-time.pipe';
     MatFabButton,
     MatIcon,
     FormatDateTimePipe,
+    CapitalizePipe,
   ]
 })
 export class ActivityTableComponent implements OnInit, OnDestroy {
@@ -105,6 +108,21 @@ export class ActivityTableComponent implements OnInit, OnDestroy {
 
   newActivity() {
     this.dialog.open(ActivityDialogComponent);
+  }
+
+  getIconForActivityType(activityType: ActivityType) : string {
+    switch ( activityType) {
+      case ActivityType.Bike:
+        return 'directions_bike';
+      case ActivityType.Run:
+        return 'directions_run';
+      case ActivityType.Hike:
+        return 'hiking';
+      case ActivityType.Swim:
+        return 'pool';
+      default:
+        return 'sports_and_outdoors';
+    }
   }
 
 
