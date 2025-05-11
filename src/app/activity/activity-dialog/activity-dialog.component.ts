@@ -102,9 +102,7 @@ export class ActivityDialogComponent implements OnInit {
 
       if (this.isEdit && this.activity.gear) {
         this.selectedGear = this.activity.gear;
-      } else {
-        this.selectedGear = this.gears.find(gear => gear.preferred);
-      }
+      } 
 
     });
   }
