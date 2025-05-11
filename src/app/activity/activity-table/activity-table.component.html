@@ -14,39 +14,44 @@
 <table mat-table [dataSource]="dataSource" matSort>
   <ng-container matColumnDef="date">
     <th mat-header-cell *matHeaderCellDef> Date </th>
-    <td mat-cell *matCellDef="let activity"> {{activity.date | formatDateTime}}</td>
+    <td mat-cell *matCellDef="let activity"> {{ activity.date | formatDateTime }}</td>
   </ng-container>
   <ng-container matColumnDef="activityType">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Activity Type </th>
-    <td mat-cell *matCellDef="let activity"> {{activity["activityType"]}} </td>
+    <td mat-cell *matCellDef="let activity">
+      <div class="activity-type-container">
+        <mat-icon class="activity-icon">{{ getIconForActivityType(activity.activityType) }}</mat-icon>
+        <span>{{ activity.activityType | capitalize }}</span>
+      </div>
+    </td>
   </ng-container>
   <ng-container matColumnDef="course">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Course </th>
-    <td mat-cell *matCellDef="let activity"> {{activity["course"]}} </td>
+    <td mat-cell *matCellDef="let activity"> {{ activity.course }} </td>
   </ng-container>
   <ng-container matColumnDef="distance">
     <th mat-header-cell *matHeaderCellDef  mat-sort-header> Distance </th>
-    <td mat-cell *matCellDef="let activity"> {{activity.distance}} </td>
+    <td mat-cell *matCellDef="let activity"> {{ activity.distance }} </td>
   </ng-container>
   <ng-container matColumnDef="time">
     <th mat-header-cell *matHeaderCellDef  mat-sort-header> Time </th>
-    <td mat-cell *matCellDef="let activity"> {{activity.duration | duration}} </td>
+    <td mat-cell *matCellDef="let activity"> {{ activity.duration | duration }} </td>
   </ng-container>
   <ng-container matColumnDef="weather">
     <th mat-header-cell *matHeaderCellDef> Weather </th>
-    <td mat-cell *matCellDef="let activity"> {{activity["weather"]}} </td>
+    <td mat-cell *matCellDef="let activity"> {{ activity.weather }} </td>
   </ng-container>
   <ng-container matColumnDef="comments">
     <th mat-header-cell *matHeaderCellDef> Comments </th>
-    <td mat-cell *matCellDef="let activity"> {{activity.comments}} </td>
+    <td mat-cell *matCellDef="let activity"> {{ activity.comments }} </td>
   </ng-container>
   <ng-container matColumnDef="avgheartrate">
     <th mat-header-cell *matHeaderCellDef> Avg Heart Rate </th>
-    <td mat-cell *matCellDef="let activity"> {{activity["avgHeartRate"]}} </td>
+    <td mat-cell *matCellDef="let activity"> {{ activity.avgHeartRate }} </td>
   </ng-container>
   <ng-container matColumnDef="gear">
     <th mat-header-cell *matHeaderCellDef> Gear </th>
-    <td mat-cell *matCellDef="let activity"> {{activity.gear ? activity.gear.name : ''}}</td>
+    <td mat-cell *matCellDef="let activity"> {{ activity.gear ? activity.gear.name : '' }}</td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" ></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></tr>
