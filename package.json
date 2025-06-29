@@ -33,7 +33,7 @@
     "webdriver-manager": "^12.1.9"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.1.5",
+    "@angular-devkit/build-angular": "^20.0.1",
     "@angular/cli": "^19.1.5",
     "@angular/compiler-cli": "~19.1.4",
     "@angular/language-service": "~19.1.4",
