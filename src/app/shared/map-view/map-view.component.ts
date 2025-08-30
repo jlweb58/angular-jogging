@@ -20,6 +20,7 @@ export class MapViewComponent implements OnInit {
   center: google.maps.LatLngLiteral;
   @Input() gpxTrack: GpxTrack;
   isApiLoaded = false;
+  isMapReady = false;
 
   private highestLat: number;
   private lowestLat: number;
@@ -46,6 +47,11 @@ export class MapViewComponent implements OnInit {
     this.waitForGoogleMaps().then(() => {
       this.initializeMap();
       this.isApiLoaded = true;
+      // Add a small delay to ensure the map component is fully initialized
+      setTimeout(() => {
+        this.isMapReady = true;
+      }, 100);
+
     }).catch(error => {
       this.logger.error('Failed to load Google Maps API', error);
     });
@@ -81,6 +87,11 @@ export class MapViewComponent implements OnInit {
   }
 
   private initializeMap(): void {
+    if (!this.gpxTrack || !this.gpxTrack.trackElements) {
+      this.logger.error('No GPX track data available', null);
+      return;
+    }
+
     const gpxTrackElements: GpxTrackElement[] = this.gpxTrack.trackElements;
     this.polylineOptions.path = gpxTrackElements.map(gpx => ({lat: gpx.latitude, lng: gpx.longitude}));
     const centerLat = this.getAverageForField(this.polylineOptions.path, 'lat');

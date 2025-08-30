@@ -2,7 +2,7 @@
   Loading map...
 </div>
 <google-map
-  *ngIf="isApiLoaded"
+  *ngIf="isApiLoaded && isMapReady"
   height = "100%"
   width =  "100%"
   [zoom]="zoom"
