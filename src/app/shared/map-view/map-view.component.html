@@ -1,4 +1,8 @@
+<div *ngIf="!isApiLoaded" class="loading-container">
+  Loading map...
+</div>
 <google-map
+  *ngIf="isApiLoaded"
   height = "100%"
   width =  "100%"
   [zoom]="zoom"

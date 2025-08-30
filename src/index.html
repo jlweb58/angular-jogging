@@ -7,7 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="https://maps.googleapis.com/maps/api/js?key=GOOGLE_API_KEY"></script>
+  <script>
+    // Add cache busting to prevent caching issues
+    const cacheBuster = new Date().getTime();
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=GOOGLE_API_KEY&loading=async&v=weekly&_=${cacheBuster}`;
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  </script>
 </head>
 <body>
   <app-root></app-root>

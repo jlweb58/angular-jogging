@@ -64,7 +64,11 @@
               "sourceMap": true,
               "namedChunks": true,
               "extractLicenses": false,
-              "budgets": []
+              "budgets": [],
+              "index": {
+                "input": "src/index.env.html",
+                "output": "index.html"
+              }
             }
           }
         },

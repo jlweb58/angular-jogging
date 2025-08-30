@@ -3,6 +3,7 @@ import {LoggerService} from '../../core/services/logger.service';
 import {GpxTrack} from '../../core/models/gpx-track.model';
 import {GpxTrackElement} from '../../core/models/gpx-track-element.model';
 import {GoogleMap, MapPolyline} from '@angular/google-maps';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-map-view',
@@ -10,13 +11,15 @@ import {GoogleMap, MapPolyline} from '@angular/google-maps';
   styleUrls: ['./map-view.component.css'],
   imports: [
     GoogleMap,
-    MapPolyline
+    MapPolyline,
+    NgIf
   ]
 })
 export class MapViewComponent implements OnInit {
   zoom = 14;
   center: google.maps.LatLngLiteral;
   @Input() gpxTrack: GpxTrack;
+  isApiLoaded = false;
 
   private highestLat: number;
   private lowestLat: number;
@@ -40,6 +43,44 @@ export class MapViewComponent implements OnInit {
   constructor(private logger: LoggerService) { }
 
   ngOnInit(): void {
+    this.waitForGoogleMaps().then(() => {
+      this.initializeMap();
+      this.isApiLoaded = true;
+    }).catch(error => {
+      this.logger.error('Failed to load Google Maps API', error);
+    });
+  }
+
+
+  private waitForGoogleMaps(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      // Check if API is already loaded
+      if (typeof google !== 'undefined' && google.maps) {
+        this.isApiLoaded = true;
+        resolve();
+        return;
+      }
+
+      // Poll for Google Maps availability
+      let attempts = 0;
+      const maxAttempts = 50; // 5 seconds max wait
+
+      const checkGoogle = () => {
+        if (typeof google !== 'undefined' && google.maps) {
+          resolve();
+        } else if (attempts < maxAttempts) {
+          attempts++;
+          setTimeout(checkGoogle, 100);
+        } else {
+          reject(new Error('Google Maps API failed to load within timeout'));
+        }
+      };
+
+      checkGoogle();
+    });
+  }
+
+  private initializeMap(): void {
     const gpxTrackElements: GpxTrackElement[] = this.gpxTrack.trackElements;
     this.polylineOptions.path = gpxTrackElements.map(gpx => ({lat: gpx.latitude, lng: gpx.longitude}));
     const centerLat = this.getAverageForField(this.polylineOptions.path, 'lat');
