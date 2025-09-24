@@ -3,6 +3,7 @@ import {Activity} from '../../core/models/activity.model';
 import {PlotlyModule} from 'angular-plotly.js';
 
 import * as PlotlyJS from 'plotly.js-dist-min';
+import {ActivityType} from '../../core/models/activity-type.model';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -22,6 +23,9 @@ export class LineChartComponent implements OnInit {
   endDate: Date;
   @Input()
   activities: Activity[];
+  @Input()
+  selectedActivityType: ActivityType;
+
   public graph =  {
     data: [],
     layout: {
@@ -57,7 +61,8 @@ export class LineChartComponent implements OnInit {
 
   prepareTempoLineChart() {
     const resultMap = new Map();
-    this.activities.forEach(activity => {
+    this.activities.filter((activity) => activity.activityType === this.selectedActivityType)
+    .forEach(activity => {
 
       const activityDistance: number = activity.distance;
       const activityDurationSeconds = this.durationToSeconds(activity.duration);

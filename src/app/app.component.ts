@@ -85,17 +85,20 @@ export class AppComponent implements OnInit {
     const dialogRef = this.dialog.open(MonthDatePickerComponent);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.showLineChart(dialogRef.componentInstance.startDate, dialogRef.componentInstance.endDate);
+        this.showLineChart(dialogRef.componentInstance.startDate, dialogRef.componentInstance.endDate,
+          dialogRef.componentInstance.selectedActivityType);
       }
     });
   }
 
-  showLineChart(startDate: Date, endDate: Date) {
+  showLineChart(startDate: Date, endDate: Date, activityType: ActivityType) {
     const activities = this.activityService.getActivitiesForDateRange(startDate, endDate);
     const dialogRef = this.dialog.open(LineChartComponent);
     dialogRef.componentInstance.activities = activities;
     dialogRef.componentInstance.startDate = startDate;
     dialogRef.componentInstance.endDate = endDate;
+    dialogRef.componentInstance.selectedActivityType = activityType;
+
   }
 
 }
