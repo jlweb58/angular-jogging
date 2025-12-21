@@ -9,7 +9,7 @@ It runs together with the jogging3 project as a Java/SpringBoot backend
 - Get some more unit tests
 - Implement a chart showing average pulse rate over time
 - Implement Find Runs (same as monthly/yearly chart, but with course parameter)
-- 
+ 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
