@@ -4,8 +4,8 @@
     <mat-form-field>
       <mat-label>Gear Type</mat-label>
       <mat-select [(ngModel)]="gear.gearType" name="gearType">
-        <mat-option value="gearType.Bike">BIKE</mat-option>
-        <mat-option value="gearType.Shoes">SHOES</mat-option>
+        <mat-option [value]="gearTypes.Bike">Bike</mat-option>
+        <mat-option [value]="gearTypes.Shoes">Shoes</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -14,7 +14,7 @@
       <input matInput name="name" [(ngModel)]="gear.name">
     </mat-form-field>
 
-    <mat-form-field c>
+    <mat-form-field>
       <mat-label>Offset (km)</mat-label>
       <input matInput name="offset" [(ngModel)]="gear.mileageOffset">
     </mat-form-field>

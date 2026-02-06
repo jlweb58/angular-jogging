@@ -8,6 +8,7 @@ import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {MatButton} from '@angular/material/button';
 import {MatOption, MatSelect} from '@angular/material/select';
+import {GearType, GearTypeType} from '../../core/models/gear-type.model';
 
 
 @Component({
@@ -31,6 +32,7 @@ import {MatOption, MatSelect} from '@angular/material/select';
 export class GearDialogComponent implements OnInit {
 
   gear: Gear;
+  gearTypes: GearTypeType = GearType;
 
   constructor(private logger: LoggerService, private gearService: GearService) {
     this.gear = new Gear();
