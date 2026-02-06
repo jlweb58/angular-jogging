@@ -2,6 +2,14 @@
 <mat-dialog-content>
   <form class="gear-dialog-form">
     <mat-form-field>
+      <mat-label>Gear Type</mat-label>
+      <mat-select [(ngModel)]="gear.gearType" name="gearType">
+        <mat-option value="gearType.Bike">BIKE</mat-option>
+        <mat-option value="gearType.Shoes">SHOES</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
       <mat-label>Name</mat-label>
       <input matInput name="name" [(ngModel)]="gear.name">
     </mat-form-field>
