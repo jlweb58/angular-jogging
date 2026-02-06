@@ -125,7 +125,11 @@ export class GearListComponent implements OnInit {
   private toggleGearState(gear: Gear, message: string, active: boolean) {
     const dialogRef = this.dialog.open(ConfirmationDialog, {
       width: '200px',
-      data: message
+      data: {
+        title: 'Toggle gear?',
+        message: message
+      }
+      
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
