@@ -3,7 +3,7 @@ import {CalendarDay} from '../../core/models/calendar.day';
 import {Activity} from '../../core/models/activity.model';
 import {Router} from '@angular/router';
 import {ActivityType} from '../../core/models/activity-type.model';
-import {NgClass, NgForOf, NgIf} from '@angular/common';
+import { NgClass } from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
 import {DurationPipe} from '../../shared/pipes/duration.pipe';
 
@@ -14,10 +14,8 @@ import {DurationPipe} from '../../shared/pipes/duration.pipe';
   imports: [
     NgClass,
     MatIcon,
-    NgIf,
-    NgForOf,
     DurationPipe
-  ]
+]
 })
 export class CalenderViewDayComponent implements OnInit {
 

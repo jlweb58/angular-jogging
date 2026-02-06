@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router, RouterOutlet} from '@angular/router';
 import {AuthenticationService} from '../../core/services/authentication.service';
 import {TokenStorageService} from '../../core/services/token-storage.service';
-import {NgIf} from '@angular/common';
+
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatInput} from '@angular/material/input';
@@ -14,7 +14,6 @@ import {MatButton} from '@angular/material/button';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   imports: [
-    NgIf,
     MatFormField,
     FormsModule,
     MatInput,
@@ -22,7 +21,7 @@ import {MatButton} from '@angular/material/button';
     MatDivider,
     MatButton,
     RouterOutlet
-  ]
+]
 })
 export class LoginComponent implements OnInit {
 

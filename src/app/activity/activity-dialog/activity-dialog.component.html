@@ -33,9 +33,9 @@
       <mat-form-field class="activity-dialog-full-width">
         <mat-label>Time</mat-label>
         <input matInput name="time"
-               [(ngModel)]="displayDuration"
-               (ngModelChange)="onDurationChange($event)"
-               placeholder="00:00:00">
+          [(ngModel)]="displayDuration"
+          (ngModelChange)="onDurationChange($event)"
+          placeholder="00:00:00">
         <mat-hint>Format: HH:MM:SS or MM:SS</mat-hint>
       </mat-form-field>
     </div>
@@ -61,18 +61,24 @@
       </mat-form-field>
 
       <!-- Show gear selection regardless of selectedGear state -->
-      <mat-form-field *ngIf="activity.activityType === activityTypes.Run || activity.activityType === activityTypes.Bike" class="activity-dialog-full-width">
-        <mat-label>Gear</mat-label>
-        <mat-select [(ngModel)]="selectedGear.id" name="gears">
-          <mat-option>--</mat-option>
-          <mat-option *ngFor="let gear of findGearForActivity(activity)" [value]="gear.id">
-            {{gear.name}} ({{gear.mileage | number: '1.0-2'}} km)
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      @if (activity.activityType === activityTypes.Run || activity.activityType === activityTypes.Bike) {
+        <mat-form-field class="activity-dialog-full-width">
+          <mat-label>Gear</mat-label>
+          <mat-select [(ngModel)]="selectedGear.id" name="gears">
+            <mat-option>--</mat-option>
+            @for (gear of findGearForActivity(activity); track gear) {
+              <mat-option [value]="gear.id">
+                {{gear.name}} ({{gear.mileage | number: '1.0-2'}} km)
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      }
 
       <!-- Placeholder for when no gear is needed -->
-      <div *ngIf="activity.activityType !== activityTypes.Run && activity.activityType !== activityTypes.Bike" class="gear-placeholder"></div>
+      @if (activity.activityType !== activityTypes.Run && activity.activityType !== activityTypes.Bike) {
+        <div class="gear-placeholder"></div>
+      }
     </div>
 
     <!-- Comments Section -->

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivityType} from '../../../core/models/activity-type.model';
 import {FormsModule} from '@angular/forms';
-import {NgForOf} from '@angular/common';
+
 import {MatButton} from '@angular/material/button';
 import {MatDialogClose} from '@angular/material/dialog';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
@@ -13,14 +13,13 @@ import {MatOption, MatSelect} from '@angular/material/select';
   styleUrls: ['../date-picker.component.css'],
   imports: [
     FormsModule,
-    NgForOf,
     MatButton,
     MatDialogClose,
     MatFormField,
     MatLabel,
     MatSelect,
     MatOption
-  ]
+]
 })
 export class MonthDatePickerComponent implements OnInit {
 

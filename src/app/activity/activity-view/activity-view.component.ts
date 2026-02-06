@@ -11,7 +11,7 @@ import {ConfirmationDialog} from '../../shared/components/confirm-dialog.compone
 import {MatButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {MapViewComponent} from '../../shared/map-view/map-view.component';
-import {NgIf} from '@angular/common';
+
 import {FeedbackDialog} from '../../shared/components/feedback-dialog.component';
 import {DurationPipe} from '../../shared/pipes/duration.pipe';
 import {MatCard, MatCardContent} from '@angular/material/card';
@@ -26,13 +26,12 @@ import {CapitalizePipe} from '../../shared/pipes/capitalize.pipe';
     MatIcon,
     MatButton,
     MapViewComponent,
-    NgIf,
     DurationPipe,
     MatCard,
     MatCardContent,
     FormatDateTimePipe,
     CapitalizePipe
-  ]
+]
 })
 export class ActivityViewComponent implements OnInit {
 

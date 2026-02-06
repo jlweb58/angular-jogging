@@ -1,15 +1,18 @@
-<div *ngIf="!isApiLoaded" class="loading-container">
-  Loading map...
-</div>
-<google-map
-  *ngIf="isApiLoaded && isMapReady"
-  height = "100%"
-  width =  "100%"
-  [zoom]="zoom"
-  [center]="center"
-  [options]="options"
->
-  <map-polyline
-    [options] = "polylineOptions"
-  ></map-polyline>
-</google-map>
+@if (!isApiLoaded) {
+  <div class="loading-container">
+    Loading map...
+  </div>
+}
+@if (isApiLoaded && isMapReady) {
+  <google-map
+    height = "100%"
+    width =  "100%"
+    [zoom]="zoom"
+    [center]="center"
+    [options]="options"
+    >
+    <map-polyline
+      [options] = "polylineOptions"
+    ></map-polyline>
+  </google-map>
+}

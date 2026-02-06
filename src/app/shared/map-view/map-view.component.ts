@@ -3,7 +3,7 @@ import {LoggerService} from '../../core/services/logger.service';
 import {GpxTrack} from '../../core/models/gpx-track.model';
 import {GpxTrackElement} from '../../core/models/gpx-track-element.model';
 import {GoogleMap, MapPolyline} from '@angular/google-maps';
-import {NgIf} from '@angular/common';
+
 
 @Component({
   selector: 'app-map-view',
@@ -11,9 +11,8 @@ import {NgIf} from '@angular/common';
   styleUrls: ['./map-view.component.css'],
   imports: [
     GoogleMap,
-    MapPolyline,
-    NgIf
-  ]
+    MapPolyline
+]
 })
 export class MapViewComponent implements OnInit {
   zoom = 14;

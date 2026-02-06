@@ -59,26 +59,32 @@
     </mat-card>
 
     <!-- Comments Card -->
-    <mat-card *ngIf="activity.comments">
-      <mat-card-content>
-        <h2 class="section-title">Comments</h2>
-        <p class="comment-text">{{activity.comments}}</p>
-      </mat-card-content>
-    </mat-card>
+    @if (activity.comments) {
+      <mat-card>
+        <mat-card-content>
+          <h2 class="section-title">Comments</h2>
+          <p class="comment-text">{{activity.comments}}</p>
+        </mat-card-content>
+      </mat-card>
+    }
 
     <!-- Map Card -->
-    <mat-card *ngIf="gpxTrack || true">
-      <mat-card-content class="map-card-content">
-        <div class="map-container">
-          <ng-container *ngIf="gpxTrack">
-            <app-map-view [gpxTrack]="gpxTrack"></app-map-view>
-          </ng-container>
-          <div *ngIf="!gpxTrack" class="empty-state">
-            <mat-icon>place</mat-icon>
-            <p>No GPS track available for this activity</p>
+    @if (gpxTrack || true) {
+      <mat-card>
+        <mat-card-content class="map-card-content">
+          <div class="map-container">
+            @if (gpxTrack) {
+              <app-map-view [gpxTrack]="gpxTrack"></app-map-view>
+            }
+            @if (!gpxTrack) {
+              <div class="empty-state">
+                <mat-icon>place</mat-icon>
+                <p>No GPS track available for this activity</p>
+              </div>
+            }
           </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
+        </mat-card-content>
+      </mat-card>
+    }
   </div>
 </div>

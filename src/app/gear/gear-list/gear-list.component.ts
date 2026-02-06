@@ -18,7 +18,7 @@ import {
   MatHeaderRowDef, MatRow, MatRowDef,
   MatTable
 } from '@angular/material/table';
-import {DecimalPipe, NgClass, NgIf} from '@angular/common';
+import { DecimalPipe, NgClass } from '@angular/common';
 import {MatButton, MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {MatDivider} from '@angular/material/divider';
@@ -38,7 +38,6 @@ import {MatDivider} from '@angular/material/divider';
     MatCellDef,
     MatRadioButton,
     NgClass,
-    NgIf,
     MatIconButton,
     MatIcon,
     MatHeaderRow,
@@ -48,7 +47,7 @@ import {MatDivider} from '@angular/material/divider';
     MatDivider,
     MatButton,
     DecimalPipe
-  ]
+]
 })
 export class GearListComponent implements OnInit {
 

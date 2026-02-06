@@ -1,61 +1,63 @@
-<mat-toolbar *ngIf="tokenStorageService.getUser()" color="primary" class="app-activity">
-  <button mat-button routerLink="/home" routerLinkActive="active">
-   <mat-icon>home</mat-icon>
-    <span>Home</span>
-  </button>
-  <button mat-button routerLink="/calendar" routerLinkActive="active">
-    <mat-icon >calendar_today</mat-icon>
-    <span style="overflow-wrap: break-word">Activity Calendar</span>
-  </button>
-  <button mat-button [matMenuTriggerFor]="toolsMenu">
-    <mat-icon>build</mat-icon>
-    <span>Tools</span>
-  </button>
-  <mat-menu #toolsMenu="matMenu" >
-    <button mat-menu-item disabled="true">
-      <mat-icon inline="true">search</mat-icon>
-      <span>Find activities</span>
+@if (tokenStorageService.getUser()) {
+  <mat-toolbar color="primary" class="app-activity">
+    <button mat-button routerLink="/home" routerLinkActive="active">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
     </button>
-    <button mat-menu-item disabled="true">
-      <mat-icon inline="true">show_chart</mat-icon>
-      <span>Chart this</span>
+    <button mat-button routerLink="/calendar" routerLinkActive="active">
+      <mat-icon >calendar_today</mat-icon>
+      <span style="overflow-wrap: break-word">Activity Calendar</span>
     </button>
-    <button mat-menu-item (click)="prepareLineChart()">
-      <mat-icon inline="true">timer</mat-icon>
-      <span>Average tempo</span>
+    <button mat-button [matMenuTriggerFor]="toolsMenu">
+      <mat-icon>build</mat-icon>
+      <span>Tools</span>
     </button>
-    <button mat-menu-item (click)="prepareBarChartMonthly()">
-      <mat-icon inline="true">insert_chart</mat-icon>
-      <span>Monthly chart</span>
+    <mat-menu #toolsMenu="matMenu" >
+      <button mat-menu-item disabled="true">
+        <mat-icon inline="true">search</mat-icon>
+        <span>Find activities</span>
+      </button>
+      <button mat-menu-item disabled="true">
+        <mat-icon inline="true">show_chart</mat-icon>
+        <span>Chart this</span>
+      </button>
+      <button mat-menu-item (click)="prepareLineChart()">
+        <mat-icon inline="true">timer</mat-icon>
+        <span>Average tempo</span>
+      </button>
+      <button mat-menu-item (click)="prepareBarChartMonthly()">
+        <mat-icon inline="true">insert_chart</mat-icon>
+        <span>Monthly chart</span>
+      </button>
+      <button mat-menu-item (click)="prepareBarChartYearly()">
+        <mat-icon inline="true">insert_chart_outlined</mat-icon>
+        <span>Yearly chart</span>
+      </button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="settingsMenu">
+      <mat-icon>settings</mat-icon>
+      <span>Settings</span>
     </button>
-    <button mat-menu-item (click)="prepareBarChartYearly()">
-      <mat-icon inline="true">insert_chart_outlined</mat-icon>
-      <span>Yearly chart</span>
+    <mat-menu #settingsMenu="matMenu">
+      <button mat-menu-item routerLink="/gear" routerLinkActive="active">
+        <mat-icon inline="true">edit</mat-icon>
+        <span class="menu-item-right">Gear</span>
+      </button>
+      <button mat-menu-item routerLink="/changePassword" routerLinkActive="active">
+        <mat-icon inline="true">lock</mat-icon>
+        <span>Change password</span>
+      </button>
+      <button mat-menu-item disabled="true">
+        <mat-icon inline="true">info</mat-icon>
+        <span>What's new?</span>
+      </button>
+    </mat-menu>
+    <button mat-button routerLink="/logout" routerLinkActive="active">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Logout</span>
     </button>
-  </mat-menu>
-  <button mat-button [matMenuTriggerFor]="settingsMenu">
-    <mat-icon>settings</mat-icon>
-    <span>Settings</span>
-  </button>
-  <mat-menu #settingsMenu="matMenu">
-    <button mat-menu-item routerLink="/gear" routerLinkActive="active">
-      <mat-icon inline="true">edit</mat-icon>
-      <span class="menu-item-right">Gear</span>
-    </button>
-    <button mat-menu-item routerLink="/changePassword" routerLinkActive="active">
-      <mat-icon inline="true">lock</mat-icon>
-      <span>Change password</span>
-    </button>
-    <button mat-menu-item disabled="true">
-      <mat-icon inline="true">info</mat-icon>
-      <span>What's new?</span>
-    </button>
-  </mat-menu>
-  <button mat-button routerLink="/logout" routerLinkActive="active">
-    <mat-icon>exit_to_app</mat-icon>
-    <span>Logout</span>
-  </button>
-</mat-toolbar>
+  </mat-toolbar>
+}
 
 <router-outlet></router-outlet>
 

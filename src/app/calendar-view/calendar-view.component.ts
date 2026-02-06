@@ -8,7 +8,7 @@ import {ActivityType, ActivityTypeType} from '../core/models/activity-type.model
 import {CalendarFilter} from './calendar-filter';
 import {MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
-import {DecimalPipe, NgForOf, NgIf} from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import {CalenderViewDayComponent} from './calender-view-day/calender-view-day.component';
 import {DurationPipe} from '../shared/pipes/duration.pipe';
 
@@ -19,11 +19,9 @@ import {DurationPipe} from '../shared/pipes/duration.pipe';
   imports: [
     MatIconButton,
     MatIcon,
-    NgForOf,
     DecimalPipe,
-    CalenderViewDayComponent,
-    NgIf
-  ]
+    CalenderViewDayComponent
+]
 })
 export class CalendarViewComponent implements OnInit {
 

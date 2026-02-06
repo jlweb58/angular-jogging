@@ -16,7 +16,7 @@ import {MatInput, MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDatepicker, MatDatepickerInput, MatDatepickerModule, MatDatepickerToggle} from '@angular/material/datepicker';
 import {MatOption, MatSelect} from '@angular/material/select';
-import {DecimalPipe, NgForOf, NgIf} from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import {MatButton} from '@angular/material/button';
 import {MatNativeDateModule, provideNativeDateAdapter} from '@angular/material/core';
 import {DurationPipe} from '../../shared/pipes/duration.pipe';
@@ -42,15 +42,13 @@ import {MatIcon} from '@angular/material/icon';
     ReactiveFormsModule,
     MatSelect,
     MatOption,
-    NgIf,
-    NgForOf,
     MatButton,
     DecimalPipe,
     MatDialogActions,
     MatDialogClose,
     MatHint,
-    MatIcon,
-  ],
+    MatIcon
+],
   providers: [
     provideNativeDateAdapter(),
   ],

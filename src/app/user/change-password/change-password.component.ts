@@ -4,7 +4,7 @@ import {ChangePasswordRequest} from '../../core/models/change-password-request.m
 import {UserService} from '../../core/services/user.service';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MustMatch} from '../../shared/validators/must-match.validator';
-import {Location, NgIf} from '@angular/common';
+import { Location } from '@angular/common';
 import {MatCard} from '@angular/material/card';
 import {MatError, MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
@@ -20,10 +20,9 @@ import {MatButton} from '@angular/material/button';
     MatFormField,
     MatInput,
     MatLabel,
-    NgIf,
     MatError,
     MatButton
-  ]
+]
 })
 export class ChangePasswordComponent implements OnInit {
 

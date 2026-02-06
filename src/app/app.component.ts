@@ -10,7 +10,7 @@ import {BarChartComponent} from './chart/bar-chart/bar-chart.component';
 import {LineChartComponent} from './chart/line-chart/line-chart.component';
 import {ActivityType} from './core/models/activity-type.model';
 import {MatToolbar} from '@angular/material/toolbar';
-import {NgIf} from '@angular/common';
+
 import {MatButton} from '@angular/material/button';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
@@ -22,7 +22,6 @@ import {MatIcon} from '@angular/material/icon';
   styleUrls: ['./app.component.css'],
   imports: [
     MatToolbar,
-    NgIf,
     MatButton,
     RouterLink,
     RouterLinkActive,
@@ -30,8 +29,8 @@ import {MatIcon} from '@angular/material/icon';
     MatMenu,
     MatIcon,
     MatMenuItem,
-    RouterOutlet,
-  ]
+    RouterOutlet
+]
 })
 export class AppComponent implements OnInit {
 
