@@ -55,7 +55,7 @@ export class GearListComponent implements OnInit {
   allBikes: Gear[];
   preferredBike: Gear;
   preferredShoes: Gear;
-  columnsToDisplay = ['preferred', 'name', 'gearType', 'mileage', 'retire'];
+  columnsToDisplay = ['preferred', 'name', 'gearType', 'mileage', 'edit', 'retire'];
 
   constructor(private gearService: GearService,
               private logger: LoggerService,
@@ -100,7 +100,16 @@ export class GearListComponent implements OnInit {
 
   createGear() {
     const dialogRef = this.dialog.open(GearDialogComponent, {
-      width: '250px'
+      width: '350px'
+    });
+  }
+
+  editGear(gear: Gear) {
+    const dialogRef = this.dialog.open(GearDialogComponent, {
+      width: '350px',
+      data: {
+        gear: gear
+      }
     });
   }
 
@@ -129,7 +138,7 @@ export class GearListComponent implements OnInit {
         title: 'Toggle gear?',
         message: message
       }
-      
+
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {

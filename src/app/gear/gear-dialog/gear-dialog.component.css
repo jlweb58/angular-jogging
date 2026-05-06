@@ -1,10 +1,26 @@
 
 .gear-dialog-form {
-  min-width: 100px;
-  max-width: 200px;
-  width: 60%;
-  font-size: x-small;
+  min-width: 280px;
+  max-width: 500px;
+  width: 100%;
 }
+
+.gear-dialog-form mat-form-field {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.gear-dialog-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 24px 24px;
+}
+
+.gear-dialog-actions button {
+  min-width: 96px;
+}
+
 
 .textField {
   margin: 5px 3px 5px 3px;

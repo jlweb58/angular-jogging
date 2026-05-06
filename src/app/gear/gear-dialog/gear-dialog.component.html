@@ -1,4 +1,4 @@
-<h3 mat-dialog-title>New Gear</h3>
+<h3 mat-dialog-title>{{ editMode ? 'Edit Gear' : 'New Gear' }}</h3>
 <mat-dialog-content>
   <form class="gear-dialog-form">
     <mat-form-field>
@@ -16,15 +16,13 @@
 
     <mat-form-field>
       <mat-label>Offset (km)</mat-label>
-      <input matInput name="offset" [(ngModel)]="gear.mileageOffset">
+      <input matInput name="offset" type="number" [(ngModel)]="gear.mileageOffset">
     </mat-form-field>
-
-
   </form>
 </mat-dialog-content>
-<mat-dialog-actions>
+<mat-dialog-actions class="gear-dialog-actions">
   <button mat-raised-button mat-dialog-close color="primary">Cancel</button>
-  <button mat-raised-button [mat-dialog-close]="true" (click)="createGear(gear)" color="primary">Save</button>
+  <button mat-raised-button [mat-dialog-close]="true" (click)="saveGear(gear)" color="primary">Save</button>
 
 </mat-dialog-actions>
 
