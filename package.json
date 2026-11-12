@@ -35,7 +35,7 @@
     "@angular/cli": "^21.2.7",
     "@angular/compiler-cli": "~21.2.9",
     "@angular/language-service": "~21.2.9",
-    "@types/googlemaps": "^3.40.3",
+    "@types/google.maps": "^3.58.1",
     "@types/jasmine": "~3.10.0",
     "@types/luxon": "^3.6.2",
     "@types/node": "^12.11.1",
