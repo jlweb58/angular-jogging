@@ -5,6 +5,12 @@ declare namespace google.maps.visualization {
   }
 
   interface HeatmapLayerOptions {
-    data: google.maps.visualization.WeightedLocation[];
+    data?: Array<google.maps.LatLng | WeightedLocation> | google.maps.MVCArray<google.maps.LatLng | WeightedLocation> | null;
+    dissipating?: boolean | null;
+    gradient?: string[] | null;
+    map?: google.maps.Map | null;
+    maxIntensity?: number | null;
+    opacity?: number | null;
+    radius?: number | null;
   }
 }
